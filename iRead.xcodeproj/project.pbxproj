@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F4181E071C86C3C600E41FBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4181E061C86C3C600E41FBA /* AppDelegate.swift */; };
+		F4181E091C86C3C600E41FBA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4181E081C86C3C600E41FBA /* ViewController.swift */; };
+		F4181E0C1C86C3C600E41FBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4181E0A1C86C3C600E41FBA /* Main.storyboard */; };
+		F4181E0E1C86C3C600E41FBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4181E0D1C86C3C600E41FBA /* Assets.xcassets */; };
+		F4181E111C86C3C600E41FBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4181E0F1C86C3C600E41FBA /* LaunchScreen.storyboard */; };
+		F4181E1C1C86C3C700E41FBA /* iReadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4181E1B1C86C3C700E41FBA /* iReadTests.swift */; };
+		F4181E271C86C3C700E41FBA /* iReadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4181E261C86C3C700E41FBA /* iReadUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F4181E181C86C3C700E41FBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4181DFB1C86C3C600E41FBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4181E021C86C3C600E41FBA;
+			remoteInfo = iRead;
+		};
+		F4181E231C86C3C700E41FBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4181DFB1C86C3C600E41FBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4181E021C86C3C600E41FBA;
+			remoteInfo = iRead;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F4181E031C86C3C600E41FBA /* iRead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iRead.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4181E061C86C3C600E41FBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F4181E081C86C3C600E41FBA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F4181E0B1C86C3C600E41FBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F4181E0D1C86C3C600E41FBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F4181E101C86C3C600E41FBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F4181E121C86C3C600E41FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4181E171C86C3C700E41FBA /* iReadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iReadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4181E1B1C86C3C700E41FBA /* iReadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iReadTests.swift; sourceTree = "<group>"; };
+		F4181E1D1C86C3C700E41FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4181E221C86C3C700E41FBA /* iReadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iReadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4181E261C86C3C700E41FBA /* iReadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iReadUITests.swift; sourceTree = "<group>"; };
+		F4181E281C86C3C700E41FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F4181E001C86C3C600E41FBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4181E141C86C3C700E41FBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4181E1F1C86C3C700E41FBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F4181DFA1C86C3C600E41FBA = {
+			isa = PBXGroup;
+			children = (
+				F4181E051C86C3C600E41FBA /* iRead */,
+				F4181E1A1C86C3C700E41FBA /* iReadTests */,
+				F4181E251C86C3C700E41FBA /* iReadUITests */,
+				F4181E041C86C3C600E41FBA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F4181E041C86C3C600E41FBA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4181E031C86C3C600E41FBA /* iRead.app */,
+				F4181E171C86C3C700E41FBA /* iReadTests.xctest */,
+				F4181E221C86C3C700E41FBA /* iReadUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F4181E051C86C3C600E41FBA /* iRead */ = {
+			isa = PBXGroup;
+			children = (
+				F4181E061C86C3C600E41FBA /* AppDelegate.swift */,
+				F4181E081C86C3C600E41FBA /* ViewController.swift */,
+				F4181E0A1C86C3C600E41FBA /* Main.storyboard */,
+				F4181E0D1C86C3C600E41FBA /* Assets.xcassets */,
+				F4181E0F1C86C3C600E41FBA /* LaunchScreen.storyboard */,
+				F4181E121C86C3C600E41FBA /* Info.plist */,
+			);
+			path = iRead;
+			sourceTree = "<group>";
+		};
+		F4181E1A1C86C3C700E41FBA /* iReadTests */ = {
+			isa = PBXGroup;
+			children = (
+				F4181E1B1C86C3C700E41FBA /* iReadTests.swift */,
+				F4181E1D1C86C3C700E41FBA /* Info.plist */,
+			);
+			path = iReadTests;
+			sourceTree = "<group>";
+		};
+		F4181E251C86C3C700E41FBA /* iReadUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F4181E261C86C3C700E41FBA /* iReadUITests.swift */,
+				F4181E281C86C3C700E41FBA /* Info.plist */,
+			);
+			path = iReadUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F4181E021C86C3C600E41FBA /* iRead */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4181E2B1C86C3C700E41FBA /* Build configuration list for PBXNativeTarget "iRead" */;
+			buildPhases = (
+				F4181DFF1C86C3C600E41FBA /* Sources */,
+				F4181E001C86C3C600E41FBA /* Frameworks */,
+				F4181E011C86C3C600E41FBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iRead;
+			productName = iRead;
+			productReference = F4181E031C86C3C600E41FBA /* iRead.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F4181E161C86C3C700E41FBA /* iReadTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4181E2E1C86C3C700E41FBA /* Build configuration list for PBXNativeTarget "iReadTests" */;
+			buildPhases = (
+				F4181E131C86C3C700E41FBA /* Sources */,
+				F4181E141C86C3C700E41FBA /* Frameworks */,
+				F4181E151C86C3C700E41FBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4181E191C86C3C700E41FBA /* PBXTargetDependency */,
+			);
+			name = iReadTests;
+			productName = iReadTests;
+			productReference = F4181E171C86C3C700E41FBA /* iReadTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F4181E211C86C3C700E41FBA /* iReadUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4181E311C86C3C700E41FBA /* Build configuration list for PBXNativeTarget "iReadUITests" */;
+			buildPhases = (
+				F4181E1E1C86C3C700E41FBA /* Sources */,
+				F4181E1F1C86C3C700E41FBA /* Frameworks */,
+				F4181E201C86C3C700E41FBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4181E241C86C3C700E41FBA /* PBXTargetDependency */,
+			);
+			name = iReadUITests;
+			productName = iReadUITests;
+			productReference = F4181E221C86C3C700E41FBA /* iReadUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F4181DFB1C86C3C600E41FBA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Simon;
+				TargetAttributes = {
+					F4181E021C86C3C600E41FBA = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					F4181E161C86C3C700E41FBA = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = F4181E021C86C3C600E41FBA;
+					};
+					F4181E211C86C3C700E41FBA = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = F4181E021C86C3C600E41FBA;
+					};
+				};
+			};
+			buildConfigurationList = F4181DFE1C86C3C600E41FBA /* Build configuration list for PBXProject "iRead" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F4181DFA1C86C3C600E41FBA;
+			productRefGroup = F4181E041C86C3C600E41FBA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F4181E021C86C3C600E41FBA /* iRead */,
+				F4181E161C86C3C700E41FBA /* iReadTests */,
+				F4181E211C86C3C700E41FBA /* iReadUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F4181E011C86C3C600E41FBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4181E111C86C3C600E41FBA /* LaunchScreen.storyboard in Resources */,
+				F4181E0E1C86C3C600E41FBA /* Assets.xcassets in Resources */,
+				F4181E0C1C86C3C600E41FBA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4181E151C86C3C700E41FBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4181E201C86C3C700E41FBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F4181DFF1C86C3C600E41FBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4181E091C86C3C600E41FBA /* ViewController.swift in Sources */,
+				F4181E071C86C3C600E41FBA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4181E131C86C3C700E41FBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4181E1C1C86C3C700E41FBA /* iReadTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4181E1E1C86C3C700E41FBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4181E271C86C3C700E41FBA /* iReadUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F4181E191C86C3C700E41FBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4181E021C86C3C600E41FBA /* iRead */;
+			targetProxy = F4181E181C86C3C700E41FBA /* PBXContainerItemProxy */;
+		};
+		F4181E241C86C3C700E41FBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4181E021C86C3C600E41FBA /* iRead */;
+			targetProxy = F4181E231C86C3C700E41FBA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F4181E0A1C86C3C600E41FBA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4181E0B1C86C3C600E41FBA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F4181E0F1C86C3C600E41FBA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4181E101C86C3C600E41FBA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F4181E291C86C3C700E41FBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F4181E2A1C86C3C700E41FBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F4181E2C1C86C3C700E41FBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = iRead/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iRead;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F4181E2D1C86C3C700E41FBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = iRead/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iRead;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F4181E2F1C86C3C700E41FBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = iReadTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iReadTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iRead.app/iRead";
+			};
+			name = Debug;
+		};
+		F4181E301C86C3C700E41FBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = iReadTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iReadTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iRead.app/iRead";
+			};
+			name = Release;
+		};
+		F4181E321C86C3C700E41FBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = iReadUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iReadUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = iRead;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		F4181E331C86C3C700E41FBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = iReadUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iReadUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = iRead;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F4181DFE1C86C3C600E41FBA /* Build configuration list for PBXProject "iRead" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4181E291C86C3C700E41FBA /* Debug */,
+				F4181E2A1C86C3C700E41FBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4181E2B1C86C3C700E41FBA /* Build configuration list for PBXNativeTarget "iRead" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4181E2C1C86C3C700E41FBA /* Debug */,
+				F4181E2D1C86C3C700E41FBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F4181E2E1C86C3C700E41FBA /* Build configuration list for PBXNativeTarget "iReadTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4181E2F1C86C3C700E41FBA /* Debug */,
+				F4181E301C86C3C700E41FBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F4181E311C86C3C700E41FBA /* Build configuration list for PBXNativeTarget "iReadUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4181E321C86C3C700E41FBA /* Debug */,
+				F4181E331C86C3C700E41FBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F4181DFB1C86C3C600E41FBA /* Project object */;
+}
