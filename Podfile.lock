@@ -1,0 +1,23 @@
+PODS:
+  - Ono (1.2.2)
+  - Realm (0.98.3):
+    - Realm/Headers (= 0.98.3)
+  - Realm/Headers (0.98.3)
+  - RealmSwift (0.98.3):
+    - Realm (= 0.98.3)
+  - Reveal-iOS-SDK (1.6.2)
+
+DEPENDENCIES:
+  - Ono
+  - RealmSwift
+  - Reveal-iOS-SDK
+
+SPEC CHECKSUMS:
+  Ono: 80b1c686777d3f6d5d5ce6fcac8a74afef4ca197
+  Realm: c6a7d00221a2d5177810a674aebd40c5e0b70b0f
+  RealmSwift: d6ecad6e4c2a645d6ac956c2c7e9efb375f39c31
+  Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
+
+PODFILE CHECKSUM: 3da017e9910b49ad18f8ea73fcd7630f608cfa34
+
+COCOAPODS: 1.0.0.beta.4
