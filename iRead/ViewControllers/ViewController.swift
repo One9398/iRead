@@ -19,8 +19,7 @@ class ViewController: UIViewController {
 
         var value = -100.0
         if UIScreen.mainScreen().bounds.height <= 480 {
-            value = -20.0
-            self.label_offsetYValue = 50.0
+            value = -60.0
         }
         
         return CGFloat(value)
@@ -43,7 +42,7 @@ class ViewController: UIViewController {
         return labelImg
     }()
     
-    //: MARK: - 
+    //: MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,14 +60,48 @@ class ViewController: UIViewController {
         
     }
 
+//: MARK: - UI Layout Configure
+    private func configureLogoImageView() {
+        view.addSubview(logoImageView)
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+
+        let centerXConstraint = logoImageView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor)
+        let centerYConstraint = logoImageView.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor, constant: logo_offsetYValue)
+
+        NSLayoutConstraint.activateConstraints([centerXConstraint, centerYConstraint])
+    }
     
+    private func configureLableImageView() {
+        
+        view.addSubview(labelImageView)
+        labelImageView.translatesAutoresizingMaskIntoConstraints = false
+        let centerXConstraint = labelImageView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor)
+        let centerYConstraint = labelImageView.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor, constant: label_offsetYValue)
+        
+        NSLayoutConstraint.activateConstraints([centerXConstraint, centerYConstraint])
+    }
+    
+    private func configureLayoutForUIComponent(component: UIView, offSetValue: CGFloat) {
+        view.addSubview(component)
+        component.translatesAutoresizingMaskIntoConstraints = false
+        let centerXConstraint = component.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor)
+        let centerYConstraint = component.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor, constant: offSetValue)
+        
+        NSLayoutConstraint.activateConstraints([centerXConstraint, centerYConstraint])
+    }
+    
+    //: MARK: - Other
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        
+        if traitCollection.userInterfaceIdiom == .Phone {
+            return .Portrait
+        }
+        
+        return .All
     }
     
     private func loadCustomLaunchAnimation() {
@@ -99,10 +132,10 @@ class ViewController: UIViewController {
                 
                 
         }
-
+        
     }
     
-    func replaceRootViewController() {
+    private func replaceRootViewController() {
         let storyboard = self.storyboard
         let rootController = storyboard?.instantiateViewControllerWithIdentifier("RootNavigationController")
         
@@ -110,36 +143,6 @@ class ViewController: UIViewController {
             
             UIApplication.sharedApplication().delegate?.window!!.rootViewController = rootController
         })
-    }
-
-//: MARK: - UIConfigure
-    private func configureLogoImageView() {
-        view.addSubview(logoImageView)
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
-
-        let centerXConstraint = logoImageView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor)
-        let centerYConstraint = logoImageView.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor, constant: logo_offsetYValue)
-
-        NSLayoutConstraint.activateConstraints([centerXConstraint, centerYConstraint])
-    }
-    
-    private func configureLableImageView() {
-        
-        view.addSubview(labelImageView)
-        labelImageView.translatesAutoresizingMaskIntoConstraints = false
-        let centerXConstraint = labelImageView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor)
-        let centerYConstraint = labelImageView.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor, constant: label_offsetYValue)
-        
-        NSLayoutConstraint.activateConstraints([centerXConstraint, centerYConstraint])
-    }
-    
-    private func configureLayoutForUIComponent(component: UIView, offSetValue: CGFloat) {
-        view.addSubview(component)
-        component.translatesAutoresizingMaskIntoConstraints = false
-        let centerXConstraint = component.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor)
-        let centerYConstraint = component.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor, constant: offSetValue)
-        
-        NSLayoutConstraint.activateConstraints([centerXConstraint, centerYConstraint])
     }
 
 }
