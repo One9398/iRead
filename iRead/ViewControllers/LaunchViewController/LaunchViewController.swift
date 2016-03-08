@@ -17,10 +17,18 @@ class LaunchViewController: UIViewController {
     private let springVelocity: CGFloat = 3
     
     private let circle_sizeWidth:CGFloat = 50
-    private let bg_middleSizeWidth:CGFloat = 250
+    private let bg_middleSizeWidth:CGFloat = 150
     private let bg_finalSizeWidth:CGFloat = 2000
 
-    private var label_offsetYValue:CGFloat = -20
+    private var label_offsetYValue:CGFloat {
+        var value:CGFloat = -40.0
+        if UIScreen.mainScreen().bounds.height <= 480 {
+            value = -10.0
+        }
+        
+        return value
+    }
+    
     private var logo_offsetYValue:CGFloat {
         
         var value = -100.0
@@ -121,9 +129,12 @@ class LaunchViewController: UIViewController {
             }) { (finished) -> Void in
                 
                 // Lable出现动画
-                UIView.animateWithDuration(self.animateDuration * 0.5, animations: { () -> Void in
+                UIView.animateWithDuration(self.animateDuration * 0.3, animations: { () -> Void in
                     self.labelImageView.alpha = 1.0
-                    self.labelImageView.transform = CGAffineTransformIdentity
+//                    self.labelImageView.transform = CGAffineTransformIdentity
+                    self.labelImageView.transform = CGAffineTransformMakeTranslation(0, self.label_offsetYValue)
+
+
                     
                     }, completion: completion)
                 
@@ -155,37 +166,14 @@ class LaunchViewController: UIViewController {
     
     }
 
-    private func loadCustomLaunchAnimation2() {
-        
-        UIView.animateWithDuration(animateDuration, delay: animateDelay, usingSpringWithDamping: dampingRatio, initialSpringVelocity: springVelocity, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-            
-            self.logoImageView.alpha = 1.0
-            
-            self.logoImageView.transform = CGAffineTransformMakeTranslation(0, self.logo_offsetYValue)
-            
-            }) { (finished) -> Void in
-                
-                UIView.animateWithDuration(self.animateDuration * 0.5, animations: { () -> Void in
-                    self.labelImageView.alpha = 1.0
-                    self.labelImageView.transform = CGAffineTransformIdentity
-                    
-                    }, completion: { (done) -> Void in
-                        
-                        self.loadCustomBackgroundAnimation()
-                })
-                
-        }
-        
+    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+        replaceRootViewController()
     }
     
     private func replaceRootViewController() {
         let rootController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
         
         UIApplication.sharedApplication().delegate?.window!!.rootViewController = rootController
-    }
-    
-    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-        replaceRootViewController()
     }
     
 }
