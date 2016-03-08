@@ -14,6 +14,7 @@
 		F4181E271C86C3C700E41FBA /* iReadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4181E261C86C3C700E41FBA /* iReadUITests.swift */; };
 		F41C09041C8DA26C00059E22 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41C09031C8DA26C00059E22 /* RootNavigationController.swift */; };
 		F4A3A5041C8D6465002407BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A3A5031C8D6465002407BB /* ViewController.swift */; };
+		F4A52C651C8E5DB0009F6530 /* iReadColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A52C641C8E5DB0009F6530 /* iReadColor.swift */; };
 		F4AB16F01C882ADF006438D2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4AB16EF1C882ADF006438D2 /* Profile.storyboard */; };
 		F4AB16FF1C882BDD006438D2 /* Feeds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4AB16FA1C882BDD006438D2 /* Feeds.storyboard */; };
 		F4AB17001C882BDD006438D2 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB16FB1C882BDD006438D2 /* FeedsViewController.swift */; };
@@ -57,7 +58,8 @@
 		F4181E281C86C3C700E41FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F41C09031C8DA26C00059E22 /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		F4A3A5031C8D6465002407BB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F4AB16EF1C882ADF006438D2 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = ../../Profile.storyboard; sourceTree = "<group>"; };
+		F4A52C641C8E5DB0009F6530 /* iReadColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadColor.swift; sourceTree = "<group>"; };
+		F4AB16EF1C882ADF006438D2 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		F4AB16FA1C882BDD006438D2 /* Feeds.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feeds.storyboard; sourceTree = "<group>"; };
 		F4AB16FB1C882BDD006438D2 /* FeedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
 		F4AB16FD1C882BDD006438D2 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
@@ -133,6 +135,8 @@
 		F4181E051C86C3C600E41FBA /* iRead */ = {
 			isa = PBXGroup;
 			children = (
+				F4914D4D1C8EA18900C32743 /* Resource */,
+				F4A52C631C8E5D6C009F6530 /* Extension */,
 				F449BDDF1C8D98A70072C783 /* Configure */,
 				F4AB16F81C882BDD006438D2 /* ViewControllers */,
 				F4181E341C86C68E00E41FBA /* Models */,
@@ -181,7 +185,22 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = Configure;
+			path = Configure;
+			sourceTree = "<group>";
+		};
+		F4914D4D1C8EA18900C32743 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F4A52C631C8E5D6C009F6530 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F4A52C641C8E5DB0009F6530 /* iReadColor.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		F4AB16F81C882BDD006438D2 /* ViewControllers */ = {
@@ -411,6 +430,7 @@
 				F4AB17001C882BDD006438D2 /* FeedsViewController.swift in Sources */,
 				F4AB17021C882BDD006438D2 /* LaunchViewController.swift in Sources */,
 				F4AB17051C882BFD006438D2 /* ProfileViewController.swift in Sources */,
+				F4A52C651C8E5DB0009F6530 /* iReadColor.swift in Sources */,
 				F4181E071C86C3C600E41FBA /* AppDelegate.swift in Sources */,
 				F41C09041C8DA26C00059E22 /* RootNavigationController.swift in Sources */,
 			);

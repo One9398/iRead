@@ -7,7 +7,7 @@ def pods
     pod 'Ono'
 #    pod 'PKRevealController'
     pod 'Reveal-iOS-SDK', :configurations => ['Debug']
-
+    pod 'Material'
 end
 
 target 'iRead' do
