@@ -23,11 +23,11 @@
             </objects>
             <point key="canvasLocation" x="1713" y="477"/>
         </scene>
-        <!--Item-->
+        <!--个人-->
         <scene sceneID="bM0-bE-MwC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X0R-8v-Cbm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="huH-W9-LNG"/>
+                    <tabBarItem key="tabBarItem" title="个人" id="huH-W9-LNG"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oIr-Lj-s10">

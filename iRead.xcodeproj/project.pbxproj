@@ -13,7 +13,10 @@
 		F4181E1C1C86C3C700E41FBA /* iReadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4181E1B1C86C3C700E41FBA /* iReadTests.swift */; };
 		F4181E271C86C3C700E41FBA /* iReadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4181E261C86C3C700E41FBA /* iReadUITests.swift */; };
 		F41C09041C8DA26C00059E22 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41C09031C8DA26C00059E22 /* RootNavigationController.swift */; };
-		F4A3A5041C8D6465002407BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A3A5031C8D6465002407BB /* ViewController.swift */; };
+		F4914D501C8EA41300C32743 /* RecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4914D4F1C8EA41300C32743 /* RecommendController.swift */; };
+		F4914D551C8EA56D00C32743 /* Recommend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4914D541C8EA56D00C32743 /* Recommend.storyboard */; };
+		F4914D581C8EA71F00C32743 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4914D571C8EA71F00C32743 /* NotesViewController.swift */; };
+		F4914D5D1C8EA7B100C32743 /* Notes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4914D5C1C8EA7B100C32743 /* Notes.storyboard */; };
 		F4A52C651C8E5DB0009F6530 /* iReadColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A52C641C8E5DB0009F6530 /* iReadColor.swift */; };
 		F4AB16F01C882ADF006438D2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4AB16EF1C882ADF006438D2 /* Profile.storyboard */; };
 		F4AB16FF1C882BDD006438D2 /* Feeds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4AB16FA1C882BDD006438D2 /* Feeds.storyboard */; };
@@ -57,7 +60,10 @@
 		F4181E261C86C3C700E41FBA /* iReadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iReadUITests.swift; sourceTree = "<group>"; };
 		F4181E281C86C3C700E41FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F41C09031C8DA26C00059E22 /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
-		F4A3A5031C8D6465002407BB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F4914D4F1C8EA41300C32743 /* RecommendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendController.swift; sourceTree = "<group>"; };
+		F4914D541C8EA56D00C32743 /* Recommend.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Recommend.storyboard; sourceTree = "<group>"; };
+		F4914D571C8EA71F00C32743 /* NotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		F4914D5C1C8EA7B100C32743 /* Notes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notes.storyboard; sourceTree = "<group>"; };
 		F4A52C641C8E5DB0009F6530 /* iReadColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadColor.swift; sourceTree = "<group>"; };
 		F4AB16EF1C882ADF006438D2 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		F4AB16FA1C882BDD006438D2 /* Feeds.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feeds.storyboard; sourceTree = "<group>"; };
@@ -195,6 +201,24 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		F4914D4E1C8EA3D100C32743 /* RecommendController */ = {
+			isa = PBXGroup;
+			children = (
+				F4914D541C8EA56D00C32743 /* Recommend.storyboard */,
+				F4914D4F1C8EA41300C32743 /* RecommendController.swift */,
+			);
+			path = RecommendController;
+			sourceTree = "<group>";
+		};
+		F4914D561C8EA70500C32743 /* NotesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F4914D5C1C8EA7B100C32743 /* Notes.storyboard */,
+				F4914D571C8EA71F00C32743 /* NotesViewController.swift */,
+			);
+			path = NotesViewController;
+			sourceTree = "<group>";
+		};
 		F4A52C631C8E5D6C009F6530 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,10 +230,11 @@
 		F4AB16F81C882BDD006438D2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F4914D561C8EA70500C32743 /* NotesViewController */,
+				F4914D4E1C8EA3D100C32743 /* RecommendController */,
 				F4AB17031C882BE8006438D2 /* ProfileViewController */,
 				F4AB16F91C882BDD006438D2 /* FeedsViewController */,
 				F4AB16FC1C882BDD006438D2 /* LaunchViewController */,
-				F4A3A5031C8D6465002407BB /* ViewController.swift */,
 				F41C09031C8DA26C00059E22 /* RootNavigationController.swift */,
 			);
 			path = ViewControllers;
@@ -350,9 +375,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4181E0E1C86C3C600E41FBA /* Assets.xcassets in Resources */,
+				F4914D5D1C8EA7B100C32743 /* Notes.storyboard in Resources */,
 				F4AB17011C882BDD006438D2 /* Launch.storyboard in Resources */,
 				F4181E0C1C86C3C600E41FBA /* Main.storyboard in Resources */,
 				F4AB16FF1C882BDD006438D2 /* Feeds.storyboard in Resources */,
+				F4914D551C8EA56D00C32743 /* Recommend.storyboard in Resources */,
 				F4AB16F01C882ADF006438D2 /* Profile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,10 +453,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4A3A5041C8D6465002407BB /* ViewController.swift in Sources */,
 				F4AB17001C882BDD006438D2 /* FeedsViewController.swift in Sources */,
+				F4914D501C8EA41300C32743 /* RecommendController.swift in Sources */,
 				F4AB17021C882BDD006438D2 /* LaunchViewController.swift in Sources */,
 				F4AB17051C882BFD006438D2 /* ProfileViewController.swift in Sources */,
+				F4914D581C8EA71F00C32743 /* NotesViewController.swift in Sources */,
 				F4A52C651C8E5DB0009F6530 /* iReadColor.swift in Sources */,
 				F4181E071C86C3C600E41FBA /* AppDelegate.swift in Sources */,
 				F41C09041C8DA26C00059E22 /* RootNavigationController.swift in Sources */,
