@@ -1,24 +1,19 @@
 //
-//  FeedsViewController.swift
+//  ViewControllerB.swift
 //  iRead
 //
-//  Created by Simon on 16/3/3.
+//  Created by Simon on 16/3/9.
 //  Copyright © 2016年 Simon. All rights reserved.
 //
 
 import UIKit
-import Material
 
-class FeedsViewController: UIViewController {
+class ViewControllerB: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let button = FlatButton()
-        button.pulseColor = MaterialColor.black
-        navigationItem.titleView = button
-        
     }
 
     override func didReceiveMemoryWarning() {

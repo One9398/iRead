@@ -59,7 +59,7 @@ class LaunchViewController: UIViewController {
     lazy var circleView:UIImageView = {
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.circle_sizeWidth, self.circle_sizeWidth), false, UIScreen.mainScreen().scale)
         let ctx = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(ctx, UIColor.themeTintColot().CGColor)
+        CGContextSetFillColorWithColor(ctx, iReadColor.themeBlueColor.CGColor)
         CGContextAddEllipseInRect(ctx, CGRectMake(0, 0, self.circle_sizeWidth, self.circle_sizeWidth))
         CGContextFillPath(ctx)
         let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -107,14 +107,7 @@ class LaunchViewController: UIViewController {
         return true
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        
-        if traitCollection.userInterfaceIdiom == .Phone {
-            return .Portrait
-        }
-        
-        return .All
-    }
+
     
     // MARK: - Custom Animation
     private func loadCustomLaunchAnimation(completion:(Bool)->()) {
@@ -174,6 +167,7 @@ class LaunchViewController: UIViewController {
         let rootController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
         
         UIApplication.sharedApplication().delegate?.window!!.rootViewController = rootController
+        
     }
     
 }

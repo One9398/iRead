@@ -27,7 +27,7 @@
         <scene sceneID="bM0-bE-MwC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X0R-8v-Cbm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="个人" id="huH-W9-LNG"/>
+                    <tabBarItem key="tabBarItem" title="个人" image="icon_tabbar_profile_normal" selectedImage="icon_tabbar_profile_selected" id="huH-W9-LNG"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oIr-Lj-s10">
@@ -44,4 +44,8 @@
             <point key="canvasLocation" x="709" y="289"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_tabbar_profile_normal" width="26" height="26"/>
+        <image name="icon_tabbar_profile_selected" width="24" height="24"/>
+    </resources>
 </document>

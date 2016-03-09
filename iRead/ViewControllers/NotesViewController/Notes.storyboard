@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7HS-z0-8EK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7HS-z0-8EK">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -27,7 +27,7 @@
         <scene sceneID="JQe-rk-8QF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7HS-z0-8EK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Nw6-xA-CCc"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="icon_tabbar_notes_normal" selectedImage="icon_tabbar_notes_selected" id="Nw6-xA-CCc"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -46,4 +46,8 @@
             <point key="canvasLocation" x="1194" y="-1325.25"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_tabbar_notes_normal" width="26" height="26"/>
+        <image name="icon_tabbar_notes_selected" width="24" height="24"/>
+    </resources>
 </document>

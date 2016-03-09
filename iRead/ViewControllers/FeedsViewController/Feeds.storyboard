@@ -27,7 +27,7 @@
         <scene sceneID="YDA-GO-GQz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FC7-SV-NYv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我阅" badgeValue="2" id="ZoF-5O-1WH"/>
+                    <tabBarItem key="tabBarItem" title="我阅" image="icon_tabbar_feeds_normal" badgeValue="2" selectedImage="icon_tabbar_feeds_selected" id="ZoF-5O-1WH"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uaO-zY-gAf">
@@ -44,4 +44,8 @@
             <point key="canvasLocation" x="-203" y="1205"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_tabbar_feeds_normal" width="26" height="26"/>
+        <image name="icon_tabbar_feeds_selected" width="24" height="24"/>
+    </resources>
 </document>
