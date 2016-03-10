@@ -187,6 +187,8 @@
         
         UIScrollView *titleScrollView = [[UIScrollView alloc] init];
         
+        titleScrollView.clipsToBounds = NO;
+        
         titleScrollView.backgroundColor = _titleScrollViewColor?_titleScrollViewColor:[UIColor colorWithWhite:1 alpha:0.7];
         
         

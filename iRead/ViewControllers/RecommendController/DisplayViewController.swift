@@ -10,6 +10,20 @@ import UIKit
 import Material
 
 class DisplayViewController: YZDisplayViewController {
+    
+    lazy var headerBackgroundView: UIImageView = {
+        let headerBgImageView = UIImageView(image: UIImage(named: "header_bg_recommand"))
+        
+        headerBgImageView.backgroundColor = UIColor(red: 66/255.0, green: 190/255.0, blue: 252/255.0, alpha: 1.0)
+        headerBgImageView.layer.shadowColor = UIColor(red: 31/255.0, green: 31/255.0, blue: 31/255.0, alpha: 1.0).CGColor
+        headerBgImageView.layer.shadowOffset = CGSizeMake(0, 4)
+        headerBgImageView.layer.shadowRadius = 2
+        headerBgImageView.layer.shadowOpacity = 0.3
+        
+        return headerBgImageView
+    }()
+
+    // MARK: - View Life Cycle ♻️
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +35,10 @@ class DisplayViewController: YZDisplayViewController {
         
         print(navigationController)
         print("rootController: \(UIApplication.sharedApplication().delegate?.window!!.rootViewController)");
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - UI Preparation 📱
@@ -42,39 +54,46 @@ class DisplayViewController: YZDisplayViewController {
         navigationController?.navigationBar.barStyle = .Black
         navigationController!.navigationBar.setBackgroundImage(UIImage(named: "navigationbar_bg_recommand"), forBarMetrics: .Default)
         navigationController!.navigationBar.shadowImage = UIImage()        
+    
     }
-
+    
     private func prepareForHeaderView() {
 
         isShowUnderLine = true
         underLineColor = iReadColor.themeRedColor
         norColor = iReadColor.themeWhiteColor
         selColor = iReadColor.themeRedColor
-        titleScrollViewBackgroundImageView = UIImageView(image: UIImage(named: "header_bg_recommand"))
+        
+        titleScrollViewBackgroundImageView = headerBackgroundView
+        
         titleFont = iReadFont.thinWithSize(12)
         underLineH = 2
     }
+
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    
     private func configureChildViewControllers() {
         let viewControllerA1 = ViewControllerA()
         viewControllerA1.title = "科技见闻"
         addChildViewController(viewControllerA1)
-
+        
         let viewControllerB1 = ViewControllerB()
         viewControllerB1.title = "信息技术"
         addChildViewController(viewControllerB1)
-
+        
         let viewControllerA2 = ViewControllerA()
         viewControllerA2.title = "生活健康"
         addChildViewController(viewControllerA2)
-
+        
         let viewControllerB2 = ViewControllerB()
         viewControllerB2.title = "艺术文学"
         addChildViewController(viewControllerB2)
         
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
+    
 
 }

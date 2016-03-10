@@ -16,6 +16,9 @@ public struct iReadColor {
     public static let themeLightBlueColor = MaterialColor.blue.lighten3
     public static let themeDarkBlueColor = MaterialColor.blue.darken4
     public static let themeRedColor = UIColor(red: 253/255.0, green: 91/255.0, blue: 107/255.0, alpha: 1.0)
+    
+    public static let themeBlackColor = UIColor(red: 31/255.0, green: 31/255.0, blue: 31/255.0, alpha: 1.0)
+    
 }
 
 public struct iReadFont {

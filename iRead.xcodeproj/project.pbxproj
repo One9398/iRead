@@ -84,6 +84,7 @@
 		F4181E221C86C3C700E41FBA /* iReadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iReadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4181E261C86C3C700E41FBA /* iReadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iReadUITests.swift; sourceTree = "<group>"; };
 		F4181E281C86C3C700E41FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F43AD7141C90F8FE001ED543 /* iReadTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = iReadTest.playground; sourceTree = "<group>"; };
 		F4914D4F1C8EA41300C32743 /* RecommendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendController.swift; sourceTree = "<group>"; };
 		F4914D571C8EA71F00C32743 /* NotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		F4914D5C1C8EA7B100C32743 /* Notes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notes.storyboard; sourceTree = "<group>"; };
@@ -201,6 +202,7 @@
 				F4181E371C86C68E00E41FBA /* Views */,
 				F4181E061C86C3C600E41FBA /* AppDelegate.swift */,
 				F40C02351C90043A00CB3646 /* iRead-Bridging-Header.h */,
+				F43AD7141C90F8FE001ED543 /* iReadTest.playground */,
 				F40C02321C9003F600CB3646 /* Main.storyboard */,
 				F4181E0D1C86C3C600E41FBA /* Assets.xcassets */,
 				F4181E121C86C3C600E41FBA /* Info.plist */,
