@@ -16,6 +16,5 @@ extension UIViewController {
         }
         
         return false
-        
     }
 }

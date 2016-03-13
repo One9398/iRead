@@ -21,6 +21,16 @@
 		F4181E0E1C86C3C600E41FBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4181E0D1C86C3C600E41FBA /* Assets.xcassets */; };
 		F4181E1C1C86C3C700E41FBA /* iReadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4181E1B1C86C3C700E41FBA /* iReadTests.swift */; };
 		F4181E271C86C3C700E41FBA /* iReadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4181E261C86C3C700E41FBA /* iReadUITests.swift */; };
+		F42E98501C925DED00A1E602 /* ConcurrentOpeartion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E984F1C925DED00A1E602 /* ConcurrentOpeartion.swift */; };
+		F42E98521C92601400A1E602 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E98511C92601400A1E602 /* FeedModel.swift */; };
+		F42E98551C92689100A1E602 /* iReadNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E98541C92689100A1E602 /* iReadNetwork.swift */; };
+		F42E98571C92720900A1E602 /* FeedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E98561C92720900A1E602 /* FeedManager.swift */; };
+		F42E98591C9276AF00A1E602 /* FeedParseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E98581C9276AF00A1E602 /* FeedParseOperation.swift */; };
+		F42E985B1C9276D100A1E602 /* FeedFetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E985A1C9276D100A1E602 /* FeedFetchOperation.swift */; };
+		F42E985D1C92770600A1E602 /* FeedModelsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E985C1C92770600A1E602 /* FeedModelsProvider.swift */; };
+		F42E98611C927F2100A1E602 /* iReadString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E98601C927F2100A1E602 /* iReadString.swift */; };
+		F44DE8F21C92BEEE008617E6 /* feeds.plist in Resources */ = {isa = PBXBuildFile; fileRef = F44DE8F11C92BEEE008617E6 /* feeds.plist */; };
+		F44DE8F61C92C21F008617E6 /* feedResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44DE8F51C92C21F008617E6 /* feedResource.swift */; };
 		F4914D501C8EA41300C32743 /* RecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4914D4F1C8EA41300C32743 /* RecommendController.swift */; };
 		F4914D581C8EA71F00C32743 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4914D571C8EA71F00C32743 /* NotesViewController.swift */; };
 		F4914D5D1C8EA7B100C32743 /* Notes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4914D5C1C8EA7B100C32743 /* Notes.storyboard */; };
@@ -34,6 +44,8 @@
 		F4C09FF31C8EDD2C005ED771 /* RootTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C09FF21C8EDD2C005ED771 /* RootTabbarController.swift */; };
 		F4C09FF61C8EDFB4005ED771 /* iReadHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C09FF51C8EDFB4005ED771 /* iReadHelp.swift */; };
 		F4C09FF81C8EE0C1005ED771 /* iReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C09FF71C8EE0C1005ED771 /* iReadViewController.swift */; };
+		F4C3A9501C919F6B001A0D22 /* iReadConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C3A94F1C919F6B001A0D22 /* iReadConfigure.swift */; };
+		F4C5076B1C919E66003D0AB1 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5076A1C919E66003D0AB1 /* FeedStore.swift */; };
 		FF912B13B8E5D3EBCD95A130 /* Pods_iRead.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB6339B9D2227A18D1E98EA /* Pods_iRead.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,7 +96,17 @@
 		F4181E221C86C3C700E41FBA /* iReadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iReadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4181E261C86C3C700E41FBA /* iReadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iReadUITests.swift; sourceTree = "<group>"; };
 		F4181E281C86C3C700E41FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F42E984F1C925DED00A1E602 /* ConcurrentOpeartion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOpeartion.swift; sourceTree = "<group>"; };
+		F42E98511C92601400A1E602 /* FeedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
+		F42E98541C92689100A1E602 /* iReadNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadNetwork.swift; sourceTree = "<group>"; };
+		F42E98561C92720900A1E602 /* FeedManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedManager.swift; sourceTree = "<group>"; };
+		F42E98581C9276AF00A1E602 /* FeedParseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedParseOperation.swift; sourceTree = "<group>"; };
+		F42E985A1C9276D100A1E602 /* FeedFetchOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedFetchOperation.swift; sourceTree = "<group>"; };
+		F42E985C1C92770600A1E602 /* FeedModelsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedModelsProvider.swift; sourceTree = "<group>"; };
+		F42E98601C927F2100A1E602 /* iReadString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadString.swift; sourceTree = "<group>"; };
 		F43AD7141C90F8FE001ED543 /* iReadTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = iReadTest.playground; sourceTree = "<group>"; };
+		F44DE8F11C92BEEE008617E6 /* feeds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = feeds.plist; sourceTree = "<group>"; };
+		F44DE8F51C92C21F008617E6 /* feedResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedResource.swift; sourceTree = "<group>"; };
 		F4914D4F1C8EA41300C32743 /* RecommendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendController.swift; sourceTree = "<group>"; };
 		F4914D571C8EA71F00C32743 /* NotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		F4914D5C1C8EA7B100C32743 /* Notes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notes.storyboard; sourceTree = "<group>"; };
@@ -98,6 +120,8 @@
 		F4C09FF21C8EDD2C005ED771 /* RootTabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabbarController.swift; sourceTree = "<group>"; };
 		F4C09FF51C8EDFB4005ED771 /* iReadHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadHelp.swift; sourceTree = "<group>"; };
 		F4C09FF71C8EE0C1005ED771 /* iReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadViewController.swift; sourceTree = "<group>"; };
+		F4C3A94F1C919F6B001A0D22 /* iReadConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadConfigure.swift; sourceTree = "<group>"; };
+		F4C5076A1C919E66003D0AB1 /* FeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +216,7 @@
 		F4181E051C86C3C600E41FBA /* iRead */ = {
 			isa = PBXGroup;
 			children = (
+				F42E98531C92687900A1E602 /* Network */,
 				F40C021C1C90025800CB3646 /* Vendor */,
 				F4C09FF41C8EDF96005ED771 /* Help */,
 				F4914D4D1C8EA18900C32743 /* Resource */,
@@ -231,6 +256,13 @@
 		F4181E341C86C68E00E41FBA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F42E984F1C925DED00A1E602 /* ConcurrentOpeartion.swift */,
+				F4C5076A1C919E66003D0AB1 /* FeedStore.swift */,
+				F42E98561C92720900A1E602 /* FeedManager.swift */,
+				F42E98511C92601400A1E602 /* FeedModel.swift */,
+				F42E98581C9276AF00A1E602 /* FeedParseOperation.swift */,
+				F42E985A1C9276D100A1E602 /* FeedFetchOperation.swift */,
+				F42E985C1C92770600A1E602 /* FeedModelsProvider.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -242,9 +274,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F42E98531C92687900A1E602 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F42E98541C92689100A1E602 /* iReadNetwork.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
 		F449BDDF1C8D98A70072C783 /* Configure */ = {
 			isa = PBXGroup;
 			children = (
+				F4C3A94F1C919F6B001A0D22 /* iReadConfigure.swift */,
 			);
 			path = Configure;
 			sourceTree = "<group>";
@@ -252,6 +293,8 @@
 		F4914D4D1C8EA18900C32743 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F44DE8F11C92BEEE008617E6 /* feeds.plist */,
+				F44DE8F51C92C21F008617E6 /* feedResource.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -281,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				F4C09FF71C8EE0C1005ED771 /* iReadViewController.swift */,
+				F42E98601C927F2100A1E602 /* iReadString.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -458,6 +502,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F44DE8F21C92BEEE008617E6 /* feeds.plist in Resources */,
 				F40C02341C9003F600CB3646 /* Main.storyboard in Resources */,
 				F4181E0E1C86C3C600E41FBA /* Assets.xcassets in Resources */,
 				F4914D5D1C8EA7B100C32743 /* Notes.storyboard in Resources */,
@@ -539,22 +584,33 @@
 			files = (
 				F40C021B1C8FFAEB00CB3646 /* CustomNavigationController.swift in Sources */,
 				F4AB17001C882BDD006438D2 /* FeedsViewController.swift in Sources */,
+				F4C3A9501C919F6B001A0D22 /* iReadConfigure.swift in Sources */,
 				F40C022A1C90028B00CB3646 /* YZFlowLayout.m in Sources */,
+				F42E98551C92689100A1E602 /* iReadNetwork.swift in Sources */,
+				F42E98521C92601400A1E602 /* FeedModel.swift in Sources */,
 				F4C09FF81C8EE0C1005ED771 /* iReadViewController.swift in Sources */,
 				F4914D501C8EA41300C32743 /* RecommendController.swift in Sources */,
 				F40C02371C90050B00CB3646 /* DisplayViewController.swift in Sources */,
 				F4C09FF11C8EDD09005ED771 /* RootNavigationController.swift in Sources */,
 				F40C023B1C90055600CB3646 /* ViewControllerB.swift in Sources */,
+				F44DE8F61C92C21F008617E6 /* feedResource.swift in Sources */,
+				F42E985B1C9276D100A1E602 /* FeedFetchOperation.swift in Sources */,
+				F42E98571C92720900A1E602 /* FeedManager.swift in Sources */,
 				F40C02271C90028B00CB3646 /* UIView+Frame.m in Sources */,
+				F42E98501C925DED00A1E602 /* ConcurrentOpeartion.swift in Sources */,
 				F4AB17021C882BDD006438D2 /* LaunchViewController.swift in Sources */,
 				F4C09FF31C8EDD2C005ED771 /* RootTabbarController.swift in Sources */,
 				F4AB17051C882BFD006438D2 /* ProfileViewController.swift in Sources */,
 				F4C09FF61C8EDFB4005ED771 /* iReadHelp.swift in Sources */,
 				F4914D581C8EA71F00C32743 /* NotesViewController.swift in Sources */,
+				F4C5076B1C919E66003D0AB1 /* FeedStore.swift in Sources */,
 				F4181E071C86C3C600E41FBA /* AppDelegate.swift in Sources */,
 				F40C02281C90028B00CB3646 /* YZDisplayTitleLabel.m in Sources */,
+				F42E98591C9276AF00A1E602 /* FeedParseOperation.swift in Sources */,
+				F42E98611C927F2100A1E602 /* iReadString.swift in Sources */,
 				F40C02391C90054D00CB3646 /* ViewControllerA.swift in Sources */,
 				F40C02291C90028B00CB3646 /* YZDisplayViewController.m in Sources */,
+				F42E985D1C92770600A1E602 /* FeedModelsProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
