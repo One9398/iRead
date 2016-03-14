@@ -12,7 +12,8 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    [super drawRect:rect];
+    [super drawRect
+     :rect];
     
     
     [_fillColor set];

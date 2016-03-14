@@ -14,9 +14,7 @@
 		F40C02291C90028B00CB3646 /* YZDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F40C02231C90028B00CB3646 /* YZDisplayViewController.m */; };
 		F40C022A1C90028B00CB3646 /* YZFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F40C02261C90028B00CB3646 /* YZFlowLayout.m */; };
 		F40C02341C9003F600CB3646 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40C02321C9003F600CB3646 /* Main.storyboard */; };
-		F40C02371C90050B00CB3646 /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40C02361C90050B00CB3646 /* DisplayViewController.swift */; };
 		F40C02391C90054D00CB3646 /* ViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40C02381C90054D00CB3646 /* ViewControllerA.swift */; };
-		F40C023B1C90055600CB3646 /* ViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40C023A1C90055600CB3646 /* ViewControllerB.swift */; };
 		F4181E071C86C3C600E41FBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4181E061C86C3C600E41FBA /* AppDelegate.swift */; };
 		F4181E0E1C86C3C600E41FBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4181E0D1C86C3C600E41FBA /* Assets.xcassets */; };
 		F4181E1C1C86C3C700E41FBA /* iReadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4181E1B1C86C3C700E41FBA /* iReadTests.swift */; };
@@ -34,6 +32,10 @@
 		F4914D501C8EA41300C32743 /* RecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4914D4F1C8EA41300C32743 /* RecommendController.swift */; };
 		F4914D581C8EA71F00C32743 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4914D571C8EA71F00C32743 /* NotesViewController.swift */; };
 		F4914D5D1C8EA7B100C32743 /* Notes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4914D5C1C8EA7B100C32743 /* Notes.storyboard */; };
+		F4A331291C96589100AFFC6F /* ITNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A331281C96589100AFFC6F /* ITNewsViewController.swift */; };
+		F4A331321C965B5500AFFC6F /* ITNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A331311C965B5500AFFC6F /* ITNewsTableViewCell.swift */; };
+		F4A331341C96860100AFFC6F /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A331331C96860100AFFC6F /* BaseButton.swift */; };
+		F4A331361C968FC500AFFC6F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A331351C968FC500AFFC6F /* ViewModel.swift */; };
 		F4AB16F01C882ADF006438D2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4AB16EF1C882ADF006438D2 /* Profile.storyboard */; };
 		F4AB16FF1C882BDD006438D2 /* Feeds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4AB16FA1C882BDD006438D2 /* Feeds.storyboard */; };
 		F4AB17001C882BDD006438D2 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB16FB1C882BDD006438D2 /* FeedsViewController.swift */; };
@@ -83,9 +85,7 @@
 		F40C02261C90028B00CB3646 /* YZFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFlowLayout.m; sourceTree = "<group>"; };
 		F40C02331C9003F600CB3646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F40C02351C90043A00CB3646 /* iRead-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iRead-Bridging-Header.h"; sourceTree = "<group>"; };
-		F40C02361C90050B00CB3646 /* DisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
 		F40C02381C90054D00CB3646 /* ViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerA.swift; sourceTree = "<group>"; };
-		F40C023A1C90055600CB3646 /* ViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerB.swift; sourceTree = "<group>"; };
 		F4181E031C86C3C600E41FBA /* iRead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iRead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4181E061C86C3C600E41FBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4181E0D1C86C3C600E41FBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -110,6 +110,10 @@
 		F4914D4F1C8EA41300C32743 /* RecommendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendController.swift; sourceTree = "<group>"; };
 		F4914D571C8EA71F00C32743 /* NotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		F4914D5C1C8EA7B100C32743 /* Notes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notes.storyboard; sourceTree = "<group>"; };
+		F4A331281C96589100AFFC6F /* ITNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITNewsViewController.swift; sourceTree = "<group>"; };
+		F4A331311C965B5500AFFC6F /* ITNewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITNewsTableViewCell.swift; sourceTree = "<group>"; };
+		F4A331331C96860100AFFC6F /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		F4A331351C968FC500AFFC6F /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModel.swift; path = ../ViewControllers/RecommendController/ViewModel.swift; sourceTree = "<group>"; };
 		F4AB16EF1C882ADF006438D2 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		F4AB16FA1C882BDD006438D2 /* Feeds.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feeds.storyboard; sourceTree = "<group>"; };
 		F4AB16FB1C882BDD006438D2 /* FeedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 		F4181E341C86C68E00E41FBA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F4A331351C968FC500AFFC6F /* ViewModel.swift */,
 				F42E984F1C925DED00A1E602 /* ConcurrentOpeartion.swift */,
 				F4C5076A1C919E66003D0AB1 /* FeedStore.swift */,
 				F42E98561C92720900A1E602 /* FeedManager.swift */,
@@ -270,6 +275,7 @@
 		F4181E371C86C68E00E41FBA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F4A331301C965B2800AFFC6F /* ITNewsView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -304,9 +310,8 @@
 			children = (
 				F40C02181C8FE11C00CB3646 /* Recommend.storyboard */,
 				F4914D4F1C8EA41300C32743 /* RecommendController.swift */,
-				F40C02361C90050B00CB3646 /* DisplayViewController.swift */,
 				F40C02381C90054D00CB3646 /* ViewControllerA.swift */,
-				F40C023A1C90055600CB3646 /* ViewControllerB.swift */,
+				F4A331281C96589100AFFC6F /* ITNewsViewController.swift */,
 			);
 			path = RecommendController;
 			sourceTree = "<group>";
@@ -318,6 +323,15 @@
 				F4914D571C8EA71F00C32743 /* NotesViewController.swift */,
 			);
 			path = NotesViewController;
+			sourceTree = "<group>";
+		};
+		F4A331301C965B2800AFFC6F /* ITNewsView */ = {
+			isa = PBXGroup;
+			children = (
+				F4A331311C965B5500AFFC6F /* ITNewsTableViewCell.swift */,
+				F4A331331C96860100AFFC6F /* BaseButton.swift */,
+			);
+			path = ITNewsView;
 			sourceTree = "<group>";
 		};
 		F4A52C631C8E5D6C009F6530 /* Extension */ = {
@@ -584,15 +598,14 @@
 			files = (
 				F40C021B1C8FFAEB00CB3646 /* CustomNavigationController.swift in Sources */,
 				F4AB17001C882BDD006438D2 /* FeedsViewController.swift in Sources */,
+				F4A331341C96860100AFFC6F /* BaseButton.swift in Sources */,
 				F4C3A9501C919F6B001A0D22 /* iReadConfigure.swift in Sources */,
 				F40C022A1C90028B00CB3646 /* YZFlowLayout.m in Sources */,
 				F42E98551C92689100A1E602 /* iReadNetwork.swift in Sources */,
 				F42E98521C92601400A1E602 /* FeedModel.swift in Sources */,
 				F4C09FF81C8EE0C1005ED771 /* iReadViewController.swift in Sources */,
 				F4914D501C8EA41300C32743 /* RecommendController.swift in Sources */,
-				F40C02371C90050B00CB3646 /* DisplayViewController.swift in Sources */,
 				F4C09FF11C8EDD09005ED771 /* RootNavigationController.swift in Sources */,
-				F40C023B1C90055600CB3646 /* ViewControllerB.swift in Sources */,
 				F44DE8F61C92C21F008617E6 /* feedResource.swift in Sources */,
 				F42E985B1C9276D100A1E602 /* FeedFetchOperation.swift in Sources */,
 				F42E98571C92720900A1E602 /* FeedManager.swift in Sources */,
@@ -600,10 +613,13 @@
 				F42E98501C925DED00A1E602 /* ConcurrentOpeartion.swift in Sources */,
 				F4AB17021C882BDD006438D2 /* LaunchViewController.swift in Sources */,
 				F4C09FF31C8EDD2C005ED771 /* RootTabbarController.swift in Sources */,
+				F4A331321C965B5500AFFC6F /* ITNewsTableViewCell.swift in Sources */,
 				F4AB17051C882BFD006438D2 /* ProfileViewController.swift in Sources */,
 				F4C09FF61C8EDFB4005ED771 /* iReadHelp.swift in Sources */,
 				F4914D581C8EA71F00C32743 /* NotesViewController.swift in Sources */,
 				F4C5076B1C919E66003D0AB1 /* FeedStore.swift in Sources */,
+				F4A331361C968FC500AFFC6F /* ViewModel.swift in Sources */,
+				F4A331291C96589100AFFC6F /* ITNewsViewController.swift in Sources */,
 				F4181E071C86C3C600E41FBA /* AppDelegate.swift in Sources */,
 				F40C02281C90028B00CB3646 /* YZDisplayTitleLabel.m in Sources */,
 				F42E98591C9276AF00A1E602 /* FeedParseOperation.swift in Sources */,

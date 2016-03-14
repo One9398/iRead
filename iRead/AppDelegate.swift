@@ -19,11 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        feedTest()
+//        feedTest()
+
         
         return true
     }
-    
 
 
     var feedModelsProvider: FeedModelsProvider? = nil
@@ -89,7 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         queue.addOperation(op5)
         queue.addObserver(self, forKeyPath: "operationCount", options: .New, context: nil)
        */
-        
 
     }
 }

@@ -21,7 +21,7 @@ class RootTabbarController: UITabBarController {
     // MARK: - UI Preparation 📱
 
     private func prepareForTabbar() {
-        tabBar.backgroundColor = iReadColor.themeWhiteColor
+        tabBar.backgroundColor = iReadColor.themeClearColor
         tabBar.tintColor = iReadColor.themeBlueColor
         tabBar.itemPositioning = .Fill
         tabBar.shadowImage = UIImage()
@@ -29,7 +29,7 @@ class RootTabbarController: UITabBarController {
     }
     
     override func childViewControllerForStatusBarStyle() -> UIViewController? {
-        return DisplayViewController()
+        return RecommendController()
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

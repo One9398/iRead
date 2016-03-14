@@ -17,3 +17,7 @@ view.layer.shadowOffset = CGSizeMake(0, 3)
 view.layer.shadowRadius = 2
 view.layer.shadowOpacity = 0.3
 superView
+
+let a = UIView.self
+let b = NSStringFromClass(UIView.self)
+print(b)
