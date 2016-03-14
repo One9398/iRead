@@ -103,9 +103,15 @@ extension FeedParseOperation {
         
         let title = fetchStringWithElement(feedElement, tagName: "title")
         let description = fetchStringWithElement(feedElement, tagName: "subtitle")
-        let link = feedElement.firstChildWithTag("link").attributes ["href"] as! String
+
+        let linkEle = feedElement.childrenWithTag("link").last as! ONOXMLElement
+        let link = linkEle["href"] as! String
+        
         let imageURL = fetchStringWithElement(feedElement, XPath: "//url[1]")
-        let author = self.fetchStringWithElement(feedElement, tagName: "name")
+//        let author = self.fetchStringWithElement(feedElement, XPath: "/feed/author/name")
+//        let a = feedElement.firstChildWithXPath("//author[1]")
+        let authorEle = feedElement.childrenWithTag("author").last as! ONOXMLElement
+        let author = fetchStringWithElement(authorEle, tagName: "name")
         
         feedModel?.title = title
         feedModel?.description = description
@@ -116,30 +122,30 @@ extension FeedParseOperation {
         print(link)
         print("---atom---")
         
-        feedElement.enumerateElementsWithXPath("entry") { (element: ONOXMLElement!, index: UInt, finished: UnsafeMutablePointer<ObjCBool>) -> Void in
+        let entries = feedElement.childrenWithTag("entry") as! [ONOXMLElement]
+        
+        for entry in entries {
+            let title = fetchStringWithElement(entry, tagName: "title")
             
+            let link = entry.firstChildWithTag("link").attributes ["href"] as! String
             
-            let title = self.fetchStringWithElement(element, tagName: "title")
-//            let link = element.firstChildWithTag("link").attributes ["href"] as! String
-            let link = element.firstChildWithXPath("link[3]").attributes ["href"] as! String
+            let published = self.fetchStringWithElement(entry, tagName: "published")
+
+            let content = self.fetchStringWithElement(entry, tagName: "content")
+            let summary = self.fetchStringWithElement(entry, tagName: "summary")
             
-            let published = self.fetchStringWithElement(element, tagName: "published")
-            
-            let content = self.fetchStringWithElement(element, tagName: "content")
-            let summary = self.fetchStringWithElement(element, tagName: "summary")
-            
-            let category = element.firstChildWithTag("category").attributes ["term"] as! String
+            let category = entry.firstChildWithTag("category").attributes ["term"] as! String
             
             let itemModel = FeedItemModel()
             
             itemModel.link = link
             itemModel.pubDate = published
-            itemModel.description = (content == "") ? content : summary
+            itemModel.description = (content != "") ? content : summary
             itemModel.category = category
             itemModel.title = title
             itemModel.author = author
             
-            self.feedItemModels?.append(itemModel)
+            feedItemModels?.append(itemModel)
             
         }
         

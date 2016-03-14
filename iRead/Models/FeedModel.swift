@@ -40,6 +40,6 @@ class FeedItemModel: CustomDebugStringConvertible {
     var isFavorite = false
     
     var debugDescription: String {
-        return title + "\n" + link + "\n" + description + "\n" + category + "\n" + author
+        return title + "\n" + link + "\n" + category + "\n" + author + "\n" + description
     }
 }
