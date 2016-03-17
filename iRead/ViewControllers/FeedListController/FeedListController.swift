@@ -22,6 +22,11 @@ class FeedListController: UIViewController {
     }
     
     // MARK: - UI Preparation 📱
+    
+    private func prepareForNavigationBar() {
+        self.navigationController?.navigationBar.tintColor = iReadColor.themeWhiteColor
+        
+    }
 
     private func prepareForCollectionView() {
         collectionView.dataSource = self
@@ -46,6 +51,7 @@ class FeedListController: UIViewController {
         
 
         prepareForView()
+        prepareForNavigationBar()
         prepareForCollectionView()
         // Do any additional setup after loading the view.
     }

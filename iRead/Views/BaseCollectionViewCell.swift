@@ -51,7 +51,6 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
     // MARK: - UI Preparation 📱
    
     private func prepareForCell() {
-        
 
         prepareForCardView()
         prepareForTitleView()
@@ -63,6 +62,7 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
         var cardView: BaseCardView? = self.contentView.subviews.first as? BaseCardView
         
         cardView = BaseCardView()
+        cardView?.shadowColor = iReadColor.themeLightBlueColor
         
         self.backgroundColor = nil
         self.pulseColor = nil
@@ -72,7 +72,7 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
         
         cardView!.pulseScale = false
         cardView!.divider = false
-        cardView!.depth = .Depth2
+        cardView!.depth = .Depth3
         
         card = cardView
         
@@ -148,10 +148,9 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
             cardView.titleLabel?.sizeToFit()
             
             if feedItem.isRead {
-                changeCardViewBackgroundColor(iReadColor.themeWhiteColor)
+                self.card?.depth = .None
             } else {
-
-                changeCardViewBackgroundColor(iReadColor.themeLightWhiteColor)
+                self.card?.depth = .Depth3
             }
 
             if feedItem.author != "" {
@@ -193,12 +192,8 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
 
     func updateArticleReadState(item: FeedItemModel) {
         item.isRead = true
-       
-        changeCardViewBackgroundColor(iReadColor.themeWhiteColor)
-    }
-    
-    private func changeCardViewBackgroundColor(color: UIColor?) {
-            self.card?.backgroundColor = color
+        card?.depth = .None
+        card?.drawRect(self.bounds)
     }
     
     // MARK: - Handle Event
