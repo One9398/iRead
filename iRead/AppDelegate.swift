@@ -19,8 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        feedTest()
-
+        //feedTest()
         
         return true
     }
@@ -41,8 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let provider = FeedModelsProvider(feedURL: feedItem.feedURL, index: i, feedType: feedItem.feedType, completion: { (model: FeedModel?) -> () in
                 
-                print(NSThread.currentThread())
-                print(model)
+
                 
             })
 

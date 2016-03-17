@@ -11,5 +11,5 @@
 
 #import <UIKit/UIKit.h>
 #import "YZDisplayViewHeader.h"
-
+#import "NSDate+InternetDateTime.h"
 #endif /* iRead_Bridging_Header_h */

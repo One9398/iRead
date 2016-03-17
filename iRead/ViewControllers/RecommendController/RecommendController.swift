@@ -33,9 +33,11 @@ class RecommendController: YZDisplayViewController {
         
         configureChildViewControllers()
         
-        print(navigationController)
-        print("rootController: \(UIApplication.sharedApplication().delegate?.window!!.rootViewController)");
     }
+    
+
+    // 可以加个版本视图提供当数据加载
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

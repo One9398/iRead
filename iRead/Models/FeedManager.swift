@@ -15,6 +15,3 @@ class FeedManager {
     }
 }
 
-class ss: NSObject {
-    
-}

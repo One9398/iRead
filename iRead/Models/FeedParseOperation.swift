@@ -21,17 +21,19 @@ class FeedParseOperation: ConcurrentOperation {
     
     private var feedData: NSData?
     private var feedItemModels:[FeedItemModel]?
-    private var feedModel: FeedModel?
+    private var feedModel: FeedModel
+
     
     private let completion: (FeedModel?) -> ()
 
-    init(feedData: NSData?, index: Int, feedType: FeedType, completion: (FeedModel?) -> ()) {
+    init(feedData: NSData?, feedSource: String, index: Int, feedType: FeedType, completion: (FeedModel?) -> ()) {
 
         self.feedData = feedData
         feedItemModels = [FeedItemModel]()
         feedModel = FeedModel()
-        feedModel?.index = index
-        feedModel?.feedType = feedType
+        feedModel.index = index
+        feedModel.feedType = feedType
+        feedModel.source = feedSource
         
         self.feedType = feedType
         self.completion = completion
@@ -70,24 +72,32 @@ class FeedParseOperation: ConcurrentOperation {
         guard let document = try? ONOXMLDocument(data: data) else {
             
             print("document create failure")
-            
+           
+            postDocumentParseErrorNotification()
+            return
+        }
+        
+        if document.rootElement == nil {
             state = .Finished
+            postDocumentParseErrorNotification()
             return
         }
         
         guard let xmlType = document.rootElement.tag else {
-            
+            postDocumentParseErrorNotification()
             state = .Finished
             return
         }
         
         if xmlType == "rss" {
             parseRSSByXPath(data, document: document)
-            
+//            parseRSSBySearch(data, document: document)
         } else if xmlType == "feed" {
             parseAtomByXPath(data, document: document)
+    
         } else {
-            fatalError("other xml type :" + xmlType)
+            postDocumentParseErrorNotification()
+//            fatalError("other xml type :" + xmlType)
         }
 
     }
@@ -108,19 +118,13 @@ extension FeedParseOperation {
         let link = linkEle["href"] as! String
         
         let imageURL = fetchStringWithElement(feedElement, XPath: "//url[1]")
-//        let author = self.fetchStringWithElement(feedElement, XPath: "/feed/author/name")
-//        let a = feedElement.firstChildWithXPath("//author[1]")
         let authorEle = feedElement.childrenWithTag("author").last as! ONOXMLElement
         let author = fetchStringWithElement(authorEle, tagName: "name")
         
-        feedModel?.title = title
-        feedModel?.description = description
-        feedModel?.link = link
-        feedModel?.imagURL = imageURL
-        
-        print("---atom---")
-        print(link)
-        print("---atom---")
+        feedModel.title = title
+        feedModel.description = description
+        feedModel.link = link
+        feedModel.imagURL = imageURL
         
         let entries = feedElement.childrenWithTag("entry") as! [ONOXMLElement]
         
@@ -149,26 +153,29 @@ extension FeedParseOperation {
             
         }
         
-        feedModel?.items = feedItemModels
+        feedModel.items = feedItemModels
         
         executeCompletionOnMainThread()
-        
-        print(feedModel)
         
     }
     
     private func executeCompletionOnMainThread() {
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            print(NSThread.currentThread())
+
             self.completion(self.feedModel)
             
             self.state = .Finished
             
-            NSNotificationCenter.defaultCenter().postNotificationName(iReadNotification.FeedParseOperationDidSinglyFinishedNotification, object: nil, userInfo: ["index" : self.index])
+            // 通知混乱Bug to fix
+//            NSNotificationCenter.defaultCenter().postNotificationName(iReadNotification.FeedParseOperationDidSinglyFinishedNotification, object: nil, userInfo: ["index" : self.index])
             
         })
         
+    }
+    
+    func postDocumentParseErrorNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName(iReadNotification.FeedParseOperationDidSinglyFailureNotification, object: nil)
     }
 }
 
@@ -197,10 +204,10 @@ extension FeedParseOperation {
         let description = fetchStringWithElement(channelElement, tagName: "description")
         let imageURL = fetchStringWithElement(channelElement, XPath: "//url[1]")
         
-        feedModel?.title = title
-        feedModel?.description = description
-        feedModel?.link = link
-        feedModel?.imagURL = imageURL
+        feedModel.title = title
+        feedModel.description = description
+        feedModel.link = link
+        feedModel.imagURL = imageURL
         
         channelElement.enumerateElementsWithXPath("item") { (element, index, finished) -> Void in
             
@@ -211,6 +218,7 @@ extension FeedParseOperation {
             let description = self.fetchStringWithElement(element, tagName: "description")
             let pubDate = self.fetchStringWithElement(element, tagName: "pubDate")
             let author = self.fetchStringWithElement(element, tagName: "author")
+            let source = self.fetchStringWithElement(element, tagName: "source")
             let category = self.fetchStringWithElement(element, tagName: "category")
             
             itemModel.title = title
@@ -219,27 +227,22 @@ extension FeedParseOperation {
             itemModel.pubDate = pubDate
             itemModel.author = author
             itemModel.category = category
-            
+            itemModel.source = source
             self.feedItemModels?.append(itemModel)
             
         }
         
-        feedModel?.items = feedItemModels
+        feedModel.items = feedItemModels
         
         
         executeCompletionOnMainThread()
         
-        print(feedModel)
     }
     
     //: MARK: - 未使用
-    private func parseRSSBySearch(data: NSData) {
-        guard let document = try? ONOXMLDocument(data: data) else {
-            print("Feed Parse Error, document is nil")
-            state = .Finished
-            return
-        }
-        
+    
+    private func parseRSSBySearch(data: NSData, document: ONOXMLDocument) {
+
         for element in document.rootElement.children {
             
             let element = element as! ONOXMLElement
@@ -252,21 +255,21 @@ extension FeedParseOperation {
                     let childTag = channelChild.tag
                     
                     if childTag.isEqualIgnoreCaseStirng("title") {
-                        self.feedModel?.title = childContent
+                        self.feedModel.title = childContent
                     }
                     
                     if childTag.isEqualIgnoreCaseStirng("link") {
-                        feedModel?.link = childContent
+                        feedModel.link = childContent
                     }
                     
                     if childTag.isEqualIgnoreCaseStirng("description") {
-                        feedModel?.description = childContent
+                        feedModel.description = childContent
                     }
                     
                     if childTag.isEqualIgnoreCaseStirng("image") {
                         for secondChild in channelChild.childrenWithTag("url") {
                             if let secondChildElement = secondChild as? ONOXMLElement {
-                                feedModel?.imagURL = secondChildElement.stringValue()
+                                feedModel.imagURL = secondChildElement.stringValue()
                             }
                         }
                     }
@@ -315,19 +318,11 @@ extension FeedParseOperation {
             }
         }
         
-        feedModel?.items = feedItemModels
-        feedModel?.index = index
-        feedModel?.feedType = feedType
+        feedModel.items = feedItemModels
+        feedModel.index = index
+        feedModel.feedType = feedType
         
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            print(NSThread.currentThread())
-            self.completion(self.feedModel)
-            
-            self.state = .Finished
-            
-            NSNotificationCenter.defaultCenter().postNotificationName(iReadNotification.FeedParseOperationDidSinglyFinishedNotification, object: nil, userInfo: ["index" : self.index])
-            
-        })
+        executeCompletionOnMainThread()
     }
     
 }

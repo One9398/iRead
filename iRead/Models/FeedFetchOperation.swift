@@ -32,6 +32,8 @@ class FeedFetchOperation: ConcurrentOperation {
             print("Error Message \(message)")
             self.state = .Finished
             // 提示网络错误
+            let notification = NSNotification(name: iReadNotification.FeedFetchOperationDidSinglyFailureNotification, object: self)
+            NSNotificationQueue.defaultQueue().enqueueNotification(notification, postingStyle: .PostNow, coalesceMask: [.CoalescingOnName], forModes: nil)
             
             }) { (data) -> Void in
                 
@@ -42,7 +44,7 @@ class FeedFetchOperation: ConcurrentOperation {
     }
     
     deinit {
-        print("\(index) deinit \(NSThread.currentThread())")
+        print("\(index)网络获取数据结束, init")
     }
 }
 

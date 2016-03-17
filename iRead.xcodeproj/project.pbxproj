@@ -15,10 +15,13 @@
 		F40C022A1C90028B00CB3646 /* YZFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F40C02261C90028B00CB3646 /* YZFlowLayout.m */; };
 		F40C02341C9003F600CB3646 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40C02321C9003F600CB3646 /* Main.storyboard */; };
 		F40C02391C90054D00CB3646 /* ViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40C02381C90054D00CB3646 /* ViewControllerA.swift */; };
+		F4120ABB1C9AAABC00B86DE3 /* NSDate+InternetDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = F4120ABA1C9AAABC00B86DE3 /* NSDate+InternetDateTime.m */; };
 		F4181E071C86C3C600E41FBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4181E061C86C3C600E41FBA /* AppDelegate.swift */; };
-		F4181E0E1C86C3C600E41FBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4181E0D1C86C3C600E41FBA /* Assets.xcassets */; };
 		F4181E1C1C86C3C700E41FBA /* iReadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4181E1B1C86C3C700E41FBA /* iReadTests.swift */; };
 		F4181E271C86C3C700E41FBA /* iReadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4181E261C86C3C700E41FBA /* iReadUITests.swift */; };
+		F42A63651C9A8E0C0099CB7A /* BaseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A63641C9A8E0C0099CB7A /* BaseCardView.swift */; };
+		F42C03361C9A4B9000B27F45 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42C03351C9A4B9000B27F45 /* BaseCollectionView.swift */; };
+		F42C03381C9A4E6900B27F45 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42C03371C9A4E6900B27F45 /* BaseCollectionViewCell.swift */; };
 		F42E98501C925DED00A1E602 /* ConcurrentOpeartion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E984F1C925DED00A1E602 /* ConcurrentOpeartion.swift */; };
 		F42E98521C92601400A1E602 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E98511C92601400A1E602 /* FeedModel.swift */; };
 		F42E98551C92689100A1E602 /* iReadNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E98541C92689100A1E602 /* iReadNetwork.swift */; };
@@ -29,13 +32,15 @@
 		F42E98611C927F2100A1E602 /* iReadString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E98601C927F2100A1E602 /* iReadString.swift */; };
 		F44DE8F21C92BEEE008617E6 /* feeds.plist in Resources */ = {isa = PBXBuildFile; fileRef = F44DE8F11C92BEEE008617E6 /* feeds.plist */; };
 		F44DE8F61C92C21F008617E6 /* feedResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44DE8F51C92C21F008617E6 /* feedResource.swift */; };
+		F45344291C982647008378DC /* FeedListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45344281C982647008378DC /* FeedListController.swift */; };
+		F48048781C9817A800392827 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F48048771C9817A800392827 /* Assets.xcassets */; };
 		F4914D501C8EA41300C32743 /* RecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4914D4F1C8EA41300C32743 /* RecommendController.swift */; };
 		F4914D581C8EA71F00C32743 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4914D571C8EA71F00C32743 /* NotesViewController.swift */; };
 		F4914D5D1C8EA7B100C32743 /* Notes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4914D5C1C8EA7B100C32743 /* Notes.storyboard */; };
 		F4A331291C96589100AFFC6F /* ITNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A331281C96589100AFFC6F /* ITNewsViewController.swift */; };
 		F4A331321C965B5500AFFC6F /* ITNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A331311C965B5500AFFC6F /* ITNewsTableViewCell.swift */; };
 		F4A331341C96860100AFFC6F /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A331331C96860100AFFC6F /* BaseButton.swift */; };
-		F4A331361C968FC500AFFC6F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A331351C968FC500AFFC6F /* ViewModel.swift */; };
+		F4A3918E1C97CEE8006DE0A8 /* iReadAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A3918D1C97CEE8006DE0A8 /* iReadAlert.swift */; };
 		F4AB16F01C882ADF006438D2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4AB16EF1C882ADF006438D2 /* Profile.storyboard */; };
 		F4AB16FF1C882BDD006438D2 /* Feeds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4AB16FA1C882BDD006438D2 /* Feeds.storyboard */; };
 		F4AB17001C882BDD006438D2 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB16FB1C882BDD006438D2 /* FeedsViewController.swift */; };
@@ -86,9 +91,10 @@
 		F40C02331C9003F600CB3646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F40C02351C90043A00CB3646 /* iRead-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iRead-Bridging-Header.h"; sourceTree = "<group>"; };
 		F40C02381C90054D00CB3646 /* ViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerA.swift; sourceTree = "<group>"; };
+		F4120AB91C9AAABC00B86DE3 /* NSDate+InternetDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+InternetDateTime.h"; sourceTree = "<group>"; };
+		F4120ABA1C9AAABC00B86DE3 /* NSDate+InternetDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+InternetDateTime.m"; sourceTree = "<group>"; };
 		F4181E031C86C3C600E41FBA /* iRead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iRead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4181E061C86C3C600E41FBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F4181E0D1C86C3C600E41FBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4181E121C86C3C600E41FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4181E171C86C3C700E41FBA /* iReadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iReadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4181E1B1C86C3C700E41FBA /* iReadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iReadTests.swift; sourceTree = "<group>"; };
@@ -96,6 +102,9 @@
 		F4181E221C86C3C700E41FBA /* iReadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iReadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4181E261C86C3C700E41FBA /* iReadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iReadUITests.swift; sourceTree = "<group>"; };
 		F4181E281C86C3C700E41FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F42A63641C9A8E0C0099CB7A /* BaseCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCardView.swift; sourceTree = "<group>"; };
+		F42C03351C9A4B9000B27F45 /* BaseCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
+		F42C03371C9A4E6900B27F45 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		F42E984F1C925DED00A1E602 /* ConcurrentOpeartion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOpeartion.swift; sourceTree = "<group>"; };
 		F42E98511C92601400A1E602 /* FeedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		F42E98541C92689100A1E602 /* iReadNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadNetwork.swift; sourceTree = "<group>"; };
@@ -107,13 +116,15 @@
 		F43AD7141C90F8FE001ED543 /* iReadTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = iReadTest.playground; sourceTree = "<group>"; };
 		F44DE8F11C92BEEE008617E6 /* feeds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = feeds.plist; sourceTree = "<group>"; };
 		F44DE8F51C92C21F008617E6 /* feedResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedResource.swift; sourceTree = "<group>"; };
+		F45344281C982647008378DC /* FeedListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedListController.swift; path = FeedListController/FeedListController.swift; sourceTree = "<group>"; };
+		F48048771C9817A800392827 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4914D4F1C8EA41300C32743 /* RecommendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendController.swift; sourceTree = "<group>"; };
 		F4914D571C8EA71F00C32743 /* NotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		F4914D5C1C8EA7B100C32743 /* Notes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notes.storyboard; sourceTree = "<group>"; };
 		F4A331281C96589100AFFC6F /* ITNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITNewsViewController.swift; sourceTree = "<group>"; };
 		F4A331311C965B5500AFFC6F /* ITNewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITNewsTableViewCell.swift; sourceTree = "<group>"; };
 		F4A331331C96860100AFFC6F /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
-		F4A331351C968FC500AFFC6F /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModel.swift; path = ../ViewControllers/RecommendController/ViewModel.swift; sourceTree = "<group>"; };
+		F4A3918D1C97CEE8006DE0A8 /* iReadAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadAlert.swift; sourceTree = "<group>"; };
 		F4AB16EF1C882ADF006438D2 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		F4AB16FA1C882BDD006438D2 /* Feeds.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feeds.storyboard; sourceTree = "<group>"; };
 		F4AB16FB1C882BDD006438D2 /* FeedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +185,7 @@
 		F40C021C1C90025800CB3646 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				F4120AB81C9AAAB100B86DE3 /* DateTranslation */,
 				F40C021D1C90028B00CB3646 /* YZDisplayViewController */,
 			);
 			path = Vendor;
@@ -193,6 +205,15 @@
 				F40C02261C90028B00CB3646 /* YZFlowLayout.m */,
 			);
 			path = YZDisplayViewController;
+			sourceTree = "<group>";
+		};
+		F4120AB81C9AAAB100B86DE3 /* DateTranslation */ = {
+			isa = PBXGroup;
+			children = (
+				F4120AB91C9AAABC00B86DE3 /* NSDate+InternetDateTime.h */,
+				F4120ABA1C9AAABC00B86DE3 /* NSDate+InternetDateTime.m */,
+			);
+			name = DateTranslation;
 			sourceTree = "<group>";
 		};
 		F4181DFA1C86C3C600E41FBA = {
@@ -230,10 +251,10 @@
 				F4181E341C86C68E00E41FBA /* Models */,
 				F4181E371C86C68E00E41FBA /* Views */,
 				F4181E061C86C3C600E41FBA /* AppDelegate.swift */,
+				F48048771C9817A800392827 /* Assets.xcassets */,
 				F40C02351C90043A00CB3646 /* iRead-Bridging-Header.h */,
 				F43AD7141C90F8FE001ED543 /* iReadTest.playground */,
 				F40C02321C9003F600CB3646 /* Main.storyboard */,
-				F4181E0D1C86C3C600E41FBA /* Assets.xcassets */,
 				F4181E121C86C3C600E41FBA /* Info.plist */,
 			);
 			path = iRead;
@@ -260,7 +281,6 @@
 		F4181E341C86C68E00E41FBA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F4A331351C968FC500AFFC6F /* ViewModel.swift */,
 				F42E984F1C925DED00A1E602 /* ConcurrentOpeartion.swift */,
 				F4C5076A1C919E66003D0AB1 /* FeedStore.swift */,
 				F42E98561C92720900A1E602 /* FeedManager.swift */,
@@ -276,6 +296,9 @@
 			isa = PBXGroup;
 			children = (
 				F4A331301C965B2800AFFC6F /* ITNewsView */,
+				F42C03351C9A4B9000B27F45 /* BaseCollectionView.swift */,
+				F42C03371C9A4E6900B27F45 /* BaseCollectionViewCell.swift */,
+				F42A63641C9A8E0C0099CB7A /* BaseCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -294,6 +317,14 @@
 				F4C3A94F1C919F6B001A0D22 /* iReadConfigure.swift */,
 			);
 			path = Configure;
+			sourceTree = "<group>";
+		};
+		F45344271C982575008378DC /* FeedListController */ = {
+			isa = PBXGroup;
+			children = (
+				F45344281C982647008378DC /* FeedListController.swift */,
+			);
+			name = FeedListController;
 			sourceTree = "<group>";
 		};
 		F4914D4D1C8EA18900C32743 /* Resource */ = {
@@ -346,6 +377,7 @@
 		F4AB16F81C882BDD006438D2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F45344271C982575008378DC /* FeedListController */,
 				F4C09FEF1C8EDCD9005ED771 /* TabbarController */,
 				F4C09FEE1C8EDCC7005ED771 /* NavigationController */,
 				F4914D561C8EA70500C32743 /* NotesViewController */,
@@ -405,6 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				F4C09FF51C8EDFB4005ED771 /* iReadHelp.swift */,
+				F4A3918D1C97CEE8006DE0A8 /* iReadAlert.swift */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -518,11 +551,11 @@
 			files = (
 				F44DE8F21C92BEEE008617E6 /* feeds.plist in Resources */,
 				F40C02341C9003F600CB3646 /* Main.storyboard in Resources */,
-				F4181E0E1C86C3C600E41FBA /* Assets.xcassets in Resources */,
 				F4914D5D1C8EA7B100C32743 /* Notes.storyboard in Resources */,
 				F4AB17011C882BDD006438D2 /* Launch.storyboard in Resources */,
 				F4AB16FF1C882BDD006438D2 /* Feeds.storyboard in Resources */,
 				F40C02191C8FE11C00CB3646 /* Recommend.storyboard in Resources */,
+				F48048781C9817A800392827 /* Assets.xcassets in Resources */,
 				F4AB16F01C882ADF006438D2 /* Profile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,6 +636,8 @@
 				F40C022A1C90028B00CB3646 /* YZFlowLayout.m in Sources */,
 				F42E98551C92689100A1E602 /* iReadNetwork.swift in Sources */,
 				F42E98521C92601400A1E602 /* FeedModel.swift in Sources */,
+				F42C03381C9A4E6900B27F45 /* BaseCollectionViewCell.swift in Sources */,
+				F45344291C982647008378DC /* FeedListController.swift in Sources */,
 				F4C09FF81C8EE0C1005ED771 /* iReadViewController.swift in Sources */,
 				F4914D501C8EA41300C32743 /* RecommendController.swift in Sources */,
 				F4C09FF11C8EDD09005ED771 /* RootNavigationController.swift in Sources */,
@@ -610,15 +645,17 @@
 				F42E985B1C9276D100A1E602 /* FeedFetchOperation.swift in Sources */,
 				F42E98571C92720900A1E602 /* FeedManager.swift in Sources */,
 				F40C02271C90028B00CB3646 /* UIView+Frame.m in Sources */,
+				F4120ABB1C9AAABC00B86DE3 /* NSDate+InternetDateTime.m in Sources */,
 				F42E98501C925DED00A1E602 /* ConcurrentOpeartion.swift in Sources */,
 				F4AB17021C882BDD006438D2 /* LaunchViewController.swift in Sources */,
 				F4C09FF31C8EDD2C005ED771 /* RootTabbarController.swift in Sources */,
 				F4A331321C965B5500AFFC6F /* ITNewsTableViewCell.swift in Sources */,
 				F4AB17051C882BFD006438D2 /* ProfileViewController.swift in Sources */,
+				F42C03361C9A4B9000B27F45 /* BaseCollectionView.swift in Sources */,
 				F4C09FF61C8EDFB4005ED771 /* iReadHelp.swift in Sources */,
+				F4A3918E1C97CEE8006DE0A8 /* iReadAlert.swift in Sources */,
 				F4914D581C8EA71F00C32743 /* NotesViewController.swift in Sources */,
 				F4C5076B1C919E66003D0AB1 /* FeedStore.swift in Sources */,
-				F4A331361C968FC500AFFC6F /* ViewModel.swift in Sources */,
 				F4A331291C96589100AFFC6F /* ITNewsViewController.swift in Sources */,
 				F4181E071C86C3C600E41FBA /* AppDelegate.swift in Sources */,
 				F40C02281C90028B00CB3646 /* YZDisplayTitleLabel.m in Sources */,
@@ -627,6 +664,7 @@
 				F40C02391C90054D00CB3646 /* ViewControllerA.swift in Sources */,
 				F40C02291C90028B00CB3646 /* YZDisplayViewController.m in Sources */,
 				F42E985D1C92770600A1E602 /* FeedModelsProvider.swift in Sources */,
+				F42A63651C9A8E0C0099CB7A /* BaseCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
