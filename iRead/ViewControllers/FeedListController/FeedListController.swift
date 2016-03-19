@@ -133,8 +133,10 @@ extension FeedListController: MaterialCollectionViewDataSource, MaterialCollecti
                 cell.updateArticleReadState(item)
             })
         }
-
-    
+        
+        let articleVC = ArticleViewController(title: "文章", feedItem: item, feedModel: feedModel!)
+        
+        self.navigationController?.pushViewController(articleVC, animated: true)
 
         print("has read it")
         
@@ -145,7 +147,5 @@ extension FeedListController: MaterialCollectionViewDataSource, MaterialCollecti
 extension FeedListController: BaseCollectionViewCellProtocol {
     func baseCollectionViewCellSharedActionDidHandle(cell: BaseCollectionViewCell, item: FeedItemModel?) {
         print("share the \(item)")
-        
-        
     }
 }

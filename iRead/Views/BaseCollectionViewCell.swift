@@ -134,7 +134,8 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
         btn.setImage(UIImage(named: iconName), forState: .Normal)
         btn.setTitleColor(iReadColor.themeDarkGrayColor, forState: .Normal)
         btn.titleLabel?.font = iReadFont.lightWithSize(10)
-        btn.titleEdgeInsets = UIEdgeInsetsMake(0, 4, 0, -4)
+        btn.titleEdgeInsets = UIEdgeInsetsMake(0, 2, 0, -2)
+        btn.contentEdgeInsets = UIEdgeInsetsMake(0, 15, 0, -5)
 //        btn.setContentHuggingPriority(1000, forAxis: .Vertical)
         
         return btn
@@ -153,13 +154,11 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
                 self.card?.depth = .Depth3
             }
 
-            if feedItem.author != "" {
-                authorButton?.setTitle(feedItem.author, forState: .Normal)
-            } else if feedItem.source != "" {
-                authorButton?.setTitle(feedItem.source, forState: .Normal)
-            }
+            var author: String = feedItem.author.isEmpty ? feedItem.source : feedItem.author
+            author = author.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
+            authorButton?.setTitle((author.isEmpty ? "未知作者" : author), forState: .Normal)
             
-            if feedItem.pubDate != "" {
+            if !feedItem.pubDate.isEmpty {
                 
                 let date: NSDate?
                 let dateString: String?
@@ -183,7 +182,7 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
  
             }
             
-            if feedItem.category != "" {
+            if !feedItem.category.isEmpty {
                 categoryButton?.setTitle(feedItem.category, forState: .Normal)
             }
             

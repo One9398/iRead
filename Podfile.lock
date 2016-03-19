@@ -1,9 +1,10 @@
 PODS:
   - Alamofire (3.2.1)
   - Kingfisher (2.1.0)
-  - Material (1.36.0)
+  - Material (1.37.1)
   - Ono (1.2.2)
   - Reveal-iOS-SDK (1.6.2)
+  - SnapKit (0.19.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -11,14 +12,16 @@ DEPENDENCIES:
   - Material
   - Ono
   - Reveal-iOS-SDK
+  - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
   Kingfisher: 3ac09acad75a25ab22f6d7cef3de10d61dd4792d
-  Material: 3162fe1199c62599e977f08515389a4380aaf2ba
+  Material: ef2f60b5a63b4acf12f5debc1ee8d2c6a2c01f46
   Ono: 80b1c686777d3f6d5d5ce6fcac8a74afef4ca197
   Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
+  SnapKit: eff58d6e3451bf2f482db2eccf86aecf371dc62d
 
-PODFILE CHECKSUM: a33fb66e2bec481cbef4d768922b988148e49c17
+PODFILE CHECKSUM: 0cf642539162683c3579c28900066b7529b09715
 
 COCOAPODS: 1.0.0.beta.4

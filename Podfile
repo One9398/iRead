@@ -5,10 +5,14 @@ use_frameworks!
 def pods
 #    pod 'RealmSwift'
     pod 'Ono'
+    pod 'SnapKit'
     pod 'Alamofire'
 #    pod 'PKRevealController'
     pod 'Reveal-iOS-SDK', :configurations => ['Debug']
     pod 'Material'
+
+#	pod 'DTCoreText'
+
     pod 'Kingfisher'
 end
 

@@ -144,7 +144,7 @@ extension FeedParseOperation {
             
             itemModel.link = link
             itemModel.pubDate = published
-            itemModel.description = (content != "") ? content : summary
+            itemModel.description = (content.isEmpty) ? summary : content
             itemModel.category = category
             itemModel.title = title
             itemModel.author = author
@@ -220,12 +220,22 @@ extension FeedParseOperation {
             let author = self.fetchStringWithElement(element, tagName: "author")
             let source = self.fetchStringWithElement(element, tagName: "source")
             let category = self.fetchStringWithElement(element, tagName: "category")
+            let creator = self.fetchStringWithElement(element, tagName: "creator")
+            let content = self.fetchStringWithElement(element, tagName: "encoded")
+            
+            let image = element.firstChildWithXPath("./img[@*]")
+            if image != nil {
+                print(image)
+            }
+            
+            
             
             itemModel.title = title
             itemModel.link = link
-            itemModel.description = description
+            itemModel.description = content.isEmpty ? description : content
             itemModel.pubDate = pubDate
-            itemModel.author = author
+            
+            itemModel.author = (author.isEmpty) ? creator : author
             itemModel.category = category
             itemModel.source = source
             self.feedItemModels?.append(itemModel)

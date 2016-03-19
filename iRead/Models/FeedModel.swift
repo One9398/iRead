@@ -44,18 +44,21 @@ func ==(lhs: FeedModel, rhs: FeedModel) -> Bool {
 class FeedItemModel: CustomDebugStringConvertible {
     var title = ""
     var link = ""
-    var author = ""
     var pubDate = ""
     var category = ""
     var description = ""
+
     var source = ""
+    var dc = ""
+    var author = ""
+
     var image = ""
     var isRead = false
     var isNoted = false
     var isFavorite = false
     
     var debugDescription: String {
-        return title + "\n" + link + "\n" + category + "\n" + author + "\n" + description
+        return title + "\n" + link + "\n" + image + "\n" + author + "\n" + description
     }
     
 }
