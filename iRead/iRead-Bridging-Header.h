@@ -12,6 +12,5 @@
 #import <UIKit/UIKit.h>
 #import "YZDisplayViewHeader.h"
 #import "NSDate+InternetDateTime.h"
-//#import <DTCoreText/DTCoreText.h>
-#import "DTCoreText/DTCoreText.h"
+#import "PCAngularActivityIndicatorView.h"
 #endif /* iRead_Bridging_Header_h */

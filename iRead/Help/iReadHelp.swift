@@ -17,7 +17,7 @@ public struct iReadColor {
     public static let themeDarkBlueColor = MaterialColor.blue.darken4
     public static let themeRedColor = UIColor(red: 253/255.0, green: 91/255.0, blue: 107/255.0, alpha: 1.0)
     
-    public static let themeBlackColor = UIColor(red: 31/255.0, green: 31/255.0, blue: 31/255.0, alpha: 1.0)
+    public static let themeBlackColor = UIColor(red: 25/255.0, green: 25/255.0, blue: 25/255.0, alpha: 1.0)
     
     public static let themeGrayColor = UIColor(red: 238/255.0, green: 238/255.0, blue: 238/255.0, alpha: 1.0)
     
@@ -25,6 +25,13 @@ public struct iReadColor {
     
     public static let themeLightWhiteColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
     
+    public static func themeModelTinColor(dayColor dayColor: UIColor, nightColor: UIColor) -> UIColor {
+        return iReadTheme.isNightMode() ? nightColor : dayColor
+    }
+    
+    public static func themeModelBackgroundColor(dayColor dayColor: UIColor, nightColor: UIColor) -> UIColor {
+        return iReadTheme.isNightMode() ? nightColor : dayColor
+    }
 }
 
 public struct iReadFont {
@@ -54,6 +61,39 @@ public struct iReadFont {
     public static let bold = RobotoFont.bold
     public static func boldWithSize(size: CGFloat) -> UIFont {
         return RobotoFont.boldWithSize(size)
+    }
+    
+}
+
+enum iReadThemeMode: String {
+    case NightMode = "NightMode"
+    case DayMode = "DayMode"
+}
+
+struct iReadTheme {
+    static func getCurrentThemeMode() -> iReadThemeMode {
+        return NSUserDefaults.standardUserDefaults().boolForKey("NightMode") ? .NightMode : .DayMode
+    }
+    
+    static func isNightMode() -> Bool {
+//        return true
+        return NSUserDefaults.standardUserDefaults().boolForKey("NightMode")
+    }
+    static func changeThemeMode() {
+        let mode = NSUserDefaults.standardUserDefaults().boolForKey("NightMode")
+        NSUserDefaults.standardUserDefaults().setBool(!mode, forKey: "NightMode")
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
+}
+
+struct iReadHelp {
+    static func currentDeviceIsPhone() -> Bool {
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+            return true
+        }
+        
+        return false
     }
     
 }
@@ -88,4 +128,5 @@ func delayTaskExectuing(intervalTime: NSTimeInterval, block: dispatch_block_t) -
 func cancleTaskExecuting(cancelableBlock: CancelableBlock?) {
     cancelableBlock?(cancel: true)
 }
+
 

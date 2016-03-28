@@ -10,21 +10,46 @@ import UIKit
 
 class iReadAlert {
     
-    class func showErrorMessage(title: String, message: String,  dismissTitle: String, inViewController viewController: UIViewController?) -> () {
+    class func showErrorMessage(title title: String, message: String,  dismissTitle: String, inViewController viewController: UIViewController?) -> () {
         
         dispatch_async(dispatch_get_main_queue(), {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
             let dismissAction = UIAlertAction(title: "确认", style: .Default, handler: nil)
             
             alertController.addAction(dismissAction)
-            
-            viewController?.presentViewController(alertController, animated: true, completion: nil)            
+            viewController!.modalInPopover = false
+ 
+            viewController?.presentViewController(alertController, animated: true, completion: nil)
             
         })
         
     }
     
-    class func showErrorMessage(title: String, message: String,  dismissTitle: String, inViewController viewController: UIViewController?, withDismissAction dismissAction: () -> Void) -> () {
+    class func showInfoMessage(title title: String, message: String, dismissTitle: String, inViewController viewController: UIViewController, withDoneAction doneAction: (() -> Void)?, DismissAction dismissAction:  (() -> Void)?) {
+        dispatch_async(dispatch_get_main_queue(), {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
+            let dismiss = UIAlertAction(title: "返回", style: .Default, handler: {
+                action -> Void in
+                dismissAction?()
+            })
+            
+            let done = UIAlertAction(title: "前往", style: .Default, handler: {
+                action -> Void in
+                doneAction?()
+            })
+            
+
+            alertController.addAction(done)
+
+            alertController.addAction(dismiss)
+            viewController.modalInPopover = false
+ 
+            viewController.presentViewController(alertController, animated: true, completion: nil)
+
+        })
+    }
+    
+    class func showErrorMessage(title title: String, message: String,  dismissTitle: String, inViewController viewController: UIViewController?, withDismissAction dismissAction: () -> Void) -> () {
         
         dispatch_async(dispatch_get_main_queue(), {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
@@ -34,14 +59,15 @@ class iReadAlert {
             }
             
             alertController.addAction(dismissAction)
-            
+            viewController!.modalInPopover = false
+ 
             viewController?.presentViewController(alertController, animated: true, completion: nil)
             
         })
         
     }
     
-    class func showFeedInput(title: String, placeholder: String?, confirmTitle: String?, dismissTitle: String, inViewController viewController: UIViewController?, withFinishedAction finishedAction: ((text: String) -> Void)?) {
+    class func showFeedInput(title title: String, placeholder: String?, confirmTitle: String?, dismissTitle: String, inViewController viewController: UIViewController?, withFinishedAction finishedAction: ((text: String) -> Void)?) {
         
         dispatch_async(dispatch_get_main_queue()) {
             
@@ -64,6 +90,7 @@ class iReadAlert {
             
             alertController.addAction(action)
             alertController.addAction(action2)
+            viewController!.modalInPopover = false
 
             viewController?.presentViewController(alertController, animated: true, completion: nil)
         }

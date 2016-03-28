@@ -16,7 +16,7 @@ protocol FeedParseOperationDataPorvider {
 
 class FeedParseOperation: ConcurrentOperation {
     
-    private var index = 0
+//    private var index = 0
     private var feedType: FeedType = .Other
     
     private var feedData: NSData?
@@ -26,18 +26,18 @@ class FeedParseOperation: ConcurrentOperation {
     
     private let completion: (FeedModel?) -> ()
 
-    init(feedData: NSData?, feedSource: String, index: Int, feedType: FeedType, completion: (FeedModel?) -> ()) {
+    init(feedData: NSData?, feedSource: String, feedType: FeedType, completion: (FeedModel?) -> ()) {
 
         self.feedData = feedData
         feedItemModels = [FeedItemModel]()
         feedModel = FeedModel()
-        feedModel.index = index
+//        feedModel.index = index
         feedModel.feedType = feedType
         feedModel.source = feedSource
         
         self.feedType = feedType
         self.completion = completion
-        self.index = index
+//        self.index = index
         super.init()
 
     }
@@ -126,6 +126,10 @@ extension FeedParseOperation {
         feedModel.link = link
         feedModel.imagURL = imageURL
         
+        // Test Followed
+        if feedModel.title == "唐巧的技术博客" {
+            feedModel.isFollowed = true
+        }
         let entries = feedElement.childrenWithTag("entry") as! [ONOXMLElement]
         
         for entry in entries {
@@ -329,7 +333,7 @@ extension FeedParseOperation {
         }
         
         feedModel.items = feedItemModels
-        feedModel.index = index
+//        feedModel.index = index
         feedModel.feedType = feedType
         
         executeCompletionOnMainThread()

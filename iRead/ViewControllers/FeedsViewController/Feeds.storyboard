@@ -17,11 +17,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8dM-YW-B1s"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="8dM-YW-B1s">
+                        <nil key="title"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ab-z4-d0U" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="677" y="1169"/>
+            <point key="canvasLocation" x="464" y="786"/>
         </scene>
         <!--我阅-->
         <scene sceneID="YDA-GO-GQz">
@@ -41,7 +45,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9x6-IA-K7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-203" y="1205"/>
+            <point key="canvasLocation" x="-459" y="1009"/>
+        </scene>
+        <!--Favorite Feeds Controller-->
+        <scene sceneID="yTD-RO-HFG">
+            <objects>
+                <viewController id="kCC-F9-I6V" customClass="FavoriteFeedsController" customModule="iRead" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eWT-vZ-fDf"/>
+                        <viewControllerLayoutGuide type="bottom" id="lm9-Ik-Ipt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HMa-Lk-Keh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.27450980390000002" green="0.87450980389999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1EQ-lB-Xlm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1012" y="786"/>
         </scene>
     </scenes>
     <resources>

@@ -27,13 +27,18 @@ class FeedListController: UIViewController {
         self.navigationController?.navigationBar.tintColor = iReadColor.themeWhiteColor
         
     }
+    
+    private func prepareForTabBar() {
+        hidesBottomBarWhenPushed = true;
 
+    }
+    
     private func prepareForCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.spacingPreset = .Spacing2
         collectionView.contentInsetPreset = .Square3
-
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.registerClass(BaseCollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(BaseCollectionViewCell.self ))
         
         view.addSubview(collectionView)
@@ -52,10 +57,17 @@ class FeedListController: UIViewController {
 
         prepareForView()
         prepareForNavigationBar()
+        prepareForTabBar()
         prepareForCollectionView()
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+    }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         collectionView.frame = view.bounds
@@ -134,11 +146,9 @@ extension FeedListController: MaterialCollectionViewDataSource, MaterialCollecti
             })
         }
         
-        let articleVC = ArticleViewController(title: "文章", feedItem: item, feedModel: feedModel!)
+        let articleVC = ArticleViewController(title: title, feedItem: item, feedModel: feedModel!)
         
         self.navigationController?.pushViewController(articleVC, animated: true)
-
-        print("has read it")
         
     }
 }

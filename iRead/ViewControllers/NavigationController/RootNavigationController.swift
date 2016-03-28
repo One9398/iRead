@@ -36,6 +36,11 @@ class RootNavigationController: UINavigationController {
         return super.popToRootViewControllerAnimated(animated)
     }
     
+    override func popViewControllerAnimated(animated: Bool) -> UIViewController? {
+
+        return super.popViewControllerAnimated(animated)
+    }
+    
     override func popToViewController(viewController: UIViewController, animated: Bool) -> [UIViewController]? {
         if animated {
             interactivePopGestureRecognizer?.enabled = false

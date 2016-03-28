@@ -5,15 +5,22 @@ use_frameworks!
 def pods
 #    pod 'RealmSwift'
     pod 'Ono'
-    pod 'SnapKit'
-    pod 'Alamofire'
+    pod 'SnapKit', ' ~> 0.19.1'
+#   pod 'Alamofire'  
+   pod 'Alamofire', '~> 3.2.1'
 #    pod 'PKRevealController'
     pod 'Reveal-iOS-SDK', :configurations => ['Debug']
     pod 'Material'
+    pod "DGRunkeeperSwitch", "~> 1.1"
+    pod 'DZNEmptyDataSet'
+
+    
 
 #	pod 'DTCoreText'
 
-    pod 'Kingfisher'
+#    pod "MWPhotoBrowser"
+
+    pod 'Kingfisher', '~> 2.1.0'
 end
 
 target 'iRead' do

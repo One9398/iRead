@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ArtileTopBar" customModule="iRead" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vew-xV-qb7" customClass="BaseButton" customModule="iRead" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="30" width="15" height="24"/>
+                    <state key="normal" image="icon_top_back"/>
+                    <connections>
+                        <action selector="handleBackButtonEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="XX9-VT-eLH"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dX8-gz-Tpf" customClass="BaseButton" customModule="iRead" customModuleProvider="target">
+                    <rect key="frame" x="294" y="29" width="26" height="26"/>
+                    <state key="normal" image="icon_top_surf"/>
+                    <connections>
+                        <action selector="handleSurfButtonEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="CS3-eL-zhE"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="0.019663217905405407" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Vew-xV-qb7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="10" id="WIc-Xd-IhO"/>
+                <constraint firstAttribute="trailing" secondItem="dX8-gz-Tpf" secondAttribute="trailing" id="eCq-45-8S3"/>
+                <constraint firstItem="Vew-xV-qb7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mdA-5R-tEK"/>
+                <constraint firstItem="dX8-gz-Tpf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="10" id="uu4-SF-yeA"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="backButton" destination="Vew-xV-qb7" id="9hK-Hb-6fq"/>
+                <outlet property="surfButton" destination="dX8-gz-Tpf" id="u4n-wA-Z8t"/>
+            </connections>
+            <point key="canvasLocation" x="413" y="303"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_top_back" width="15" height="24"/>
+        <image name="icon_top_surf" width="26" height="26"/>
+    </resources>
+</document>

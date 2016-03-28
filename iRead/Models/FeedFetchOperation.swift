@@ -13,12 +13,12 @@ class FeedFetchOperation: ConcurrentOperation {
     
     private var URLString:String
     private var feedData: NSData?
-    private var index = 0
+//    private var index = 0
     
-    init(URLString: String, index: Int) {
+    init(URLString: String) {
         // 配置基本设置和数据idx
         self.URLString = URLString
-        self.index = index
+//        self.index = index
         super.init()
         
     }
@@ -39,7 +39,7 @@ class FeedFetchOperation: ConcurrentOperation {
                 
                 self.feedData = data
                 self.state = .Finished
-                NSNotificationCenter.defaultCenter().postNotificationName(iReadNotification.FeedFetchOperationDidSinglyFinishedNotification, object: nil, userInfo: ["index" : self.index])
+                NSNotificationCenter.defaultCenter().postNotificationName(iReadNotification.FeedFetchOperationDidSinglyFinishedNotification, object: nil, userInfo: ["URLString" : self.URLString])
         }
     }
     

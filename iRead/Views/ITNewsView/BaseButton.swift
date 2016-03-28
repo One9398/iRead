@@ -10,15 +10,25 @@ import UIKit
 import Material
 
 class BaseButton: FlatButton {
-    convenience init(normalImg: String, highlightImg: String, target:  AnyObject?, action: Selector) {
-
-        self.init()
-
-        self.setImage(UIImage(named: normalImg), forState: .Normal)
-        self.setImage(UIImage(named: highlightImg), forState: .Highlighted)
-        self.pulseScale = false
-        self.pulseColor = iReadColor.themeLightBlueColor
-
-        self.addTarget(target, action: action, forControlEvents: .TouchDown)
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    class func createButton(normalImg: String, highlightImg: String,  target: AnyObject, action: Selector) -> BaseButton {
+        let button = BaseButton(frame: CGRectZero)
+        
+            button.setImage(UIImage(named: normalImg), forState: .Normal)
+            button.setImage(UIImage(named: highlightImg), forState: .Highlighted)
+            button.pulseScale = false
+            button.pulseColor = iReadColor.themeLightBlueColor
+            button.addTarget(target, action: action, forControlEvents: .TouchDown)
+        
+        return button
+    }
+    
 }

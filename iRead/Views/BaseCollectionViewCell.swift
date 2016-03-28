@@ -157,30 +157,9 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
             var author: String = feedItem.author.isEmpty ? feedItem.source : feedItem.author
             author = author.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
             authorButton?.setTitle((author.isEmpty ? "未知作者" : author), forState: .Normal)
-            
-            if !feedItem.pubDate.isEmpty {
-                
-                let date: NSDate?
-                let dateString: String?
-                
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "MM-dd / HH:mm"
-                
-
-                if feedItem.pubDate.containsString("-") {
-                    date = NSDate(fromRFC3339String: feedItem.pubDate)
-               
-                    dateString = dateFormatter.stringFromDate(date!)
-                    
-                } else {
-                    date = NSDate(fromRFC822String: feedItem.pubDate)
-                    dateString = dateFormatter.stringFromDate(date!)
-
-                }
-
-                timeButton?.setTitle(dateString, forState: .Normal)
- 
-            }
+           
+            let pubDate = iReadDateFormatter.sharedDateFormatter.getCustomDateStringFromDateString(feedItem.pubDate, styleString: "MM-dd / HH:mm")
+            timeButton?.setTitle(pubDate, forState: .Normal)
             
             if !feedItem.category.isEmpty {
                 categoryButton?.setTitle(feedItem.category, forState: .Normal)

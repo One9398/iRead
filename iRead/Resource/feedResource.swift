@@ -9,10 +9,10 @@
 import Foundation
 
 enum FeedType: String {
-    case IT, New, Life, Art, Other,Blog
+    case ITNew, TechStudy, Life, Art, Other,Blog
 }
 
-struct FeedResource  {
+class FeedResource  {
     static let sharedResource = FeedResource()
     var items = [FeedItem]()
     
@@ -22,24 +22,34 @@ struct FeedResource  {
         let source = NSArray(contentsOfFile: path!)
         
         for item in source! {
-            let feedItem = FeedItem(feedURL: item["feedURL"] as! String, feedType: FeedType(rawValue: item["feedType"] as! String)!)
-
+            let feedItem = FeedItem(feedURL: item["feedURL"] as! String, feedType: FeedType(rawValue: item["feedType"] as! String)!, isSub: item["isSub"] as! Bool)
             items.append(feedItem)
-            
         }
         
     }
     
+    func appendFeed(feedURL: String, feedType: FeedType, isSub: Bool) {
+        
+        let feedItem = FeedItem(feedURL: feedURL, feedType: feedType, isSub: isSub)
+        
+        items.append(feedItem)
+    }
+    
+    func removeFeed(feedURL: String) {
+        items =  items.filter{ $0.feedURL != feedURL }
+    }
     
 }
 
 struct FeedItem {
     let feedURL: String
     let feedType: FeedType
-    init(feedURL: String, feedType: FeedType) {
+    let isSub: Bool
+    
+    init(feedURL: String, feedType: FeedType, isSub: Bool) {
         self.feedType = feedType
         self.feedURL = feedURL
-        
+        self.isSub = isSub
     }
     
 }

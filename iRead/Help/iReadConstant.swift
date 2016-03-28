@@ -17,4 +17,20 @@ enum iReadConstant {
         static let width = UIScreen.mainScreen().bounds.width
         static let hight = UIScreen.mainScreen().bounds.height
     }
+    
+    struct TopBar {
+        static let height = 64
+        
+    }
+    
+    struct MenuView {
+        static let width: CGFloat = 48
+        static let height: CGFloat = 48
+        static let menuInset: CGFloat = 20.0
+        
+    }
+    
+    struct SwitchView {
+        static let switchInset: CGFloat = 5.0
+    }
 }

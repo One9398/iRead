@@ -21,7 +21,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3bi-9c-G3m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1631" y="-107"/>
+            <point key="canvasLocation" x="1511" y="-229"/>
         </scene>
         <!--精选-->
         <scene sceneID="7MS-Fi-a4k">
@@ -41,7 +41,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X7Y-rT-SZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="795" y="-107"/>
+            <point key="canvasLocation" x="640" y="-246"/>
         </scene>
     </scenes>
     <resources>

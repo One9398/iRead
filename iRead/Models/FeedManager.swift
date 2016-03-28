@@ -7,11 +7,16 @@
 //
 
 import Foundation
-class FeedManager {
+struct FeedManager {
     static let defaultManager = FeedManager()
     
     init() {
         
     }
+    
+    static var currentSubscribedFeeds = [FeedModel]()
+    static var itnewFeeds = [FeedModel]()
+    static var techstudyFeeds = [FeedModel]()
+    
 }
 

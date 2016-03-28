@@ -54,7 +54,8 @@ class RecommendController: YZDisplayViewController {
         titleLabel.textColor = iReadColor.themeWhiteColor
         navigationItem.titleView = titleLabel
         navigationController?.navigationBar.barStyle = .Black
-        navigationController!.navigationBar.setBackgroundImage(UIImage(named: "navigationbar_bg_recommand"), forBarMetrics: .Default)
+        navigationController!.navigationBar.setBackgroundImage(UIImage(named: iReadTheme.isNightMode() ? "navigationbar_nightbg_recommand" : "navigationbar_bg_recommand"), forBarMetrics: .Default)
+        
         navigationController!.navigationBar.shadowImage = UIImage()
         
     }
@@ -83,8 +84,8 @@ class RecommendController: YZDisplayViewController {
         ITNewsVC.title = "科技见闻"
         addChildViewController(ITNewsVC)
         
-        let viewControllerB1 = ViewControllerA()
-        viewControllerB1.title = "信息技术"
+        let viewControllerB1 = TechStudyController(feedType: .TechStudy)
+        viewControllerB1.title = "技术学习"
         addChildViewController(viewControllerB1)
         
         let viewControllerA2 = ViewControllerA()
