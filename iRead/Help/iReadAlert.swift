@@ -14,8 +14,8 @@ class iReadAlert {
         
         dispatch_async(dispatch_get_main_queue(), {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+            alertController.modalPresentationStyle = .None
             let dismissAction = UIAlertAction(title: "确认", style: .Default, handler: nil)
-            
             alertController.addAction(dismissAction)
             viewController!.modalInPopover = false
  
@@ -28,6 +28,38 @@ class iReadAlert {
     class func showInfoMessage(title title: String, message: String, dismissTitle: String, inViewController viewController: UIViewController, withDoneAction doneAction: (() -> Void)?, DismissAction dismissAction:  (() -> Void)?) {
         dispatch_async(dispatch_get_main_queue(), {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
+
+            if !iReadHelp.currentDeviceIsPhone() {
+                alertController.modalPresentationStyle = .OverCurrentContext
+                alertController.popoverPresentationController?.sourceView = viewController.view
+
+                alertController.popoverPresentationController?.permittedArrowDirections = .Any
+                
+                for view in viewController.view.subviews {
+                    if view is ArticleView {
+                        let articleView = view as! ArticleView
+                        alertController.popoverPresentationController?.sourceRect = CGRectMake(articleView.touchPoint.x, articleView.touchPoint.y , 1, 1)
+                    }
+                }
+                /*
+                for (UIView *view in myWebView.subviews)
+                {
+                if ([view isKindOfClass:[UIScrollView class]])
+                {
+                // Get UIScrollView object
+                scrollview = (UIScrollView *) view;
+                
+                // Find the zoom and scroll offsets
+                float zoom = scrollView.zoomScale;
+                float xOffset = scrollView.contentOffset.x;
+                float yOffset = scrollView.contentOffset.y;
+                }
+                }
+*/
+                
+                alertController.popoverPresentationController?.permittedArrowDirections = .Any
+            }
+            
             let dismiss = UIAlertAction(title: "返回", style: .Default, handler: {
                 action -> Void in
                 dismissAction?()

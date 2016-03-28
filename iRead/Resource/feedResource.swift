@@ -9,7 +9,7 @@
 import Foundation
 
 enum FeedType: String {
-    case ITNew, TechStudy, Life, Art, Other,Blog
+    case ITNews, TechStudy, Life, Art, Other,Blog
 }
 
 class FeedResource  {
@@ -22,6 +22,7 @@ class FeedResource  {
         let source = NSArray(contentsOfFile: path!)
         
         for item in source! {
+            
             let feedItem = FeedItem(feedURL: item["feedURL"] as! String, feedType: FeedType(rawValue: item["feedType"] as! String)!, isSub: item["isSub"] as! Bool)
             items.append(feedItem)
         }

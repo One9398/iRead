@@ -139,7 +139,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate {
     
 }
 
-extension FeedsViewController : BaseTableViewCellProtocol {
+extension FeedsViewController : BaseTableViewCellDelegate {
     func baseTableViewCell(cell: FeedBaseTableViewCell, didChangedSwitchState state: Bool, feed: FeedModel) {
         
         if state {

@@ -45,6 +45,7 @@
 		F44DE8F21C92BEEE008617E6 /* feeds.plist in Resources */ = {isa = PBXBuildFile; fileRef = F44DE8F11C92BEEE008617E6 /* feeds.plist */; };
 		F44DE8F61C92C21F008617E6 /* feedResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44DE8F51C92C21F008617E6 /* feedResource.swift */; };
 		F45344291C982647008378DC /* FeedListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45344281C982647008378DC /* FeedListController.swift */; };
+		F476FAFF1CA8BC9A00A77F16 /* RecommandCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F476FAFE1CA8BC9A00A77F16 /* RecommandCardView.swift */; };
 		F47B0C0B1CA56E3D00086B50 /* FavoriteFeedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B0C0A1CA56E3D00086B50 /* FavoriteFeedsController.swift */; };
 		F47CF65C1C9E755700808CCA /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CF65B1C9E755700808CCA /* ArticleView.swift */; };
 		F48048781C9817A800392827 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F48048771C9817A800392827 /* Assets.xcassets */; };
@@ -152,6 +153,7 @@
 		F44DE8F11C92BEEE008617E6 /* feeds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = feeds.plist; sourceTree = "<group>"; };
 		F44DE8F51C92C21F008617E6 /* feedResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedResource.swift; sourceTree = "<group>"; };
 		F45344281C982647008378DC /* FeedListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedListController.swift; path = FeedListController/FeedListController.swift; sourceTree = "<group>"; };
+		F476FAFE1CA8BC9A00A77F16 /* RecommandCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommandCardView.swift; sourceTree = "<group>"; };
 		F47B0C0A1CA56E3D00086B50 /* FavoriteFeedsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFeedsController.swift; sourceTree = "<group>"; };
 		F47CF65B1C9E755700808CCA /* ArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		F48048771C9817A800392827 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 		F4181E371C86C68E00E41FBA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F476FAFD1CA8BC5E00A77F16 /* RecommendCardView */,
 				F44B0B721CA54B7A00DDE1E9 /* LoadView */,
 				F44B0B691CA5377C00DDE1E9 /* FeedsTitleView */,
 				F4D1F1641CA3C81800AC056E /* ArticleTopBar */,
@@ -450,6 +453,14 @@
 				F45344281C982647008378DC /* FeedListController.swift */,
 			);
 			name = FeedListController;
+			sourceTree = "<group>";
+		};
+		F476FAFD1CA8BC5E00A77F16 /* RecommendCardView */ = {
+			isa = PBXGroup;
+			children = (
+				F476FAFE1CA8BC9A00A77F16 /* RecommandCardView.swift */,
+			);
+			path = RecommendCardView;
 			sourceTree = "<group>";
 		};
 		F480C3C51CA18FD100D11BD3 /* MenuView */ = {
@@ -811,6 +822,7 @@
 				F4120ABB1C9AAABC00B86DE3 /* NSDate+InternetDateTime.m in Sources */,
 				F4D1F1681CA3CDDF00AC056E /* ArtileTopBar.swift in Sources */,
 				F42E98501C925DED00A1E602 /* ConcurrentOpeartion.swift in Sources */,
+				F476FAFF1CA8BC9A00A77F16 /* RecommandCardView.swift in Sources */,
 				F4AB17021C882BDD006438D2 /* LaunchViewController.swift in Sources */,
 				F4C09FF31C8EDD2C005ED771 /* RootTabbarController.swift in Sources */,
 				F44B0B6F1CA54AE500DDE1E9 /* PCAngularActivityIndicatorView.m in Sources */,

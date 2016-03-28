@@ -12,14 +12,13 @@ class FeedModel: CustomDebugStringConvertible {
     var title = ""
     var link = ""
     var description = ""
-    var source = ""
-    
     var imagURL = ""
     var items = [FeedItemModel]?()
     
     var index = 0
+    
+    var source = ""
     var isFollowed = false
-    var isFavorited = false
     var feedType = FeedType.Other
     
 

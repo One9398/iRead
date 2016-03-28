@@ -17,7 +17,9 @@ protocol RecommendFeedProtocol {
 class RecommendBaseController: UIViewController, RecommendFeedProtocol {
     
     let tableView: UITableView = UITableView()
-    let cardView: CardView = CardView()
+    var cardView: RecommandCardView = RecommandCardView()
+
+    var recommendView: RecommandCardView = RecommandCardView()
     
     var feedProviders = Set<FeedModelsProvider>()
     var feeds = FeedModel.loadLocalFeeds()
@@ -29,6 +31,7 @@ class RecommendBaseController: UIViewController, RecommendFeedProtocol {
     
     var typeFeeds: [FeedItem] {
         get {
+            
             let feeds = FeedResource.sharedResource.items.filter{$0.feedType == feedType}
             return feeds
         }
@@ -39,21 +42,16 @@ class RecommendBaseController: UIViewController, RecommendFeedProtocol {
         self.feedType = feedType
     }
 
-//    required init?(coder aDecoder: NSCoder) {
-//        
-//        super.init(coder: aDecoder)
-//    }
-//    convenience init(feedType: FeedType) {
-//        self.init()
-//        self.feedType = feedType
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        prepareCardView()
+//        prepareCardView()
+        prepareRecommendView()
         prepareTableView()
         prepareEmptyView()
-        configureNotification()
+        
+//        configureNotification()
+        
         loadData()
         
     }
@@ -74,7 +72,10 @@ class RecommendBaseController: UIViewController, RecommendFeedProtocol {
     // MARK: - Configure Data
     
     func configureNotification() {
-        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: YZDisplayViewClickOrScrollDidFinshNote, object: self)
+        
+        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: YZDisplayViewClickOrScrollDidFinshNote, object: self)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "fetchFeedFailureHandle", name: iReadNotification.FeedFetchOperationDidSinglyFailureNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "parseFeedFailureHandle", name: iReadNotification.FeedParseOperationDidSinglyFailureNotification, object: nil)
@@ -124,8 +125,9 @@ class RecommendBaseController: UIViewController, RecommendFeedProtocol {
             let feedItem = typeFeeds[i]
           
             let provider = FeedModelsProvider(feedItem: feedItem, failure: {
-                error in
-               
+                error, message in
+                
+                print(" ♻️♻️♻️♻️♻️♻️ error happen \(message)")
                 
                 }, completion: {
                     feedModel in
@@ -143,30 +145,156 @@ class RecommendBaseController: UIViewController, RecommendFeedProtocol {
                         
                     }
             })
-//            let provider = FeedModelsProvider(feedURL: feedItem.feedURL, index: i, feedType: feedItem.feedType) { (feedModel: FeedModel?) -> () in
-//                
-//
-//                
-//            }
-//            
+
             feedProviders.insert(provider)
             
         }
         
     }
+
+    // MARK: - UI Preparation 📱
     
-    func reduceButtonClicked(sender: NSObject) {
-        print("need delete")
+    private func prepareRecommendView() {
+        recommendView = RecommandCardView(detailView: tableView)
+        recommendView.eventDelegate = self
+        recommendView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(recommendView)
         
-        if feeds.count <= 0 {
-            return
-        }
-        
-        tableView.editing = !tableView.editing
+    }
+//    
+//    private func prepareCardView() {
+//        
+//        cardView.pulseColor = iReadColor.themeBlueColor
+//        cardView.backgroundColor = iReadColor.themeLightWhiteColor
+//        cardView.divider = false
+//        cardView.cornerRadiusPreset = .Radius1
+//        cardView.contentInsetPreset = .Square1
+//        cardView.leftButtonsInsetPreset = .Square1
+//        cardView.rightButtonsInsetPreset = .Square1
+//        cardView.depth = .Depth2
+//        cardView.detailView = tableView
+//        
+//        let refreshButton = BaseButton.createButton("icon_refresh_highlight", highlightImg: "icon_refresh_normal", target: self, action: "refreshButtonClicked:")
+//        cardView.leftButtons = [refreshButton]
+//        
+//        let plusButton = BaseButton.createButton("icon_add_highlight", highlightImg: "icon_add_normal", target: self, action: "plusButtonClicked:")
+//        let reduceButton = BaseButton.createButton("reduce_icon_highlight", highlightImg: "reduce_icon_noralma", target: self, action: "reduceButtonClicked:")
+//        
+//        cardView.rightButtons = [plusButton, reduceButton]
+//        
+//        cardView.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(cardView)
+//        
+//        MaterialLayout.alignToParent(view, child: cardView, left: 20, right: 20, top: 20, bottom: 64)
+//        
+//    }
+    
+    private func prepareTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.registerClass(FeedBaseTableViewCell.self, forCellReuseIdentifier: NSStringFromClass(FeedBaseTableViewCell.self))
+        tableView.tableFooterView = UIView()
+        tableView.showsVerticalScrollIndicator = false
+        tableView.separatorStyle = .None
         
     }
     
-    func plusButtonClicked(sender: NSObject) {
+    private func prepareEmptyView() {
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+    }
+    
+}
+
+// MARK: - TableView Delegate & DataSource
+extension RecommendBaseController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return feeds.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(FeedBaseTableViewCell.self), forIndexPath: indexPath) as! FeedBaseTableViewCell
+        cell.tableCellDelegate = self
+        
+        if feeds.count <= 0 {
+            
+        } else if (indexPath.row <= feeds.count - 1){
+            cell.updateContent(feeds[indexPath.row])
+        }
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return iReadConstant.RecommendTable.heightForCell
+    }
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return .Delete
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        print(indexPath.row)
+        
+        let feed = feeds[indexPath.row]
+        FeedResource.sharedResource.removeFeed(feed.source)
+        
+        feeds.removeAtIndex(indexPath.row)
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("selected \(indexPath.row)")
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! FeedBaseTableViewCell
+        print(cell.textLabel?.text)
+        
+        if cell.textLabel?.text == nil {
+            return
+        }
+        let feedListVC = FeedListController()
+        feedListVC.configureContent(feeds[indexPath.row])
+        
+        self.navigationController?.pushViewController(feedListVC, animated: true)
+        
+    }
+    
+    func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        
+        let cell  = tableView.cellForRowAtIndexPath(indexPath)
+        
+        if cell?.textLabel?.text == "" {
+            return false
+        }
+        
+        return true
+    }
+}
+
+// MARK: - BaseTableViewCellDelegate
+extension RecommendBaseController : BaseTableViewCellDelegate {
+    func baseTableViewCell(cell: FeedBaseTableViewCell, didChangedSwitchState state: Bool, feed: FeedModel) {
+        
+        if state {
+            print("\(feed.title) 订阅成功")
+        } else {
+            print("\(feed.title) 订阅取消")
+        }
+        
+    }
+}
+
+// MARK: - RecommandCardViewDelegate
+extension RecommendBaseController : RecommandCardViewDelegate {
+    func recommandCardViewPlusButtonClicked(button: BaseButton) {
         print(__FUNCTION__)
         
         self.tableView.editing = false
@@ -217,142 +345,23 @@ class RecommendBaseController: UIViewController, RecommendFeedProtocol {
         })
     }
     
-    func refreshButtonClicked(sender: NSObject) {
+    func recommandCardViewReducettonClicked(button: BaseButton) {
+        print("need delete")
+        
+        if feeds.count <= 0 {
+            return
+        }
+        
+        tableView.editing = !tableView.editing
+    }
+    
+    func recommandCardViewRefreshButtonClicked(button: BaseButton) {
         print(__FUNCTION__)
         loadData()
     }
-    
-    // MARK: - UI Preparation 📱
-    
-    private func prepareCardView() {
-        
-        cardView.pulseColor = iReadColor.themeBlueColor
-        cardView.backgroundColor = iReadColor.themeLightWhiteColor
-        cardView.divider = false
-        cardView.cornerRadiusPreset = .Radius1
-        cardView.contentInsetPreset = .Square1
-        cardView.leftButtonsInsetPreset = .Square1
-        cardView.rightButtonsInsetPreset = .Square1
-        cardView.depth = .Depth2
-        cardView.detailView = tableView
-        
-        let refreshButton = BaseButton.createButton("icon_refresh_highlight", highlightImg: "icon_refresh_normal", target: self, action: "refreshButtonClicked:")
-        cardView.leftButtons = [refreshButton]
-        
-        let plusButton = BaseButton.createButton("icon_add_highlight", highlightImg: "icon_add_normal", target: self, action: "plusButtonClicked:")
-        let reduceButton = BaseButton.createButton("reduce_icon_highlight", highlightImg: "reduce_icon_noralma", target: self, action: "reduceButtonClicked:")
-        
-        cardView.rightButtons = [plusButton, reduceButton]
-        
-        cardView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(cardView)
-        
-        MaterialLayout.alignToParent(view, child: cardView, left: 20, right: 20, top: 20, bottom: 64)
-        
-    }
-    
-    private func prepareTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.registerClass(FeedBaseTableViewCell.self, forCellReuseIdentifier: NSStringFromClass(FeedBaseTableViewCell.self))
-        tableView.tableFooterView = UIView()
-        tableView.showsVerticalScrollIndicator = false
-        tableView.separatorStyle = .None
-        
-    }
-    
-    private func prepareEmptyView() {
-        self.tableView.emptyDataSetSource = self
-        self.tableView.emptyDataSetDelegate = self
-    }
-    
 }
 
-// MARK: - TableView Delegate & DataSource
-extension RecommendBaseController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return feeds.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(FeedBaseTableViewCell.self), forIndexPath: indexPath) as! FeedBaseTableViewCell
-        cell.tableCellDelegate = self
-        
-        if feeds.count <= 0 {
-            
-        } else if (indexPath.row <= feeds.count - 1){
-            cell.updateContent(feeds[indexPath.row])
-        }
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
-    }
-    
-    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return .Delete
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        print(indexPath.row)
-        
-        let feed = feeds[indexPath.row]
-        FeedResource.sharedResource.removeFeed(feed.source)
-        
-        feeds.removeAtIndex(indexPath.row)
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("selected \(indexPath.row)")
-        
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! FeedBaseTableViewCell
-        print(cell.textLabel?.text)
-        
-        if cell.textLabel?.text == nil {
-            return
-        }
-        let feedListVC = FeedListController()
-        feedListVC.configureContent(feeds[indexPath.row])
-        
-        self.navigationController?.pushViewController(feedListVC, animated: true)
-        
-    }
-    
-    func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        
-        let cell  = tableView.cellForRowAtIndexPath(indexPath)
-        
-        if cell?.textLabel?.text == "" {
-            return false
-        }
-        
-        return true
-    }
-}
-
-extension RecommendBaseController : BaseTableViewCellProtocol {
-    func baseTableViewCell(cell: FeedBaseTableViewCell, didChangedSwitchState state: Bool, feed: FeedModel) {
-        
-        if state {
-            print("\(feed.title) 订阅成功")
-        } else {
-            print("\(feed.title) 订阅取消")
-        }
-        
-    }
-}
-
+// MARK: - DZNEmptyDataSetDelegate&DZNEmptyDataSetSource
 extension RecommendBaseController : DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: "icon_empty_logo")
@@ -376,11 +385,11 @@ extension RecommendBaseController : DZNEmptyDataSetDelegate, DZNEmptyDataSetSour
     }
     
     func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
-        return -10
+        return iReadConstant.EmptyView.verticalOffset
     }
     
     func spaceHeightForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
-        return 20
+        return iReadConstant.EmptyView.spaceHeight
     }
     
     func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {

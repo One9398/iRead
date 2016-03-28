@@ -6,7 +6,7 @@
 		<key>feedURL</key>
 		<string>http://www.ifanr.com/feed</string>
 		<key>feedType</key>
-		<string>ITNew</string>
+		<string>ITNews</string>
 		<key>isSub</key>
 		<true/>
 	</dict>
@@ -14,7 +14,7 @@
 		<key>feedURL</key>
 		<string>http://www.geekpark.net/rss</string>
 		<key>feedType</key>
-		<string>ITNew</string>
+		<string>ITNews</string>
 		<key>isSub</key>
 		<false/>
 	</dict>
@@ -22,7 +22,7 @@
 		<key>feedURL</key>
 		<string>http://www.36kr.com/feed</string>
 		<key>feedType</key>
-		<string>ITNew</string>
+		<string>ITNews</string>
 		<key>isSub</key>
 		<false/>
 	</dict>
@@ -30,7 +30,7 @@
 		<key>feedURL</key>
 		<string>http://rss.cnbeta.com/rss</string>
 		<key>feedType</key>
-		<string>ITNew</string>
+		<string>ITNews</string>
 		<key>isSub</key>
 		<false/>
 	</dict>

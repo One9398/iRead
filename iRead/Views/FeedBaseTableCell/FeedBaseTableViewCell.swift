@@ -10,7 +10,7 @@ import UIKit
 import Material
 import Kingfisher
 
-protocol BaseTableViewCellProtocol: NSObjectProtocol {
+protocol BaseTableViewCellDelegate: NSObjectProtocol {
     func baseTableViewCell(cell: FeedBaseTableViewCell, didChangedSwitchState state: Bool, feed: FeedModel)
 }
 
@@ -18,7 +18,7 @@ class FeedBaseTableViewCell: MaterialTableViewCell {
     
     var feedModel: FeedModel = FeedModel()
     var switchControl: BaseSwitch?
-    weak var tableCellDelegate : BaseTableViewCellProtocol?
+    weak var tableCellDelegate : BaseTableViewCellDelegate?
     
     convenience init(feedModel: FeedModel) {
         

@@ -224,7 +224,7 @@ extension ArticleViewController : WKNavigationDelegate, WKUIDelegate, WKScriptMe
                 return
             }
             
-            if urlString.containsString("play") || urlString.containsString("video") {
+            if urlString.containsString("play") || urlString.containsString("video") || urlString.containsString("yy") {
                 decisionHandler(.Allow)
                 return
             } else if urlString.containsString("jpg") || urlString.containsString("png") || urlString.containsString("gif") {
@@ -238,7 +238,7 @@ extension ArticleViewController : WKNavigationDelegate, WKUIDelegate, WKScriptMe
             if let destinationURL = navigationAction.request.URL {
                 self.destinationURL = destinationURL.absoluteString
             }
-            
+
             iReadAlert.showInfoMessage(
                 title: "需要跳转当前链接么~",
                 message: "",

@@ -80,7 +80,7 @@ class RecommendController: YZDisplayViewController {
     
     
     private func configureChildViewControllers() {
-        let ITNewsVC = ITNewsViewController()
+        let ITNewsVC = ITNewsViewController(feedType: .ITNews)
         ITNewsVC.title = "科技见闻"
         addChildViewController(ITNewsVC)
         

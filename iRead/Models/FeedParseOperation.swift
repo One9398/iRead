@@ -16,28 +16,33 @@ protocol FeedParseOperationDataPorvider {
 
 class FeedParseOperation: ConcurrentOperation {
     
-//    private var index = 0
     private var feedType: FeedType = .Other
     
     private var feedData: NSData?
     private var feedItemModels:[FeedItemModel]?
     private var feedModel: FeedModel
-
+    private let feedItem: FeedItem
+    private var document: ONOXMLDocument?
     
     private let completion: (FeedModel?) -> ()
-
-    init(feedData: NSData?, feedSource: String, feedType: FeedType, completion: (FeedModel?) -> ()) {
-
+    private let failure: FailureHandler?
+    
+    init(feedData: NSData?, feedItem: FeedItem, failure: FailureHandler?, completion: (FeedModel?) -> ()) {
+       
+        self.feedItem = feedItem
         self.feedData = feedData
         feedItemModels = [FeedItemModel]()
-        feedModel = FeedModel()
-//        feedModel.index = index
-        feedModel.feedType = feedType
-        feedModel.source = feedSource
         
-        self.feedType = feedType
+        feedModel = FeedModel()
+        
+        feedModel.feedType = feedItem.feedType
+        feedModel.source = feedItem.feedURL
+        feedModel.isFollowed = feedItem.isSub
+ 
+        self.feedType = feedItem.feedType
         self.completion = completion
-//        self.index = index
+        self.failure = failure
+        
         super.init()
 
     }
@@ -69,31 +74,42 @@ class FeedParseOperation: ConcurrentOperation {
 
     private func parseXMLData(data: NSData) {
         
-        guard let document = try? ONOXMLDocument(data: data) else {
+        
+        do {
             
-            print("document create failure")
-           
+            self.document = try ONOXMLDocument(data: data)
+            
+        } catch{
+            
             postDocumentParseErrorNotification()
+            state = .Finished
+            
+            self.failure!(error: nil, message: "文档解析错误")
+            return
+        }
+
+        let doc = self.document!
+        
+        if doc.rootElement == nil {
+            postDocumentParseErrorNotification()
+            state = .Finished
+            
+            self.failure!(error: nil, message: "文档根元素获取错误")
             return
         }
         
-        if document.rootElement == nil {
-            state = .Finished
-            postDocumentParseErrorNotification()
-            return
-        }
-        
-        guard let xmlType = document.rootElement.tag else {
+        guard let xmlType = doc.rootElement.tag else {
             postDocumentParseErrorNotification()
             state = .Finished
+            self.failure!(error: nil, message: "资讯源类型获取错误")
             return
         }
         
         if xmlType == "rss" {
-            parseRSSByXPath(data, document: document)
+            parseRSSByXPath(data, document: doc)
 //            parseRSSBySearch(data, document: document)
         } else if xmlType == "feed" {
-            parseAtomByXPath(data, document: document)
+            parseAtomByXPath(data, document: doc)
     
         } else {
             postDocumentParseErrorNotification()
@@ -101,6 +117,7 @@ class FeedParseOperation: ConcurrentOperation {
         }
 
     }
+    
     
 }
 
@@ -126,10 +143,6 @@ extension FeedParseOperation {
         feedModel.link = link
         feedModel.imagURL = imageURL
         
-        // Test Followed
-        if feedModel.title == "唐巧的技术博客" {
-            feedModel.isFollowed = true
-        }
         let entries = feedElement.childrenWithTag("entry") as! [ONOXMLElement]
         
         for entry in entries {
@@ -333,7 +346,6 @@ extension FeedParseOperation {
         }
         
         feedModel.items = feedItemModels
-//        feedModel.index = index
         feedModel.feedType = feedType
         
         executeCompletionOnMainThread()
