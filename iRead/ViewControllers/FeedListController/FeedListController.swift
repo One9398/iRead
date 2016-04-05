@@ -14,18 +14,44 @@ class FeedListController: UIViewController {
     var feedItems: [FeedItemModel]?
     private var collectionView = BaseCollectionView()
 
-    func configureContent(model: FeedModel) {
-        feedModel = model
-        feedItems = feedModel?.items
-        title = model.title
+    // MARK: - View Life Cycle ♻️
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        prepareForNavigationBar()
+        prepareForTabBar()
+        prepareForView()
+        prepareForCollectionView()
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.navigationController!.navigationBarHidden {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
+        
+    }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        collectionView.frame = view.bounds
+        collectionView.reloadData()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - UI Preparation 📱
     
     private func prepareForNavigationBar() {
-        self.navigationController?.navigationBar.tintColor = iReadColor.themeWhiteColor
-        
+        print(self.navigationItem.titleView)
+        self.navigationController?.navigationBar.tintColor = iReadColor.themeLightWhiteColor
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : iReadColor.themeLightWhiteColor]
+
     }
     
     private func prepareForTabBar() {
@@ -48,48 +74,14 @@ class FeedListController: UIViewController {
         
         view.backgroundColor = iReadColor.themeWhiteColor
     }
-    
-    // MARK: - View Life Cycle ♻️
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-
-        prepareForView()
-        prepareForNavigationBar()
-        prepareForTabBar()
-        prepareForCollectionView()
-        // Do any additional setup after loading the view.
+    // MARK: - Configure Date 
+    func configureContent(model: FeedModel) {
+        feedModel = model
+        feedItems = feedModel?.items
+        title = model.title
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        
-    }
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        collectionView.frame = view.bounds
-        collectionView.reloadData()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 
@@ -157,5 +149,9 @@ extension FeedListController: MaterialCollectionViewDataSource, MaterialCollecti
 extension FeedListController: BaseCollectionViewCellProtocol {
     func baseCollectionViewCellSharedActionDidHandle(cell: BaseCollectionViewCell, item: FeedItemModel?) {
         print("share the \(item)")
+    }
+    
+    func baseCollectionViewCellReadActionDidHandle(cell: BaseCollectionViewCell, item: FeedItemModel?) {
+        print("unread the \(item?.title)")
     }
 }

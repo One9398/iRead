@@ -18,6 +18,7 @@ class FeedBaseTableViewCell: MaterialTableViewCell {
     
     var feedModel: FeedModel = FeedModel()
     var switchControl: BaseSwitch?
+
     weak var tableCellDelegate : BaseTableViewCellDelegate?
     
     convenience init(feedModel: FeedModel) {
@@ -55,8 +56,24 @@ class FeedBaseTableViewCell: MaterialTableViewCell {
             imageView?.image = UIImage(named: "icon_placehold_logo2")?.resize(toWidth: 32)
         }
         
-        self.switchControl?.hidden = false
-        self.switchControl?.setSwitchState(feedModel.isFollowed ? .On : .Off, animated: false, completion: nil)
+        
+        if switchControl == nil {
+            // 若果 当前时间为晚上则开启夜间模式
+            let switchControl = BaseSwitch.createSwitch(iReadTheme.isNightMode() ? .NightMode : .DayMode, isOn: feedModel.isFollowed)
+            switchControl.delegate = self
+            
+            self.switchControl = switchControl
+            self.contentView.addSubview(switchControl)
+            
+        } else {
+
+            switchControl!.removeFromSuperview()
+            switchControl = BaseSwitch.createSwitch(iReadTheme.isNightMode() ? .NightMode : .DayMode, isOn: feedModel.isFollowed)
+            switchControl!.delegate = self
+            self.contentView.addSubview(switchControl!)
+            
+        }
+
         
     }
     
@@ -65,19 +82,14 @@ class FeedBaseTableViewCell: MaterialTableViewCell {
     private func prepareForCell() {
         self.selectionStyle = .None
         self.textLabel?.font = iReadFont.regual
-        self.textLabel?.textColor = iReadColor.themeBlackColor
+        self.textLabel?.textColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlackColor, nightColor: iReadColor.themeLightWhiteColor)
         self.detailTextLabel?.font = iReadFont.lightWithSize(14)
         self.detailTextLabel?.textColor = iReadColor.themeDarkGrayColor
+        
         self.imageView?.layer.cornerRadius = 16
         self.hidden = true
+        self.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
         
-        // 若果 当前时间为晚上则开启夜间模式
-        let switchControl = BaseSwitch.createSwitch(.DayMode, isOn: feedModel.isFollowed)
-        switchControl.delegate = self
-        
-        switchControl.hidden = true
-        self.switchControl = switchControl
-        self.contentView.addSubview(switchControl)
     }
     
     override func layoutSubviews() {
@@ -94,12 +106,6 @@ class FeedBaseTableViewCell: MaterialTableViewCell {
 
 extension FeedBaseTableViewCell : MaterialSwitchDelegate {
     func materialSwitchStateChanged(control: MaterialSwitch) {
-        if control.on {
-            feedModel.isFollowed = true
-        } else {
-            feedModel.isFollowed = false
-            
-        }
         
         tableCellDelegate?.baseTableViewCell(self, didChangedSwitchState: control.on, feed: feedModel)
     }

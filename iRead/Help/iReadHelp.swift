@@ -14,7 +14,12 @@ public struct iReadColor {
     public static let themeClearColor = UIColor.clearColor()
     public static let themeWhiteColor = UIColor(red: 247/255.0, green: 247/255.0, blue: 247/255.0, alpha: 1.0)
     public static let themeLightBlueColor = MaterialColor.blue.lighten3
-    public static let themeDarkBlueColor = MaterialColor.blue.darken4
+    public static let themeLightGrayColor = UIColor(red: 176/255.0, green: 190/255.0, blue: 197/255.0, alpha: 1.0)
+    
+    public static let themeLightBlackColor = UIColor(red: 46/255.0, green: 46/255.0, blue: 46/255.0, alpha: 1.0)
+    
+    public static let themeDarkBlueColor = UIColor(red: 2/255.0, green: 119/255.0, blue: 189/255.0, alpha: 1.0)
+    
     public static let themeRedColor = UIColor(red: 253/255.0, green: 91/255.0, blue: 107/255.0, alpha: 1.0)
     
     public static let themeBlackColor = UIColor(red: 25/255.0, green: 25/255.0, blue: 25/255.0, alpha: 1.0)
@@ -22,7 +27,7 @@ public struct iReadColor {
     public static let themeGrayColor = UIColor(red: 238/255.0, green: 238/255.0, blue: 238/255.0, alpha: 1.0)
     
     public static let themeDarkGrayColor = MaterialColor.grey.darken1
-    
+
     public static let themeLightWhiteColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
     
     public static func themeModelTinColor(dayColor dayColor: UIColor, nightColor: UIColor) -> UIColor {
@@ -72,12 +77,14 @@ enum iReadThemeMode: String {
 
 struct iReadTheme {
     static func getCurrentThemeMode() -> iReadThemeMode {
+        
         return NSUserDefaults.standardUserDefaults().boolForKey("NightMode") ? .NightMode : .DayMode
     }
     
     static func isNightMode() -> Bool {
-//        return true
-        return NSUserDefaults.standardUserDefaults().boolForKey("NightMode")
+//            return true
+            return NSUserDefaults.standardUserDefaults().boolForKey("NightMode")
+
     }
     static func changeThemeMode() {
         let mode = NSUserDefaults.standardUserDefaults().boolForKey("NightMode")

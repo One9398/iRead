@@ -10,49 +10,63 @@ import UIKit
 import Material
 import DZNEmptyDataSet
 
-protocol RecommendFeedProtocol {
-    var typeFeeds : [FeedItem]{get}
-}
-
-class RecommendBaseController: UIViewController, RecommendFeedProtocol {
+class RecommendBaseController: UIViewController {
     
     let tableView: UITableView = UITableView()
-    var cardView: RecommandCardView = RecommandCardView()
 
     var recommendView: RecommandCardView = RecommandCardView()
     
-    var feedProviders = Set<FeedModelsProvider>()
-    var feeds = FeedModel.loadLocalFeeds()
+    lazy var loadAcitivity: iReadLoadView = {
+        var  loadActivity = iReadLoadView(activityIndicatorStyle: .Default)
+        self.tableView.addSubview(loadActivity)
+        return loadActivity
+    }()
     
-    var initialDataSource: [FeedItem] = FeedResource.sharedResource.items
+    var feedProviders = Set<FeedModelsProvider>()
+    let feedResource = FeedResource.sharedResource
+    
+    // 指定类型的Model
+    var feeds: [FeedModel] {
+        let feeds = feedResource.fetchCurrentTypeFeeds(self.feedType)
+        return feeds
+    }
+    
+    // 指定类型的item
+    var items: [FeedItem] {
+        let tems = feedResource.fetchCurrentTypeFeedItems(self.feedType)
+        return tems
+    }
+
     var errorShow = false
     // MARK: - View Life Cycle ♻️
     private var feedType: FeedType = .Other
-    
-    var typeFeeds: [FeedItem] {
-        get {
-            
-            let feeds = FeedResource.sharedResource.items.filter{$0.feedType == feedType}
-            return feeds
-        }
-    }
     
     convenience init(feedType: FeedType) {
         self.init()
         self.feedType = feedType
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        prepareCardView()
+        
         prepareRecommendView()
         prepareTableView()
         prepareEmptyView()
         
 //        configureNotification()
-        
         loadData()
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
     }
     
@@ -72,7 +86,6 @@ class RecommendBaseController: UIViewController, RecommendFeedProtocol {
     // MARK: - Configure Data
     
     func configureNotification() {
-        
         
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: YZDisplayViewClickOrScrollDidFinshNote, object: self)
         
@@ -117,33 +130,46 @@ class RecommendBaseController: UIViewController, RecommendFeedProtocol {
         print("loadData")
         
         self.tableView.editing = false
-        feeds.removeAll()
         
+        if items.count == 0 {
+            self.noticeTop("当前类型没有资讯源~")
+        } else {
+            loadAcitivity.startAnimating()            
+        }
         // show HUD
         
-        for i in 0..<typeFeeds.count {
-            let feedItem = typeFeeds[i]
+        for i in 0..<items.count {
+            let feedItem = items[i]
           
             let provider = FeedModelsProvider(feedItem: feedItem, failure: {
                 error, message in
                 
                 print(" ♻️♻️♻️♻️♻️♻️ error happen \(message)")
+//                self.noticeError("加载错误...")
                 
                 }, completion: {
-                    feedModel in
+                    [unowned self] feedModel in
+                   
                     
-                    if let feedModel = feedModel {
-                        
-                        self.feeds.append(feedModel)
-                        
-                        print(feedModel)
-                        self.tableView.reloadData()
-                        if self.feeds.count == self.typeFeeds.count {
-                            // hide HUD
-                            print("\(self.feeds.count) items all fetch done   !!!!!x")
-                        }
-                        
+                    self.loadAcitivity.stopAnimating()
+                    
+                    guard let feedModel = feedModel else {
+                        assertionFailure("feedModel unaviablable")
+                        return
                     }
+                    
+                    self.feedResource.appendFeed(feedModel)
+                    
+                    print(feedModel)
+                   
+                    self.tableView.reloadData()
+                   
+                    if self.feeds.count == self.items.count {
+                            // hide HUD
+                        print("\(self.feeds.count) items all fetch done   !!!!!x")
+                   
+                    }
+                        
             })
 
             feedProviders.insert(provider)
@@ -161,33 +187,6 @@ class RecommendBaseController: UIViewController, RecommendFeedProtocol {
         view.addSubview(recommendView)
         
     }
-//    
-//    private func prepareCardView() {
-//        
-//        cardView.pulseColor = iReadColor.themeBlueColor
-//        cardView.backgroundColor = iReadColor.themeLightWhiteColor
-//        cardView.divider = false
-//        cardView.cornerRadiusPreset = .Radius1
-//        cardView.contentInsetPreset = .Square1
-//        cardView.leftButtonsInsetPreset = .Square1
-//        cardView.rightButtonsInsetPreset = .Square1
-//        cardView.depth = .Depth2
-//        cardView.detailView = tableView
-//        
-//        let refreshButton = BaseButton.createButton("icon_refresh_highlight", highlightImg: "icon_refresh_normal", target: self, action: "refreshButtonClicked:")
-//        cardView.leftButtons = [refreshButton]
-//        
-//        let plusButton = BaseButton.createButton("icon_add_highlight", highlightImg: "icon_add_normal", target: self, action: "plusButtonClicked:")
-//        let reduceButton = BaseButton.createButton("reduce_icon_highlight", highlightImg: "reduce_icon_noralma", target: self, action: "reduceButtonClicked:")
-//        
-//        cardView.rightButtons = [plusButton, reduceButton]
-//        
-//        cardView.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(cardView)
-//        
-//        MaterialLayout.alignToParent(view, child: cardView, left: 20, right: 20, top: 20, bottom: 64)
-//        
-//    }
     
     private func prepareTableView() {
         tableView.delegate = self
@@ -215,18 +214,14 @@ extension RecommendBaseController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return feeds.count
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(FeedBaseTableViewCell.self), forIndexPath: indexPath) as! FeedBaseTableViewCell
         cell.tableCellDelegate = self
-        
-        if feeds.count <= 0 {
-            
-        } else if (indexPath.row <= feeds.count - 1){
-            cell.updateContent(feeds[indexPath.row])
-        }
+        cell.updateContent(feeds[indexPath.row])
         
         return cell
     }
@@ -243,10 +238,9 @@ extension RecommendBaseController: UITableViewDelegate, UITableViewDataSource {
         
         print(indexPath.row)
         
-        let feed = feeds[indexPath.row]
-        FeedResource.sharedResource.removeFeed(feed.source)
+        let feed =  feeds[indexPath.row]
+        feedResource.removeFeed(feed)
         
-        feeds.removeAtIndex(indexPath.row)
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         
     }
@@ -261,6 +255,7 @@ extension RecommendBaseController: UITableViewDelegate, UITableViewDataSource {
             return
         }
         let feedListVC = FeedListController()
+        
         feedListVC.configureContent(feeds[indexPath.row])
         
         self.navigationController?.pushViewController(feedListVC, animated: true)
@@ -283,11 +278,14 @@ extension RecommendBaseController: UITableViewDelegate, UITableViewDataSource {
 extension RecommendBaseController : BaseTableViewCellDelegate {
     func baseTableViewCell(cell: FeedBaseTableViewCell, didChangedSwitchState state: Bool, feed: FeedModel) {
         
-        if state {
-            print("\(feed.title) 订阅成功")
-        } else {
-            print("\(feed.title) 订阅取消")
-        }
+        let infoMsg: String = state ? "\(feed.title) 订阅成功" : "\(feed.title) 订阅取消"
+        
+        self.noticeTop( infoMsg, autoClear: true, autoClearTime: 1)
+        
+        feed.isFollowed = !feed.isFollowed
+        feedResource.updateFeedState(feed)
+//        tableView.reloadData()
+        self.tableView.reloadRowsAtIndexPaths([tableView.indexPathForCell(cell)!], withRowAnimation: .None)
         
     }
 }
@@ -302,10 +300,12 @@ extension RecommendBaseController : RecommandCardViewDelegate {
         iReadAlert.showFeedInput(title: "RSS源添加", placeholder: "输入源地址", confirmTitle: "确认", dismissTitle: "返回", inViewController: self, withFinishedAction: { (text: String) -> Void in
             
             if text.hasPrefix("http://") || text.hasPrefix("https://") {
-                
+               
                 var isNew = true
+                
                 for i in 0..<self.feeds.count {
-                    if text.isEqualIgnoreCaseStirng(self.typeFeeds[i].feedURL) {
+                    
+                    if text.isEqualIgnoreCaseStirng(self.items[i].feedURL) {
                         iReadAlert.showErrorMessage(title: "提示", message: "该RSS源已存在App中", dismissTitle: "明白", inViewController: self)
                         isNew = false
                     }
@@ -318,21 +318,22 @@ extension RecommendBaseController : RecommandCardViewDelegate {
                     _ = FeedModelsProvider(feedItem: feedItem, failure: {
                         error in
                         
-                        
                         }, completion: {
                             feedModel in
                             
-                            if let feedModel = feedModel {
-                                
-                                self.feeds.append(feedModel)
-                                
-                                print(feedModel)
-                                self.tableView.reloadData()
-                                if self.feeds.count == self.typeFeeds.count {
+                            guard let feedModel = feedModel else { assertionFailure("feed unavibale") ; return }
+                            
+                            self.feedResource.appendFeed(feedModel)
+                            self.feedResource.appendFeedItem(feedItem)
+                           
+                            print(feedModel)
+                           
+                            self.tableView.reloadData()
+
+                            if self.feeds.count == self.items.count {
                                     // hide HUD
-                                    print("\(self.feeds.count) items all fetch done   !!!!!x")
-                                }
-                                
+                                print("item  fetch done   !!!!!x")
+                               
                             }
                     })
                     
@@ -346,17 +347,17 @@ extension RecommendBaseController : RecommandCardViewDelegate {
     }
     
     func recommandCardViewReducettonClicked(button: BaseButton) {
-        print("need delete")
         
         if feeds.count <= 0 {
+            print("no feed delete")
             return
         }
         
+        print("need delete")
         tableView.editing = !tableView.editing
     }
     
     func recommandCardViewRefreshButtonClicked(button: BaseButton) {
-        print(__FUNCTION__)
         loadData()
     }
 }

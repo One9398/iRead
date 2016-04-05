@@ -28,8 +28,8 @@ class RecommandCardView: BaseCardView {
        
         self.init(frame: CGRectNull)
         
-        self.pulseColor = iReadColor.themeBlueColor
-        self.backgroundColor = iReadColor.themeLightWhiteColor
+        self.pulseColor = nil
+        self.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
         self.divider = false
         self.cornerRadiusPreset = .Radius1
         self.contentInsetPreset = .Square1
@@ -37,6 +37,7 @@ class RecommandCardView: BaseCardView {
         self.rightButtonsInsetPreset = .Square1
         self.depth = .Depth2
         self.detailView = detailView
+        self.detailView?.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
         
         let refreshButton = BaseButton.createButton("icon_refresh_highlight", highlightImg: "icon_refresh_normal", target: self, action: "refreshButtonClicked:")
         self.leftButtons = [refreshButton]
@@ -46,7 +47,6 @@ class RecommandCardView: BaseCardView {
         
         self.rightButtons = [plusButton, reduceButton]
     }
-    
 
     override func layoutSubviews() {
         super.layoutSubviews()

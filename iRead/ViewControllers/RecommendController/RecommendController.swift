@@ -12,7 +12,8 @@ import Material
 class RecommendController: YZDisplayViewController {
     
     lazy var headerBackgroundView: UIImageView = {
-        let headerBgImageView = UIImageView(image: UIImage(named: "header_bg_recommand"))
+        let imageName = iReadTheme.isNightMode() ? "header_nightbg_recommand" : "header_bg_recommand"
+        let headerBgImageView = UIImageView(image: UIImage(named: imageName))
         
         headerBgImageView.backgroundColor = UIColor(red: 66/255.0, green: 190/255.0, blue: 252/255.0, alpha: 1.0)
         headerBgImageView.layer.shadowColor = UIColor(red: 31/255.0, green: 31/255.0, blue: 31/255.0, alpha: 1.0).CGColor
@@ -30,7 +31,7 @@ class RecommendController: YZDisplayViewController {
         
         prepareForNavigationBar()
         prepareForHeaderView()
-        
+        prepareForView()
         configureChildViewControllers()
         
     }
@@ -58,6 +59,10 @@ class RecommendController: YZDisplayViewController {
         
         navigationController!.navigationBar.shadowImage = UIImage()
         
+    }
+    
+    private func prepareForView() {
+        view.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlackColor)
     }
     
     private func prepareForHeaderView() {

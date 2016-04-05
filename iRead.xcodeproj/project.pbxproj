@@ -45,11 +45,14 @@
 		F44DE8F21C92BEEE008617E6 /* feeds.plist in Resources */ = {isa = PBXBuildFile; fileRef = F44DE8F11C92BEEE008617E6 /* feeds.plist */; };
 		F44DE8F61C92C21F008617E6 /* feedResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44DE8F51C92C21F008617E6 /* feedResource.swift */; };
 		F45344291C982647008378DC /* FeedListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45344281C982647008378DC /* FeedListController.swift */; };
+		F47085CC1CACAE10000F119B /* iReadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47085CB1CACAE10000F119B /* iReadExtension.swift */; };
 		F476FAFF1CA8BC9A00A77F16 /* RecommandCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F476FAFE1CA8BC9A00A77F16 /* RecommandCardView.swift */; };
 		F47B0C0B1CA56E3D00086B50 /* FavoriteFeedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B0C0A1CA56E3D00086B50 /* FavoriteFeedsController.swift */; };
 		F47CF65C1C9E755700808CCA /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CF65B1C9E755700808CCA /* ArticleView.swift */; };
 		F48048781C9817A800392827 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F48048771C9817A800392827 /* Assets.xcassets */; };
 		F480C3C71CA1900C00D11BD3 /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F480C3C61CA1900C00D11BD3 /* ActionView.swift */; };
+		F48693F11CA91DDD00FE900B /* SubFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48693F01CA91DDD00FE900B /* SubFeedCell.swift */; };
+		F48693F41CA924CD00FE900B /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48693F31CA924CD00FE900B /* SwiftNotice.swift */; };
 		F48FE2EE1CA2198500A190AD /* BaseSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48FE2ED1CA2198500A190AD /* BaseSwitch.swift */; };
 		F4914D501C8EA41300C32743 /* RecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4914D4F1C8EA41300C32743 /* RecommendController.swift */; };
 		F4914D581C8EA71F00C32743 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4914D571C8EA71F00C32743 /* NotesViewController.swift */; };
@@ -76,6 +79,8 @@
 		F4D1F1661CA3C81800AC056E /* ArticleTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D1F1651CA3C81800AC056E /* ArticleTopBar.xib */; };
 		F4D1F1681CA3CDDF00AC056E /* ArtileTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D1F1671CA3CDDF00AC056E /* ArtileTopBar.swift */; };
 		F4D8648E1CA249EF00B13997 /* iReadDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D8648D1CA249EF00B13997 /* iReadDateFormatter.swift */; };
+		F4E8B6C51CAACC230008C6B4 /* BaseRefreshLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8B6C41CAACC230008C6B4 /* BaseRefreshLoader.swift */; };
+		F4E8B6C81CAB5C5C0008C6B4 /* MaterialLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8B6C71CAB5C5C0008C6B4 /* MaterialLoader.swift */; };
 		FF912B13B8E5D3EBCD95A130 /* Pods_iRead.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB6339B9D2227A18D1E98EA /* Pods_iRead.framework */; };
 /* End PBXBuildFile section */
 
@@ -153,11 +158,14 @@
 		F44DE8F11C92BEEE008617E6 /* feeds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = feeds.plist; sourceTree = "<group>"; };
 		F44DE8F51C92C21F008617E6 /* feedResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedResource.swift; sourceTree = "<group>"; };
 		F45344281C982647008378DC /* FeedListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedListController.swift; path = FeedListController/FeedListController.swift; sourceTree = "<group>"; };
+		F47085CB1CACAE10000F119B /* iReadExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadExtension.swift; sourceTree = "<group>"; };
 		F476FAFE1CA8BC9A00A77F16 /* RecommandCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommandCardView.swift; sourceTree = "<group>"; };
 		F47B0C0A1CA56E3D00086B50 /* FavoriteFeedsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFeedsController.swift; sourceTree = "<group>"; };
 		F47CF65B1C9E755700808CCA /* ArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		F48048771C9817A800392827 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F480C3C61CA1900C00D11BD3 /* ActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
+		F48693F01CA91DDD00FE900B /* SubFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubFeedCell.swift; path = SubFeedCell/SubFeedCell.swift; sourceTree = "<group>"; };
+		F48693F31CA924CD00FE900B /* SwiftNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
 		F48FE2ED1CA2198500A190AD /* BaseSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSwitch.swift; sourceTree = "<group>"; };
 		F4914D4F1C8EA41300C32743 /* RecommendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendController.swift; sourceTree = "<group>"; };
 		F4914D571C8EA71F00C32743 /* NotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +205,8 @@
 		F4D1F1651CA3C81800AC056E /* ArticleTopBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleTopBar.xib; sourceTree = "<group>"; };
 		F4D1F1671CA3CDDF00AC056E /* ArtileTopBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtileTopBar.swift; sourceTree = "<group>"; };
 		F4D8648D1CA249EF00B13997 /* iReadDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadDateFormatter.swift; sourceTree = "<group>"; };
+		F4E8B6C41CAACC230008C6B4 /* BaseRefreshLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRefreshLoader.swift; sourceTree = "<group>"; };
+		F4E8B6C71CAB5C5C0008C6B4 /* MaterialLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +268,8 @@
 		F40C021C1C90025800CB3646 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				F4E8B6C11CAACA810008C6B4 /* RefreshLoad */,
+				F48693F21CA924C100FE900B /* SimpleHUD */,
 				F44B0B6C1CA54AD900DDE1E9 /* Loader */,
 				F4120AB81C9AAAB100B86DE3 /* DateTranslation */,
 				F40C021D1C90028B00CB3646 /* YZDisplayViewController */,
@@ -378,6 +390,7 @@
 		F4181E371C86C68E00E41FBA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F48693EF1CA91D2700FE900B /* SubFeedCell */,
 				F476FAFD1CA8BC5E00A77F16 /* RecommendCardView */,
 				F44B0B721CA54B7A00DDE1E9 /* LoadView */,
 				F44B0B691CA5377C00DDE1E9 /* FeedsTitleView */,
@@ -391,6 +404,7 @@
 				F42A63641C9A8E0C0099CB7A /* BaseCardView.swift */,
 				F48FE2ED1CA2198500A190AD /* BaseSwitch.swift */,
 				F431A5841CA6B8DC007589E9 /* FeedBaseTableViewCell.swift */,
+				F4E8B6C41CAACC230008C6B4 /* BaseRefreshLoader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -471,6 +485,22 @@
 			path = MenuView;
 			sourceTree = "<group>";
 		};
+		F48693EF1CA91D2700FE900B /* SubFeedCell */ = {
+			isa = PBXGroup;
+			children = (
+				F48693F01CA91DDD00FE900B /* SubFeedCell.swift */,
+			);
+			name = SubFeedCell;
+			sourceTree = "<group>";
+		};
+		F48693F21CA924C100FE900B /* SimpleHUD */ = {
+			isa = PBXGroup;
+			children = (
+				F48693F31CA924CD00FE900B /* SwiftNotice.swift */,
+			);
+			name = SimpleHUD;
+			sourceTree = "<group>";
+		};
 		F4914D4D1C8EA18900C32743 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -517,6 +547,7 @@
 			isa = PBXGroup;
 			children = (
 				F42E98601C927F2100A1E602 /* iReadString.swift */,
+				F47085CB1CACAE10000F119B /* iReadExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -601,6 +632,14 @@
 				F4D1F1671CA3CDDF00AC056E /* ArtileTopBar.swift */,
 			);
 			path = ArticleTopBar;
+			sourceTree = "<group>";
+		};
+		F4E8B6C11CAACA810008C6B4 /* RefreshLoad */ = {
+			isa = PBXGroup;
+			children = (
+				F4E8B6C71CAB5C5C0008C6B4 /* MaterialLoader.swift */,
+			);
+			name = RefreshLoad;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -806,14 +845,18 @@
 				F480C3C71CA1900C00D11BD3 /* ActionView.swift in Sources */,
 				F42E98551C92689100A1E602 /* iReadNetwork.swift in Sources */,
 				F42E98521C92601400A1E602 /* FeedModel.swift in Sources */,
+				F4E8B6C81CAB5C5C0008C6B4 /* MaterialLoader.swift in Sources */,
 				F42C03381C9A4E6900B27F45 /* BaseCollectionViewCell.swift in Sources */,
 				F45344291C982647008378DC /* FeedListController.swift in Sources */,
+				F47085CC1CACAE10000F119B /* iReadExtension.swift in Sources */,
 				F49208341CA2C3B200F889FA /* ImageModel.swift in Sources */,
 				F4914D501C8EA41300C32743 /* RecommendController.swift in Sources */,
 				F4C09FF11C8EDD09005ED771 /* RootNavigationController.swift in Sources */,
 				F44DE8F61C92C21F008617E6 /* feedResource.swift in Sources */,
 				F4D1F15E1CA3A11200AC056E /* iReadUserManager.swift in Sources */,
+				F4E8B6C51CAACC230008C6B4 /* BaseRefreshLoader.swift in Sources */,
 				F49A8D3C1C9C392C004553DD /* iReadConstant.swift in Sources */,
+				F48693F41CA924CD00FE900B /* SwiftNotice.swift in Sources */,
 				F42E985B1C9276D100A1E602 /* FeedFetchOperation.swift in Sources */,
 				F42E98571C92720900A1E602 /* FeedManager.swift in Sources */,
 				F431A5811CA62FB9007589E9 /* RecommendBaseController.swift in Sources */,
@@ -831,6 +874,7 @@
 				F42C03361C9A4B9000B27F45 /* BaseCollectionView.swift in Sources */,
 				F4C09FF61C8EDFB4005ED771 /* iReadHelp.swift in Sources */,
 				F4A3918E1C97CEE8006DE0A8 /* iReadAlert.swift in Sources */,
+				F48693F11CA91DDD00FE900B /* SubFeedCell.swift in Sources */,
 				F47B0C0B1CA56E3D00086B50 /* FavoriteFeedsController.swift in Sources */,
 				F445DD8A1C9BA68600B4DA71 /* ArticleViewController.swift in Sources */,
 				F431A5851CA6B8DC007589E9 /* FeedBaseTableViewCell.swift in Sources */,

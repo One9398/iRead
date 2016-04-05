@@ -130,18 +130,21 @@ extension FeedParseOperation {
         
         let title = fetchStringWithElement(feedElement, tagName: "title")
         let description = fetchStringWithElement(feedElement, tagName: "subtitle")
-
+        let lastDate = fetchStringWithElement(feedElement, tagName: "updated")
+       
         let linkEle = feedElement.childrenWithTag("link").last as! ONOXMLElement
         let link = linkEle["href"] as! String
         
         let imageURL = fetchStringWithElement(feedElement, XPath: "//url[1]")
         let authorEle = feedElement.childrenWithTag("author").last as! ONOXMLElement
         let author = fetchStringWithElement(authorEle, tagName: "name")
+
         
         feedModel.title = title
         feedModel.description = description
         feedModel.link = link
         feedModel.imagURL = imageURL
+        feedModel.lastDate = lastDate
         
         let entries = feedElement.childrenWithTag("entry") as! [ONOXMLElement]
         
@@ -220,8 +223,10 @@ extension FeedParseOperation {
         let link = fetchStringWithElement(channelElement, tagName: "link")
         let description = fetchStringWithElement(channelElement, tagName: "description")
         let imageURL = fetchStringWithElement(channelElement, XPath: "//url[1]")
-        
+        let lastDate = fetchStringWithElement(channelElement, tagName: "lastBuildDate").usePlaceholdStringWhileIsEmpty(fetchStringWithElement(channelElement, tagName: "pubDate"))
+
         feedModel.title = title
+        feedModel.lastDate = lastDate
         feedModel.description = description
         feedModel.link = link
         feedModel.imagURL = imageURL

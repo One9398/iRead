@@ -11,6 +11,8 @@ import Material
 
 protocol BaseCollectionViewCellProtocol: NSObjectProtocol {
     func baseCollectionViewCellSharedActionDidHandle(cell: BaseCollectionViewCell, item: FeedItemModel?)
+
+    func baseCollectionViewCellReadActionDidHandle(cell: BaseCollectionViewCell, item: FeedItemModel?)
     
 }
 
@@ -21,6 +23,9 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
     var timeButton: FlatButton?
     var authorButton: FlatButton?
     var categoryButton: FlatButton?
+    var shareButton : FlatButton?
+    var readButton : FlatButton?
+    
     weak var actionDelegate: BaseCollectionViewCellProtocol?
     var item: FeedItemModel?
     
@@ -109,20 +114,27 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
         timeButton?.imageEdgeInsets = UIEdgeInsetsMake(0, -8, 0, 8)
         timeButton?.titleEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0)
         
-        let shareBtn = configureActionButton(self, action: "sharedActionHandle:")
-        card!.rightButtons = [shareBtn]
+        let shareBtn = configureActionButton("icon_share_normal", highlightImage: "icon_share_highlight", target: self, action: "sharedActionHandle:")
+        shareBtn.translatesAutoresizingMaskIntoConstraints = false
+        self.shareButton = shareBtn
+        let readBtn = configureActionButton("icon_share_highlight", highlightImage: "icon_share_normal", target: self, action: "readActionHandle:")
+        readBtn.translatesAutoresizingMaskIntoConstraints = false
+        self.readButton = readBtn
         
+        self.contentView.addSubview(readBtn)
+        self.contentView.addSubview(shareBtn)
     }
     
     //MARK: - Configure Data
     
-    private func configureActionButton(target: AnyObject?, action: Selector) -> FlatButton {
+    private func configureActionButton(normalImage: String, highlightImage: String, target: AnyObject?, action: Selector) -> FlatButton {
         let actionBtn = FlatButton()
-        actionBtn.setImage(UIImage(named: "icon_share_normal"), forState: .Normal)
-        actionBtn.setImage(UIImage(named: "icon_share_highlight"), forState: .Highlighted)
+        actionBtn.setImage(UIImage(named: normalImage), forState: .Normal)
+        actionBtn.setImage(UIImage(named: highlightImage), forState: .Highlighted)
+        actionBtn.setImage(UIImage(named: highlightImage), forState: .Selected)
         actionBtn.pulseColor = iReadColor.themeDarkBlueColor
-        
         actionBtn.addTarget(target, action: action, forControlEvents: .TouchUpInside)
+        actionBtn.contentEdgeInsetsPreset = .WideRectangle1        
         
         return actionBtn
     }
@@ -139,6 +151,25 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
 //        btn.setContentHuggingPriority(1000, forAxis: .Vertical)
         
         return btn
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        shareButton?.snp_makeConstraints(closure: {
+            make in
+            make.right.equalTo(self.contentView).offset(-5)
+            make.bottom.equalTo(self.contentView).offset(-5)
+            
+        })
+        
+        readButton?.snp_makeConstraints(closure: {
+            make in
+            make.right.equalTo(self.contentView).offset(-5)
+            make.top.equalTo(self.contentView).offset(5)
+            
+        })
+        
     }
     
     func updateContent(model: FeedItemModel?) {
@@ -177,6 +208,11 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
     // MARK: - Handle Event
     func sharedActionHandle(btn: FlatButton) {
         self.actionDelegate?.baseCollectionViewCellSharedActionDidHandle(self, item: item)
+    }
+    
+    func readActionHandle(btn: FlatButton) {
+        btn.selected = !btn.selected
+        self.actionDelegate?.baseCollectionViewCellReadActionDidHandle(self, item: item)
     }
 }
 

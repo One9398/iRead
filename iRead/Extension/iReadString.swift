@@ -15,5 +15,7 @@ extension String {
     
     func usePlaceholdStringWhileIsEmpty(string: String) -> String {
         return (self == "") ? string : self
+        
     }
 }
+

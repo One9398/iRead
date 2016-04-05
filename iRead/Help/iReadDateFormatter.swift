@@ -33,8 +33,11 @@ class iReadDateFormatter: NSDateFormatter {
             
             if string.containsString("-") {
                 date = NSDate(fromRFC3339String:string)
-                
-                dateString = self.stringFromDate(date!)
+                if date != nil {
+                    dateString = self.stringFromDate(date!)
+                } else {
+                    dateString = ""
+                }
                 
             } else {
                 date = NSDate(fromRFC822String: string)

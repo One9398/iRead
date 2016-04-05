@@ -21,12 +21,16 @@ class BaseButton: FlatButton {
     
     class func createButton(normalImg: String, highlightImg: String,  target: AnyObject, action: Selector) -> BaseButton {
         let button = BaseButton(frame: CGRectZero)
+
+        let imageBtn = iReadTheme.isNightMode() ? highlightImg : normalImg
         
-            button.setImage(UIImage(named: normalImg), forState: .Normal)
-            button.setImage(UIImage(named: highlightImg), forState: .Highlighted)
-            button.pulseScale = false
-            button.pulseColor = iReadColor.themeLightBlueColor
-            button.addTarget(target, action: action, forControlEvents: .TouchDown)
+        button.setImage(UIImage(named: imageBtn), forState: .Normal)
+        button.setImage(UIImage(named: highlightImg), forState: .Highlighted)
+        button.pulseScale = false
+        
+        button.pulseColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlueColor, nightColor: iReadColor.themeLightWhiteColor)
+        
+        button.addTarget(target, action: action, forControlEvents: .TouchDown)
         
         return button
     }

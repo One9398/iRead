@@ -14,7 +14,7 @@ class FeedModel: CustomDebugStringConvertible {
     var description = ""
     var imagURL = ""
     var items = [FeedItemModel]?()
-    
+    var lastDate = ""    
     var index = 0
     
     var source = ""

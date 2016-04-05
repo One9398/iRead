@@ -14,12 +14,19 @@ class FeedsViewController: UIViewController {
 
     private var feedsTitleView: FeedsTitleView?
     private let tableView: UITableView = UITableView()
+    private var feedResource = FeedResource.sharedResource
     private var subscribeFeeds: [FeedModel] {
-        get {
-            return FeedManager.currentSubscribedFeeds
-        }
+        let feeds = feedResource.fetchCurrentSubscribedFeeds()
+        return feeds
     }
-   
+    private var subscribeItems: [FeedItem] {
+        let items = feedResource.fetchCurrentSubscribedItems()
+        return items
+    }
+    
+    private var feedProviders = Set<FeedModelsProvider>()
+    
+    
     // MARK: - View Life Cycle ♻️
 
     override func viewDidLoad() {
@@ -29,7 +36,17 @@ class FeedsViewController: UIViewController {
         prepareForNavigationBar()
         prepareForEmptyView()
         prepareForTableView()
-        
+        prepareForRefreshView()
+        loadData()
+    }
+   
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,13 +63,15 @@ class FeedsViewController: UIViewController {
         self.navigationItem.titleView = feedsTitleView
         
         navigationController!.navigationBar.setBackgroundImage(UIImage(named: iReadTheme.isNightMode() ? "navigationbar_nightbg_recommand" : "navigationbar_bg_recommand"), forBarMetrics: .Default)
-        navigationController!.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     private func prepareForTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerClass(FeedBaseTableViewCell.self, forCellReuseIdentifier: NSStringFromClass(FeedBaseTableViewCell.self))
+        tableView.registerClass(SubFeedCell.self, forCellReuseIdentifier: NSStringFromClass(SubFeedCell.self))
+        tableView.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
+        
         tableView.tableFooterView = UIView()
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .None
@@ -64,9 +83,67 @@ class FeedsViewController: UIViewController {
         
     }
     
+    private func prepareForRefreshView() {
+//        self.automaticallyAdjustsScrollViewInsets = false
+//        self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
+        
+        BaseRefreshLoader.addRefreshHeader(tableView, action: {
+            print("loading")
+            delayTaskExectuing(3.0, block: {
+                self.tableView.endRefreshing()
+            })
+        })
+    }
+    
     private func prepareForEmptyView() {
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
+    }
+    
+    // MARK : Configure Data
+    
+    func loadData() {
+        print("loadData")
+        
+//        subscribeFeeds.removeAll()
+        
+        // show HUD
+        
+        for i in 0..<subscribeItems .count {
+            let feedItem = subscribeItems[i]
+            
+            let provider = FeedModelsProvider(feedItem: feedItem, failure: {
+                error, message in
+                
+                print(" ♻️♻️♻️♻️♻️♻️ error happen \(message)")
+
+//                self.noticeError("加载错误...")
+                
+                }, completion: {
+                    [unowned self] feedModel in
+                    guard let feedModel = feedModel else {
+                        assertionFailure("feedModel unaviablable")
+                        return
+                    }
+                    
+                    self.feedResource.appendFeed(feedModel)
+                    
+                    print(feedModel)
+                   
+                    self.tableView.reloadData()
+                   
+//                    if self.subscribeFeeds.count == self.subscribeItems.count {
+//                            // hide HUD
+//                        print("\(self.subscribeFeeds.count) items all fetch done   !!!!!x")
+//                        
+//                    }
+                    
+            })
+            
+            feedProviders.insert(provider)
+            
+        }
+        
     }
     
 }
@@ -83,8 +160,9 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(ITNewsTableViewCell.self), forIndexPath: indexPath) as! ITNewsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(SubFeedCell.self), forIndexPath: indexPath) as! SubFeedCell
         cell.tableCellDelegate = self
+        cell.updateContent(subscribeFeeds[indexPath.row])
         
         return cell
     }
@@ -93,26 +171,10 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate {
         return 80
     }
     
-    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return .Delete
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        print(indexPath.row)
-        
-//        let feed = feeds[indexPath.row]
-//        initialDataSource =  initialDataSource.filter{ $0.feedURL != feed.source }
-        
-//        feeds.removeAtIndex(indexPath.row)
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        
-    }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("selected \(indexPath.row)")
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! FeedBaseTableViewCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! SubFeedCell
         
         print(cell.textLabel?.text)
         
@@ -120,7 +182,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate {
             return
         }
         let feedListVC = FeedListController()
-//        feedListVC.configureContent(feeds[indexPath.row])
+        feedListVC.configureContent(subscribeFeeds[indexPath.row])
         
         self.navigationController?.pushViewController(feedListVC, animated: true)
         
@@ -142,10 +204,32 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate {
 extension FeedsViewController : BaseTableViewCellDelegate {
     func baseTableViewCell(cell: FeedBaseTableViewCell, didChangedSwitchState state: Bool, feed: FeedModel) {
         
-        if state {
-            print("\(feed.title) 订阅成功")
-        } else {
+        if !state {
             print("\(feed.title) 订阅取消")
+            
+
+            feed.isFollowed = !feed.isFollowed
+            
+            if let indexPath =  tableView.indexPathForCell(cell) {
+            // 数组移除
+               
+                feedResource.updateFeedState(feed)
+//                FeedResource.sharedResource.removeSubscribeItem(feed.source)
+//                subscribeFeeds.removeAtIndex(indexPath.row)
+                
+                // reload一下
+                tableView.reloadData()
+                
+            }
+           
+            // TODO
+            // 更新其他界面数据
+            
+            // 更新本地远程数据
+            
+            //HUD显示
+            self.noticeTop("\(feed.title) 订阅取消", autoClear: true, autoClearTime: 1)
+            
         }
         
     }
@@ -184,11 +268,11 @@ extension FeedsViewController : DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
     }
     
     func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
-        return -10
+        return iReadConstant.EmptyView.verticalOffset
     }
     
     func spaceHeightForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
-        return 20
+        return iReadConstant.EmptyView.spaceHeight
     }
     
     func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {

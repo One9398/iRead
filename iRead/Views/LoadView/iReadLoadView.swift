@@ -10,14 +10,9 @@ import UIKit
 
 class iReadLoadView: PCAngularActivityIndicatorView {
 
-//    convenience init() {
-//        
-//        self.init(activityIndicatorStyle: iReadHelp.currentDeviceIsPhone() ? .Default : .Large)
-//
-//    }
-    
     override init!(activityIndicatorStyle style: PCAngularActivityIndicatorViewStyle) {
-        super.init(activityIndicatorStyle: style)
+        
+        super.init(activityIndicatorStyle: iReadHelp.currentDeviceIsPhone() ? .Default : .Large)
         
         self.color = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlueColor, nightColor: iReadColor.themeLightBlueColor)
     }
@@ -28,7 +23,11 @@ class iReadLoadView: PCAngularActivityIndicatorView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.snp_makeConstraints(closure: {
+            make in
+            make.center.equalTo(self.superview!.snp_center)
+        })
     }
     
     func showLoadingDuration(duration: NSTimeInterval) {

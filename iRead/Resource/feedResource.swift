@@ -15,6 +15,15 @@ enum FeedType: String {
 class FeedResource  {
     static let sharedResource = FeedResource()
     var items = [FeedItem]()
+    var subscribeItems : [FeedItem] {
+        return items.filter{ $0.isSub == true }
+    }
+    
+    var feeds = [FeedModel]()
+    var subscirbeFeeds: [FeedModel] {
+        return feeds.filter{ $0.isFollowed == true }
+    }
+
     
     init() {
         
@@ -25,27 +34,84 @@ class FeedResource  {
             
             let feedItem = FeedItem(feedURL: item["feedURL"] as! String, feedType: FeedType(rawValue: item["feedType"] as! String)!, isSub: item["isSub"] as! Bool)
             items.append(feedItem)
+//            subscribeItems = items.filter{ $0.isSub == true }
+            
         }
         
     }
     
-    func appendFeed(feedURL: String, feedType: FeedType, isSub: Bool) {
-        
-        let feedItem = FeedItem(feedURL: feedURL, feedType: feedType, isSub: isSub)
-        
-        items.append(feedItem)
+    func fetchCurrentTypeFeedItems(type: FeedType) -> [FeedItem] {
+        return items.filter({ $0.feedType == type })
     }
     
-    func removeFeed(feedURL: String) {
+    func fetchCurrentTypeFeeds(type: FeedType) -> [FeedModel] {
+        return feeds.filter({ $0.feedType == type })
+    }
+    
+    func fetchCurrentSubscribedFeeds() -> [FeedModel] {
+        return feeds.filter{ $0.isFollowed == true }
+    }
+    
+    func fetchCurrentSubscribedItems() -> [FeedItem] {
+        return items.filter{ $0.isSub == true }
+    }
+    
+    func appendFeed(feed: FeedModel) {
+        if let index = feeds.indexOf(feed) {
+            feeds[index] = feed
+        } else {
+            feeds.append(feed)
+        }
+    }
+    
+    func appendFeedItem(item: FeedItem) {
+        items.append(item)
+    }
+    
+    func removeFeed(feed: FeedModel) {
+        
+        guard let index = feeds.indexOf(feed) else { assertionFailure("remove feed not exist") ; return }
+        feeds.removeAtIndex(index)
+
+        guard let indexItem = items.indexOf({ item in  item.feedURL == feed.source }) else { assertionFailure("remove item not exist") ; return }
+        items.removeAtIndex(indexItem)
+       
+    }
+    
+    func updateFeedState(feed: FeedModel) {
+        
+//        feed.isFollowed = !feed.isFollowed
+        
+        print("\(feed.title) + \(feed.isFollowed)")
+        
+        guard let index = feeds.indexOf(feed) else { assertionFailure("update feed not exist") ; return }
+        feeds[index].isFollowed = feed.isFollowed
+        
+        guard let indexItem =  items.indexOf({ item in  item.feedURL == feed.source }) else { assertionFailure("update feed not exist") ; return }
+        items[indexItem].isSub = feed.isFollowed
+        
+    }
+    
+    func removeAllFeed() {
+        feeds.removeAll()
+    }
+
+    func removeFeedItem(feedURL: String) {
         items =  items.filter{ $0.feedURL != feedURL }
+    }
+    
+    func appendSubscribeItem(feedItem: FeedItem) {
+    }
+    
+    func removeSubscribeItem(feedURL: String) {
     }
     
 }
 
-struct FeedItem {
+class FeedItem {
     let feedURL: String
     let feedType: FeedType
-    let isSub: Bool
+    var isSub: Bool
     
     init(feedURL: String, feedType: FeedType, isSub: Bool) {
         self.feedType = feedType
