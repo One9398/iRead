@@ -18,7 +18,8 @@ class FeedBaseTableViewCell: MaterialTableViewCell {
     
     var feedModel: FeedModel = FeedModel()
     var switchControl: BaseSwitch?
-
+    var autoSwitch = false
+    
     weak var tableCellDelegate : BaseTableViewCellDelegate?
     
     convenience init(feedModel: FeedModel) {
@@ -67,11 +68,14 @@ class FeedBaseTableViewCell: MaterialTableViewCell {
             
         } else {
 
-            switchControl!.removeFromSuperview()
-            switchControl = BaseSwitch.createSwitch(iReadTheme.isNightMode() ? .NightMode : .DayMode, isOn: feedModel.isFollowed)
-            switchControl!.delegate = self
-            self.contentView.addSubview(switchControl!)
-            
+//            switchControl!.removeFromSuperview()
+//            switchControl = BaseSwitch.createSwitch(iReadTheme.isNightMode() ? .NightMode : .DayMode, isOn: feedModel.isFollowed)
+//            switchControl!.delegate = self
+//            self.contentView.addSubview(switchControl!)
+            switchControl?.setSwitchState(feedModel.isFollowed  ? .On : .Off, animated: false, completion: {
+                control in
+                self.autoSwitch = true
+            })
         }
 
         
@@ -106,8 +110,15 @@ class FeedBaseTableViewCell: MaterialTableViewCell {
 
 extension FeedBaseTableViewCell : MaterialSwitchDelegate {
     func materialSwitchStateChanged(control: MaterialSwitch) {
+        print("update switch delegate")
         
-        tableCellDelegate?.baseTableViewCell(self, didChangedSwitchState: control.on, feed: feedModel)
+        // 当订阅界面cell的switch改变,执行当前回调事件,只更新推荐页相应cell的UI,不重复调用回调事件
+        if !autoSwitch {
+            tableCellDelegate?.baseTableViewCell(self, didChangedSwitchState: control.on, feed: feedModel)
+        } else {
+            autoSwitch = false
+        }
+
     }
     
 }

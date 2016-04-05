@@ -60,12 +60,14 @@ class FeedResource  {
         if let index = feeds.indexOf(feed) {
             feeds[index] = feed
         } else {
-            feeds.append(feed)
+//            feeds.append(feed)
+            feeds.insert(feed, atIndex: 0)
         }
     }
     
     func appendFeedItem(item: FeedItem) {
-        items.append(item)
+//        items.append(item)
+        items.insert(item, atIndex: 0)
     }
     
     func removeFeed(feed: FeedModel) {
@@ -81,7 +83,6 @@ class FeedResource  {
     func updateFeedState(feed: FeedModel) {
         
 //        feed.isFollowed = !feed.isFollowed
-        
         print("\(feed.title) + \(feed.isFollowed)")
         
         guard let index = feeds.indexOf(feed) else { assertionFailure("update feed not exist") ; return }

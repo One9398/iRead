@@ -285,7 +285,6 @@ extension RecommendBaseController : BaseTableViewCellDelegate {
         feed.isFollowed = !feed.isFollowed
         feedResource.updateFeedState(feed)
 //        tableView.reloadData()
-        self.tableView.reloadRowsAtIndexPaths([tableView.indexPathForCell(cell)!], withRowAnimation: .None)
         
     }
 }

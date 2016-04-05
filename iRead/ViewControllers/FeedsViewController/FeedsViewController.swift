@@ -128,7 +128,7 @@ class FeedsViewController: UIViewController {
                     
                     self.feedResource.appendFeed(feedModel)
                     
-                    print(feedModel)
+//                    print(feedModel)
                    
                     self.tableView.reloadData()
                    
@@ -212,19 +212,18 @@ extension FeedsViewController : BaseTableViewCellDelegate {
             
             if let indexPath =  tableView.indexPathForCell(cell) {
             // 数组移除
-               
                 feedResource.updateFeedState(feed)
 //                FeedResource.sharedResource.removeSubscribeItem(feed.source)
 //                subscribeFeeds.removeAtIndex(indexPath.row)
                 
-                // reload一下
-                tableView.reloadData()
+                // 切换成非订阅,删除该Cell
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
                 
             }
            
-            // TODO
             // 更新其他界面数据
             
+            // TODO
             // 更新本地远程数据
             
             //HUD显示
