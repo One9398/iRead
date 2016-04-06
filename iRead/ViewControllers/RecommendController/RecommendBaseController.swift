@@ -145,8 +145,8 @@ class RecommendBaseController: UIViewController {
                 error, message in
                 
                 print(" ♻️♻️♻️♻️♻️♻️ error happen \(message)")
-//                self.noticeError("加载错误...")
-                
+                //                self.noticeError("加载错误...")                
+                self.loadAcitivity.stopAnimating()
                 }, completion: {
                     [unowned self] feedModel in
                    
@@ -169,7 +169,7 @@ class RecommendBaseController: UIViewController {
                         print("\(self.feeds.count) items all fetch done   !!!!!x")
                    
                     }
-                        
+                    
             })
 
             feedProviders.insert(provider)

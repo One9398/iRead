@@ -72,7 +72,7 @@ class FeedListController: UIViewController {
     
     private func prepareForView() {
         
-        view.backgroundColor = iReadColor.themeWhiteColor
+        view.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeWhiteColor, nightColor: iReadColor.themeLightBlackColor)
     }
 
     // MARK: - Configure Date 

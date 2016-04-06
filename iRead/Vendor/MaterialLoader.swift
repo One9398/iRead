@@ -14,13 +14,13 @@ private let containerRatio: CGFloat = 2
 private let scrollViewLoadingHeight: CGFloat = 100
 
 public class MaterialLoader: UIView {
-     let loaderLayer = CAShapeLayer()
+    private let loaderLayer = CAShapeLayer()
     
     private var lineWidth: CGFloat {
         return radius / 10
     }
     
-    override init(frame: CGRect) {
+    override private init(frame: CGRect) {
         super.init(frame: frame)
         
         commonInit()
@@ -49,7 +49,7 @@ public class MaterialLoader: UIView {
         layer.addSublayer(shadowLayer)
         
         let containerView = UIView()
-        containerView.backgroundColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeDarkGrayColor)
+        containerView.backgroundColor = .whiteColor()
         containerView.frame = CGRect(
             x: 0,
             y: 0,
@@ -67,8 +67,7 @@ public class MaterialLoader: UIView {
         containerView.layer.mask = containerMask
         
         loaderLayer.fillColor = nil
-        loaderLayer.strokeColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlueColor, nightColor: iReadColor.themeLightWhiteColor).CGColor
-        
+        loaderLayer.strokeColor = UIColor.redColor().CGColor
         loaderLayer.lineWidth = lineWidth
         loaderLayer.frame = CGRect(
             x: containerView.frame.width / 2 - radius / 2,
@@ -118,7 +117,8 @@ public class MaterialLoader: UIView {
     
     public class func addRefreshHeader(scrollView: UIScrollView, loaderColor: UIColor = .redColor(), action: () -> Void) {
         let loader = MaterialLoader(frame: CGRect(x: 0, y: 0, width: radius * containerRatio + 20, height: radius * containerRatio + 20))
-//        loader.loaderLayer.strokeColor = loaderColor.CGColor
+        loader.alpha = 0.0
+        loader.loaderLayer.strokeColor = loaderColor.CGColor
         loader.center.x = UIScreen.mainScreen().bounds.size.width / 2
         let pullToRefresh = PullToRefresh(refreshView: loader, animator: loader)
         scrollView.addPullToRefresh(pullToRefresh, action: action)
@@ -194,10 +194,10 @@ class PullToRefresh: NSObject {
                     scrollView.contentOffset = previousScrollViewOffset
                     scrollView.bounces = false
                     UIView.animateWithDuration(0.3, animations: {
-                        let insets = self.refreshView.frame.height + self.scrollViewDefaultInsets.top
+                        let insets = self.refreshView.frame.height + 64
                         scrollView.contentInset.top = insets
                         
-                        scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, -insets )
+                        scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, -insets)
                         }, completion: { finished in
                             scrollView.bounces = true
                     })
@@ -207,14 +207,13 @@ class PullToRefresh: NSObject {
             case .Finished:
                 removeScrollViewObserving()
                 UIView.animateWithDuration(1, delay: hideDelay, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.CurveLinear, animations: {
-                    self.scrollView?.contentInset = self.scrollViewDefaultInsets
-                    self.scrollView?.contentOffset.y = -self.scrollViewDefaultInsets.top
-                    self.refreshView.alpha = 0.0
-
+                    self.scrollView?.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
+                    
+                    self.scrollView?.contentOffset.y = -64
                     }, completion: { finished in
                         self.addScrollViewObserving()
                         self.state = .Inital
-                        
+                        self.refreshView.alpha = 0
                 })
             default: break
             }
@@ -240,16 +239,18 @@ class PullToRefresh: NSObject {
     
     override  func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<()>) {
         if (context == &KVOContext && keyPath == contentOffsetKeyPath && object as? UIScrollView == scrollView) {
-            let offset = previousScrollViewOffset.y + scrollViewDefaultInsets.top
+            let offset = previousScrollViewOffset.y + 64
             let refreshViewHeight = refreshView.frame.height
             
             switch offset {
-            case 0 where (state != .Loading): state = .Inital
+            case 0 where (state != .Loading):
+                state = .Inital
+                refreshView.alpha = 0.0
             case -refreshViewHeight...0 where (state != .Loading && state != .Finished):
-                state = .Releasing(progress: -offset / refreshViewHeight)
-
                 refreshView.alpha = -offset / refreshViewHeight
+                state = .Releasing(progress: -offset / refreshViewHeight)
             case -1000...(-refreshViewHeight):
+                refreshView.alpha = 1.0
                 if state == State.Releasing(progress: 1) && scrollView?.dragging == false {
                     state = .Loading
                 } else if state != State.Loading && state != State.Finished {
@@ -283,7 +284,7 @@ class PullToRefresh: NSObject {
     func endRefreshing() {
         if state == .Loading {
             state = .Finished
-
+            refreshView.alpha = 0.0
         }
     }
 }
@@ -337,9 +338,8 @@ extension UIScrollView {
         pullToRefresh.action = action
         
         let view = pullToRefresh.refreshView
-        view.alpha = 0
         //        view.frame = CGRectMake(0, -view.frame.size.height, self.frame.size.width, view.frame.size.height)
-//        view.frame.origin.y = -view.frame.height
+        view.frame.origin.y = -view.frame.height
         self.addSubview(view)
         self.sendSubviewToBack(view)
     }

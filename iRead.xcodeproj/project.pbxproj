@@ -64,6 +64,7 @@
 		F4A331321C965B5500AFFC6F /* ITNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A331311C965B5500AFFC6F /* ITNewsTableViewCell.swift */; };
 		F4A331341C96860100AFFC6F /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A331331C96860100AFFC6F /* BaseButton.swift */; };
 		F4A3918E1C97CEE8006DE0A8 /* iReadAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A3918D1C97CEE8006DE0A8 /* iReadAlert.swift */; };
+		F4AA73A01CB3D04D0027F2BC /* MaterialLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA739F1CB3D04D0027F2BC /* MaterialLoader.swift */; };
 		F4AB16F01C882ADF006438D2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4AB16EF1C882ADF006438D2 /* Profile.storyboard */; };
 		F4AB16FF1C882BDD006438D2 /* Feeds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4AB16FA1C882BDD006438D2 /* Feeds.storyboard */; };
 		F4AB17001C882BDD006438D2 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB16FB1C882BDD006438D2 /* FeedsViewController.swift */; };
@@ -80,7 +81,6 @@
 		F4D1F1681CA3CDDF00AC056E /* ArtileTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D1F1671CA3CDDF00AC056E /* ArtileTopBar.swift */; };
 		F4D8648E1CA249EF00B13997 /* iReadDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D8648D1CA249EF00B13997 /* iReadDateFormatter.swift */; };
 		F4E8B6C51CAACC230008C6B4 /* BaseRefreshLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8B6C41CAACC230008C6B4 /* BaseRefreshLoader.swift */; };
-		F4E8B6C81CAB5C5C0008C6B4 /* MaterialLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8B6C71CAB5C5C0008C6B4 /* MaterialLoader.swift */; };
 		FF912B13B8E5D3EBCD95A130 /* Pods_iRead.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB6339B9D2227A18D1E98EA /* Pods_iRead.framework */; };
 /* End PBXBuildFile section */
 
@@ -183,6 +183,7 @@
 		F4A331311C965B5500AFFC6F /* ITNewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITNewsTableViewCell.swift; sourceTree = "<group>"; };
 		F4A331331C96860100AFFC6F /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseButton.swift; path = ITNewsView/BaseButton.swift; sourceTree = "<group>"; };
 		F4A3918D1C97CEE8006DE0A8 /* iReadAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadAlert.swift; sourceTree = "<group>"; };
+		F4AA739F1CB3D04D0027F2BC /* MaterialLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialLoader.swift; sourceTree = "<group>"; };
 		F4AB16EF1C882ADF006438D2 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		F4AB16FA1C882BDD006438D2 /* Feeds.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feeds.storyboard; sourceTree = "<group>"; };
 		F4AB16FB1C882BDD006438D2 /* FeedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
@@ -206,7 +207,6 @@
 		F4D1F1671CA3CDDF00AC056E /* ArtileTopBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtileTopBar.swift; sourceTree = "<group>"; };
 		F4D8648D1CA249EF00B13997 /* iReadDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadDateFormatter.swift; sourceTree = "<group>"; };
 		F4E8B6C41CAACC230008C6B4 /* BaseRefreshLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRefreshLoader.swift; sourceTree = "<group>"; };
-		F4E8B6C71CAB5C5C0008C6B4 /* MaterialLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -637,7 +637,7 @@
 		F4E8B6C11CAACA810008C6B4 /* RefreshLoad */ = {
 			isa = PBXGroup;
 			children = (
-				F4E8B6C71CAB5C5C0008C6B4 /* MaterialLoader.swift */,
+				F4AA739F1CB3D04D0027F2BC /* MaterialLoader.swift */,
 			);
 			name = RefreshLoad;
 			sourceTree = "<group>";
@@ -845,7 +845,6 @@
 				F480C3C71CA1900C00D11BD3 /* ActionView.swift in Sources */,
 				F42E98551C92689100A1E602 /* iReadNetwork.swift in Sources */,
 				F42E98521C92601400A1E602 /* FeedModel.swift in Sources */,
-				F4E8B6C81CAB5C5C0008C6B4 /* MaterialLoader.swift in Sources */,
 				F42C03381C9A4E6900B27F45 /* BaseCollectionViewCell.swift in Sources */,
 				F45344291C982647008378DC /* FeedListController.swift in Sources */,
 				F47085CC1CACAE10000F119B /* iReadExtension.swift in Sources */,
@@ -880,6 +879,7 @@
 				F431A5851CA6B8DC007589E9 /* FeedBaseTableViewCell.swift in Sources */,
 				F47CF65C1C9E755700808CCA /* ArticleView.swift in Sources */,
 				F4D8648E1CA249EF00B13997 /* iReadDateFormatter.swift in Sources */,
+				F4AA73A01CB3D04D0027F2BC /* MaterialLoader.swift in Sources */,
 				F4914D581C8EA71F00C32743 /* NotesViewController.swift in Sources */,
 				F4C5076B1C919E66003D0AB1 /* FeedStore.swift in Sources */,
 				F4A331291C96589100AFFC6F /* ITNewsViewController.swift in Sources */,
@@ -1030,18 +1030,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/DTFoundation",
-					"$(PROJECT_DIR)/Externals/DTCoreText/Externals/DTFoundation/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iRead/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Externals/DTCoreText/Externals/DTFoundation/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iRead;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1058,18 +1051,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/DTFoundation",
-					"$(PROJECT_DIR)/Externals/DTCoreText/Externals/DTFoundation/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iRead/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Externals/DTCoreText/Externals/DTFoundation/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iRead;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

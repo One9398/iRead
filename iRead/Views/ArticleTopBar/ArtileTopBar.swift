@@ -27,9 +27,8 @@ class ArtileTopBar: UIView {
     @IBOutlet weak var surfButton: BaseButton!
     @IBOutlet weak var backButton: BaseButton!
     private func configureSubButtons() {
-        surfButton.pulseColor = iReadColor.themeLightBlueColor
-        backButton.pulseColor = iReadColor.themeLightBlueColor
-
+        surfButton.pulseColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlueColor, nightColor: iReadColor.themeClearColor)
+        backButton.pulseColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlueColor, nightColor: iReadColor.themeClearColor)
     }
     
     private func updateSubButtons() {

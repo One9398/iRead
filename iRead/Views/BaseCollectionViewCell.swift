@@ -67,7 +67,8 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
         var cardView: BaseCardView? = self.contentView.subviews.first as? BaseCardView
         
         cardView = BaseCardView()
-        cardView?.shadowColor = iReadColor.themeLightBlueColor
+        cardView?.shadowColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlueColor, nightColor: iReadColor.themeDarkGrayColor)
+        cardView?.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
         
         self.backgroundColor = nil
         self.pulseColor = nil
@@ -80,7 +81,6 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
         cardView!.depth = .Depth3
         
         card = cardView
-        
         self.contentView.addSubview(cardView!)
         
         cardView!.frame = self.bounds
@@ -88,7 +88,7 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
     
     private func prepareForTitleView() {
         let titleLabel: UILabel = UILabel()
-        titleLabel.textColor = iReadColor.themeBlackColor
+        titleLabel.textColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlackColor, nightColor: iReadColor.themeWhiteColor)
         titleLabel.font = iReadFont.regualWithSize(18)
         titleLabel.numberOfLines = 2
         titleLab = titleLabel
@@ -114,10 +114,13 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
         timeButton?.imageEdgeInsets = UIEdgeInsetsMake(0, -8, 0, 8)
         timeButton?.titleEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0)
         
-        let shareBtn = configureActionButton("icon_share_normal", highlightImage: "icon_share_highlight", target: self, action: "sharedActionHandle:")
+
+        print("icon_addList_selected".afterModeAjust())
+        let shareBtn = configureActionButton("icon_share_normal".afterModeAjust(), highlightImage: "icon_share_highlight", target: self, action: "sharedActionHandle:")
         shareBtn.translatesAutoresizingMaskIntoConstraints = false
         self.shareButton = shareBtn
-        let readBtn = configureActionButton("icon_share_highlight", highlightImage: "icon_share_normal", target: self, action: "readActionHandle:")
+        
+        let readBtn = configureActionButton("icon_addList_normal".afterModeAjust(), highlightImage: "icon_addList_selected".afterModeAjust(), target: self, action: "readActionHandle:")
         readBtn.translatesAutoresizingMaskIntoConstraints = false
         self.readButton = readBtn
         
@@ -132,6 +135,7 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
         actionBtn.setImage(UIImage(named: normalImage), forState: .Normal)
         actionBtn.setImage(UIImage(named: highlightImage), forState: .Highlighted)
         actionBtn.setImage(UIImage(named: highlightImage), forState: .Selected)
+        
         actionBtn.pulseColor = iReadColor.themeDarkBlueColor
         actionBtn.addTarget(target, action: action, forControlEvents: .TouchUpInside)
         actionBtn.contentEdgeInsetsPreset = .WideRectangle1        
@@ -166,7 +170,7 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
         readButton?.snp_makeConstraints(closure: {
             make in
             make.right.equalTo(self.contentView).offset(-5)
-            make.top.equalTo(self.contentView).offset(5)
+            make.bottom.equalTo(self.shareButton!.snp_top).offset(-5)
             
         })
         
@@ -187,13 +191,14 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
 
             var author: String = feedItem.author.isEmpty ? feedItem.source : feedItem.author
             author = author.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
-            authorButton?.setTitle((author.isEmpty ? "未知作者" : author), forState: .Normal)
-           
+            
+            authorButton?.setTitle((author.isEmpty ? "未知作者" : author.shortString()), forState: .Normal)
+            
             let pubDate = iReadDateFormatter.sharedDateFormatter.getCustomDateStringFromDateString(feedItem.pubDate, styleString: "MM-dd / HH:mm")
             timeButton?.setTitle(pubDate, forState: .Normal)
             
             if !feedItem.category.isEmpty {
-                categoryButton?.setTitle(feedItem.category, forState: .Normal)
+                categoryButton?.setTitle(feedItem.category.shortString(), forState: .Normal)
             }
             
         }

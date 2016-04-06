@@ -12,6 +12,7 @@ for (var i = 0; i < imgs.length; i++) {
         enrries.push(entry);
     }
 }
+
 webkit.messageHandlers.didFetchImagesOfContents.postMessage(enrries)
 
 

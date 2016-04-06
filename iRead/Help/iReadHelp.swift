@@ -86,6 +86,12 @@ struct iReadTheme {
             return NSUserDefaults.standardUserDefaults().boolForKey("NightMode")
 
     }
+    
+    static func isDayMode() -> Bool {
+        //            return true
+        return !NSUserDefaults.standardUserDefaults().boolForKey("NightMode")
+    }
+    
     static func changeThemeMode() {
         let mode = NSUserDefaults.standardUserDefaults().boolForKey("NightMode")
         NSUserDefaults.standardUserDefaults().setBool(!mode, forKey: "NightMode")

@@ -28,7 +28,6 @@ public class ArticleView: WKWebView {
         self.scrollView.addGestureRecognizer(tap)
     }
     
-    
     func tapTest(recognizer: UITapGestureRecognizer) {
         touchPoint = CGPointMake(recognizer.locationInView(self).x, recognizer.locationInView(self).y)
     }

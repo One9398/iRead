@@ -32,8 +32,8 @@ class BaseSwitch: MaterialSwitch {
     class func darkModelSwitch(open: Bool) -> BaseSwitch {
         return BaseSwitch(state: (open ? .On : .Off), style: .Default, size: iReadHelp.currentDeviceIsPhone() ? .Default : .Large)
     }
+    
     class func linghtModelSwitch(open: Bool) -> BaseSwitch {
         return BaseSwitch(state: (open ? .On : .Off), style: .LightContent, size: iReadHelp.currentDeviceIsPhone() ? .Default : .Large)
     }
-
 }

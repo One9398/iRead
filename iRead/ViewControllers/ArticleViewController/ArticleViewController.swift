@@ -29,8 +29,7 @@ class ArticleViewController: UIViewController {
     var destinationURL = ""
     var  loadActivity: iReadLoadView?
     
-    
-    lazy var articleView : ArticleView = {
+    var articleView : ArticleView = {
         let defaultConfigure = iReadWebConfiguration.sharedConfiguration
         let view = ArticleView(frame: CGRectZero, configuration:defaultConfigure)
         
@@ -85,6 +84,7 @@ class ArticleViewController: UIViewController {
     private func prepareForMenuView() {
         
         let actionView = ActionView()
+        
         actionView.actionDelegate = self
         view.addSubview(actionView)
         self.actionView = actionView
@@ -101,6 +101,9 @@ class ArticleViewController: UIViewController {
     
     private func prepareForArticleView() {
         view.addSubview(articleView)
+        articleView.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlackColor)
+        articleView.scrollView.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlackColor)
+        
         articleView.snp_makeConstraints(closure: {
             make in
             make.top.equalTo(self.view)
@@ -340,8 +343,7 @@ extension ArticleViewController: ActionViewDelegate {
         case .StoreContentAction:
             print("go to StoreContentAction")
         case .ModeChangeAction:
-            
-            iReadTheme.changeThemeMode()
+//            iReadTheme.changeThemeMode()
             topBar?.updateArticleTopBarThemeMode()
             print("go to ModeChangeAction")
         case .NoteContentAction:
@@ -389,7 +391,6 @@ extension ArticleViewController {
         })
     }
 }
-
 
 
 /*

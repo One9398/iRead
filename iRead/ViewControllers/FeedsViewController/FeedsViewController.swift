@@ -80,19 +80,20 @@ class FeedsViewController: UIViewController {
             make in
             make.top.left.right.bottom.equalTo(self.view)
         })
-        
     }
     
     private func prepareForRefreshView() {
-//        self.automaticallyAdjustsScrollViewInsets = false
-//        self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
-        
-        BaseRefreshLoader.addRefreshHeader(tableView, action: {
-            print("loading")
-            delayTaskExectuing(3.0, block: {
+        print(tableView.contentOffset)
+
+        MaterialLoader.addRefreshHeader(tableView, loaderColor:iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlueColor, nightColor: iReadColor.themeBlackColor), action: {
+            
+            self.loadData()
+            delayTaskExectuing(2.0, block: {
                 self.tableView.endRefreshing()
             })
+            
         })
+
     }
     
     private func prepareForEmptyView() {
