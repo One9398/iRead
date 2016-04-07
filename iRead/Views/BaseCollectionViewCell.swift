@@ -198,7 +198,7 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
             timeButton?.setTitle(pubDate, forState: .Normal)
             
             if !feedItem.category.isEmpty {
-                categoryButton?.setTitle(feedItem.category.shortString(), forState: .Normal)
+                categoryButton?.setTitle(feedItem.category, forState: .Normal)
             }
             
         }

@@ -147,6 +147,7 @@ class RecommendBaseController: UIViewController {
                 print(" ♻️♻️♻️♻️♻️♻️ error happen \(message)")
                 //                self.noticeError("加载错误...")                
                 self.loadAcitivity.stopAnimating()
+                
                 }, completion: {
                     [unowned self] feedModel in
                    

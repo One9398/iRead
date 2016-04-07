@@ -80,28 +80,37 @@ class FeedParseOperation: ConcurrentOperation {
             self.document = try ONOXMLDocument(data: data)
             
         } catch{
+
+            dispatch_async(dispatch_get_main_queue(), {
+                self.postDocumentParseErrorNotification()
+                self.failure!(error: nil, message: "文档解析错误")
+                self.state = .Finished
+                
+            })
             
-            postDocumentParseErrorNotification()
-            state = .Finished
-            
-            self.failure!(error: nil, message: "文档解析错误")
             return
         }
 
         let doc = self.document!
-        
         if doc.rootElement == nil {
-            postDocumentParseErrorNotification()
-            state = .Finished
+
+            dispatch_async(dispatch_get_main_queue(), {
+                self.postDocumentParseErrorNotification()
+                self.state = .Finished
+                self.failure!(error: nil, message: "文档根元素获取错误")
+                
+            })
             
-            self.failure!(error: nil, message: "文档根元素获取错误")
             return
         }
         
         guard let xmlType = doc.rootElement.tag else {
-            postDocumentParseErrorNotification()
-            state = .Finished
-            self.failure!(error: nil, message: "资讯源类型获取错误")
+            dispatch_async(dispatch_get_main_queue(), {
+                self.postDocumentParseErrorNotification()
+                self.state = .Finished
+                self.failure!(error: nil, message: "资讯源类型获取错误")
+                
+            })
             return
         }
         
@@ -112,8 +121,7 @@ class FeedParseOperation: ConcurrentOperation {
             parseAtomByXPath(data, document: doc)
     
         } else {
-            postDocumentParseErrorNotification()
-//            fatalError("other xml type :" + xmlType)
+            fatalError("other xml type :" + xmlType)
         }
 
     }
@@ -177,6 +185,7 @@ extension FeedParseOperation {
         
         executeCompletionOnMainThread()
         
+
     }
     
     private func executeCompletionOnMainThread() {
