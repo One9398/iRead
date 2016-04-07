@@ -119,14 +119,13 @@ class RecommendBaseController: UIViewController {
                     if  self.feedProviders.isEmpty {
                         // hide HUD
                         print("\(self.feeds.count) items all fetch done   !!!!!x")
+                       
+                        let feedCount = self.items.count - self.errorFeedProviders.count
                         
-                        
-                        let feedCount = self.feeds.count - self.errorFeedProviders.count
-                        
-                        if feedCount < 0 {
+                        if feedCount <= 0 {
                             iReadAlert.showErrorMessage(title: "网络异常", message: "Oops~网络不给力", dismissTitle: "好吧", inViewController: self)
                         } else {
-                            self.noticeTop( "获取到\(self.feeds.count - self.errorFeedProviders.count)条资讯源", autoClear: true, autoClearTime: 1)
+                            self.noticeTop( "获取到\(feedCount)条资讯源", autoClear: true, autoClearTime: 1)
                         }
                     }
                     
@@ -154,9 +153,9 @@ class RecommendBaseController: UIViewController {
                    
                     if  self.feedProviders.isEmpty {
                             // hide HUD
-                        print("\(self.feeds.count) items all fetch done   !!!!!x")
+                        print("\(self.items.count) items all fetch done   !!!!!x")
                         
-                        self.noticeTop( "获取到\(self.feeds.count - self.errorFeedProviders.count)条资讯源", autoClear: true, autoClearTime: 1)
+                        self.noticeTop( "获取到\(self.items.count - self.errorFeedProviders.count)条资讯源", autoClear: true, autoClearTime: 1)
                     }
                     
             })
@@ -402,4 +401,3 @@ extension RecommendBaseController : DZNEmptyDataSetDelegate, DZNEmptyDataSetSour
         
     }
 }
-

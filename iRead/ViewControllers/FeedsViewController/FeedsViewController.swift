@@ -25,7 +25,7 @@ class FeedsViewController: UIViewController {
     }
     
     private var feedProviders = Set<FeedModelsProvider>()
-    
+    private var errorFeedProviders = Set<FeedModelsProvider>()
     
     // MARK: - View Life Cycle ♻️
 
@@ -105,10 +105,10 @@ class FeedsViewController: UIViewController {
     
     func loadData() {
         print("loadData")
-        
 //        subscribeFeeds.removeAll()
-        
         // show HUD
+        errorFeedProviders.removeAll()
+        feedProviders.removeAll()
         
         for i in 0..<subscribeItems .count {
             let feedItem = subscribeItems[i]
@@ -117,8 +117,28 @@ class FeedsViewController: UIViewController {
                 error, message in
                 
                 print(" ♻️♻️♻️♻️♻️♻️ error happen \(message)")
-
+                
 //                self.noticeError("加载错误...")
+                if let error = error {
+                    
+                    print("️️️♻️♻️♻️ \(error.localizedDescription)")
+                    let feedProvider = FeedModelsProvider(feedItem: feedItem, failure: nil, completion: nil)
+                    self.errorFeedProviders.insert(feedProvider)
+                    self.feedProviders.remove(feedProvider)
+                    
+                    if  self.feedProviders.isEmpty {
+                        // hide HUD
+                        print("\(self.subscribeItems.count) items all fetch done   !!!!!x")
+                        
+                        let feedCount = self.subscribeItems.count - self.errorFeedProviders.count
+                        
+                        if feedCount <= 0 {
+                            iReadAlert.showErrorMessage(title: "网络异常", message: "Oops~网络不给力", dismissTitle: "好吧", inViewController: self)
+                        } else {
+                            self.noticeTop( "获取到\(feedCount)条资讯源", autoClear: true, autoClearTime: 1)
+                        }
+                    }
+                }
                 
                 }, completion: {
                     [unowned self] feedModel in
@@ -129,19 +149,22 @@ class FeedsViewController: UIViewController {
                     
                     self.feedResource.appendFeed(feedModel)
                     
-//                    print(feedModel)
-                   
+                    self.feedProviders.remove(FeedModelsProvider(feedItem: feedItem, failure: nil, completion: nil))
+                    
+                    
                     self.tableView.reloadData()
-                   
-//                    if self.subscribeFeeds.count == self.subscribeItems.count {
-//                            // hide HUD
-//                        print("\(self.subscribeFeeds.count) items all fetch done   !!!!!x")
-//                        
-//                    }
+                    
+                    if  self.feedProviders.isEmpty {
+                        // hide HUD
+                        print("\(self.subscribeItems.count) items all fetch done   !!!!!x")
+                        
+                        self.noticeTop( "获取到\(self.subscribeItems.count - self.errorFeedProviders.count)条资讯源", autoClear: true, autoClearTime: 1)
+                    }
                     
             })
             
             feedProviders.insert(provider)
+            provider.handlProvider()
             
         }
         
