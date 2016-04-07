@@ -25,31 +25,10 @@ class FeedModelsProvider {
 
         self.parseOpreation = parseOpreation
 
-//        configureNotification()
-        
     }
-    
-    deinit {
-    
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: iReadNotification.FeedFetchOperationDidSinglyFailureNotification, object: feedItem)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: iReadNotification.FeedParseOperationDidSinglyFailureNotification, object: feedItem)
-    }
-    
-    func configureNotification() {
-        
-        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: YZDisplayViewClickOrScrollDidFinshNote, object: self)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "feedFailureHandle", name: iReadNotification.FeedFetchOperationDidSinglyFailureNotification, object: feedItem)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "feedFailureHandle", name: iReadNotification.FeedParseOperationDidSinglyFailureNotification, object: feedItem)
-        
-    }
-    
-    func feedFailureHandle(notification: NSNotification) {
-        isComplete = false
-        print(notification.userInfo?["URLString"])
-    }
-    
+
+
+
     func handlProvider() {
         
         parseOpreation.addDependency(fetchOperation)

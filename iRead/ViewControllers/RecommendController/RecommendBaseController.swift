@@ -39,7 +39,6 @@ class RecommendBaseController: UIViewController {
         return tems
     }
 
-    var errorShow = false
     // MARK: - View Life Cycle ♻️
     private var feedType: FeedType = .Other
     
@@ -55,7 +54,6 @@ class RecommendBaseController: UIViewController {
         prepareTableView()
         prepareEmptyView()
         
-//        configureNotification()
         loadData()
         
     }
@@ -80,7 +78,6 @@ class RecommendBaseController: UIViewController {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: iReadNotification.FeedFetchOperationDidSinglyFailureNotification, object: self)
     }
     
     
@@ -88,41 +85,9 @@ class RecommendBaseController: UIViewController {
     
     func configureNotification() {
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: YZDisplayViewClickOrScrollDidFinshNote, object: self)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "fetchFeedFailureHandle", name: iReadNotification.FeedFetchOperationDidSinglyFailureNotification, object: nil)
-        
     }
     
     // MARK: - Event Handle
-    func fetchFeedFailureHandle() {
-        print("alert fetch failure !")
-        
-        if !errorShow {
-            
-            errorShow = true
-            
-            iReadAlert.showErrorMessage(title: "Oops!", message: "网络获取出错,检查下网络呗~", dismissTitle: "好的", inViewController: self, withDismissAction: {
-                self.errorShow = false
-                
-            })
-            
-        }
-    }
-    
-    func parseFeedFailureHandle() {
-        print("document parse error")
-        
-        if !errorShow {
-            
-            errorShow = true
-            
-            iReadAlert.showErrorMessage(title: "Oops!", message: "RSS数据解析出错,地址不对嗷~", dismissTitle: "好的", inViewController: self, withDismissAction: {
-                
-                self.errorShow = false
-            })
-            
-        }
-    }
     
     func loadData() {
         print("loadData")
@@ -150,7 +115,6 @@ class RecommendBaseController: UIViewController {
                     let feedProvider = FeedModelsProvider(feedItem: feedItem, failure: nil, completion: nil)
                     self.errorFeedProviders.insert(feedProvider)
                     self.feedProviders.remove(feedProvider)
-                    
                    
                     if  self.feedProviders.isEmpty {
                         // hide HUD
