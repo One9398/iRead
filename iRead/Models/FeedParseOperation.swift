@@ -10,11 +10,30 @@
 import Foundation
 import Ono
 
+
+
 protocol FeedParseOperationDataPorvider {
     var parseData: NSData? { get }
 }
 
 class FeedParseOperation: ConcurrentOperation {
+    
+    enum iReadParseError: ErrorType {
+        case DocumentError(FeedItem)
+        case RootElementError(FeedItem)
+        case XMLTypeError(FeedItem)
+        
+        var desc : String {
+            switch self {
+            case .DocumentError(let item):
+                return "\(item.feedURL) 文档解析错误"
+            case .RootElementError(let item):
+                return "\(item.feedURL) 根元素解析错误"
+            case .XMLTypeError(let item):
+                return "\(item.feedURL) 类型解析错误"
+            }
+        }
+    }
     
     private var feedType: FeedType = .Other
     
@@ -24,10 +43,10 @@ class FeedParseOperation: ConcurrentOperation {
     private let feedItem: FeedItem
     private var document: ONOXMLDocument?
     
-    private let completion: (FeedModel?) -> ()
+    private let completion: ((FeedModel?) -> ())?
     private let failure: FailureHandler?
-    
-    init(feedData: NSData?, feedItem: FeedItem, failure: FailureHandler?, completion: (FeedModel?) -> ()) {
+
+    init(feedData: NSData?, feedItem: FeedItem, failure: FailureHandler?, completion: ((FeedModel?) -> ())?) {
        
         self.feedItem = feedItem
         self.feedData = feedData
@@ -68,50 +87,40 @@ class FeedParseOperation: ConcurrentOperation {
             return
         }
         
-        parseXMLData(feedData)
+        do {
+             try parseXMLData(feedData)
+        } catch let error as iReadParseError {
+            
+            let aError = NSError(domain: "com.iRead.simon", code: 2222, userInfo: [NSLocalizedDescriptionKey : error.desc])
+            dispatch_async(dispatch_get_main_queue(), {
+                self.postDocumentParseErrorNotification(self.feedItem)
+                self.failure!(error: aError, message: "数据解析失败")
+                self.state = .Finished
+            })
+            
+        } catch {
+            fatalError("other xml type :")
+        }
         
     }
 
-    private func parseXMLData(data: NSData) {
-        
+    private func parseXMLData(data: NSData) throws  {
         
         do {
             
             self.document = try ONOXMLDocument(data: data)
             
         } catch{
-
-            dispatch_async(dispatch_get_main_queue(), {
-                self.postDocumentParseErrorNotification()
-                self.failure!(error: nil, message: "文档解析错误")
-                self.state = .Finished
-                
-            })
-            
-            return
+            throw iReadParseError.DocumentError(feedItem)
         }
 
         let doc = self.document!
         if doc.rootElement == nil {
-
-            dispatch_async(dispatch_get_main_queue(), {
-                self.postDocumentParseErrorNotification()
-                self.state = .Finished
-                self.failure!(error: nil, message: "文档根元素获取错误")
-                
-            })
-            
-            return
+            throw iReadParseError.RootElementError(feedItem)
         }
         
         guard let xmlType = doc.rootElement.tag else {
-            dispatch_async(dispatch_get_main_queue(), {
-                self.postDocumentParseErrorNotification()
-                self.state = .Finished
-                self.failure!(error: nil, message: "资讯源类型获取错误")
-                
-            })
-            return
+            throw iReadParseError.XMLTypeError(feedItem)
         }
         
         if xmlType == "rss" {
@@ -125,7 +134,6 @@ class FeedParseOperation: ConcurrentOperation {
         }
 
     }
-    
     
 }
 
@@ -182,17 +190,14 @@ extension FeedParseOperation {
         }
         
         feedModel.items = feedItemModels
-        
         executeCompletionOnMainThread()
-        
-
     }
     
     private func executeCompletionOnMainThread() {
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
 
-            self.completion(self.feedModel)
+            self.completion?(self.feedModel)
             
             self.state = .Finished
             
@@ -203,8 +208,8 @@ extension FeedParseOperation {
         
     }
     
-    func postDocumentParseErrorNotification() {
-        NSNotificationCenter.defaultCenter().postNotificationName(iReadNotification.FeedParseOperationDidSinglyFailureNotification, object: nil)
+    func postDocumentParseErrorNotification(item: FeedItem) {
+        NSNotificationCenter.defaultCenter().postNotificationName(iReadNotification.FeedParseOperationDidSinglyFailureNotification, object: item)
     }
 }
 

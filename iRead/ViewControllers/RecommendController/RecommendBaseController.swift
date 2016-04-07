@@ -23,6 +23,8 @@ class RecommendBaseController: UIViewController {
     }()
     
     var feedProviders = Set<FeedModelsProvider>()
+    var errorFeedProviders = Set<FeedModelsProvider>()
+    
     let feedResource = FeedResource.sharedResource
     
     // 指定类型的Model
@@ -79,19 +81,15 @@ class RecommendBaseController: UIViewController {
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: iReadNotification.FeedFetchOperationDidSinglyFailureNotification, object: self)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: iReadNotification.FeedParseOperationDidSinglyFailureNotification, object: self)
     }
     
     
     // MARK: - Configure Data
     
     func configureNotification() {
-        
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: YZDisplayViewClickOrScrollDidFinshNote, object: self)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "fetchFeedFailureHandle", name: iReadNotification.FeedFetchOperationDidSinglyFailureNotification, object: nil)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "parseFeedFailureHandle", name: iReadNotification.FeedParseOperationDidSinglyFailureNotification, object: nil)
         
     }
     
@@ -104,8 +102,8 @@ class RecommendBaseController: UIViewController {
             errorShow = true
             
             iReadAlert.showErrorMessage(title: "Oops!", message: "网络获取出错,检查下网络呗~", dismissTitle: "好的", inViewController: self, withDismissAction: {
-                
                 self.errorShow = false
+                
             })
             
         }
@@ -130,27 +128,50 @@ class RecommendBaseController: UIViewController {
         print("loadData")
         
         self.tableView.editing = false
+        errorFeedProviders.removeAll()
+        feedProviders.removeAll()
         
+        // show HUD
         if items.count == 0 {
-            self.noticeTop("当前类型没有资讯源~")
+            self.noticeTop("当前分类没有资讯源~")
         } else {
             loadAcitivity.startAnimating()            
         }
-        // show HUD
         
         for i in 0..<items.count {
             let feedItem = items[i]
           
             let provider = FeedModelsProvider(feedItem: feedItem, failure: {
-                error, message in
+                [unowned self] error, message in
                 
-                print(" ♻️♻️♻️♻️♻️♻️ error happen \(message)")
-                //                self.noticeError("加载错误...")                
+                if let error = error {
+                    
+                    print("️️️♻️♻️♻️ \(error.localizedDescription)")
+                    let feedProvider = FeedModelsProvider(feedItem: feedItem, failure: nil, completion: nil)
+                    self.errorFeedProviders.insert(feedProvider)
+                    self.feedProviders.remove(feedProvider)
+                    
+                   
+                    if  self.feedProviders.isEmpty {
+                        // hide HUD
+                        print("\(self.feeds.count) items all fetch done   !!!!!x")
+                        
+                        
+                        let feedCount = self.feeds.count - self.errorFeedProviders.count
+                        
+                        if feedCount < 0 {
+                            iReadAlert.showErrorMessage(title: "网络异常", message: "Oops~网络不给力", dismissTitle: "好吧", inViewController: self)
+                        } else {
+                            self.noticeTop( "获取到\(self.feeds.count - self.errorFeedProviders.count)条资讯源", autoClear: true, autoClearTime: 1)
+                        }
+                    }
+                    
+                }
+                
                 self.loadAcitivity.stopAnimating()
                 
                 }, completion: {
                     [unowned self] feedModel in
-                   
                     
                     self.loadAcitivity.stopAnimating()
                     
@@ -160,20 +181,25 @@ class RecommendBaseController: UIViewController {
                     }
                     
                     self.feedResource.appendFeed(feedModel)
+                   
+                    self.feedProviders.remove(FeedModelsProvider(feedItem: feedItem, failure: nil, completion: nil))
                     
                     print(feedModel)
                    
                     self.tableView.reloadData()
                    
-                    if self.feeds.count == self.items.count {
+                    if  self.feedProviders.isEmpty {
                             // hide HUD
                         print("\(self.feeds.count) items all fetch done   !!!!!x")
-                   
+                        
+                        self.noticeTop( "获取到\(self.feeds.count - self.errorFeedProviders.count)条资讯源", autoClear: true, autoClearTime: 1)
                     }
                     
             })
-
+            
             feedProviders.insert(provider)
+            provider.handlProvider()
+
             
         }
         
@@ -316,25 +342,22 @@ extension RecommendBaseController : RecommandCardViewDelegate {
                     let feedItem = FeedItem(feedURL: text, feedType: self.feedType, isSub: false)
                     
                     _ = FeedModelsProvider(feedItem: feedItem, failure: {
-                        error in
+                        [unowned self] error, message in
+                        
+                        iReadAlert.showErrorMessage(title: "获取出错", message: message!, dismissTitle: "好吧", inViewController: self)
                         
                         }, completion: {
-                            feedModel in
+                            [unowned self] feedModel in
                             
                             guard let feedModel = feedModel else { assertionFailure("feed unavibale") ; return }
                             
                             self.feedResource.appendFeed(feedModel)
                             self.feedResource.appendFeedItem(feedItem)
-                           
+                            
                             print(feedModel)
-                           
+                            
                             self.tableView.reloadData()
-
-                            if self.feeds.count == self.items.count {
-                                    // hide HUD
-                                print("item  fetch done   !!!!!x")
-                               
-                            }
+                            self.noticeTop("添加成功", autoClear: true, autoClearTime: 1)
                     })
                     
                 }

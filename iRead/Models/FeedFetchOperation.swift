@@ -15,6 +15,7 @@ class FeedFetchOperation: ConcurrentOperation {
     private var feedData: NSData?
 //    private var index = 0
     private let failure: FailureHandler?
+
     
     init(URLString: String, failure:FailureHandler?) {
         // 配置基本设置和数据idx
@@ -32,7 +33,6 @@ class FeedFetchOperation: ConcurrentOperation {
             
             print("Error Message \(message)")
             self.state = .Finished
-            
             self.failure!(error: error, message: message)
             
             // 提示网络错误
@@ -44,7 +44,7 @@ class FeedFetchOperation: ConcurrentOperation {
                 self.feedData = data
                 self.state = .Finished
                 
-                NSNotificationCenter.defaultCenter().postNotificationName(iReadNotification.FeedFetchOperationDidSinglyFinishedNotification, object: nil, userInfo: ["URLString" : self.URLString])
+                NSNotificationCenter.defaultCenter().postNotificationName(iReadNotification.FeedFetchOperationDidSinglyFinishedNotification, object: self, userInfo: ["URLString" : self.URLString])
         }
     }
     
