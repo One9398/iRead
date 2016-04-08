@@ -17,7 +17,7 @@ enum ActionType: Int {
 }
 
 protocol ActionViewDelegate: NSObjectProtocol {
-    func acitonViewDidClickAcitonButton(acitonBtn: FabButton, actionType: ActionType)
+    func acitonViewDidClickAcitonButton(actionBtn: FabButton, actionType: ActionType)
 
 }
 

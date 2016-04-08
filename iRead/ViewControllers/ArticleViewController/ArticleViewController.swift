@@ -17,6 +17,10 @@ class ArticleViewController: UIViewController {
     var feedItem: FeedItemModel!
     var feed: FeedModel?
     var feedResouce = FeedResource.sharedResource
+    private lazy var articleStyle : ArticleStyle =  {
+        let style: ArticleStyle = iReadTheme.isDayMode ? .Normal : .Darkness
+        return style
+    }()
     
     private var isScrolled = false
     private var isDecelerated = false
@@ -306,12 +310,9 @@ extension ArticleViewController : WKNavigationDelegate, WKUIDelegate, WKScriptMe
         // 防止脚本重复加载
         if !NSUserDefaults.standardUserDefaults().boolForKey("hasStyle") {
             controller.addUserScript(styleScript)
-            
             controller.addUserScript(imgScript)
-            
             controller.addUserScript(fetchImageScript)
             controller.addScriptMessageHandler(self, name: "didFetchImagesOfContents")
-
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasStyle")
         }
 
@@ -321,7 +322,6 @@ extension ArticleViewController : WKNavigationDelegate, WKUIDelegate, WKScriptMe
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
         
         if message.name == "didFetchImagesOfContents" {
-
             print("recieved message\(message.body)")
             configureImageModels(message.body)
         }
@@ -356,14 +356,14 @@ extension ArticleViewController: SFSafariViewControllerDelegate {
 }
 
 extension ArticleViewController: ActionViewDelegate {
-    func acitonViewDidClickAcitonButton(acitonBtn: FabButton, actionType: ActionType) {
+    func acitonViewDidClickAcitonButton(actionBtn: FabButton, actionType: ActionType) {
         
         switch actionType {
         case .ShareContentAction:
             print("go to ShareContentAction")
         case .StoreContentAction:
             print("go to StoreContentAction")
-            if acitonBtn.selected {
+            if actionBtn.selected {
                 self.feedItem.isFavorite = true
                 feedResouce.appendFavoriteArticle(self.feedItem)
                 self.feedItem.addDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
@@ -376,7 +376,10 @@ extension ArticleViewController: ActionViewDelegate {
             
         case .ModeChangeAction:
 //            iReadTheme.changeThemeMode()
-            topBar?.updateArticleTopBarThemeMode()
+            let changedStyle : ArticleStyle = (articleStyle == .Normal ? .Darkness : .Normal)
+            topBar?.changeArticleTopBarStyle(changedStyle)
+            articleStyle = changedStyle
+
             print("go to ModeChangeAction")
         case .NoteContentAction:
             print("go to NoteContentAction")

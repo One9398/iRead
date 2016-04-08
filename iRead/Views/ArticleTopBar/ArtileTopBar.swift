@@ -14,6 +14,11 @@ protocol ArtileTopBarDelegate : NSObjectProtocol {
     func artileTopBarClickedSurfButton(arlitleTopBar: ArtileTopBar,  surfButton: BaseButton)
 }
 
+enum ArticleStyle : String {
+    case Normal
+    case Darkness
+}
+
 class ArtileTopBar: UIView {
 
     weak var eventHandleDelegate: ArtileTopBarDelegate?
@@ -22,6 +27,8 @@ class ArtileTopBar: UIView {
         super.awakeFromNib()
         configureSubButtons()
         updateSubButtons()
+        self.backgroundColor = iReadColor.themeClearColor
+        
     }
     
     @IBOutlet weak var surfButton: BaseButton!
@@ -32,7 +39,6 @@ class ArtileTopBar: UIView {
     }
     
     private func updateSubButtons() {
-       
         surfButton.tintColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlueColor, nightColor: iReadColor.themeLightWhiteColor)
         backButton.tintColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlueColor, nightColor: iReadColor.themeLightWhiteColor)
         
@@ -40,9 +46,17 @@ class ArtileTopBar: UIView {
         backButton.backgroundColor = iReadColor.themeClearColor
     }
     
-    
-    func updateArticleTopBarThemeMode(mode: iReadThemeMode = .DayMode) {
-        updateSubButtons()
+    func changeArticleTopBarStyle(style: ArticleStyle = .Normal) {
+        var styleColor = iReadColor.themeClearColor
+        switch style {
+        case .Darkness:
+            styleColor = iReadColor.themeLightWhiteColor
+        case .Normal:
+            styleColor = iReadColor.themeLightBlueColor
+        }
+        surfButton.tintColor = styleColor
+        backButton.tintColor = styleColor
+        
     }
 
     @IBAction func handleSurfButtonEvent(sender: BaseButton) {

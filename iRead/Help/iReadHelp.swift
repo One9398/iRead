@@ -75,6 +75,8 @@ enum iReadThemeMode: String {
     case DayMode = "DayMode"
 }
 
+
+
 struct iReadTheme {
     static func getCurrentThemeMode() -> iReadThemeMode {
         
@@ -82,12 +84,10 @@ struct iReadTheme {
     }
     
     static func isNightMode() -> Bool {
-//            return true
             return NSUserDefaults.standardUserDefaults().boolForKey("NightMode")
     }
     
-    static func isDayMode() -> Bool {
-        //            return true
+    static var isDayMode: Bool {
         return !NSUserDefaults.standardUserDefaults().boolForKey("NightMode")
     }
     
