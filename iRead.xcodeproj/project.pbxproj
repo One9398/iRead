@@ -35,6 +35,8 @@
 		F431A57F1CA62F85007589E9 /* TechStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F431A57E1CA62F85007589E9 /* TechStudyController.swift */; };
 		F431A5811CA62FB9007589E9 /* RecommendBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F431A5801CA62FB9007589E9 /* RecommendBaseController.swift */; };
 		F431A5851CA6B8DC007589E9 /* FeedBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F431A5841CA6B8DC007589E9 /* FeedBaseTableViewCell.swift */; };
+		F435544C1CB74C97004F9CB2 /* ToreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F435544B1CB74C97004F9CB2 /* ToreadViewController.swift */; };
+		F435544E1CB74CDE004F9CB2 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F435544D1CB74CDE004F9CB2 /* ArticleTableViewController.swift */; };
 		F445DD8A1C9BA68600B4DA71 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445DD891C9BA68600B4DA71 /* ArticleViewController.swift */; };
 		F4495E641C9FABDE00E75463 /* iReadWebConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4495E631C9FABDE00E75463 /* iReadWebConfiguration.swift */; };
 		F4495E671CA0161400E75463 /* img.js in Resources */ = {isa = PBXBuildFile; fileRef = F4495E661CA0161400E75463 /* img.js */; };
@@ -149,6 +151,8 @@
 		F431A57E1CA62F85007589E9 /* TechStudyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechStudyController.swift; sourceTree = "<group>"; };
 		F431A5801CA62FB9007589E9 /* RecommendBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendBaseController.swift; sourceTree = "<group>"; };
 		F431A5841CA6B8DC007589E9 /* FeedBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedBaseTableViewCell.swift; path = FeedBaseTableCell/FeedBaseTableViewCell.swift; sourceTree = "<group>"; };
+		F435544B1CB74C97004F9CB2 /* ToreadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToreadViewController.swift; sourceTree = "<group>"; };
+		F435544D1CB74CDE004F9CB2 /* ArticleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
 		F43AD7141C90F8FE001ED543 /* iReadTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = iReadTest.playground; sourceTree = "<group>"; };
 		F445DD891C9BA68600B4DA71 /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleViewController.swift; path = ArticleViewController/ArticleViewController.swift; sourceTree = "<group>"; };
 		F4495E631C9FABDE00E75463 /* iReadWebConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iReadWebConfiguration.swift; path = Network/iReadWebConfiguration.swift; sourceTree = "<group>"; };
@@ -591,6 +595,8 @@
 				F4AB16FB1C882BDD006438D2 /* FeedsViewController.swift */,
 				F47B0C0A1CA56E3D00086B50 /* FavoriteFeedsController.swift */,
 				F4773D5A1CB64B4400F3B94C /* FavArticlesTableViewController.swift */,
+				F435544B1CB74C97004F9CB2 /* ToreadViewController.swift */,
+				F435544D1CB74CDE004F9CB2 /* ArticleTableViewController.swift */,
 			);
 			path = FeedsViewController;
 			sourceTree = "<group>";
@@ -863,6 +869,7 @@
 				F42E98551C92689100A1E602 /* iReadNetwork.swift in Sources */,
 				F4C574831CB6555E002530B3 /* FavArticleCard.swift in Sources */,
 				F42E98521C92601400A1E602 /* FeedModel.swift in Sources */,
+				F435544E1CB74CDE004F9CB2 /* ArticleTableViewController.swift in Sources */,
 				F42C03381C9A4E6900B27F45 /* BaseCollectionViewCell.swift in Sources */,
 				F45344291C982647008378DC /* FeedListController.swift in Sources */,
 				F47085CC1CACAE10000F119B /* iReadExtension.swift in Sources */,
@@ -877,6 +884,7 @@
 				F42E985B1C9276D100A1E602 /* FeedFetchOperation.swift in Sources */,
 				F42E98571C92720900A1E602 /* FeedManager.swift in Sources */,
 				F431A5811CA62FB9007589E9 /* RecommendBaseController.swift in Sources */,
+				F435544C1CB74C97004F9CB2 /* ToreadViewController.swift in Sources */,
 				F431A57F1CA62F85007589E9 /* TechStudyController.swift in Sources */,
 				F40C02271C90028B00CB3646 /* UIView+Frame.m in Sources */,
 				F4120ABB1C9AAABC00B86DE3 /* NSDate+InternetDateTime.m in Sources */,

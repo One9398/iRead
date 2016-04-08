@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class FavArticlesTableViewController: UITableViewController {
     
@@ -40,9 +41,9 @@ class FavArticlesTableViewController: UITableViewController {
         
     }
     
-    private func prepareForEmptyView() {
-        self.tableView.emptyDataSetSource = self
-        self.tableView.emptyDataSetDelegate = self
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     private func prepareForTableView() {
@@ -54,11 +55,11 @@ class FavArticlesTableViewController: UITableViewController {
         tableView.registerClass(FavoriteArticleCell.self, forCellReuseIdentifier: NSStringFromClass(FavoriteArticleCell.self))
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func prepareForEmptyView() {
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
     }
+
 
     /*
     // MARK: - Navigation
@@ -134,5 +135,57 @@ extension FavArticlesTableViewController {
         
         self.navigationController?.pushViewController(articleVC, animated: true)
         
+    }
+}
+
+extension FavArticlesTableViewController : DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(assetsIdentifier: .icon_favorite_empty_logo)
+    }
+    
+    func imageAnimationForEmptyDataSet(scrollView: UIScrollView!) -> CAAnimation! {
+        let fadeAnimation = CABasicAnimation(keyPath: "alpha")
+        fadeAnimation.fromValue = 0
+        fadeAnimation.toValue = 1.0
+        fadeAnimation.duration = 2.0
+        
+        return fadeAnimation
+    }
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let emptyTitle  = "唉~, 没有收藏的文章..."
+        
+        let titleAttributes = [NSFontAttributeName: iReadFont.medium, NSForegroundColorAttributeName: iReadColor.themeDarkGrayColor]
+        
+        return NSAttributedString(string: emptyTitle, attributes: titleAttributes)
+    }
+    
+    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return iReadConstant.EmptyView.verticalOffset
+    }
+    
+    func spaceHeightForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return iReadConstant.EmptyView.spaceHeight
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let descriptionStr = "看到兴趣的资讯,还可以收藏起来哦."
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineBreakMode = .ByWordWrapping
+        paragraphStyle.alignment = .Center
+        
+        let descriptionAttributes = [NSFontAttributeName: iReadFont.regualWithSize(13), NSForegroundColorAttributeName: iReadColor.themeDarkGrayColor, NSParagraphStyleAttributeName: paragraphStyle]
+        
+        return NSAttributedString(string: descriptionStr, attributes: descriptionAttributes)
+    }
+    
+    
+    func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
+        return iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
+    }
+    
+    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
+        return true
     }
 }

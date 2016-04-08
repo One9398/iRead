@@ -205,7 +205,6 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("selected \(indexPath.row)")
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! SubFeedCell
         
@@ -215,6 +214,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate {
             return
         }
         let feedListVC = FeedListController()
+        
         feedListVC.configureContent(subscribeFeeds[indexPath.row])
         self.navigationController?.pushViewController(feedListVC, animated: true)
         

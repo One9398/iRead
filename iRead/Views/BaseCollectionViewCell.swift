@@ -186,6 +186,16 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
             } else {
                 self.card?.depth = .Depth3
             }
+            
+            if FeedResource.sharedResource.toreadArticles.contains({$0.title == feedItem.title}) {
+                feedItem.isToread = true
+            }
+            
+            if feedItem.isToread {
+                readButton?.selected = true
+            } else {
+                readButton?.selected = false
+            }
 
             var author: String = feedItem.author.isEmpty ? feedItem.source : feedItem.author
             author = author.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
@@ -206,6 +216,7 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
         item.isRead = true
         card?.depth = .None
         card?.drawRect(self.bounds)
+        
     }
     
     // MARK: - Handle Event

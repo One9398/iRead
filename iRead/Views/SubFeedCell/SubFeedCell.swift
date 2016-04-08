@@ -15,7 +15,7 @@ class SubFeedCell: FeedBaseTableViewCell {
         
         super.updateContent(feedModel)
        
-        let feedDate = (feedModel.items![0] as FeedItemModel).pubDate.usePlaceholdStringWhileIsEmpty(feedModel.lastDate)
+        let feedDate = (feedModel.items[0] as FeedItemModel).pubDate.usePlaceholdStringWhileIsEmpty(feedModel.lastDate)
         
         let styleDate = iReadDateFormatter.sharedDateFormatter.getCustomDateStringFromDateString(feedDate, styleString: "MM-dd/HH:mm")
         

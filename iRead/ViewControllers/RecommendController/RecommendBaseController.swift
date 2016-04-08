@@ -236,7 +236,6 @@ extension RecommendBaseController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("selected \(indexPath.row)")
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! FeedBaseTableViewCell
         print(cell.textLabel?.text)
@@ -245,7 +244,7 @@ extension RecommendBaseController: UITableViewDelegate, UITableViewDataSource {
             return
         }
         let feedListVC = FeedListController()
-        
+        print(feeds[indexPath.row])
         feedListVC.configureContent(feeds[indexPath.row])
         
         self.navigationController?.pushViewController(feedListVC, animated: true)

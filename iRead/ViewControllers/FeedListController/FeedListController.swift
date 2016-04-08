@@ -16,10 +16,11 @@ class FeedListController: UIViewController {
     var readCount: Int {
         return feedItems.filter({$0.isRead == false}).count
     }
-    
+
     var feedItems: [FeedItemModel]!
     private var subTitleLab : UILabel!
     private var collectionView = BaseCollectionView()
+    private var feedResource = FeedResource.sharedResource
 
     // MARK: - View Life Cycle ♻️
     
@@ -27,7 +28,6 @@ class FeedListController: UIViewController {
         super.viewDidLoad()
         
         prepareForNavigationBar()
-//        prepareForTabBar()
         prepareForView()
         prepareForCollectionView()
         // Do any additional setup after loading the view.
@@ -60,26 +60,21 @@ class FeedListController: UIViewController {
     }
     
     // MARK: - UI Preparation 📱
-   
     
     private func prepareForNavigationBar() {
         print(self.navigationItem.titleView)
         self.navigationController?.navigationBar.tintColor = iReadColor.themeLightWhiteColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : iReadColor.themeLightWhiteColor]
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(assetsIdentifier: .icon_baritem_back), style: .Plain, target: self, action: "popCurrentViewController")
-        
+        title = feedModel.title
 
         let subTitleLabel = UILabel()
         subTitleLabel.text = "\(readCount)篇可阅"
         subTitleLab = subTitleLabel
-        subTitleLabel.font = iReadFont.lightWithSize(14)
+        subTitleLabel.font = iReadFont.lightWithSize(12)
         subTitleLabel.textColor = iReadColor.themeLightWhiteColor
         subTitleLabel.sizeToFit()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: subTitleLabel)
-    }
-    
-    private func prepareForTabBar() {
-        hidesBottomBarWhenPushed = true;
     }
     
     private func prepareForCollectionView() {
@@ -101,12 +96,11 @@ class FeedListController: UIViewController {
     // MARK: - Configure Date 
     func configureContent(model: FeedModel) {
         feedModel = model
-        feedItems = feedModel.items
-        title = model.title
+        feedItems = model.items
+
     }
     
 }
-
 
 // MARK: - Collection View DataSource & Delegate
 
@@ -160,7 +154,7 @@ extension FeedListController: MaterialCollectionViewDataSource, MaterialCollecti
             })
         }
         
-        let articleVC = ArticleViewController(title: title, feedItem: item, feedModel: feedModel!)
+        let articleVC = ArticleViewController(title: title, feedItem: item, feedModel: feedModel)
         
         self.navigationController?.pushViewController(articleVC, animated: true)
         
@@ -174,59 +168,18 @@ extension FeedListController: BaseCollectionViewCellProtocol {
     }
     
     func baseCollectionViewCellReadActionDidHandle(cell: BaseCollectionViewCell, item: FeedItemModel?) {
-        print("unread the \(item?.title)")
-    }
-}
-
-
-extension FavArticlesTableViewController : DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-        return UIImage(assetsIdentifier: .icon_favorite_empty_logo)
-    }
-    
-    func imageAnimationForEmptyDataSet(scrollView: UIScrollView!) -> CAAnimation! {
-        let fadeAnimation = CABasicAnimation(keyPath: "alpha")
-        fadeAnimation.fromValue = 0
-        fadeAnimation.toValue = 1.0
-        fadeAnimation.duration = 2.0
+        guard let item = item else { fatalError("no item Model") }
         
-        return fadeAnimation
-    }
-    
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let emptyTitle  = "唉~, 没有收藏的文章..."
+        item.isToread = !item.isToread
         
-        let titleAttributes = [NSFontAttributeName: iReadFont.medium, NSForegroundColorAttributeName: iReadColor.themeDarkGrayColor]
+        if item.isToread {
+            self.noticeTop("该内容已标记为待读", autoClear: true, autoClearTime: 1)
+            feedResource.appendToreadArticle(item)
+        } else {
+            feedResource.removeToreadArticle(item, index: nil)
+        }
         
-        return NSAttributedString(string: emptyTitle, attributes: titleAttributes)
-    }
-    
-    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
-        return iReadConstant.EmptyView.verticalOffset
-    }
-    
-    func spaceHeightForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
-        return iReadConstant.EmptyView.spaceHeight
-    }
-    
-    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let descriptionStr = "看到兴趣的资讯,还可以收藏起来哦."
+//        print(feedResource.toreadArticels.count)
         
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineBreakMode = .ByWordWrapping
-        paragraphStyle.alignment = .Center
-        
-        let descriptionAttributes = [NSFontAttributeName: iReadFont.regualWithSize(13), NSForegroundColorAttributeName: iReadColor.themeDarkGrayColor, NSParagraphStyleAttributeName: paragraphStyle]
-        
-        return NSAttributedString(string: descriptionStr, attributes: descriptionAttributes)
-    }
-    
-    
-    func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
-        return iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
-    }
-    
-    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
-        return true
     }
 }

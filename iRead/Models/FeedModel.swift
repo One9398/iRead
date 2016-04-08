@@ -16,7 +16,7 @@ class FeedModel: CustomDebugStringConvertible {
     var items = [FeedItemModel]()
     var lastDate = ""    
     var index = 0
-    
+    var readItems = [FeedItemModel]()
     var source = ""
     var isFollowed = false
     var feedType = FeedType.Other
@@ -50,11 +50,12 @@ class FeedItemModel: CustomDebugStringConvertible {
     var source = ""
     var dc = ""
     var author = ""
-
+    
     var image = ""
     var isRead = false
     var isNoted = false
     var isFavorite = false
+    var isToread = false
     
     var debugDescription: String {
         return title + "\n" + link + "\n" + image + "\n" + author + "\n" + description

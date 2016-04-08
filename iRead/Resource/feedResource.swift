@@ -20,6 +20,11 @@ class FeedResource  {
     }
     
     var favoriteArticles = [FeedItemModel]()
+    var toreadArticles = [FeedItemModel]()
+    
+    
+    // todo
+    var readArticles = [FeedItemModel]()
     
     var feeds = [FeedModel]()
     var subscirbeFeeds: [FeedModel] {
@@ -123,8 +128,40 @@ class FeedResource  {
         } else {
             self.favoriteArticles = self.favoriteArticles.filter({$0.title != article.title})
         }
-
         
+    }
+    
+    func updateArticleToReadState(article: FeedItemModel) {
+        self.toreadArticles =  self.toreadArticles.filter{$0.isToread != article.isToread}
+    }
+    
+    func appendToreadArticle(article: FeedItemModel) {
+        self.toreadArticles.insert(article, atIndex: 0)
+    }
+    
+    func removeToreadArticle(article: FeedItemModel, index: Int?){
+        
+        if let index = index {
+            self.toreadArticles.removeAtIndex(index)
+        } else {
+            self.toreadArticles = self.favoriteArticles.filter({$0.isToread != false})
+        }
+        
+    }
+
+    
+    // todo
+    func appendReadArticle(article: FeedItemModel) {
+        self.readArticles.insert(article, atIndex: 0)
+    }
+    
+    func removeReadArticle(article: FeedItemModel, index: Int?){
+        
+        if let index = index {
+            self.readArticles.removeAtIndex(index)
+        } else {
+            self.readArticles = self.readArticles.filter({$0.isRead != false})
+        }
     }
     
 }

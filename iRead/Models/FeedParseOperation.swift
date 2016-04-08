@@ -38,7 +38,7 @@ class FeedParseOperation: ConcurrentOperation {
     private var feedType: FeedType = .Other
     
     private var feedData: NSData?
-    private var feedItemModels:[FeedItemModel]?
+    private var feedItemModels:[FeedItemModel]
     private var feedModel: FeedModel
     private let feedItem: FeedItem
     private var document: ONOXMLDocument?
@@ -185,7 +185,7 @@ extension FeedParseOperation {
             itemModel.title = title
             itemModel.author = author
             
-            feedItemModels?.append(itemModel)
+            feedItemModels.append(itemModel)
             
         }
         
@@ -274,7 +274,7 @@ extension FeedParseOperation {
             itemModel.author = (author.isEmpty) ? creator : author
             itemModel.category = category
             itemModel.source = source
-            self.feedItemModels?.append(itemModel)
+            self.feedItemModels.append(itemModel)
             
         }
         
@@ -354,7 +354,7 @@ extension FeedParseOperation {
                                 itemModel.category = childContent
                             }
                             
-                            feedItemModels?.append(itemModel)
+                            feedItemModels.append(itemModel)
                             
                         }
                     }
