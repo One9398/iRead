@@ -117,11 +117,12 @@ extension FavArticlesTableViewController {
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
-        let removeAction = UITableViewRowAction(style: .Default, title: "取消收藏", handler: {
+        let removeAction = UITableViewRowAction(style: .Normal, title: "取消收藏", handler: {
             [unowned self] action, indexpath in
             self.feedResource.removeFavoriteArticle(self.favArticles[indexpath.row], index: indexPath.row)
             tableView.reloadData()
         })
+        removeAction.backgroundColor = iReadColor.themeRedColor
         
         return [removeAction];
     }

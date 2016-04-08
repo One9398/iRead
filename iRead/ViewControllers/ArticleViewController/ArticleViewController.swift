@@ -383,12 +383,14 @@ extension ArticleViewController: ActionViewDelegate {
 
             
         case .ModeChangeAction:
-//            iReadTheme.changeThemeMode()
             let changedStyle : ArticleStyle = (articleStyle == .Normal ? .Darkness : .Normal)
             topBar?.changeArticleTopBarStyle(changedStyle)
             articleStyle = changedStyle
-
+            
+            let modeJSFile = (changedStyle == .Normal ? fileResource.dayJSFile : fileResource.nightJSFile)
+            articleView.evaluateJavaScript(modeJSFile, completionHandler: nil)
             print("go to ModeChangeAction")
+            
         case .NoteContentAction:
             print("go to NoteContentAction")
             
