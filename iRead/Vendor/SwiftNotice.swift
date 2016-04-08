@@ -73,8 +73,11 @@ class SwiftNotice: NSObject {
     }
     static var center: CGPoint {
         get {
-            var array = [UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height]
-            array = array.sort(<)
+            
+            print(UIApplication.sharedApplication().keyWindow?.frame)
+
+            var array = [UIApplication.sharedApplication().keyWindow!.frame.width, UIApplication.sharedApplication().keyWindow!.frame.height]
+//            array = array.sort(<)
             let screenWidth = array[0]
             let screenHeight = array[1]
             let x = [0, screenWidth/2, screenWidth/2, 10, screenWidth-10][UIApplication.sharedApplication().statusBarOrientation.hashValue] as CGFloat
@@ -116,10 +119,11 @@ class SwiftNotice: NSObject {
         window.windowLevel = UIWindowLevelStatusBar
         window.hidden = false
         // change orientation
-        window.center = center
-        window.transform = CGAffineTransformMakeRotation(CGFloat(degree * M_PI / 180))
+//        window.center = center
+//        window.transform = CGAffineTransformMakeRotation(CGFloat(degree * M_PI / 180))
         window.addSubview(view)
         windows.append(window)
+        
         view.alpha = 0
         UIView.animateWithDuration(0.5, animations: {
             view.alpha = 1.0
@@ -130,6 +134,7 @@ class SwiftNotice: NSObject {
             self.performSelector(selector, withObject: window, afterDelay: NSTimeInterval(autoClearTime))
         }
     }
+    
     static func wait(imageNames: Array<UIImage> = Array<UIImage>(), timeInterval: Int = 0) {
         let frame = CGRectMake(0, 0, 78, 78)
         let window = UIWindow()
