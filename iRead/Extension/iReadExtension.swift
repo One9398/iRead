@@ -19,7 +19,9 @@ extension UIImage {
     enum AssetsIdentifier : String {
         case icon_addList_normal
         case icon_addList_selected
-    
+        case icon_feeds_count = "icon_feeds_count"
+        case icon_baritem_back = "icon_baritem_back"
+        case icon_favorite_empty_logo = "icon_favorite_empty_logo"
     }
     
     convenience init!(assetsIdentifier: AssetsIdentifier) {

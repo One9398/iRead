@@ -110,7 +110,6 @@ class FeedBaseTableViewCell: MaterialTableViewCell {
 
 extension FeedBaseTableViewCell : MaterialSwitchDelegate {
     func materialSwitchStateChanged(control: MaterialSwitch) {
-        print("update switch delegate")
         
         // 当订阅界面cell的switch改变,执行当前回调事件,只更新推荐页相应cell的UI,不重复调用回调事件
         if !autoSwitch {

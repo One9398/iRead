@@ -15,7 +15,7 @@ class RootTabbarController: UITabBarController {
 
         delegate = self
         prepareForTabbar()
-        
+        selectedIndex = 1
     }
     
     // MARK: - UI Preparation 📱

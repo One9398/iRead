@@ -27,6 +27,8 @@ class FeedsViewController: UIViewController {
     private var feedProviders = Set<FeedModelsProvider>()
     private var errorFeedProviders = Set<FeedModelsProvider>()
     
+    private var childVC: FavArticlesTableViewController?
+    
     // MARK: - View Life Cycle ♻️
 
     override func viewDidLoad() {
@@ -37,12 +39,15 @@ class FeedsViewController: UIViewController {
         prepareForEmptyView()
         prepareForTableView()
         prepareForRefreshView()
+//        prepareForTabBar()
         loadData()
     }
+    
    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
+        self.tabBarController?.tabBar.hidden = false
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -56,6 +61,10 @@ class FeedsViewController: UIViewController {
     
     // MARK: - UI Preparation 📱
 
+    private func prepareForTabBar() {
+        hidesBottomBarWhenPushed = true;
+    }
+    
     private func prepareForNavigationBar() {
         let feedsTitleView = FeedsTitleView(leftTitle: "订阅", rightTitle: "收藏")
         feedsTitleView.delegate = self
@@ -207,7 +216,6 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate {
         }
         let feedListVC = FeedListController()
         feedListVC.configureContent(subscribeFeeds[indexPath.row])
-        
         self.navigationController?.pushViewController(feedListVC, animated: true)
         
     }
@@ -261,11 +269,28 @@ extension FeedsViewController : BaseTableViewCellDelegate {
 extension FeedsViewController : FeedsTitleViewDelegate {
     func titleViewDidChangeSelected(sender: FeedsTitleView, isLeft: Bool) {
         if isLeft {
-            
+            childVC?.view.alpha = 0
         } else {
             print("go to favicateor")
+            // 呈现喜爱收藏文章列表控制器
+            
+            if childVC == nil {
+                let favoriteFeedVC = FavArticlesTableViewController()
+                childVC = favoriteFeedVC
+                displayChildViewController(favoriteFeedVC)
+            } else {
+                childVC?.view.alpha = 1
+            }
         }
     }
+    
+    func displayChildViewController(childVC: UIViewController) {
+        addChildViewController(childVC)
+        view.addSubview(childVC.view)
+        childVC.view.frame = view.frame
+        childVC.didMoveToParentViewController(self)
+    }
+    
 }
 
 extension FeedsViewController : DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {

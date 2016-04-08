@@ -14,8 +14,10 @@ import Material
 
 class ArticleViewController: UIViewController {
 
-    var feedItem: FeedItemModel?
+    var feedItem: FeedItemModel!
     var feed: FeedModel?
+    var feedResouce = FeedResource.sharedResource
+    
     private var isScrolled = false
     private var isDecelerated = false
     private var imageModels = [ImageModel]()
@@ -54,13 +56,15 @@ class ArticleViewController: UIViewController {
         // Do any additional setup after loading the view.
         prepareForNavigationBar()
         prepareForMenuView()
+        
 
- }
-    
-    /// Prepares the MenuView example.
+    }
+
+
   
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.hidden = true
         
     }
     
@@ -83,7 +87,12 @@ class ArticleViewController: UIViewController {
     // MARK: - UI Preparation 📱
     private func prepareForMenuView() {
         
+        print(feedItem.isFavorite)
         let actionView = ActionView()
+        if feedResouce.favoriteArticles.contains({$0.title == feedItem.title}) {
+            feedItem.isFavorite = true            
+            actionView.updateFavoriteBtnState()
+        }
         
         actionView.actionDelegate = self
         view.addSubview(actionView)
@@ -135,20 +144,32 @@ class ArticleViewController: UIViewController {
     }
 
     // MARK: - Congfigure Data
+    convenience init(feedItem: FeedItemModel) {
+        self.init()
+        configureContent("文章", feedItem: feedItem, feedModel: nil)
+    }
+    
     convenience init(title: String?, feedItem model: FeedItemModel, feedModel: FeedModel) {
 
         self.init()
         configureContent(title, feedItem: model, feedModel: feedModel)
     }
     
-    func configureContent(title: String?, feedItem model: FeedItemModel, feedModel: FeedModel) {
+    func configureContent(title: String?, feedItem model: FeedItemModel, feedModel: FeedModel?) {
         self.title = title
         feedItem = model
 
         let feedContent = model.description.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
         let feedTitle = model.title
         let feedDate = iReadDateFormatter.sharedDateFormatter.getCustomDateStringFromDateString(model.pubDate, styleString: "MM月dd日,HH点mm分")
-        let feedAuthor = model.author.usePlaceholdStringWhileIsEmpty(feedModel.title)
+        
+        var feedAuthor = ""
+        if let feedModel = feedModel {
+            feedAuthor = model.author.usePlaceholdStringWhileIsEmpty(feedModel.title)
+        } else {
+            feedAuthor = model.author.usePlaceholdStringWhileIsEmpty("未知来源")
+        }
+
         let htmlString = "<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0, user-scalable=no\"><meta http-equiv=X-UA-Compatible content=IE=edge><title></title></head><body><header style=heardInfo><a class=title>\(feedTitle)</a><a class=author>\(feedAuthor)</a><a class=pub-date>\("发布于" + feedDate)</a><div class=divider></div></header><div class=article-content>\(feedContent)</div>"
         
         articleView.loadHTMLString(htmlString, baseURL: nil)
@@ -342,6 +363,15 @@ extension ArticleViewController: ActionViewDelegate {
             print("go to ShareContentAction")
         case .StoreContentAction:
             print("go to StoreContentAction")
+            if acitonBtn.selected {
+                self.feedItem.isFavorite = true
+                feedResouce.appendFavoriteArticle(self.feedItem)
+            } else {
+                self.feedItem.isFavorite = false
+                feedResouce.removeFavoriteArticle(self.feedItem, index: nil)
+            }
+
+            
         case .ModeChangeAction:
 //            iReadTheme.changeThemeMode()
             topBar?.updateArticleTopBarThemeMode()

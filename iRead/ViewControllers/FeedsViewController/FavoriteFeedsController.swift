@@ -13,12 +13,20 @@ class FavoriteFeedsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+        prepareForView()
+        
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - UI Preparation 📱
+    private func prepareForView() {
+        view.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeWhiteColor, nightColor: iReadColor.themeLightBlackColor)
     }
     
     /*

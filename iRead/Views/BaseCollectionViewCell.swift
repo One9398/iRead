@@ -98,7 +98,6 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
         let detailLabel: UILabel = UILabel()
         detailLabel.text = ""
         card!.detailView = detailLabel
-        
     }
     
     private func prepareForBottomView() {
@@ -180,6 +179,7 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
             self.item = feedItem
             titleLab?.text = feedItem.title
             cardView.titleLabel?.sizeToFit()
+            cardView.titleLabelInset.top = 10
             
             if feedItem.isRead {
                 self.card?.depth = .None

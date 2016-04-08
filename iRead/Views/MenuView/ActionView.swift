@@ -25,11 +25,16 @@ class ActionView: MenuView {
 
     weak var actionDelegate: ActionViewDelegate?
     private var menuButton: FabButton?
+    private var favoriteBtn : FabButton!
+    
+    convenience init() {
+        self.init(frame: CGRectZero)
+        prepareMenuView()
+    }
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        prepareMenuView()
         
     }
 
@@ -59,7 +64,8 @@ class ActionView: MenuView {
         let noteBtn = prepareForAcitonButton("icon_note", actionState: .NoteContentAction)
         let modeBtn = prepareForAcitonButton("icon_dark", actionState: .ModeChangeAction)
         let storeBtn = prepareForAcitonButton("icon_liked_normal", actionState: .StoreContentAction)
-
+        self.favoriteBtn = storeBtn
+        
         self.menu.direction = .Up
         self.menu.baseViewSize = CGSizeMake(iReadConstant.MenuView.width, iReadConstant.MenuView.height)
         self.menu.views = [menuBtn, modeBtn, noteBtn, shareBtn, storeBtn]
@@ -89,7 +95,6 @@ class ActionView: MenuView {
         
         return btn2
     }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
        
@@ -104,8 +109,11 @@ class ActionView: MenuView {
 
 }
 
-
 extension ActionView {
+   
+    func updateFavoriteBtnState() {
+        changeStateButton(self.favoriteBtn)
+    }
     
     func changeStateButton(button: FabButton) {
 
@@ -113,7 +121,9 @@ extension ActionView {
         
         button.tintColor = button.selected ? iReadColor.themeLightWhiteColor : iReadColor.themeLightBlueColor
         button.backgroundColor = button.selected ? iReadColor.themeLightBlueColor : iReadColor.themeLightWhiteColor
+        
     }
+    
     
     func changeMenuButton(button: FabButton) {
         self.menuButton?.tintColor = button.selected ? iReadColor.themeLightWhiteColor : iReadColor.themeLightBlueColor

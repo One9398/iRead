@@ -21,6 +21,16 @@ class iReadDateFormatter: NSDateFormatter {
         
     }
     
+//    func getBeijingTimeWithStyle(styleString : String) -> String {
+//
+//        let date = NSDate()
+//        print(styleString)
+//        print(date)
+//        self.dateFormat = "MM月"
+//        let dateString = self.stringFromDate(date)
+//        return dateString
+//    }
+    
     func getCustomDateStringFromDateString(string: String, styleString: String) -> String {
         let date: NSDate?
         var dateString: String = string

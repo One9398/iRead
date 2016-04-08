@@ -47,6 +47,8 @@
 		F45344291C982647008378DC /* FeedListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45344281C982647008378DC /* FeedListController.swift */; };
 		F47085CC1CACAE10000F119B /* iReadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47085CB1CACAE10000F119B /* iReadExtension.swift */; };
 		F476FAFF1CA8BC9A00A77F16 /* RecommandCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F476FAFE1CA8BC9A00A77F16 /* RecommandCardView.swift */; };
+		F4773D591CB643E600F3B94C /* FavoriteArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4773D581CB643E600F3B94C /* FavoriteArticleCell.swift */; };
+		F4773D5B1CB64B4400F3B94C /* FavArticlesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4773D5A1CB64B4400F3B94C /* FavArticlesTableViewController.swift */; };
 		F47B0C0B1CA56E3D00086B50 /* FavoriteFeedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B0C0A1CA56E3D00086B50 /* FavoriteFeedsController.swift */; };
 		F47CF65C1C9E755700808CCA /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CF65B1C9E755700808CCA /* ArticleView.swift */; };
 		F48048781C9817A800392827 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F48048771C9817A800392827 /* Assets.xcassets */; };
@@ -76,6 +78,7 @@
 		F4C09FF61C8EDFB4005ED771 /* iReadHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C09FF51C8EDFB4005ED771 /* iReadHelp.swift */; };
 		F4C3A9501C919F6B001A0D22 /* iReadConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C3A94F1C919F6B001A0D22 /* iReadConfigure.swift */; };
 		F4C5076B1C919E66003D0AB1 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5076A1C919E66003D0AB1 /* FeedStore.swift */; };
+		F4C574831CB6555E002530B3 /* FavArticleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C574821CB6555E002530B3 /* FavArticleCard.swift */; };
 		F4D1F15E1CA3A11200AC056E /* iReadUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D1F15D1CA3A11200AC056E /* iReadUserManager.swift */; };
 		F4D1F1661CA3C81800AC056E /* ArticleTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D1F1651CA3C81800AC056E /* ArticleTopBar.xib */; };
 		F4D1F1681CA3CDDF00AC056E /* ArtileTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D1F1671CA3CDDF00AC056E /* ArtileTopBar.swift */; };
@@ -160,6 +163,8 @@
 		F45344281C982647008378DC /* FeedListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedListController.swift; path = FeedListController/FeedListController.swift; sourceTree = "<group>"; };
 		F47085CB1CACAE10000F119B /* iReadExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadExtension.swift; sourceTree = "<group>"; };
 		F476FAFE1CA8BC9A00A77F16 /* RecommandCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommandCardView.swift; sourceTree = "<group>"; };
+		F4773D581CB643E600F3B94C /* FavoriteArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteArticleCell.swift; path = FavoriteArticleCell/FavoriteArticleCell.swift; sourceTree = "<group>"; };
+		F4773D5A1CB64B4400F3B94C /* FavArticlesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavArticlesTableViewController.swift; sourceTree = "<group>"; };
 		F47B0C0A1CA56E3D00086B50 /* FavoriteFeedsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFeedsController.swift; sourceTree = "<group>"; };
 		F47CF65B1C9E755700808CCA /* ArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		F48048771C9817A800392827 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -202,6 +207,7 @@
 		F4C404841C9D587500F76ED8 /* DTFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DTFoundation.framework; path = "Externals/DTCoreText/Externals/DTFoundation/build/Debug-iphoneos/DTFoundation.framework"; sourceTree = "<group>"; };
 		F4C404881C9D588C00F76ED8 /* libDTFoundation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDTFoundation.a; path = "Externals/DTCoreText/Externals/DTFoundation/build/Debug-iphoneos/libDTFoundation.a"; sourceTree = "<group>"; };
 		F4C5076A1C919E66003D0AB1 /* FeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
+		F4C574821CB6555E002530B3 /* FavArticleCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavArticleCard.swift; path = FavoriteArticleCell/FavArticleCard.swift; sourceTree = "<group>"; };
 		F4D1F15D1CA3A11200AC056E /* iReadUserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadUserManager.swift; sourceTree = "<group>"; };
 		F4D1F1651CA3C81800AC056E /* ArticleTopBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleTopBar.xib; sourceTree = "<group>"; };
 		F4D1F1671CA3CDDF00AC056E /* ArtileTopBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtileTopBar.swift; sourceTree = "<group>"; };
@@ -390,6 +396,7 @@
 		F4181E371C86C68E00E41FBA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F4773D571CB6439600F3B94C /* FavoriteArticleCell */,
 				F48693EF1CA91D2700FE900B /* SubFeedCell */,
 				F476FAFD1CA8BC5E00A77F16 /* RecommendCardView */,
 				F44B0B721CA54B7A00DDE1E9 /* LoadView */,
@@ -475,6 +482,15 @@
 				F476FAFE1CA8BC9A00A77F16 /* RecommandCardView.swift */,
 			);
 			path = RecommendCardView;
+			sourceTree = "<group>";
+		};
+		F4773D571CB6439600F3B94C /* FavoriteArticleCell */ = {
+			isa = PBXGroup;
+			children = (
+				F4773D581CB643E600F3B94C /* FavoriteArticleCell.swift */,
+				F4C574821CB6555E002530B3 /* FavArticleCard.swift */,
+			);
+			name = FavoriteArticleCell;
 			sourceTree = "<group>";
 		};
 		F480C3C51CA18FD100D11BD3 /* MenuView */ = {
@@ -574,6 +590,7 @@
 				F4AB16FA1C882BDD006438D2 /* Feeds.storyboard */,
 				F4AB16FB1C882BDD006438D2 /* FeedsViewController.swift */,
 				F47B0C0A1CA56E3D00086B50 /* FavoriteFeedsController.swift */,
+				F4773D5A1CB64B4400F3B94C /* FavArticlesTableViewController.swift */,
 			);
 			path = FeedsViewController;
 			sourceTree = "<group>";
@@ -844,6 +861,7 @@
 				F44B0B6B1CA537CC00DDE1E9 /* FeedsTitleView.swift in Sources */,
 				F480C3C71CA1900C00D11BD3 /* ActionView.swift in Sources */,
 				F42E98551C92689100A1E602 /* iReadNetwork.swift in Sources */,
+				F4C574831CB6555E002530B3 /* FavArticleCard.swift in Sources */,
 				F42E98521C92601400A1E602 /* FeedModel.swift in Sources */,
 				F42C03381C9A4E6900B27F45 /* BaseCollectionViewCell.swift in Sources */,
 				F45344291C982647008378DC /* FeedListController.swift in Sources */,
@@ -865,6 +883,7 @@
 				F4D1F1681CA3CDDF00AC056E /* ArtileTopBar.swift in Sources */,
 				F42E98501C925DED00A1E602 /* ConcurrentOpeartion.swift in Sources */,
 				F476FAFF1CA8BC9A00A77F16 /* RecommandCardView.swift in Sources */,
+				F4773D5B1CB64B4400F3B94C /* FavArticlesTableViewController.swift in Sources */,
 				F4AB17021C882BDD006438D2 /* LaunchViewController.swift in Sources */,
 				F4C09FF31C8EDD2C005ED771 /* RootTabbarController.swift in Sources */,
 				F44B0B6F1CA54AE500DDE1E9 /* PCAngularActivityIndicatorView.m in Sources */,
@@ -882,6 +901,7 @@
 				F4AA73A01CB3D04D0027F2BC /* MaterialLoader.swift in Sources */,
 				F4914D581C8EA71F00C32743 /* NotesViewController.swift in Sources */,
 				F4C5076B1C919E66003D0AB1 /* FeedStore.swift in Sources */,
+				F4773D591CB643E600F3B94C /* FavoriteArticleCell.swift in Sources */,
 				F4A331291C96589100AFFC6F /* ITNewsViewController.swift in Sources */,
 				F4181E071C86C3C600E41FBA /* AppDelegate.swift in Sources */,
 				F40C02281C90028B00CB3646 /* YZDisplayTitleLabel.m in Sources */,

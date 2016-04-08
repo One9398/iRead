@@ -19,11 +19,12 @@ class FeedResource  {
         return items.filter{ $0.isSub == true }
     }
     
+    var favoriteArticles = [FeedItemModel]()
+    
     var feeds = [FeedModel]()
     var subscirbeFeeds: [FeedModel] {
         return feeds.filter{ $0.isFollowed == true }
     }
-
     
     init() {
         
@@ -105,6 +106,25 @@ class FeedResource  {
     }
     
     func removeSubscribeItem(feedURL: String) {
+    }
+    
+    func updateArticleState(article: FeedItemModel) {
+        self.favoriteArticles =  self.favoriteArticles.filter{$0.title != article.title}
+    }
+    
+    func appendFavoriteArticle(article: FeedItemModel) {
+        self.favoriteArticles.insert(article, atIndex: 0)
+    }
+    
+    func removeFavoriteArticle(article: FeedItemModel, index: Int?){
+       
+        if let index = index {
+            self.favoriteArticles.removeAtIndex(index)
+        } else {
+            self.favoriteArticles = self.favoriteArticles.filter({$0.title != article.title})
+        }
+
+        
     }
     
 }

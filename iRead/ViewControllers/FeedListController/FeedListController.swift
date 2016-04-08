@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 import Material
+
 class FeedListController: UIViewController {
 
-    var feedModel: FeedModel?
-    var feedItems: [FeedItemModel]?
+    var feedModel: FeedModel!
+    var readCount: Int {
+        return feedItems.filter({$0.isRead == false}).count
+    }
+    
+    var feedItems: [FeedItemModel]!
+    private var subTitleLab : UILabel!
     private var collectionView = BaseCollectionView()
 
     // MARK: - View Life Cycle ♻️
@@ -20,7 +27,7 @@ class FeedListController: UIViewController {
         super.viewDidLoad()
         
         prepareForNavigationBar()
-        prepareForTabBar()
+//        prepareForTabBar()
         prepareForView()
         prepareForCollectionView()
         // Do any additional setup after loading the view.
@@ -29,9 +36,12 @@ class FeedListController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.tabBarController?.tabBar.hidden = false
         if self.navigationController!.navigationBarHidden {
             self.navigationController?.setNavigationBarHidden(false, animated: true)
         }
+        
+        subTitleLab.text = "\(readCount)篇可阅"
         
     }
     override func viewWillLayoutSubviews() {
@@ -45,18 +55,31 @@ class FeedListController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func popCurrentViewController() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
     // MARK: - UI Preparation 📱
+   
     
     private func prepareForNavigationBar() {
         print(self.navigationItem.titleView)
         self.navigationController?.navigationBar.tintColor = iReadColor.themeLightWhiteColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : iReadColor.themeLightWhiteColor]
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(assetsIdentifier: .icon_baritem_back), style: .Plain, target: self, action: "popCurrentViewController")
+        
 
+        let subTitleLabel = UILabel()
+        subTitleLabel.text = "\(readCount)篇可阅"
+        subTitleLab = subTitleLabel
+        subTitleLabel.font = iReadFont.lightWithSize(14)
+        subTitleLabel.textColor = iReadColor.themeLightWhiteColor
+        subTitleLabel.sizeToFit()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: subTitleLabel)
     }
     
     private func prepareForTabBar() {
         hidesBottomBarWhenPushed = true;
-
     }
     
     private func prepareForCollectionView() {
@@ -78,7 +101,7 @@ class FeedListController: UIViewController {
     // MARK: - Configure Date 
     func configureContent(model: FeedModel) {
         feedModel = model
-        feedItems = feedModel?.items
+        feedItems = feedModel.items
         title = model.title
     }
     
@@ -125,7 +148,6 @@ extension FeedListController: MaterialCollectionViewDataSource, MaterialCollecti
         
         return cell
     }
-    
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
@@ -153,5 +175,58 @@ extension FeedListController: BaseCollectionViewCellProtocol {
     
     func baseCollectionViewCellReadActionDidHandle(cell: BaseCollectionViewCell, item: FeedItemModel?) {
         print("unread the \(item?.title)")
+    }
+}
+
+
+extension FavArticlesTableViewController : DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(assetsIdentifier: .icon_favorite_empty_logo)
+    }
+    
+    func imageAnimationForEmptyDataSet(scrollView: UIScrollView!) -> CAAnimation! {
+        let fadeAnimation = CABasicAnimation(keyPath: "alpha")
+        fadeAnimation.fromValue = 0
+        fadeAnimation.toValue = 1.0
+        fadeAnimation.duration = 2.0
+        
+        return fadeAnimation
+    }
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let emptyTitle  = "唉~, 没有收藏的文章..."
+        
+        let titleAttributes = [NSFontAttributeName: iReadFont.medium, NSForegroundColorAttributeName: iReadColor.themeDarkGrayColor]
+        
+        return NSAttributedString(string: emptyTitle, attributes: titleAttributes)
+    }
+    
+    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return iReadConstant.EmptyView.verticalOffset
+    }
+    
+    func spaceHeightForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return iReadConstant.EmptyView.spaceHeight
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let descriptionStr = "看到兴趣的资讯,还可以收藏起来哦."
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineBreakMode = .ByWordWrapping
+        paragraphStyle.alignment = .Center
+        
+        let descriptionAttributes = [NSFontAttributeName: iReadFont.regualWithSize(13), NSForegroundColorAttributeName: iReadColor.themeDarkGrayColor, NSParagraphStyleAttributeName: paragraphStyle]
+        
+        return NSAttributedString(string: descriptionStr, attributes: descriptionAttributes)
+    }
+    
+    
+    func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
+        return iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
+    }
+    
+    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
+        return true
     }
 }

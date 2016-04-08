@@ -13,7 +13,7 @@ class FeedModel: CustomDebugStringConvertible {
     var link = ""
     var description = ""
     var imagURL = ""
-    var items = [FeedItemModel]?()
+    var items = [FeedItemModel]()
     var lastDate = ""    
     var index = 0
     
@@ -23,7 +23,7 @@ class FeedModel: CustomDebugStringConvertible {
     
 
     var debugDescription: String {
-        return title + "\n" + link + "\n" + description + "\n" + "ICON: " + imagURL + "\n" + "items : \(items?.count)"
+        return title + "\n" + link + "\n" + description + "\n" + "ICON: " + imagURL + "\n" + "items : \(items.count)"
     }
     
     static func loadLocalFeeds() -> [FeedModel] {
