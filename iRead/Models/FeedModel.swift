@@ -56,6 +56,7 @@ class FeedItemModel: CustomDebugStringConvertible {
     var isNoted = false
     var isFavorite = false
     var isToread = false
+    var addDate = ""
     
     var debugDescription: String {
         return title + "\n" + link + "\n" + image + "\n" + author + "\n" + description

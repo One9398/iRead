@@ -174,8 +174,12 @@ extension FeedListController: BaseCollectionViewCellProtocol {
         
         if item.isToread {
             self.noticeTop("该内容已标记为待读", autoClear: true, autoClearTime: 1)
+            item.addDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
+           
             feedResource.appendToreadArticle(item)
+            
         } else {
+            
             feedResource.removeToreadArticle(item, index: nil)
         }
         

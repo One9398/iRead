@@ -30,6 +30,12 @@ class iReadDateFormatter: NSDateFormatter {
 //        let dateString = self.stringFromDate(date)
 //        return dateString
 //    }
+    func getCurrentDateString(StyleString: String) -> String {
+        
+        self.dateFormat = StyleString
+        let dateString = self.stringFromDate(NSDate())
+        return dateString
+    }
     
     func getCustomDateStringFromDateString(string: String, styleString: String) -> String {
         let date: NSDate?

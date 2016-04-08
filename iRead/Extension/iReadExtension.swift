@@ -22,6 +22,9 @@ extension UIImage {
         case icon_feeds_count = "icon_feeds_count"
         case icon_baritem_back = "icon_baritem_back"
         case icon_favorite_empty_logo = "icon_favorite_empty_logo"
+        case article_toread_placehold = "article_toread_placehold"
+        case icon_toread_info_selected = "icon_toread_info_selected"
+        case icon_toread_info_normal = "icon_toread_info_normal"
     }
     
     convenience init!(assetsIdentifier: AssetsIdentifier) {

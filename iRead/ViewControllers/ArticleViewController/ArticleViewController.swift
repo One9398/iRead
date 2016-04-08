@@ -366,6 +366,8 @@ extension ArticleViewController: ActionViewDelegate {
             if acitonBtn.selected {
                 self.feedItem.isFavorite = true
                 feedResouce.appendFavoriteArticle(self.feedItem)
+                self.feedItem.addDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
+                
             } else {
                 self.feedItem.isFavorite = false
                 feedResouce.removeFavoriteArticle(self.feedItem, index: nil)

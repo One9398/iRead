@@ -49,6 +49,12 @@ class FeedsViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
         self.tabBarController?.tabBar.hidden = false
+        
+        if feedResource.toreadArticles.count > 0 {
+            toreadButton?.selected = true
+        } else {
+            toreadButton?.selected = false
+        }
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -76,7 +82,8 @@ class FeedsViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
 
         let button = UIButton(frame: CGRectMake(0,0,40,40))
-        button.setImage(UIImage(assetsIdentifier: .icon_feeds_count), forState: .Normal)
+        button.setImage(UIImage(assetsIdentifier: .icon_toread_info_normal), forState: .Normal)
+        button.setImage(UIImage(assetsIdentifier: .icon_toread_info_selected), forState: .Selected)
         button.setTitle(" ", forState: .Normal)
         button.titleLabel?.font = iReadFont.lightWithSize(16)
         button.contentEdgeInsets.right = -20
@@ -191,8 +198,16 @@ class FeedsViewController: UIViewController {
     
     
     func showToreadArticlesTable() {
+        if feedResource.toreadArticles.count <= 0 {
+            self.noticeTop("没有待读的资讯", autoClear: true, autoClearTime: 1)
+            return
+        }
+        
         print(feedResource.toreadArticles.count)
         print("show toreadview")
+        let toreadArticleController = ToreadViewController(articleType: .ToreadType)
+        self.navigationController?.pushViewController(toreadArticleController, animated: true)
+        
     }
     
 }

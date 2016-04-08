@@ -15,6 +15,7 @@ class FavoriteArticleCell: MaterialTableViewCell {
     var cardView: CardView!
     var titleLab: UILabel!
     var detailLab: UILabel!
+    var dateString: String = "古老的过去..."
     
     convenience init(articleModel: FeedItemModel) {
         self.init(style: .Default, reuseIdentifier: NSStringFromClass(FavoriteArticleCell.self))
@@ -58,16 +59,14 @@ class FavoriteArticleCell: MaterialTableViewCell {
         let detailLabel: UILabel = UILabel()
         detailLabel.textColor = iReadColor.themeLightGrayColor
         detailLab = detailLabel
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM月dd日,HH点mm分"
-        let dateString = dateFormatter.stringFromDate(NSDate())
-        detailLab.text = "收藏于 " + dateString
+        detailLab.text = "收录于 " + dateString
         cardView.detailView = detailLabel
         
     }
     
     func configureCellContent(articleItem: FeedItemModel) {
         titleLab.text = articleItem.title
+        detailLab.text = "收录于 " + articleItem.addDate.usePlaceholdStringWhileIsEmpty(dateString)
     }
     
     

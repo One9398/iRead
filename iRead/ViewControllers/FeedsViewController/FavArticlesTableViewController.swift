@@ -33,7 +33,15 @@ class FavArticlesTableViewController: UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
         tableView.reloadData()
-        tableView.contentOffset = CGPointMake(0, -84)
+        
+        print(tableView.contentOffset)
+        print(tableView.contentInset)
+        if favArticles.count > 0 {
+            tableView.contentOffset = CGPointMake(0, -84)
+            tableView.contentInset = UIEdgeInsetsMake(84, 0, 44, 0)
+        } else {
+            tableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0)
+        }
         
         if self.navigationController!.navigationBarHidden {
             self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -49,7 +57,6 @@ class FavArticlesTableViewController: UITableViewController {
     private func prepareForTableView() {
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .None
-        tableView.contentInset = UIEdgeInsetsMake(84, 0, 44, 0)
         
         tableView.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeWhiteColor, nightColor: iReadColor.themeLightBlackColor)
         tableView.registerClass(FavoriteArticleCell.self, forCellReuseIdentifier: NSStringFromClass(FavoriteArticleCell.self))
@@ -186,6 +193,6 @@ extension FavArticlesTableViewController : DZNEmptyDataSetDelegate, DZNEmptyData
     }
     
     func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
-        return true
+        return false
     }
 }

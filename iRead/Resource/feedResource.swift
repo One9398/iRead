@@ -12,6 +12,10 @@ enum FeedType: String {
     case ITNews, TechStudy, Life, Art, Other,Blog
 }
 
+enum ArticleType: String {
+    case FavoriteType, ToreadType
+}
+
 class FeedResource  {
     static let sharedResource = FeedResource()
     var items = [FeedItem]()
@@ -112,7 +116,15 @@ class FeedResource  {
     
     func removeSubscribeItem(feedURL: String) {
     }
-    
+   
+    func fetchArticles(articleType: ArticleType) -> [FeedItemModel] {
+        switch articleType {
+        case .FavoriteType:
+            return favoriteArticles
+        case .ToreadType:
+            return toreadArticles
+        }
+    }
     func updateArticleState(article: FeedItemModel) {
         self.favoriteArticles =  self.favoriteArticles.filter{$0.title != article.title}
     }
