@@ -38,6 +38,10 @@
 		F435544C1CB74C97004F9CB2 /* ToreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F435544B1CB74C97004F9CB2 /* ToreadViewController.swift */; };
 		F435544E1CB74CDE004F9CB2 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F435544D1CB74CDE004F9CB2 /* ArticleTableViewController.swift */; };
 		F445DD8A1C9BA68600B4DA71 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445DD891C9BA68600B4DA71 /* ArticleViewController.swift */; };
+		F44693631CB7BCB400BEB406 /* day.js in Resources */ = {isa = PBXBuildFile; fileRef = F44693621CB7BCB400BEB406 /* day.js */; };
+		F44693651CB7BCC200BEB406 /* night.js in Resources */ = {isa = PBXBuildFile; fileRef = F44693641CB7BCC200BEB406 /* night.js */; };
+		F44693691CB7BE3E00BEB406 /* imgAdjust.js in Resources */ = {isa = PBXBuildFile; fileRef = F44693681CB7BE3E00BEB406 /* imgAdjust.js */; };
+		F446936B1CB7BFA600BEB406 /* fileResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F446936A1CB7BFA600BEB406 /* fileResource.swift */; };
 		F4495E641C9FABDE00E75463 /* iReadWebConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4495E631C9FABDE00E75463 /* iReadWebConfiguration.swift */; };
 		F4495E671CA0161400E75463 /* img.js in Resources */ = {isa = PBXBuildFile; fileRef = F4495E661CA0161400E75463 /* img.js */; };
 		F4495E691CA02AC200E75463 /* style.js in Resources */ = {isa = PBXBuildFile; fileRef = F4495E681CA02AC200E75463 /* style.js */; };
@@ -154,6 +158,10 @@
 		F435544D1CB74CDE004F9CB2 /* ArticleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
 		F43AD7141C90F8FE001ED543 /* iReadTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = iReadTest.playground; sourceTree = "<group>"; };
 		F445DD891C9BA68600B4DA71 /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleViewController.swift; path = ArticleViewController/ArticleViewController.swift; sourceTree = "<group>"; };
+		F44693621CB7BCB400BEB406 /* day.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = day.js; sourceTree = "<group>"; };
+		F44693641CB7BCC200BEB406 /* night.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = night.js; sourceTree = "<group>"; };
+		F44693681CB7BE3E00BEB406 /* imgAdjust.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = imgAdjust.js; sourceTree = "<group>"; };
+		F446936A1CB7BFA600BEB406 /* fileResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fileResource.swift; sourceTree = "<group>"; };
 		F4495E631C9FABDE00E75463 /* iReadWebConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iReadWebConfiguration.swift; path = Network/iReadWebConfiguration.swift; sourceTree = "<group>"; };
 		F4495E661CA0161400E75463 /* img.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = img.js; sourceTree = "<group>"; };
 		F4495E681CA02AC200E75463 /* style.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = style.js; sourceTree = "<group>"; };
@@ -527,6 +535,10 @@
 				F4495E661CA0161400E75463 /* img.js */,
 				F44DE8F11C92BEEE008617E6 /* feeds.plist */,
 				F44DE8F51C92C21F008617E6 /* feedResource.swift */,
+				F446936A1CB7BFA600BEB406 /* fileResource.swift */,
+				F44693621CB7BCB400BEB406 /* day.js */,
+				F44693641CB7BCC200BEB406 /* night.js */,
+				F44693681CB7BE3E00BEB406 /* imgAdjust.js */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -774,14 +786,17 @@
 				F4495E671CA0161400E75463 /* img.js in Resources */,
 				F4914D5D1C8EA7B100C32743 /* Notes.storyboard in Resources */,
 				F4AB17011C882BDD006438D2 /* Launch.storyboard in Resources */,
+				F44693631CB7BCB400BEB406 /* day.js in Resources */,
 				F4AB16FF1C882BDD006438D2 /* Feeds.storyboard in Resources */,
 				F415918F1C9BDA330034D3C2 /* Page.storyboard in Resources */,
 				F40C02191C8FE11C00CB3646 /* Recommend.storyboard in Resources */,
 				F48048781C9817A800392827 /* Assets.xcassets in Resources */,
 				F49208321CA2B61C00F889FA /* fetchImages.js in Resources */,
+				F44693651CB7BCC200BEB406 /* night.js in Resources */,
 				F4AB16F01C882ADF006438D2 /* Profile.storyboard in Resources */,
 				F4D1F1661CA3C81800AC056E /* ArticleTopBar.xib in Resources */,
 				F4495E691CA02AC200E75463 /* style.js in Resources */,
+				F44693691CB7BE3E00BEB406 /* imgAdjust.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -875,6 +890,7 @@
 				F4C09FF11C8EDD09005ED771 /* RootNavigationController.swift in Sources */,
 				F44DE8F61C92C21F008617E6 /* feedResource.swift in Sources */,
 				F4D1F15E1CA3A11200AC056E /* iReadUserManager.swift in Sources */,
+				F446936B1CB7BFA600BEB406 /* fileResource.swift in Sources */,
 				F4E8B6C51CAACC230008C6B4 /* BaseRefreshLoader.swift in Sources */,
 				F49A8D3C1C9C392C004553DD /* iReadConstant.swift in Sources */,
 				F48693F41CA924CD00FE900B /* SwiftNotice.swift in Sources */,

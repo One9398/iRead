@@ -1,16 +1,7 @@
+//
 
-var imgs = document.getElementsByTagName('img');
-
-for (var i = 0; i < imgs.length; i++) {
-    
-    var img = imgs[i];
-    
-    if( img.width < 20 ){
-        img.style.display='none';
-    }
-}
-document.getElementsByTagName('img');
 var styleElement = document.createElement('style');
-styleElement.id = 'iReadStyle2';
+styleElement.id = 'iReadStyle';
 document.documentElement.appendChild(styleElement);
-styleElement.textContent = 'img {width:100%;height:100%;}';
+//img { width:0;height:0;} img { width:100%;height:100%;}
+styleElement.textContent = 'iframe {width:100%;height:100%;} body{font-family:Roboto, Georgia, "Times New Roman", Times, "Kai", "Kaiti SC", "KaiTi", "BiauKai", "楷体", "楷体_GB2312", serif}body{word-wrap:break-word}header .title,.author,.pub-date{text-align:center;text-decoration:none;display:block}.title{width:80%;margin:5% 10% 0 10%;font-weight:bold;font-size:1.5rem}.author{font-size:1.2rem;font-weight:lighter;margin:10px auto;width:100%}.pub-date{font-size:.5rem;font-weight:lighter;margin:0 auto;width:100%}.divider{margin:20px 5% 0 5%;border:#ccc 1px solid;width:90%}@media (min-width: 750px){.title{font-size:2.5rem}.pub-date{font-size:.7rem}pre{width:540px !important;margin-left:0}}@media (max-width: 320px){pre{width:240px !important}}@media (-webkit-min-device-pixel-ratio: 2){.divider{border-width:.5px}}pre{padding:1rem 2.5%;border:1px solid #c9e1f6;border-radius:3px;font-size:.5rem;font-weight:normal;line-height:1.0rem;overflow:scroll;width:320px}figure{-webkit-margin-before:0rem;-webkit-margin-after:0rem;-webkit-margin-start:0rem;-webkit-margin-end:0}img{}a{font-weight:bolder;text-overflow:ellipsis;word-wrap:break-word}.article-content{margin-left:5%}h2,h3,h4,h5,h1{margin-left:0;margin-bottom:0;max-width:90%}p{margin:0;margin-left:0;margin-right:0;max-width:95%;padding:5px 0 0 0}ul{margin-top:0;margin-bottom:0;margin-left:0;max-width:100%;display:block}ul p{margin:0;margin-left:0;padding:0;max-width:100%}li{padding:5px 0;max-width:90%}blockquote{-webkit-margin-before:0rem;-webkit-margin-after:.5rem;-webkit-margin-start:20px;-webkit-margin-end:20px}blockquote p{max-width:100%;font-size:.8rem}'

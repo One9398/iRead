@@ -16,8 +16,11 @@ class ArticleViewController: UIViewController {
 
     var feedItem: FeedItemModel!
     var feed: FeedModel?
-    var feedResouce = FeedResource.sharedResource
+    var feedResource = FeedResource.sharedResource
+    private var fileResource = FileResource.sharedResource
+    
     private lazy var articleStyle : ArticleStyle =  {
+//        return ArticleStyle.Darkness
         let style: ArticleStyle = iReadTheme.isDayMode ? .Normal : .Darkness
         return style
     }()
@@ -41,6 +44,8 @@ class ArticleViewController: UIViewController {
         
         return view
     }()
+    
+
    
     private var beginUpdate = false
     
@@ -93,7 +98,7 @@ class ArticleViewController: UIViewController {
         
         print(feedItem.isFavorite)
         let actionView = ActionView()
-        if feedResouce.favoriteArticles.contains({$0.title == feedItem.title}) {
+        if feedResource.favoriteArticles.contains({$0.title == feedItem.title}) {
             feedItem.isFavorite = true            
             actionView.updateFavoriteBtnState()
         }
@@ -295,23 +300,26 @@ extension ArticleViewController : WKNavigationDelegate, WKUIDelegate, WKScriptMe
     }
   
     func addUserScriptsToUserContentController(controller: WKUserContentController) {
-        
-        let styleScriptString = try! NSString(contentsOfURL: (NSBundle.mainBundle().URLForResource("style", withExtension: "js"))!, encoding: NSUTF8StringEncoding)
-        
-        let styleScript = WKUserScript(source: styleScriptString as String, injectionTime: .AtDocumentEnd, forMainFrameOnly: true)
-       
-        let 	imgScriptString = try! NSString(contentsOfURL: (NSBundle.mainBundle().URLForResource("img", withExtension: "js"))!, encoding: NSUTF8StringEncoding)
-       
-        let imgScript = WKUserScript(source: imgScriptString as String, injectionTime: WKUserScriptInjectionTime.AtDocumentStart, forMainFrameOnly: true)
-        
-        let fetchJSFile = try! NSString(contentsOfURL: (NSBundle.mainBundle().URLForResource("fetchImages", withExtension: "js"))!, encoding: NSUTF8StringEncoding)
-        let fetchImageScript = WKUserScript(source: fetchJSFile as String, injectionTime: .AtDocumentEnd, forMainFrameOnly: true)
+
+        let styleScript = WKUserScript(source: fileResource.styleJSFile, injectionTime: .AtDocumentStart, forMainFrameOnly: true)
+        let imgAdjustScript = WKUserScript(source: fileResource.imgAdjustJSFile, injectionTime: .AtDocumentEnd, forMainFrameOnly: true)
+        let dayScript = WKUserScript(source: fileResource.dayJSFile, injectionTime: .AtDocumentStart, forMainFrameOnly: true)
+        let nightScript = WKUserScript(source: fileResource.nightJSFile, injectionTime: .AtDocumentStart, forMainFrameOnly: true)
+        let imgFetchScript = WKUserScript(source: fileResource.imgFetchJSFile, injectionTime: .AtDocumentEnd, forMainFrameOnly: true)
         
         // 防止脚本重复加载
         if !NSUserDefaults.standardUserDefaults().boolForKey("hasStyle") {
+
             controller.addUserScript(styleScript)
-            controller.addUserScript(imgScript)
-            controller.addUserScript(fetchImageScript)
+            controller.addUserScript(imgFetchScript)
+            controller.addUserScript(imgAdjustScript)
+            
+            if articleStyle == .Normal {
+                controller.addUserScript(dayScript)
+            } else {
+                controller.addUserScript(nightScript)
+            }
+
             controller.addScriptMessageHandler(self, name: "didFetchImagesOfContents")
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasStyle")
         }
@@ -365,12 +373,12 @@ extension ArticleViewController: ActionViewDelegate {
             print("go to StoreContentAction")
             if actionBtn.selected {
                 self.feedItem.isFavorite = true
-                feedResouce.appendFavoriteArticle(self.feedItem)
+                feedResource.appendFavoriteArticle(self.feedItem)
                 self.feedItem.addDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
                 
             } else {
                 self.feedItem.isFavorite = false
-                feedResouce.removeFavoriteArticle(self.feedItem, index: nil)
+                feedResource.removeFavoriteArticle(self.feedItem, index: nil)
             }
 
             
