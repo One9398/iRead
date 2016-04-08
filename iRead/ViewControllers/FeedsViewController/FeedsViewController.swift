@@ -14,6 +14,7 @@ class FeedsViewController: UIViewController {
 
     private var feedsTitleView: FeedsTitleView?
     private let tableView: UITableView = UITableView()
+    private var toreadButton: UIButton?
     private var feedResource = FeedResource.sharedResource
     private var subscribeFeeds: [FeedModel] {
         let feeds = feedResource.fetchCurrentSubscribedFeeds()
@@ -73,6 +74,15 @@ class FeedsViewController: UIViewController {
         
         navigationController!.navigationBar.setBackgroundImage(UIImage(named: iReadTheme.isNightMode() ? "navigationbar_nightbg_recommand" : "navigationbar_bg_recommand"), forBarMetrics: .Default)
         navigationController?.navigationBar.shadowImage = UIImage()
+
+        let button = UIButton(frame: CGRectMake(0,0,40,40))
+        button.setImage(UIImage(assetsIdentifier: .icon_feeds_count), forState: .Normal)
+        button.setTitle(" ", forState: .Normal)
+        button.titleLabel?.font = iReadFont.lightWithSize(16)
+        button.contentEdgeInsets.right = -20
+        toreadButton = button
+        button.addTarget(self, action: "showToreadArticlesTable", forControlEvents: .TouchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
     
     private func prepareForTableView() {
@@ -177,6 +187,12 @@ class FeedsViewController: UIViewController {
             
         }
         
+    }
+    
+    
+    func showToreadArticlesTable() {
+        print(feedResource.toreadArticles.count)
+        print("show toreadview")
     }
     
 }
