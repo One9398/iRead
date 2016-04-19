@@ -378,6 +378,7 @@ extension ArticleViewController: ActionViewDelegate {
         switch actionType {
         case .ShareContentAction:
             print("go to ShareContentAction")
+            showupShareArticle(self.feedItem)            
         case .StoreContentAction:
             print("go to StoreContentAction")
             if actionBtn.selected {
@@ -445,6 +446,8 @@ extension ArticleViewController {
         })
     }
 }
+
+extension ArticleViewController : SharableViewController { }
 
 
 /*

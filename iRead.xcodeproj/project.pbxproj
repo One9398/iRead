@@ -24,6 +24,8 @@
 		F4181E271C86C3C700E41FBA /* iReadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4181E261C86C3C700E41FBA /* iReadUITests.swift */; };
 		F423DA8F1CC5CE3500C1D95E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F423DA8E1CC5CE3500C1D95E /* HistoryViewController.swift */; };
 		F423DA921CC5D25C00C1D95E /* HistoryArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F423DA911CC5D25C00C1D95E /* HistoryArticleCell.swift */; };
+		F423DA961CC6616500C1D95E /* Activities.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F423DA951CC6616500C1D95E /* Activities.xcassets */; };
+		F423DA981CC6706500C1D95E /* Activities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F423DA971CC6706500C1D95E /* Activities.swift */; };
 		F42A63651C9A8E0C0099CB7A /* BaseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A63641C9A8E0C0099CB7A /* BaseCardView.swift */; };
 		F42C03361C9A4B9000B27F45 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42C03351C9A4B9000B27F45 /* BaseCollectionView.swift */; };
 		F42C03381C9A4E6900B27F45 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42C03371C9A4E6900B27F45 /* BaseCollectionViewCell.swift */; };
@@ -156,6 +158,8 @@
 		F4181E281C86C3C700E41FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F423DA8E1CC5CE3500C1D95E /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryViewController.swift; path = HistoryViewController/HistoryViewController.swift; sourceTree = "<group>"; };
 		F423DA911CC5D25C00C1D95E /* HistoryArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryArticleCell.swift; path = HistroyArticleCell/HistoryArticleCell.swift; sourceTree = "<group>"; };
+		F423DA951CC6616500C1D95E /* Activities.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Activities.xcassets; sourceTree = "<group>"; };
+		F423DA971CC6706500C1D95E /* Activities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activities.swift; sourceTree = "<group>"; };
 		F42A63641C9A8E0C0099CB7A /* BaseCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCardView.swift; sourceTree = "<group>"; };
 		F42C03351C9A4B9000B27F45 /* BaseCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
 		F42C03371C9A4E6900B27F45 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -388,6 +392,7 @@
 				F4181E371C86C68E00E41FBA /* Views */,
 				F4181E061C86C3C600E41FBA /* AppDelegate.swift */,
 				F48048771C9817A800392827 /* Assets.xcassets */,
+				F423DA951CC6616500C1D95E /* Activities.xcassets */,
 				F45306CB1CBE7278003C5D4E /* Roboto-Regular.ttf */,
 				F40C02351C90043A00CB3646 /* iRead-Bridging-Header.h */,
 				F43AD7141C90F8FE001ED543 /* iReadTest.playground */,
@@ -711,6 +716,7 @@
 		F4C09FF41C8EDF96005ED771 /* Help */ = {
 			isa = PBXGroup;
 			children = (
+				F423DA971CC6706500C1D95E /* Activities.swift */,
 				F4C09FF51C8EDFB4005ED771 /* iReadHelp.swift */,
 				F4A3918D1C97CEE8006DE0A8 /* iReadAlert.swift */,
 				F49A8D3B1C9C392C004553DD /* iReadConstant.swift */,
@@ -860,6 +866,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F423DA961CC6616500C1D95E /* Activities.xcassets in Resources */,
 				F44DE8F21C92BEEE008617E6 /* feeds.plist in Resources */,
 				F4FA7A6C1CC0A773006C65D4 /* About.storyboard in Resources */,
 				F40C02341C9003F600CB3646 /* Main.storyboard in Resources */,
@@ -990,6 +997,7 @@
 				F4120ABB1C9AAABC00B86DE3 /* NSDate+InternetDateTime.m in Sources */,
 				F4D1F1681CA3CDDF00AC056E /* ArtileTopBar.swift in Sources */,
 				F42E98501C925DED00A1E602 /* ConcurrentOpeartion.swift in Sources */,
+				F423DA981CC6706500C1D95E /* Activities.swift in Sources */,
 				F476FAFF1CA8BC9A00A77F16 /* RecommandCardView.swift in Sources */,
 				F4FA7A6A1CC0A5DD006C65D4 /* AboutViewController.swift in Sources */,
 				F4773D5B1CB64B4400F3B94C /* FavArticlesTableViewController.swift in Sources */,

@@ -41,21 +41,6 @@ class iReadAlert {
                         alertController.popoverPresentationController?.sourceRect = CGRectMake(articleView.touchPoint.x, articleView.touchPoint.y , 1, 1)
                     }
                 }
-                /*
-                for (UIView *view in myWebView.subviews)
-                {
-                if ([view isKindOfClass:[UIScrollView class]])
-                {
-                // Get UIScrollView object
-                scrollview = (UIScrollView *) view;
-                
-                // Find the zoom and scroll offsets
-                float zoom = scrollView.zoomScale;
-                float xOffset = scrollView.contentOffset.x;
-                float yOffset = scrollView.contentOffset.y;
-                }
-                }
-*/
                 
                 alertController.popoverPresentationController?.permittedArrowDirections = .Any
             }

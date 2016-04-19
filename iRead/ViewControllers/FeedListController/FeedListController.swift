@@ -9,6 +9,7 @@
 import UIKit
 import DZNEmptyDataSet
 import Material
+import MonkeyKing
 
 class FeedListController: UIViewController {
 
@@ -163,10 +164,112 @@ extension FeedListController: MaterialCollectionViewDataSource, MaterialCollecti
     }
 }
 
+protocol SharableViewController {
+    func showupShareArticle(article: FeedItemModel)
+}
+
+extension SharableViewController where Self:UIViewController {
+    func showupShareArticle(article: FeedItemModel) {
+        
+        let info = MonkeyKing.Info(
+            title: article.title,
+            description: article.description,
+            thumbnail: nil,
+            media: .URL(NSURL(string: article.link)!)
+        )
+        
+        let sessionMessage = MonkeyKing.Message.WeChat(.Session(info: info))
+        let weChatSessionActivity = WeChatActivity(
+            type: .Session,
+            message: sessionMessage,
+            finish: { success in
+                print("share Profile to WeChat Session success: \(success)")
+            }
+        )
+        
+        let timelineMessage = MonkeyKing.Message.WeChat(.Timeline(info: info))
+        let weChatTimelineActivity = WeChatActivity(
+            type: .Timeline,
+            message: timelineMessage,
+            finish: { success in
+                print("share Profile to WeChat Timeline success: \(success)")
+            }
+        )
+        
+        let activityViewController = UIActivityViewController(activityItems: ["\(article.title)  作者:\(article.author.usePlaceholdStringWhileIsEmpty("未知"))\n 来自我阅的资讯分享链接\(article.link)\n"], applicationActivities: [weChatSessionActivity, weChatTimelineActivity])
+        
+        activityViewController.completionWithItemsHandler = {
+            (type: String?, completed: Bool, retrunedItems: [AnyObject]?, error: NSError? ) in
+            print(completed)
+            print(type)
+            print(error)
+            if error != nil {
+                self.noticeTop("分享错误,稍后再试吧", autoClear: true, autoClearTime: 1)
+            } else {
+                self.noticeTop("分享成功", autoClear: true, autoClearTime: 1)
+            }
+            
+        }
+        
+        if !iReadHelp.currentDeviceIsPhone() {
+            activityViewController.modalPresentationStyle = .PageSheet
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            activityViewController.popoverPresentationController?.sourceRect = CGRectMake(self.view.center.x,10,20,40)
+            activityViewController.popoverPresentationController?.permittedArrowDirections = .Any
+        }
+        
+        self.presentViewController(activityViewController, animated: true, completion: nil)
+        
+    }
+    
+}
+extension FeedListController: SharableViewController {
+}
 
 extension FeedListController: BaseCollectionViewCellProtocol {
+//    func showupShareArticle(article: FeedItemModel) {
+//        
+//        let info = MonkeyKing.Info(
+//            title: article.title,
+//            description: article.description,
+//            thumbnail: nil,
+//            media: .URL(NSURL(string: article.link)!)
+//        )
+//        
+//        let sessionMessage = MonkeyKing.Message.WeChat(.Session(info: info))
+//        let weChatSessionActivity = WeChatActivity(
+//            type: .Session,
+//            message: sessionMessage,
+//            finish: { success in
+//                print("share Profile to WeChat Session success: \(success)")
+//            }
+//        )
+//        
+//        let timelineMessage = MonkeyKing.Message.WeChat(.Timeline(info: info))
+//        let weChatTimelineActivity = WeChatActivity(
+//            type: .Timeline,
+//            message: timelineMessage,
+//            finish: { success in
+//                print("share Profile to WeChat Timeline success: \(success)")
+//            }
+//        )
+//        
+//        let activityViewController = UIActivityViewController(activityItems: ["\(article.title)  作者:\(article.author.usePlaceholdStringWhileIsEmpty("未知"))\n 来自我阅的资讯分享链接\(article.link)\n"], applicationActivities: [weChatSessionActivity, weChatTimelineActivity])
+//       
+//        if !iReadHelp.currentDeviceIsPhone() {
+//            activityViewController.modalPresentationStyle = .PageSheet
+//            activityViewController.popoverPresentationController?.sourceView = self.view
+//            activityViewController.popoverPresentationController?.sourceRect = CGRectMake(self.view.center.x,10,20,40)
+//            activityViewController.popoverPresentationController?.permittedArrowDirections = .Any
+//        }
+//        
+//        self.presentViewController(activityViewController, animated: true, completion: nil)
+//        
+//    }
+    
     func baseCollectionViewCellSharedActionDidHandle(cell: BaseCollectionViewCell, item: FeedItemModel?) {
         print("share the \(item)")
+        showupShareArticle(item!)
     }
     
     func baseCollectionViewCellReadActionDidHandle(cell: BaseCollectionViewCell, item: FeedItemModel?) {

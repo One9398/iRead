@@ -10,11 +10,13 @@ def pods
    pod 'Alamofire', '~> 3.2.1'
 #    pod 'PKRevealController'
     pod 'Reveal-iOS-SDK', :configurations => ['Debug']
-    pod 'Material'
+    pod 'Material', '~> 1.37.3'
+
     pod "DGRunkeeperSwitch", "~> 1.1"
     pod 'DZNEmptyDataSet'
 
     
+    pod 'MonkeyKing', '~> 0.9.2'
 
 #	pod 'DTCoreText'
 
