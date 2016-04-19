@@ -67,11 +67,6 @@ class FeedBaseTableViewCell: MaterialTableViewCell {
             self.contentView.addSubview(switchControl)
             
         } else {
-
-//            switchControl!.removeFromSuperview()
-//            switchControl = BaseSwitch.createSwitch(iReadTheme.isNightMode() ? .NightMode : .DayMode, isOn: feedModel.isFollowed)
-//            switchControl!.delegate = self
-//            self.contentView.addSubview(switchControl!)
             switchControl?.setSwitchState(feedModel.isFollowed  ? .On : .Off, animated: false, completion: {
                 control in
                 self.autoSwitch = true
@@ -93,7 +88,6 @@ class FeedBaseTableViewCell: MaterialTableViewCell {
         self.imageView?.layer.cornerRadius = 16
         self.hidden = true
         self.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
-        
     }
     
     override func layoutSubviews() {

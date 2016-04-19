@@ -30,8 +30,8 @@
         <!--我阅-->
         <scene sceneID="YDA-GO-GQz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FC7-SV-NYv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我阅" image="icon_tabbar_feeds_normal" badgeValue="2" selectedImage="icon_tabbar_feeds_selected" id="ZoF-5O-1WH"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FC7-SV-NYv" customClass="RootNavigationController" customModule="iRead" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我阅" image="icon_tabbar_feeds_normal" selectedImage="icon_tabbar_feeds_selected" id="ZoF-5O-1WH"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uaO-zY-gAf">
@@ -46,24 +46,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9x6-IA-K7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-459" y="1009"/>
-        </scene>
-        <!--Favorite Feeds Controller-->
-        <scene sceneID="yTD-RO-HFG">
-            <objects>
-                <viewController id="kCC-F9-I6V" customClass="FavoriteFeedsController" customModule="iRead" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eWT-vZ-fDf"/>
-                        <viewControllerLayoutGuide type="bottom" id="lm9-Ik-Ipt"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HMa-Lk-Keh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.27450980390000002" green="0.87450980389999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1EQ-lB-Xlm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1102" y="879"/>
         </scene>
     </scenes>
     <resources>

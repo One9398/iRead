@@ -127,8 +127,9 @@ extension ArticleTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let item = self.articles[indexPath.row]
-        let articleVC = ArticleViewController(feedItem: item)
+        feedResource.appendReadArticle(item)
         
+        let articleVC = ArticleViewController(feedItem: item)
         self.navigationController?.pushViewController(articleVC, animated: true)
         
     }

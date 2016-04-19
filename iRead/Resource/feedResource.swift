@@ -161,10 +161,16 @@ class FeedResource  {
         
     }
 
-    
     // todo
     func appendReadArticle(article: FeedItemModel) {
-        self.readArticles.insert(article, atIndex: 0)
+        
+        if (!self.readArticles.contains({return $0.title == article.title})) {
+            article.readDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
+            self.readArticles.insert(article, atIndex: 0)
+            iReadUserDefaults.updateReadCounts(1)
+            print("add a read article")
+        }
+        
     }
     
     func removeReadArticle(article: FeedItemModel, index: Int?){
@@ -176,6 +182,9 @@ class FeedResource  {
         }
     }
     
+    func fetchArticlesMarkedRead() -> [FeedItemModel] {
+        return self.readArticles
+    }
 }
 
 class FeedItem {

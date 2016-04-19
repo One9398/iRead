@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5rH-Gr-C7Y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5rH-Gr-C7Y">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
@@ -23,11 +23,11 @@
             </objects>
             <point key="canvasLocation" x="1511" y="-229"/>
         </scene>
-        <!--精选-->
+        <!--推荐-->
         <scene sceneID="7MS-Fi-a4k">
             <objects>
-                <navigationController id="5rH-Gr-C7Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="精选" image="icon_tabbar_recommend_normal" selectedImage="icon_tabbar_recommend_selected" id="arB-aG-Qk3"/>
+                <navigationController id="5rH-Gr-C7Y" customClass="RootNavigationController" customModule="iRead" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="推荐" image="icon_tabbar_recommend_normal" selectedImage="icon_tabbar_recommend_selected" id="arB-aG-Qk3" customClass="I"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="AbstractSizeClassScreen[heightClass=regular-widthClass=regular]"/>

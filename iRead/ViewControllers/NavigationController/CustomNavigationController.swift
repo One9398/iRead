@@ -12,7 +12,6 @@ class CustomNavigationController: RootNavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
     
 }

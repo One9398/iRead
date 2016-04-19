@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--About View Controller-->
+        <scene sceneID="jT2-wU-5Vp">
+            <objects>
+                <viewController storyboardIdentifier="AboutViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0lb-XZ-CV3" customClass="AboutViewController" customModule="iRead" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mso-vD-qMV"/>
+                        <viewControllerLayoutGuide type="bottom" id="osN-92-DZy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pr1-7l-qab">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ouN-jq-4LK">
+                                <rect key="frame" x="240" y="40" width="120" height="120"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我阅" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enP-iT-fYm">
+                                <rect key="frame" x="270" y="179" width="60" height="35"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本 1.0.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rA8-vm-le1">
+                                <rect key="frame" x="268.5" y="222" width="62" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2016 Simon." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBZ-6h-ilf">
+                                <rect key="frame" x="229" y="525.5" width="141" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XJZ-S7-gk4">
+                                <rect key="frame" x="0.0" y="317" width="600" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="dXB-yA-IQc"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="0lb-XZ-CV3" id="tDp-lE-Cn4"/>
+                                    <outlet property="delegate" destination="0lb-XZ-CV3" id="dgJ-CN-hKs"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XJZ-S7-gk4" firstAttribute="leading" secondItem="pr1-7l-qab" secondAttribute="leading" id="0zl-u1-Gxv"/>
+                            <constraint firstItem="rA8-vm-le1" firstAttribute="top" secondItem="enP-iT-fYm" secondAttribute="bottom" constant="8" id="5vO-i2-Bxl"/>
+                            <constraint firstItem="enP-iT-fYm" firstAttribute="centerX" secondItem="ouN-jq-4LK" secondAttribute="centerX" constant="0.5" id="DtT-hw-6Gn"/>
+                            <constraint firstAttribute="centerX" secondItem="zBZ-6h-ilf" secondAttribute="centerX" id="GH4-Di-CeK"/>
+                            <constraint firstItem="enP-iT-fYm" firstAttribute="top" secondItem="ouN-jq-4LK" secondAttribute="bottom" constant="19" id="Gnk-N0-KQ5"/>
+                            <constraint firstAttribute="trailing" secondItem="XJZ-S7-gk4" secondAttribute="trailing" id="QZW-FH-Umz"/>
+                            <constraint firstItem="rA8-vm-le1" firstAttribute="centerX" secondItem="enP-iT-fYm" secondAttribute="centerX" id="fBw-z7-yS8"/>
+                            <constraint firstAttribute="bottom" secondItem="zBZ-6h-ilf" secondAttribute="bottom" constant="60" id="hto-3U-f8l"/>
+                            <constraint firstItem="ouN-jq-4LK" firstAttribute="top" secondItem="mso-vD-qMV" secondAttribute="bottom" constant="20" id="qeL-hz-Xax"/>
+                            <constraint firstAttribute="centerX" secondItem="ouN-jq-4LK" secondAttribute="centerX" id="ud2-ud-tFY"/>
+                            <constraint firstItem="zBZ-6h-ilf" firstAttribute="top" secondItem="XJZ-S7-gk4" secondAttribute="bottom" constant="8" id="xNv-Wa-m5Q"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="XJZ-S7-gk4" id="prS-qG-Nz0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cU0-x2-aUq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1849" y="-388"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="launch_logo" width="120" height="120"/>
+    </resources>
+</document>

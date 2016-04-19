@@ -43,6 +43,7 @@ class ArticleViewController: UIViewController {
         let view = ArticleView(frame: CGRectZero, configuration:defaultConfigure)
         
         return view
+        
     }()
     
 
@@ -65,21 +66,24 @@ class ArticleViewController: UIViewController {
         // Do any additional setup after loading the view.
         prepareForNavigationBar()
         prepareForMenuView()
-        
 
     }
 
-
-  
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.hidden = true
+        iReadTimer.startRecordingTime()
         
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         scrollView.removeObserver(self, forKeyPath: "contentOffset", context: &iReadcontext)
+        
+        let timeinterval = iReadTimer.endRecodingTime()
+        iReadUserDefaults.updateReadTime(timeinterval)
+        print(timeinterval)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -148,8 +152,17 @@ class ArticleViewController: UIViewController {
             
         })
     }
+    
     private func prepareForView() {
         self.view.backgroundColor = iReadColor.themeWhiteColor
+    }
+    
+    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
+        return .Fade
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .Default
     }
 
     // MARK: - Congfigure Data
@@ -235,9 +248,7 @@ class ArticleViewController: UIViewController {
 extension ArticleViewController : WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
     
     func webView(webView: WKWebView, didCommitNavigation navigation: WKNavigation!) {
-
-        print("---")
-
+        print("webview didCommitNav")
     }
     func webViewWebContentProcessDidTerminate(webView: WKWebView) {
         print("content be Terminated")
@@ -265,8 +276,6 @@ extension ArticleViewController : WKNavigationDelegate, WKUIDelegate, WKScriptMe
                 decisionHandler(.Cancel)
                 return
             }
-
-            print("can not load the link ")
 
             if let destinationURL = navigationAction.request.URL {
                 self.destinationURL = destinationURL.absoluteString

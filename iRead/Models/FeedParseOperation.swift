@@ -130,7 +130,8 @@ class FeedParseOperation: ConcurrentOperation {
             parseAtomByXPath(data, document: doc)
     
         } else {
-            fatalError("other xml type :" + xmlType)
+            throw iReadParseError.XMLTypeError(feedItem)
+//            fatalError("other xml type :" + xmlType)
         }
 
     }
@@ -213,7 +214,6 @@ extension FeedParseOperation {
     }
 }
 
-
 //: MARK: - RSS解析
 extension FeedParseOperation {
     
@@ -263,8 +263,6 @@ extension FeedParseOperation {
             if image != nil {
                 print(image)
             }
-            
-            
             
             itemModel.title = title
             itemModel.link = link

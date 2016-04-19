@@ -53,6 +53,10 @@ class RootNavigationController: UINavigationController {
         return .LightContent
     }
     
+    override func childViewControllerForStatusBarStyle() -> UIViewController? {
+        return ArticleViewController()
+    }
+    
 }
 
 extension RootNavigationController: UINavigationControllerDelegate, UIGestureRecognizerDelegate {

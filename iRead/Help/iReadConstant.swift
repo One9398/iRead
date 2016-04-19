@@ -9,6 +9,7 @@
 import UIKit
 
 enum iReadConstant {
+    static let appidgroup = "group.simon.iread"
     struct ArticleView {
         static let contentMargin: CGFloat = 15.0
     }
@@ -45,6 +46,21 @@ enum iReadConstant {
         static let verticalOffset: CGFloat = -10
         static let spaceHeight: CGFloat = 20
         
+    }
+    
+    struct ProfileView {
+        static let height = 140
+        static let imageHeight = 100
+        static let bottomMargin : CGFloat = 20
+    }
+    
+    struct ProfileTabel {
+        static let ProfileCellHeight: CGFloat = 40.0
+        
+    }
+    
+    struct ProfileSettingCell {
+        static let lineHeight = 1
     }
     
     struct RecommendTable {

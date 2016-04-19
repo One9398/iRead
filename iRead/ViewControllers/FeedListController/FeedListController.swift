@@ -153,6 +153,8 @@ extension FeedListController: MaterialCollectionViewDataSource, MaterialCollecti
                 cell.updateArticleReadState(item)
             })
         }
+       
+        feedResource.appendReadArticle(item)
         
         let articleVC = ArticleViewController(title: title, feedItem: item, feedModel: feedModel)
         

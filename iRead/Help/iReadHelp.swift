@@ -37,6 +37,10 @@ public struct iReadColor {
     public static func themeModelBackgroundColor(dayColor dayColor: UIColor, nightColor: UIColor) -> UIColor {
         return iReadTheme.isNightMode() ? nightColor : dayColor
     }
+    
+    public static var defaultBackgroundColor: UIColor {
+        return iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlackColor)
+    }
 }
 
 public struct iReadFont {
@@ -108,6 +112,23 @@ struct iReadHelp {
         return false
     }
     
+}
+
+struct iReadTimer {
+    static let standardTimer = iReadTimer()
+    
+    private static var beginDate : NSDate!
+    static func startRecordingTime() {
+        let date = NSDate()
+        beginDate = date
+    }
+    
+    static func endRecodingTime() -> NSTimeInterval {
+        let endDate = NSDate()
+        let duration = endDate.timeIntervalSinceDate(beginDate)
+        
+        return duration
+    }
 }
 
 // Block延时执行,允许主动停止

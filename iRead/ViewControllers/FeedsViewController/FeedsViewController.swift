@@ -111,8 +111,12 @@ class FeedsViewController: UIViewController {
     private func prepareForRefreshView() {
         print(tableView.contentOffset)
 
-        MaterialLoader.addRefreshHeader(tableView, loaderColor:iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlueColor, nightColor: iReadColor.themeBlackColor), action: {
-            
+        MaterialLoader.addRefreshHeader(tableView,
+            loaderColor:iReadColor.themeModelTinColor(
+                dayColor: iReadColor.themeBlueColor,
+                nightColor: iReadColor.themeBlackColor
+            ),
+            action: {
             self.loadData()
             delayTaskExectuing(2.0, block: {
                 self.tableView.endRefreshing()

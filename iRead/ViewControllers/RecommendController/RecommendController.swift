@@ -50,13 +50,12 @@ class RecommendController: YZDisplayViewController {
         
         let titleLabel = UILabel()
         titleLabel.font = iReadFont.boldWithSize(18)
-        titleLabel.text = "精选"
+        titleLabel.text = "推荐"
         titleLabel.sizeToFit()
         titleLabel.textColor = iReadColor.themeWhiteColor
         navigationItem.titleView = titleLabel
         navigationController?.navigationBar.barStyle = .Black
-        navigationController!.navigationBar.setBackgroundImage(UIImage(named: iReadTheme.isNightMode() ? "navigationbar_nightbg_recommand" : "navigationbar_bg_recommand"), forBarMetrics: .Default)
-        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(named: iReadTheme.isNightMode() ? "navigationbar_nightbg_recommand" : "navigationbar_bg_recommand"), forBarMetrics: .Default)
         navigationController!.navigationBar.shadowImage = UIImage()
         
     }
@@ -93,11 +92,11 @@ class RecommendController: YZDisplayViewController {
         viewControllerB1.title = "技术学习"
         addChildViewController(viewControllerB1)
         
-        let viewControllerA2 = ViewControllerA()
+        let viewControllerA2 = TechStudyController(feedType: .Life)
         viewControllerA2.title = "生活健康"
         addChildViewController(viewControllerA2)
         
-        let viewControllerB2 = ViewControllerA()
+        let viewControllerB2 = TechStudyController(feedType: .Art)
         viewControllerB2.title = "艺术文学"
         addChildViewController(viewControllerB2)
         

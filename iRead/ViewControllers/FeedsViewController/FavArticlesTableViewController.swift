@@ -139,6 +139,7 @@ extension FavArticlesTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let item = self.favArticles[indexPath.row]
+        feedResource.appendReadArticle(item)
         let articleVC = ArticleViewController(feedItem: item)
         
         self.navigationController?.pushViewController(articleVC, animated: true)
