@@ -78,7 +78,7 @@ class ActionView: MenuView {
         btn2.pulseColor = nil
         
         if actionState == .ModeChangeAction && iReadTheme.isNightMode() {
-            changeStateButton(btn2)
+            changeSelectStateButton(btn2)
         } else {
             btn2.tintColor = iReadColor.themeLightBlueColor
             btn2.backgroundColor = iReadColor.themeWhiteColor
@@ -112,13 +112,12 @@ class ActionView: MenuView {
 extension ActionView {
    
     func updateFavoriteBtnState() {
-        changeStateButton(self.favoriteBtn)
+        changeSelectStateButton(self.favoriteBtn)
     }
     
-    func changeStateButton(button: FabButton) {
+    func changeSelectStateButton(button: FabButton) {
 
         button.selected = !button.selected
-        
         button.tintColor = button.selected ? iReadColor.themeLightWhiteColor : iReadColor.themeLightBlueColor
         button.backgroundColor = button.selected ? iReadColor.themeLightBlueColor : iReadColor.themeLightWhiteColor
         
@@ -148,12 +147,12 @@ extension ActionView {
         if let actionType = ActionType(rawValue: button.tag) {
             switch actionType {
             case .ModeChangeAction:
-                changeStateButton(button)
+                changeSelectStateButton(button)
                 changeMenuButton(button)
             case .StoreContentAction:
-                changeStateButton(button)
+                changeSelectStateButton(button)
             case .NoteContentAction:
-                print("note it ")
+                changeSelectStateButton(button)
             case .ShareContentAction:
                 print("share it")
             }

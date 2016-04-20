@@ -395,31 +395,56 @@ extension ArticleViewController: ActionViewDelegate {
             performShareAction()
         case .StoreContentAction:
             print("go to StoreContentAction")
-            if actionBtn.selected {
-                self.feedItem.isFavorite = true
-                feedResource.appendFavoriteArticle(self.feedItem)
-                self.feedItem.addDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
-            } else {
-                self.feedItem.isFavorite = false
-                feedResource.removeFavoriteArticle(self.feedItem, index: nil)
-            }
-        case .ModeChangeAction:
-            let changedStyle : ArticleStyle = (articleStyle == .Normal ? .Darkness : .Normal)
-            topBar?.changeArticleTopBarStyle(changedStyle)
-            articleStyle = changedStyle
-            let modeJSFile = (changedStyle == .Normal ? fileResource.dayJSFile : fileResource.nightJSFile)
-            articleView.evaluateJavaScript(modeJSFile, completionHandler: nil)
-            print("go to ModeChangeAction")
-            
-            shouldShowLightBarStyle = !shouldShowLightBarStyle
+            updateArticleFavoriteState(addOrDelet: actionBtn.selected)
 
-            UIApplication.sharedApplication().statusBarStyle = .Default
-            setNeedsStatusBarAppearanceUpdate()
-            
+        case .ModeChangeAction:
+            print("go to ModeChangeAction")
+            updateArticleViewMode()
+            updateLightBarStyle()
+
         case .NoteContentAction:
             print("go to NoteContentAction")
-            
+            self.noticeTop("标记为待读资讯,待细读", autoClear: true, autoClearTime: 1)
+            updateArticleToreadState(addOrDelete: actionBtn.selected)
         }
+    }
+    
+    private func updateArticleViewMode() {
+        let changedStyle : ArticleStyle = (articleStyle == .Normal ? .Darkness : .Normal)
+        topBar?.changeArticleTopBarStyle(changedStyle)
+        articleStyle = changedStyle
+        let modeJSFile = (changedStyle == .Normal ? fileResource.dayJSFile : fileResource.nightJSFile)
+        articleView.evaluateJavaScript(modeJSFile, completionHandler: nil)
+    }
+   
+    private func updateArticleFavoriteState(addOrDelet isNew: Bool) {
+        if isNew {
+            self.feedItem.isFavorite = true
+            feedResource.appendFavoriteArticle(self.feedItem)
+            self.feedItem.addDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
+        } else {
+            self.feedItem.isFavorite = false
+            feedResource.removeFavoriteArticle(self.feedItem, index: nil)
+        }
+    }
+    
+    private func updateArticleToreadState(addOrDelete isNew: Bool) {
+        if isNew {
+            self.feedItem.isToread = true
+            feedResource.appendToreadArticle(self.feedItem)
+            self.feedItem.addDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
+        } else {
+            self.feedItem.isToread = false
+            feedResource.removeToreadArticle(self.feedItem, index: 0)
+        }
+    }
+   
+    // maybe not work
+    private func updateLightBarStyle() {
+        shouldShowLightBarStyle = !shouldShowLightBarStyle
+        UIApplication.sharedApplication().statusBarStyle = .Default
+        setNeedsStatusBarAppearanceUpdate()
+        
     }
     
 }
