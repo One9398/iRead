@@ -208,8 +208,10 @@ extension SharableViewController where Self:UIViewController {
             print(error)
             if error != nil {
                 self.noticeTop("分享错误,稍后再试吧", autoClear: true, autoClearTime: 1)
-            } else {
+            } else if completed {
                 self.noticeTop("分享成功", autoClear: true, autoClearTime: 1)
+            } else {
+                self.noticeTop("分享取消", autoClear: true, autoClearTime: 1)
             }
             
         }

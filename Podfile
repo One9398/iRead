@@ -12,6 +12,8 @@ def pods
 #    pod 'PKRevealController'
     pod 'Reveal-iOS-SDK', :configurations => ['Debug']
     pod 'Material', '~> 1.37.3'
+#pod 'AVOSCloud'               # 数据存储、短信、云引擎调用等基础服务模块
+#pod 'LeanCloudFeedback'
 
   pod 'LeanCloudFeedbackDynamic'
 

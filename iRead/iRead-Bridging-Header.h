@@ -13,4 +13,5 @@
 #import "YZDisplayViewHeader.h"
 #import "NSDate+InternetDateTime.h"
 #import "PCAngularActivityIndicatorView.h"
+#import "AVOSCloud/AVOSCloud.h"
 #endif /* iRead_Bridging_Header_h */

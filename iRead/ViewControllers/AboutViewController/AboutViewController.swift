@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LeanCloudFeedbackDynamic
 
 class AboutViewController: BaseChildViewController {
 
@@ -35,7 +36,12 @@ class AboutViewController: BaseChildViewController {
         }
         
         let feedbackItem = ProfileItem(title: "给予反馈", icon: "") {
+            [unowned self] in
+            
             print("feedback")
+            let agent = LCUserFeedbackAgent.sharedInstance()
+            
+            agent.showConversations(self, title: "意见反馈", contact: "")
         }
         
         let shareItem = ProfileItem(title: "分享应用", icon: "") {
