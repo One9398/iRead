@@ -67,4 +67,9 @@ enum iReadConstant {
         static let heightForCell: CGFloat = 80
         
     }
+    
+    struct ThumbnailImage {
+        static let width = 100
+        static let height = 100
+    }
 }

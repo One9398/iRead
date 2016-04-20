@@ -1,4 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
+
 platform :ios, '9.0'
 use_frameworks!
 
@@ -11,6 +12,8 @@ def pods
 #    pod 'PKRevealController'
     pod 'Reveal-iOS-SDK', :configurations => ['Debug']
     pod 'Material', '~> 1.37.3'
+
+  pod 'LeanCloudFeedbackDynamic'
 
     pod "DGRunkeeperSwitch", "~> 1.1"
     pod 'DZNEmptyDataSet'

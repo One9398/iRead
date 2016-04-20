@@ -160,9 +160,15 @@ class ArticleViewController: UIViewController {
     override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
         return .Fade
     }
+
+    private var shouldShowLightBarStyle = false
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .Default
+        if shouldShowLightBarStyle {
+            return .LightContent
+        } else {
+            return .Default
+        }
     }
 
     // MARK: - Congfigure Data
@@ -176,7 +182,7 @@ class ArticleViewController: UIViewController {
         self.init()
         configureContent(title, feedItem: model, feedModel: feedModel)
     }
-    
+
     func configureContent(title: String?, feedItem model: FeedItemModel, feedModel: FeedModel?) {
         self.title = title
         feedItem = model
@@ -356,7 +362,6 @@ extension ArticleViewController : WKNavigationDelegate, WKUIDelegate, WKScriptMe
 
 }
 
-
 extension ArticleViewController: SFSafariViewControllerDelegate {
     
     func safariViewControllerDidFinish(controller: SFSafariViewController) {
@@ -373,33 +378,43 @@ extension ArticleViewController: SFSafariViewControllerDelegate {
 }
 
 extension ArticleViewController: ActionViewDelegate {
+
+    private func performShareAction() {
+        
+        let text = "\(feedItem.title)  作者:\(feedItem.author.usePlaceholdStringWhileIsEmpty("未知"))\n 来自我阅的资讯分享链接\(feedItem.link)\n"
+        showupShareText(text, sharedLink: feedItem.link)
+        showupShareText(text, sharedLink: feedItem.link)
+        
+    }
+    
     func acitonViewDidClickAcitonButton(actionBtn: FabButton, actionType: ActionType) {
         
         switch actionType {
         case .ShareContentAction:
             print("go to ShareContentAction")
-            showupShareArticle(self.feedItem)            
+            performShareAction()
         case .StoreContentAction:
             print("go to StoreContentAction")
             if actionBtn.selected {
                 self.feedItem.isFavorite = true
                 feedResource.appendFavoriteArticle(self.feedItem)
                 self.feedItem.addDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
-                
             } else {
                 self.feedItem.isFavorite = false
                 feedResource.removeFavoriteArticle(self.feedItem, index: nil)
             }
-
-            
         case .ModeChangeAction:
             let changedStyle : ArticleStyle = (articleStyle == .Normal ? .Darkness : .Normal)
             topBar?.changeArticleTopBarStyle(changedStyle)
             articleStyle = changedStyle
-            
             let modeJSFile = (changedStyle == .Normal ? fileResource.dayJSFile : fileResource.nightJSFile)
             articleView.evaluateJavaScript(modeJSFile, completionHandler: nil)
             print("go to ModeChangeAction")
+            
+            shouldShowLightBarStyle = !shouldShowLightBarStyle
+
+            UIApplication.sharedApplication().statusBarStyle = .Default
+            setNeedsStatusBarAppearanceUpdate()
             
         case .NoteContentAction:
             print("go to NoteContentAction")

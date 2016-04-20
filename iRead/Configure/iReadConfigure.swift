@@ -29,4 +29,8 @@ struct iReadConfigure {
         static let timelineTitle = "WeChat Timeline"
         static let timelineImage = UIImage(named: "wechat_timeline")!
     }
+    
+    static let appstoreLink = "https://itunes.apple.com/us/app/wo-yue-ge-xing-zi-xun-yue-du-qi/id1105457596?l=zh&ls=1&mt=8"
+    static let rateAppLink = "itms-apps://itunes.apple.com/app/id" + "1105457596"
+    
 }

@@ -31,7 +31,7 @@ class AboutViewController: BaseChildViewController {
     func configureDataSource() {
         
         let rateItem = ProfileItem(title: "去评个分呗", icon: "") {
-            print("去评个分呗 ")
+            UIApplication.sharedApplication().openURL(NSURL(string:iReadConfigure.rateAppLink)!)
         }
         
         let feedbackItem = ProfileItem(title: "给予反馈", icon: "") {
@@ -39,7 +39,10 @@ class AboutViewController: BaseChildViewController {
         }
         
         let shareItem = ProfileItem(title: "分享应用", icon: "") {
-            print("share")
+            [unowned self] in
+            let link = iReadConfigure.appstoreLink
+            let text = "前往AppStore\(link),欢迎下载我阅App表示支持"
+            self.showupShareText(text, sharedLink: link)
         }
         
         let aboutGroup  = ProfileGroup(headerTitle: "", footerTitle: "", items: [feedbackItem, shareItem, rateItem])
@@ -47,6 +50,8 @@ class AboutViewController: BaseChildViewController {
     }
     
 }
+
+extension AboutViewController : SharableViewController {}
 
 extension AboutViewController : UITableViewDataSource, UITableViewDelegate {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

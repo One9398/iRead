@@ -49,13 +49,13 @@ class RootNavigationController: UINavigationController {
         return super.popToViewController(viewController, animated: false)
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
+//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+//        return .LightContent
+//    }
     
-    override func childViewControllerForStatusBarStyle() -> UIViewController? {
-        return ArticleViewController()
-    }
+//    override func childViewControllerForStatusBarStyle() -> UIViewController? {
+//        return ArticleViewController()
+//    }
     
 }
 

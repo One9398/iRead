@@ -165,17 +165,20 @@ extension FeedListController: MaterialCollectionViewDataSource, MaterialCollecti
 }
 
 protocol SharableViewController {
-    func showupShareArticle(article: FeedItemModel)
+       func showupShareText(text: String, sharedLink: String)
 }
 
 extension SharableViewController where Self:UIViewController {
-    func showupShareArticle(article: FeedItemModel) {
+    func showupShareText(text: String, sharedLink: String) {
+        
+        let thumbnail = UIImage(assetsIdentifier: .icon_sharedLogo)
+        thumbnail.drawInRect(CGRectMake(0, 0, 100, 100))
         
         let info = MonkeyKing.Info(
-            title: article.title,
-            description: article.description,
-            thumbnail: nil,
-            media: .URL(NSURL(string: article.link)!)
+            title: "来自我阅",
+            description: text,
+            thumbnail: thumbnail,
+            media: .URL(NSURL(string: sharedLink)!)
         )
         
         let sessionMessage = MonkeyKing.Message.WeChat(.Session(info: info))
@@ -196,7 +199,7 @@ extension SharableViewController where Self:UIViewController {
             }
         )
         
-        let activityViewController = UIActivityViewController(activityItems: ["\(article.title)  作者:\(article.author.usePlaceholdStringWhileIsEmpty("未知"))\n 来自我阅的资讯分享链接\(article.link)\n"], applicationActivities: [weChatSessionActivity, weChatTimelineActivity])
+        let activityViewController = UIActivityViewController(activityItems: [text, thumbnail], applicationActivities: [weChatSessionActivity, weChatTimelineActivity])
         
         activityViewController.completionWithItemsHandler = {
             (type: String?, completed: Bool, retrunedItems: [AnyObject]?, error: NSError? ) in
@@ -227,49 +230,14 @@ extension FeedListController: SharableViewController {
 }
 
 extension FeedListController: BaseCollectionViewCellProtocol {
-//    func showupShareArticle(article: FeedItemModel) {
-//        
-//        let info = MonkeyKing.Info(
-//            title: article.title,
-//            description: article.description,
-//            thumbnail: nil,
-//            media: .URL(NSURL(string: article.link)!)
-//        )
-//        
-//        let sessionMessage = MonkeyKing.Message.WeChat(.Session(info: info))
-//        let weChatSessionActivity = WeChatActivity(
-//            type: .Session,
-//            message: sessionMessage,
-//            finish: { success in
-//                print("share Profile to WeChat Session success: \(success)")
-//            }
-//        )
-//        
-//        let timelineMessage = MonkeyKing.Message.WeChat(.Timeline(info: info))
-//        let weChatTimelineActivity = WeChatActivity(
-//            type: .Timeline,
-//            message: timelineMessage,
-//            finish: { success in
-//                print("share Profile to WeChat Timeline success: \(success)")
-//            }
-//        )
-//        
-//        let activityViewController = UIActivityViewController(activityItems: ["\(article.title)  作者:\(article.author.usePlaceholdStringWhileIsEmpty("未知"))\n 来自我阅的资讯分享链接\(article.link)\n"], applicationActivities: [weChatSessionActivity, weChatTimelineActivity])
-//       
-//        if !iReadHelp.currentDeviceIsPhone() {
-//            activityViewController.modalPresentationStyle = .PageSheet
-//            activityViewController.popoverPresentationController?.sourceView = self.view
-//            activityViewController.popoverPresentationController?.sourceRect = CGRectMake(self.view.center.x,10,20,40)
-//            activityViewController.popoverPresentationController?.permittedArrowDirections = .Any
-//        }
-//        
-//        self.presentViewController(activityViewController, animated: true, completion: nil)
-//        
-//    }
     
     func baseCollectionViewCellSharedActionDidHandle(cell: BaseCollectionViewCell, item: FeedItemModel?) {
-        print("share the \(item)")
-        showupShareArticle(item!)
+        
+        guard let article = item else { assert(false, "there is no item exist") ; return}
+        
+        let text = "\(article.title)  作者:\(article.author.usePlaceholdStringWhileIsEmpty("未知"))\n 来自我阅的资讯分享链接\(article.link)\n"
+        showupShareText(text, sharedLink: article.link)
+        
     }
     
     func baseCollectionViewCellReadActionDidHandle(cell: BaseCollectionViewCell, item: FeedItemModel?) {

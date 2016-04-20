@@ -25,6 +25,7 @@ extension UIImage {
         case article_toread_placehold = "article_toread_placehold"
         case icon_toread_info_selected = "icon_toread_info_selected"
         case icon_toread_info_normal = "icon_toread_info_normal"
+        case icon_sharedLogo = "icon_sharedLogo"
     }
     
     convenience init!(assetsIdentifier: AssetsIdentifier) {
