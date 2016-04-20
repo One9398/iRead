@@ -55,6 +55,9 @@
 		F44B0B741CA54B7A00DDE1E9 /* iReadLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44B0B731CA54B7A00DDE1E9 /* iReadLoadView.swift */; };
 		F44DE8F21C92BEEE008617E6 /* feeds.plist in Resources */ = {isa = PBXBuildFile; fileRef = F44DE8F11C92BEEE008617E6 /* feeds.plist */; };
 		F44DE8F61C92C21F008617E6 /* feedResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44DE8F51C92C21F008617E6 /* feedResource.swift */; };
+		F4520AE41CC7CC9100A865FF /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4520ADF1CC7CC9100A865FF /* User.storyboard */; };
+		F4520AE61CC7CC9100A865FF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4520AE11CC7CC9100A865FF /* RegisterViewController.swift */; };
+		F4520AE71CC7CC9100A865FF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4520AE21CC7CC9100A865FF /* LoginController.swift */; };
 		F45306CC1CBE7278003C5D4E /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F45306CB1CBE7278003C5D4E /* Roboto-Regular.ttf */; };
 		F45344291C982647008378DC /* FeedListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45344281C982647008378DC /* FeedListController.swift */; };
 		F45353B41CBF505C00AF5D04 /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45353B31CBF505C00AF5D04 /* ProfileItem.swift */; };
@@ -191,6 +194,9 @@
 		F44B0B731CA54B7A00DDE1E9 /* iReadLoadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadLoadView.swift; sourceTree = "<group>"; };
 		F44DE8F11C92BEEE008617E6 /* feeds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = feeds.plist; sourceTree = "<group>"; };
 		F44DE8F51C92C21F008617E6 /* feedResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedResource.swift; sourceTree = "<group>"; };
+		F4520ADF1CC7CC9100A865FF /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		F4520AE11CC7CC9100A865FF /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		F4520AE21CC7CC9100A865FF /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		F45306CB1CBE7278003C5D4E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		F45344281C982647008378DC /* FeedListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedListController.swift; path = FeedListController/FeedListController.swift; sourceTree = "<group>"; };
 		F45353B31CBF505C00AF5D04 /* ProfileItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
@@ -505,6 +511,17 @@
 			path = LoadView;
 			sourceTree = "<group>";
 		};
+		F4520AE31CC7CC9100A865FF /* User */ = {
+			isa = PBXGroup;
+			children = (
+				F4520ADF1CC7CC9100A865FF /* User.storyboard */,
+				F4520AE11CC7CC9100A865FF /* RegisterViewController.swift */,
+				F4520AE21CC7CC9100A865FF /* LoginController.swift */,
+			);
+			name = User;
+			path = ../../../Love/Material/Examples/Storyboards/TextField/TextField/User;
+			sourceTree = "<group>";
+		};
 		F45344271C982575008378DC /* FeedListController */ = {
 			isa = PBXGroup;
 			children = (
@@ -621,6 +638,7 @@
 		F4AB16F81C882BDD006438D2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F4520AE31CC7CC9100A865FF /* User */,
 				F423DA8D1CC5CDCF00C1D95E /* HistoryViewController */,
 				F4FA7A661CC0A4B6006C65D4 /* AboutViewController */,
 				F445DD881C9BA64E00B4DA71 /* ArticleViewController */,
@@ -846,6 +864,7 @@
 				F4FA7A6C1CC0A773006C65D4 /* About.storyboard in Resources */,
 				F40C02341C9003F600CB3646 /* Main.storyboard in Resources */,
 				F4495E671CA0161400E75463 /* img.js in Resources */,
+				F4520AE41CC7CC9100A865FF /* User.storyboard in Resources */,
 				F4914D5D1C8EA7B100C32743 /* Notes.storyboard in Resources */,
 				F4AB17011C882BDD006438D2 /* Launch.storyboard in Resources */,
 				F44693631CB7BCB400BEB406 /* day.js in Resources */,
@@ -955,6 +974,7 @@
 				F47085CC1CACAE10000F119B /* iReadExtension.swift in Sources */,
 				F45353B41CBF505C00AF5D04 /* ProfileItem.swift in Sources */,
 				F49208341CA2C3B200F889FA /* ImageModel.swift in Sources */,
+				F4520AE61CC7CC9100A865FF /* RegisterViewController.swift in Sources */,
 				F4914D501C8EA41300C32743 /* RecommendController.swift in Sources */,
 				F4C09FF11C8EDD09005ED771 /* RootNavigationController.swift in Sources */,
 				F44DE8F61C92C21F008617E6 /* feedResource.swift in Sources */,
@@ -986,6 +1006,7 @@
 				F48693F11CA91DDD00FE900B /* SubFeedCell.swift in Sources */,
 				F445DD8A1C9BA68600B4DA71 /* ArticleViewController.swift in Sources */,
 				F431A5851CA6B8DC007589E9 /* FeedBaseTableViewCell.swift in Sources */,
+				F4520AE71CC7CC9100A865FF /* LoginController.swift in Sources */,
 				F47CF65C1C9E755700808CCA /* ArticleView.swift in Sources */,
 				F45353B61CBF552000AF5D04 /* ProfileSettingCell.swift in Sources */,
 				F4D8648E1CA249EF00B13997 /* iReadDateFormatter.swift in Sources */,
