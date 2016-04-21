@@ -63,6 +63,8 @@
 		F45353B41CBF505C00AF5D04 /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45353B31CBF505C00AF5D04 /* ProfileItem.swift */; };
 		F45353B61CBF552000AF5D04 /* ProfileSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45353B51CBF552000AF5D04 /* ProfileSettingCell.swift */; };
 		F45BD7DD1CBF77A400747F1F /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F45BD7DC1CBF77A400747F1F /* ProfileView.xib */; };
+		F4607D461CC918650069803D /* DeformationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F4607D431CC918650069803D /* DeformationButton.m */; };
+		F4607D471CC918650069803D /* MMMaterialDesignSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = F4607D451CC918650069803D /* MMMaterialDesignSpinner.m */; };
 		F47085CC1CACAE10000F119B /* iReadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47085CB1CACAE10000F119B /* iReadExtension.swift */; };
 		F476FAFF1CA8BC9A00A77F16 /* RecommandCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F476FAFE1CA8BC9A00A77F16 /* RecommandCardView.swift */; };
 		F4773D591CB643E600F3B94C /* FavoriteArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4773D581CB643E600F3B94C /* FavoriteArticleCell.swift */; };
@@ -70,6 +72,10 @@
 		F47CF65C1C9E755700808CCA /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CF65B1C9E755700808CCA /* ArticleView.swift */; };
 		F48048781C9817A800392827 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F48048771C9817A800392827 /* Assets.xcassets */; };
 		F480C3C71CA1900C00D11BD3 /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F480C3C61CA1900C00D11BD3 /* ActionView.swift */; };
+		F485946F1CC88243004108C1 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F485946E1CC88243004108C1 /* UserViewController.swift */; };
+		F48594841CC8BEB6004108C1 /* AFImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48594821CC8BEB6004108C1 /* AFImageExtension.swift */; };
+		F48594851CC8BEB6004108C1 /* AFImageVIewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48594831CC8BEB6004108C1 /* AFImageVIewExtension.swift */; };
+		F48594981CC8CAB5004108C1 /* iReadHUDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48594971CC8CAB5004108C1 /* iReadHUDManager.swift */; };
 		F48693F11CA91DDD00FE900B /* SubFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48693F01CA91DDD00FE900B /* SubFeedCell.swift */; };
 		F48693F41CA924CD00FE900B /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48693F31CA924CD00FE900B /* SwiftNotice.swift */; };
 		F48FE2EE1CA2198500A190AD /* BaseSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48FE2ED1CA2198500A190AD /* BaseSwitch.swift */; };
@@ -143,7 +149,6 @@
 		F40C02251C90028B00CB3646 /* YZFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZFlowLayout.h; sourceTree = "<group>"; };
 		F40C02261C90028B00CB3646 /* YZFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFlowLayout.m; sourceTree = "<group>"; };
 		F40C02331C9003F600CB3646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F40C02351C90043A00CB3646 /* iRead-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iRead-Bridging-Header.h"; sourceTree = "<group>"; };
 		F40C02381C90054D00CB3646 /* ViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerA.swift; sourceTree = "<group>"; };
 		F4120AB91C9AAABC00B86DE3 /* NSDate+InternetDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+InternetDateTime.h"; sourceTree = "<group>"; };
 		F4120ABA1C9AAABC00B86DE3 /* NSDate+InternetDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+InternetDateTime.m"; sourceTree = "<group>"; };
@@ -202,6 +207,10 @@
 		F45353B31CBF505C00AF5D04 /* ProfileItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
 		F45353B51CBF552000AF5D04 /* ProfileSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingCell.swift; sourceTree = "<group>"; };
 		F45BD7DC1CBF77A400747F1F /* ProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
+		F4607D421CC918650069803D /* DeformationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeformationButton.h; sourceTree = "<group>"; };
+		F4607D431CC918650069803D /* DeformationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeformationButton.m; sourceTree = "<group>"; };
+		F4607D441CC918650069803D /* MMMaterialDesignSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMaterialDesignSpinner.h; sourceTree = "<group>"; };
+		F4607D451CC918650069803D /* MMMaterialDesignSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMaterialDesignSpinner.m; sourceTree = "<group>"; };
 		F47085CB1CACAE10000F119B /* iReadExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadExtension.swift; sourceTree = "<group>"; };
 		F476FAFE1CA8BC9A00A77F16 /* RecommandCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommandCardView.swift; sourceTree = "<group>"; };
 		F4773D581CB643E600F3B94C /* FavoriteArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteArticleCell.swift; path = FavoriteArticleCell/FavoriteArticleCell.swift; sourceTree = "<group>"; };
@@ -209,6 +218,11 @@
 		F47CF65B1C9E755700808CCA /* ArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		F48048771C9817A800392827 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F480C3C61CA1900C00D11BD3 /* ActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
+		F485946E1CC88243004108C1 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		F48594821CC8BEB6004108C1 /* AFImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFImageExtension.swift; sourceTree = "<group>"; };
+		F48594831CC8BEB6004108C1 /* AFImageVIewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFImageVIewExtension.swift; sourceTree = "<group>"; };
+		F48594961CC8C783004108C1 /* iRead-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iRead-Bridging-Header.h"; sourceTree = "<group>"; };
+		F48594971CC8CAB5004108C1 /* iReadHUDManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadHUDManager.swift; sourceTree = "<group>"; };
 		F48693F01CA91DDD00FE900B /* SubFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubFeedCell.swift; path = SubFeedCell/SubFeedCell.swift; sourceTree = "<group>"; };
 		F48693F31CA924CD00FE900B /* SwiftNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
 		F48FE2ED1CA2198500A190AD /* BaseSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSwitch.swift; sourceTree = "<group>"; };
@@ -294,10 +308,15 @@
 		F40C021C1C90025800CB3646 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				F4607D421CC918650069803D /* DeformationButton.h */,
+				F4607D431CC918650069803D /* DeformationButton.m */,
+				F4607D441CC918650069803D /* MMMaterialDesignSpinner.h */,
+				F4607D451CC918650069803D /* MMMaterialDesignSpinner.m */,
 				F4E8B6C11CAACA810008C6B4 /* RefreshLoad */,
 				F48693F21CA924C100FE900B /* SimpleHUD */,
 				F44B0B6C1CA54AD900DDE1E9 /* Loader */,
 				F4120AB81C9AAAB100B86DE3 /* DateTranslation */,
+				F48594811CC8BEB6004108C1 /* AFImageHelper */,
 				F40C021D1C90028B00CB3646 /* YZDisplayViewController */,
 			);
 			path = Vendor;
@@ -371,10 +390,10 @@
 				F4181E341C86C68E00E41FBA /* Models */,
 				F4181E371C86C68E00E41FBA /* Views */,
 				F4181E061C86C3C600E41FBA /* AppDelegate.swift */,
+				F48594961CC8C783004108C1 /* iRead-Bridging-Header.h */,
 				F48048771C9817A800392827 /* Assets.xcassets */,
 				F423DA951CC6616500C1D95E /* Activities.xcassets */,
 				F45306CB1CBE7278003C5D4E /* Roboto-Regular.ttf */,
-				F40C02351C90043A00CB3646 /* iRead-Bridging-Header.h */,
 				F43AD7141C90F8FE001ED543 /* iReadTest.playground */,
 				F40C02321C9003F600CB3646 /* Main.storyboard */,
 				F4181E121C86C3C600E41FBA /* Info.plist */,
@@ -517,6 +536,7 @@
 				F4520ADF1CC7CC9100A865FF /* User.storyboard */,
 				F4520AE11CC7CC9100A865FF /* RegisterViewController.swift */,
 				F4520AE21CC7CC9100A865FF /* LoginController.swift */,
+				F485946E1CC88243004108C1 /* UserViewController.swift */,
 			);
 			name = User;
 			path = ../../../Love/Material/Examples/Storyboards/TextField/TextField/User;
@@ -562,6 +582,16 @@
 				F480C3C61CA1900C00D11BD3 /* ActionView.swift */,
 			);
 			path = MenuView;
+			sourceTree = "<group>";
+		};
+		F48594811CC8BEB6004108C1 /* AFImageHelper */ = {
+			isa = PBXGroup;
+			children = (
+				F48594821CC8BEB6004108C1 /* AFImageExtension.swift */,
+				F48594831CC8BEB6004108C1 /* AFImageVIewExtension.swift */,
+			);
+			name = AFImageHelper;
+			path = YZDisplayViewController/AFImageHelper;
 			sourceTree = "<group>";
 		};
 		F48693EF1CA91D2700FE900B /* SubFeedCell */ = {
@@ -714,6 +744,7 @@
 				F49A8D3B1C9C392C004553DD /* iReadConstant.swift */,
 				F4D8648D1CA249EF00B13997 /* iReadDateFormatter.swift */,
 				F4D1F15D1CA3A11200AC056E /* iReadUserManager.swift */,
+				F48594971CC8CAB5004108C1 /* iReadHUDManager.swift */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -962,6 +993,7 @@
 				F40C022A1C90028B00CB3646 /* YZFlowLayout.m in Sources */,
 				F4E95E7A1CBE2CC500514813 /* ProfileViewController.swift in Sources */,
 				F423DA921CC5D25C00C1D95E /* HistoryArticleCell.swift in Sources */,
+				F4607D461CC918650069803D /* DeformationButton.m in Sources */,
 				F44B0B741CA54B7A00DDE1E9 /* iReadLoadView.swift in Sources */,
 				F44B0B6B1CA537CC00DDE1E9 /* FeedsTitleView.swift in Sources */,
 				F480C3C71CA1900C00D11BD3 /* ActionView.swift in Sources */,
@@ -975,6 +1007,7 @@
 				F45353B41CBF505C00AF5D04 /* ProfileItem.swift in Sources */,
 				F49208341CA2C3B200F889FA /* ImageModel.swift in Sources */,
 				F4520AE61CC7CC9100A865FF /* RegisterViewController.swift in Sources */,
+				F48594851CC8BEB6004108C1 /* AFImageVIewExtension.swift in Sources */,
 				F4914D501C8EA41300C32743 /* RecommendController.swift in Sources */,
 				F4C09FF11C8EDD09005ED771 /* RootNavigationController.swift in Sources */,
 				F44DE8F61C92C21F008617E6 /* feedResource.swift in Sources */,
@@ -985,6 +1018,7 @@
 				F48693F41CA924CD00FE900B /* SwiftNotice.swift in Sources */,
 				F42E985B1C9276D100A1E602 /* FeedFetchOperation.swift in Sources */,
 				F42E98571C92720900A1E602 /* FeedManager.swift in Sources */,
+				F48594841CC8BEB6004108C1 /* AFImageExtension.swift in Sources */,
 				F431A5811CA62FB9007589E9 /* RecommendBaseController.swift in Sources */,
 				F435544C1CB74C97004F9CB2 /* ToreadViewController.swift in Sources */,
 				F431A57F1CA62F85007589E9 /* TechStudyController.swift in Sources */,
@@ -998,9 +1032,11 @@
 				F4773D5B1CB64B4400F3B94C /* FavArticlesTableViewController.swift in Sources */,
 				F4AB17021C882BDD006438D2 /* LaunchViewController.swift in Sources */,
 				F4C09FF31C8EDD2C005ED771 /* RootTabbarController.swift in Sources */,
+				F4607D471CC918650069803D /* MMMaterialDesignSpinner.m in Sources */,
 				F44B0B6F1CA54AE500DDE1E9 /* PCAngularActivityIndicatorView.m in Sources */,
 				F4A331321C965B5500AFFC6F /* ITNewsTableViewCell.swift in Sources */,
 				F42C03361C9A4B9000B27F45 /* BaseCollectionView.swift in Sources */,
+				F48594981CC8CAB5004108C1 /* iReadHUDManager.swift in Sources */,
 				F4C09FF61C8EDFB4005ED771 /* iReadHelp.swift in Sources */,
 				F4A3918E1C97CEE8006DE0A8 /* iReadAlert.swift in Sources */,
 				F48693F11CA91DDD00FE900B /* SubFeedCell.swift in Sources */,
@@ -1019,6 +1055,7 @@
 				F423DA8F1CC5CE3500C1D95E /* HistoryViewController.swift in Sources */,
 				F40C02281C90028B00CB3646 /* YZDisplayTitleLabel.m in Sources */,
 				F42E98591C9276AF00A1E602 /* FeedParseOperation.swift in Sources */,
+				F485946F1CC88243004108C1 /* UserViewController.swift in Sources */,
 				F4121EAC1CC08C0100877B6D /* ProfileView.swift in Sources */,
 				F42E98611C927F2100A1E602 /* iReadString.swift in Sources */,
 				F415918D1C9BD3A00034D3C2 /* PageViewController.swift in Sources */,
@@ -1174,7 +1211,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iRead2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/MrAlien/Desktop/Love/iRead/iRead/iRead-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/iRead/iRead-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1195,7 +1232,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iRead2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/MrAlien/Desktop/Love/iRead/iRead/iRead-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/iRead/iRead-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

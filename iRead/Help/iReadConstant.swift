@@ -16,7 +16,7 @@ enum iReadConstant {
     
     struct ScreenSize {
         static let width = UIScreen.mainScreen().bounds.width
-        static let hight = UIScreen.mainScreen().bounds.height
+        static let height = UIScreen.mainScreen().bounds.height
     }
     
     struct TopBar {
@@ -54,6 +54,12 @@ enum iReadConstant {
         static let bottomMargin : CGFloat = 20
     }
     
+    struct ProfileImageView {
+        static let cornerRadius: CGFloat = 50
+        static let width: CGFloat = 100
+        static let height: CGFloat = 100
+    }
+    
     struct ProfileTabel {
         static let ProfileCellHeight: CGFloat = 40.0
         
@@ -68,8 +74,14 @@ enum iReadConstant {
         
     }
     
-    struct ThumbnailImage {
-        static let width = 100
-        static let height = 100
+    struct LoginButton {
+        static let frame = CGRectMake(iReadConstant.ScreenSize.width/2 - 140, iReadConstant.ScreenSize.height - 150, 280, 40)
+        static let cornerRadius: CGFloat = 20
     }
+    
+    struct RegisterButton {
+        static let frame = CGRectMake(iReadConstant.ScreenSize.width/2 - 140, iReadConstant.ScreenSize.height - 100, 280, 40)
+        static let cornerRadius: CGFloat = 20
+    }
+
 }

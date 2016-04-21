@@ -12,15 +12,10 @@ def pods
 #    pod 'PKRevealController'
     pod 'Reveal-iOS-SDK', :configurations => ['Debug']
     pod 'Material', '~> 1.37.3'
-#    pod 'DeformationButton'
-
-
-#pod 'AVOSCloud'               # 数据存储、短信、云引擎调用等基础服务模块
+xi;:ipod 'AVOSCloud'               # 数据存储、短信、云引擎调用等基础服务模块
 #pod 'LeanCloudFeedback'
 
-pod 'SVProgressHUD'
-
-  pod 'LeanCloudFeedbackDynamic'
+#  pod 'LeanCloudFeedbackDynamic'
 
     pod "DGRunkeeperSwitch", "~> 1.1"
     pod 'DZNEmptyDataSet'
