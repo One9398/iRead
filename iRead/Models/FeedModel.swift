@@ -20,7 +20,6 @@ class FeedModel: CustomDebugStringConvertible {
     var source = ""
     var isFollowed = false
     var feedType = FeedType.Other
-    
 
     var debugDescription: String {
         return title + "\n" + link + "\n" + description + "\n" + "ICON: " + imagURL + "\n" + "items : \(items.count)"

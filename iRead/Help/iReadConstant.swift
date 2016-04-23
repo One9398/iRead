@@ -58,6 +58,7 @@ enum iReadConstant {
         static let cornerRadius: CGFloat = 50
         static let width: CGFloat = 100
         static let height: CGFloat = 100
+        static let imageQuality :CGFloat = 0.4
     }
     
     struct ProfileTabel {

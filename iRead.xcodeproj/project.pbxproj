@@ -70,6 +70,7 @@
 		F4773D591CB643E600F3B94C /* FavoriteArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4773D581CB643E600F3B94C /* FavoriteArticleCell.swift */; };
 		F4773D5B1CB64B4400F3B94C /* FavArticlesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4773D5A1CB64B4400F3B94C /* FavArticlesTableViewController.swift */; };
 		F47CF65C1C9E755700808CCA /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CF65B1C9E755700808CCA /* ArticleView.swift */; };
+		F47EEB2A1CCA61D500A1A45E /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EEB291CCA61D500A1A45E /* Reader.swift */; };
 		F48048781C9817A800392827 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F48048771C9817A800392827 /* Assets.xcassets */; };
 		F480C3C71CA1900C00D11BD3 /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F480C3C61CA1900C00D11BD3 /* ActionView.swift */; };
 		F485946F1CC88243004108C1 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F485946E1CC88243004108C1 /* UserViewController.swift */; };
@@ -216,6 +217,7 @@
 		F4773D581CB643E600F3B94C /* FavoriteArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteArticleCell.swift; path = FavoriteArticleCell/FavoriteArticleCell.swift; sourceTree = "<group>"; };
 		F4773D5A1CB64B4400F3B94C /* FavArticlesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavArticlesTableViewController.swift; sourceTree = "<group>"; };
 		F47CF65B1C9E755700808CCA /* ArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
+		F47EEB291CCA61D500A1A45E /* Reader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
 		F48048771C9817A800392827 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F480C3C61CA1900C00D11BD3 /* ActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
 		F485946E1CC88243004108C1 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 				F42E985C1C92770600A1E602 /* FeedModelsProvider.swift */,
 				F49208331CA2C3B200F889FA /* ImageModel.swift */,
 				F45353B31CBF505C00AF5D04 /* ProfileItem.swift */,
+				F47EEB291CCA61D500A1A45E /* Reader.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1025,6 +1028,7 @@
 				F40C02271C90028B00CB3646 /* UIView+Frame.m in Sources */,
 				F4120ABB1C9AAABC00B86DE3 /* NSDate+InternetDateTime.m in Sources */,
 				F4D1F1681CA3CDDF00AC056E /* ArtileTopBar.swift in Sources */,
+				F47EEB2A1CCA61D500A1A45E /* Reader.swift in Sources */,
 				F42E98501C925DED00A1E602 /* ConcurrentOpeartion.swift in Sources */,
 				F423DA981CC6706500C1D95E /* Activities.swift in Sources */,
 				F476FAFF1CA8BC9A00A77F16 /* RecommandCardView.swift in Sources */,
@@ -1202,13 +1206,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iRead/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iRead2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iRead;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/iRead/iRead-Bridging-Header.h";
@@ -1222,14 +1225,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iRead/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iRead2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iRead;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/iRead/iRead-Bridging-Header.h";

@@ -117,7 +117,7 @@ class ProfileViewController: BaseTopViewController {
         profileView.updateProfile(
             totalReadCounts: iReadUserDefaults.totalReadCountsString(),
             readTimes: iReadUserDefaults.totalReadTimesString(),
-            imageURLString: iReadUserDefaults.avaterIconURLString()
+            imageURLString: iReadUserDefaults.avatarIconURLString()
         )
     }
     

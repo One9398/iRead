@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVOSCloud
 
 enum FeedType: String {
     case ITNews, TechStudy, Life, Art, Other,Blog
@@ -26,7 +27,6 @@ class FeedResource  {
     var favoriteArticles = [FeedItemModel]()
     var toreadArticles = [FeedItemModel]()
     
-    
     // todo
     var readArticles = [FeedItemModel]()
     
@@ -36,11 +36,16 @@ class FeedResource  {
     }
     
     init() {
+        let query = AVQuery(className: "FeedItem")
         
+        query.findObjects(<#T##error: NSErrorPointer##NSErrorPointer#>)
         let path = NSBundle.mainBundle().pathForResource("feeds", ofType: "plist")
         let source = NSArray(contentsOfFile: path!)
-        
         for item in source! {
+            
+            let fd = AVObject(className: "FeeedItem", dictionary: item as! [NSObject : AnyObject])
+            fd.saveInBackground()
+            print(fd)
             
             let feedItem = FeedItem(feedURL: item["feedURL"] as! String, feedType: FeedType(rawValue: item["feedType"] as! String)!, isSub: item["isSub"] as! Bool)
             items.append(feedItem)

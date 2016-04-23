@@ -8,7 +8,7 @@
 
 import UIKit
 import AVOSCloud
-
+import LeanCloudSocialDynamic
 
 @UIApplicationMain
 
@@ -22,7 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         NSUserDefaults.standardUserDefaults().setBool(false, forKey: "hasStyle")
-        AVOSCloud.setApplicationId(iReadConfigure.leancloudAppID, clientKey: iReadConfigure.leancloudAppKey)
+       
+        setupLeanCloudSetting()
+        setupOtherLoginPlatformsSetting()
         
         return true
     }
@@ -30,6 +32,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
 
     }
+}
 
+extension AppDelegate {
+    private func setupLeanCloudSetting() {
+         AVOSCloud.setApplicationId(iReadConfigure.leancloudAppID, clientKey: iReadConfigure.leancloudAppKey)
+        
+        Reader.registerSubclass()
+    }
+    
+    private func setupOtherLoginPlatformsSetting() {
+        AVOSCloudSNS.setupPlatform(.SNSQQ, withAppKey: iReadConfigure.QQAccount.appID, andAppSecret: iReadConfigure.QQAccount.appKey, andRedirectURI: iReadConfigure.QQAccount.redirectURL)
+        AVOSCloudSNS.setupPlatform(.SNSSinaWeibo, withAppKey: iReadConfigure.WeiboAccount.appID, andAppSecret: iReadConfigure.WeiboAccount.appKey, andRedirectURI: iReadConfigure.WeiboAccount.redirectURL)
+        AVOSCloudSNS.setupPlatform(.SNSWeiXin, withAppKey: iReadConfigure.WeChatAccount.appID, andAppSecret: iReadConfigure.WeChatAccount.appKey, andRedirectURI: iReadConfigure.WeChatAccount.redirectURL)
+    }
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        return AVOSCloudSNS.handleOpenURL(url)
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return AVOSCloudSNS.handleOpenURL(url)
+    }
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        return AVOSCloudSNS.handleOpenURL(url)
+    }
 }
 

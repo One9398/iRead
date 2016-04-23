@@ -49,7 +49,7 @@ extension UIViewController {
         noticeTop(message, autoClear: true, autoClearTime: 1)
     }
     func showupErrorMessage(message: String) {
-        HUDManager.sharedManager.showupSuccessMessage(message)
+        HUDManager.sharedManager.showupErrorMessage(message)
     }
     
     func showupSuccessMessage(message: String) {
