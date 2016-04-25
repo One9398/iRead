@@ -243,22 +243,25 @@ extension FeedListController: BaseCollectionViewCellProtocol {
     }
     
     func baseCollectionViewCellReadActionDidHandle(cell: BaseCollectionViewCell, item: FeedItemModel?) {
-        guard let item = item else { fatalError("no item Model") }
-        
-        item.isToread = !item.isToread
-        
-        if item.isToread {
-            self.noticeTop("该内容已标记为待读", autoClear: true, autoClearTime: 1)
-            item.addDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
-           
-            feedResource.appendToreadArticle(item)
-            
+        if !iReadUserDefaults.isLogined {
+            presentLoginViewControllerWhenNoUser()
         } else {
             
-            feedResource.removeToreadArticle(item, index: nil)
+            guard let item = item else { fatalError("no item Model") }
+            
+            item.isToread = !item.isToread
+            if item.isToread {
+                self.noticeTop("该内容已标记为待读", autoClear: true, autoClearTime: 1)
+                item.addDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
+                
+                feedResource.appendToreadArticle(item)
+                
+            } else {
+                
+                feedResource.removeToreadArticle(item, index: nil)
+            }
+            //        print(feedResource.toreadArticels.count)
         }
-        
-//        print(feedResource.toreadArticels.count)
         
     }
 }

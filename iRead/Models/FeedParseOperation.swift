@@ -19,9 +19,9 @@ protocol FeedParseOperationDataPorvider {
 class FeedParseOperation: ConcurrentOperation {
     
     enum iReadParseError: ErrorType {
-        case DocumentError(FeedItem)
-        case RootElementError(FeedItem)
-        case XMLTypeError(FeedItem)
+        case DocumentError(FeedItem2)
+        case RootElementError(FeedItem2)
+        case XMLTypeError(FeedItem2)
         
         var desc : String {
             switch self {
@@ -40,13 +40,13 @@ class FeedParseOperation: ConcurrentOperation {
     private var feedData: NSData?
     private var feedItemModels:[FeedItemModel]
     private var feedModel: FeedModel
-    private let feedItem: FeedItem
+    private let feedItem: FeedItem2
     private var document: ONOXMLDocument?
     
     private let completion: ((FeedModel?) -> ())?
     private let failure: FailureHandler?
 
-    init(feedData: NSData?, feedItem: FeedItem, failure: FailureHandler?, completion: ((FeedModel?) -> ())?) {
+    init(feedData: NSData?, feedItem: FeedItem2, failure: FailureHandler?, completion: ((FeedModel?) -> ())?) {
        
         self.feedItem = feedItem
         self.feedData = feedData
@@ -54,11 +54,11 @@ class FeedParseOperation: ConcurrentOperation {
         
         feedModel = FeedModel()
         
-        feedModel.feedType = feedItem.feedType
+        feedModel.feedType = FeedType(rawValue:feedItem.feedType)!
         feedModel.source = feedItem.feedURL
         feedModel.isFollowed = feedItem.isSub
  
-        self.feedType = feedItem.feedType
+        self.feedType = FeedType(rawValue:feedItem.feedType)!
         self.completion = completion
         self.failure = failure
         
@@ -209,7 +209,7 @@ extension FeedParseOperation {
         
     }
     
-    func postDocumentParseErrorNotification(item: FeedItem) {
+    func postDocumentParseErrorNotification(item: FeedItem2) {
         NSNotificationCenter.defaultCenter().postNotificationName(iReadNotification.FeedParseOperationDidSinglyFailureNotification, object: item)
     }
 }

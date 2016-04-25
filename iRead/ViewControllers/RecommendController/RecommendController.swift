@@ -82,23 +82,22 @@ class RecommendController: YZDisplayViewController {
         return .LightContent
     }
     
-    
     private func configureChildViewControllers() {
         let ITNewsVC = ITNewsViewController(feedType: .ITNews)
         ITNewsVC.title = "科技见闻"
         addChildViewController(ITNewsVC)
         
-        let viewControllerB1 = TechStudyController(feedType: .TechStudy)
-        viewControllerB1.title = "技术学习"
-        addChildViewController(viewControllerB1)
+        let TechStudyVC = TechStudyController(feedType: .TechStudy)
+        TechStudyVC.title = "技术学习"
+        addChildViewController(TechStudyVC)
         
-        let viewControllerA2 = TechStudyController(feedType: .Life)
-        viewControllerA2.title = "生活健康"
-        addChildViewController(viewControllerA2)
+        let LifeHealthVC = LifeHealthController(feedType: .Life)
+        LifeHealthVC.title = "生活健康"
+        addChildViewController(LifeHealthVC)
         
-        let viewControllerB2 = TechStudyController(feedType: .Art)
-        viewControllerB2.title = "艺术文学"
-        addChildViewController(viewControllerB2)
+        let BlogArticleVC = BlogArticleController(feedType: .Blog)
+        BlogArticleVC.title = "博客文摘"
+        addChildViewController(BlogArticleVC)
         
     }
     

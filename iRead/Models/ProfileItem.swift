@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ProfileGroup {
+class ProfileGroup {
     var headerTitle = ""
     var footerTitle = ""
     var items: [ProfileItem]
@@ -20,7 +20,7 @@ struct ProfileGroup {
     }
 }
 
-struct ProfileItem {
+class ProfileItem {
     var title: String  = ""
     var subTitle: String = ""
     var selectedAction: (()->())?
@@ -43,7 +43,7 @@ struct ProfileItem {
         self.selectedAction = selectedAction
     }
 
-    init(title: String, icon: String, selectedAction: (()->())) {
+    convenience init(title: String, icon: String, selectedAction: (()->())) {
         self.init(title: title, icon: icon, showSwitch: false, selectedAction: selectedAction)
     }
     

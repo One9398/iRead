@@ -225,7 +225,10 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
     }
     
     func readActionHandle(btn: FlatButton) {
-        btn.selected = !btn.selected
+        if iReadUserDefaults.isLogined {
+            btn.selected = !btn.selected
+        }
+        
         self.actionDelegate?.baseCollectionViewCellReadActionDidHandle(self, item: item)
     }
 }

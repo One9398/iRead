@@ -150,9 +150,13 @@ extension ActionView {
                 changeSelectStateButton(button)
                 changeMenuButton(button)
             case .StoreContentAction:
-                changeSelectStateButton(button)
+                if iReadUserDefaults.isLogined {
+                    changeSelectStateButton(button)
+                }
             case .NoteContentAction:
-                changeSelectStateButton(button)
+                if iReadUserDefaults.isLogined {
+                    changeSelectStateButton(button)
+                }
             case .ShareContentAction:
                 print("share it")
             }

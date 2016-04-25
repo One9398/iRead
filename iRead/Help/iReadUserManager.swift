@@ -7,97 +7,33 @@
 //
 
 import Foundation
-
-//struct iReadUserManager {
-//    
-//}
-//
-//struct Listener<T> : Hashable {
-//    let name: String
-//    typealias Action = T -> Void
-//    let action: Action
-//    var hashValue: Int {
-//        return name.hash
-//    }
-//    
-//}
-//
-//func ==<T>(lhs: Listener<T>, rhs: Listener<T>) -> Bool {
-//    return lhs.name == rhs.name
-//}
-//
-//class Listenable<T> {
-//    typealias SetterAction = T -> Void
-//    var setterAction: SetterAction
-//    var listenerSet = Set<Listener<T>>()
-//    
-//    var value: T {
-//        didSet {
-//            setterAction(value)
-//            
-//            for listen in listenerSet {
-//                listen.action(value)
-//            }
-//        }
-//    }
-//    
-//    init(value: T, setterAction: SetterAction) {
-//
-//        self.value = value
-//        self.setterAction = setterAction
-//        
-//    }
-//    
-//    func bindListener(name: String, action: Listener<T>.Action) {
-//        let listener = Listener(name: name, action: action)
-//        listenerSet.insert(listener)
-//    }
-//    
-//    func fireListener(name: String, action: Listener<T>.Action) {
-//        bindListener(name, action: action)
-//        action(value)
-//    }
-//    
-//    func removeListener(name: String) {
-//        for listener in listenerSet {
-//            if listener.name == name {
-//                listenerSet.remove(listener)
-//                break;
-//            }
-//        }
-//    }
-//}
-
 import AVOSCloud
 
 let AccessTokenKey = "AccessToken"
-let AvatarURLStringKey = "AvatarURLString"
 let NicknameKey = "Nickname"
-let ReadTimeIntervalKey = "ReadTimeInterval"
-let ReadCountsKey = "ReadCounts"
+let ReadTimeIntervalKey = "readTime"
+let ReadCountsKey = "readCounts"
 let ArticlesCountsKey = "ArticleCounts"
-let ReadModeKey = "ReadMode"
-let ThemeModeKey = "ThemeMode"
+let ReadModeKey = "readMode"
+let ThemeModeKey = "themeMode"
 let UserDictionaryKey = "UserDictionary"
 let UsernameKey = "username"
-let AvatarKey = "avatar"
+let AvatarURLKey = "avatar_url"
 let TokenKey = "access_token"
 
-typealias Failure = (NSError-> Void)
-typealias Success = (Bool -> Void)
-
-
-//struct iReadBool: BooleanType {
-//    boolValue = false
-//}
 
 class iReadUserDefaults {
     static let defaults = NSUserDefaults.standardUserDefaults()
-    private var failure: Failure?
-    private var success: Success?
     
-    static var currentUser: Reader {
-        return Reader.currentUser()
+    static var currentUser: Reader? {
+        
+        guard let reader = Reader.currentUser() else {
+            return nil
+        }
+        
+        reader.fetchWhenSave = true
+        return reader
+        
     }
     
     static var isLogined: Bool {
@@ -108,10 +44,19 @@ class iReadUserDefaults {
         }
     }
     
+    static func resetUserDefaults() {
+        iReadUserDefaults.updateAvatorIconURLString("")
+
+        iReadUserDefaults.defaults.setInteger(0, forKey: ReadTimeIntervalKey)
+        iReadUserDefaults.defaults.setInteger(0, forKey: ReadCountsKey)
+        iReadUserDefaults.defaults.setBool(false, forKey: ReadModeKey)
+        iReadUserDefaults.defaults.setBool(false, forKey: ThemeModeKey)
+        iReadUserDefaults.saveCurrentPlatformUserDictionary()
+    }
+    
     static func saveCurrentPlatformUserDictionary(dict: [String : String] = [:]) {
         iReadUserDefaults.defaults.setObject(dict, forKey: UserDictionaryKey)
         print("current user data cached")
-        
     }
     
     struct OtherUserInfo {
@@ -130,71 +75,109 @@ class iReadUserDefaults {
         return OtherUserInfo(username: username, avatar: avatar, token: token)
     }
     
-    static func updateReadTime(timeInterval: NSTimeInterval) {
-        let oldTimeInterval = iReadUserDefaults.defaults.integerForKey(ReadTimeIntervalKey) 
-        let newTimeInterval = oldTimeInterval + Int(timeInterval)
-        
-        iReadUserDefaults.defaults.setInteger(newTimeInterval, forKey: ReadTimeIntervalKey)
+    static func avatarIconURLString() -> String {
+        return iReadUserDefaults.defaults.stringForKey(AvatarURLKey) ?? ""
+    }
+    
+    static func updateAvatorIconURLString(urlString: String) {
+        iReadUserDefaults.defaults.setObject(urlString, forKey:AvatarURLKey)
         iReadUserDefaults.defaults.synchronize()
+    }
+    
+    static func updateReadTime(timeInterval: NSTimeInterval) {
         
-        saveUserDataEventuallyWithObject(newTimeInterval, key: ReadTimeIntervalKey)
+        let oldTimeInterval = iReadUserDefaults.defaults.integerForKey(ReadTimeIntervalKey)
+        let newTimeInterval = oldTimeInterval + Int(timeInterval)
+        iReadUserDefaults.defaults.setInteger(newTimeInterval, forKey: ReadTimeIntervalKey)
+        saveUserDataEventuallyWithObjectWhileUserOn(newTimeInterval, key: ReadTimeIntervalKey)
         
     }
     
     static func totalReadTimesString() -> String {
-        let readTimes = iReadUserDefaults.defaults.integerForKey(ReadTimeIntervalKey)
+        var readTimes: Int
+        if iReadUserDefaults.isLogined {
+            readTimes = currentUser!.readTime
+            iReadUserDefaults.defaults.setInteger(currentUser!.readTime, forKey: ReadTimeIntervalKey)
+        } else {
+            readTimes = iReadUserDefaults.defaults.integerForKey(ReadTimeIntervalKey)
+        }
+        
         let hour = readTimes / 3600
         let min = readTimes / 60
-       return "\(hour)时\(min)分"
-    }
-    
-    static func avatarIconURLString() -> String {
-        let urlString = iReadUserDefaults.defaults.stringForKey(AvatarURLStringKey)
-        return urlString ?? ""
-    }
-    
-    static func updateAvatorIconURLString(urlString: String) {
-        iReadUserDefaults.defaults.setObject(urlString, forKey: AvatarURLStringKey)
-        iReadUserDefaults.defaults.synchronize()
+        return "\(hour)时\(min)分"
     }
     
     static func updateReadCounts(counts:Int) {
+       
         let oldCounts = iReadUserDefaults.defaults.integerForKey(ReadCountsKey)
         let newCounts = oldCounts + counts
         iReadUserDefaults.defaults.setInteger(newCounts, forKey: ReadCountsKey)
-        iReadUserDefaults.defaults.synchronize()
         
-        saveUserDataEventuallyWithObject(newCounts, key: ReadCountsKey)
+        saveUserDataEventuallyWithObjectWhileUserOn(newCounts, key: ReadCountsKey)
     }
     
     static func totalReadCountsString() -> String {
-        let counts =  iReadUserDefaults.defaults.integerForKey(ReadCountsKey)
-        return "\(counts)篇"
+        if iReadUserDefaults.isLogined {
+           
+            iReadUserDefaults.defaults.setInteger(currentUser!.readCounts, forKey: ReadCountsKey)
+            return "\(currentUser!.readCounts)篇"
+        } else {
+            let counts =  iReadUserDefaults.defaults.integerForKey(ReadCountsKey)
+            return "\(counts)篇"
+        }
     }
     
     static var isReadModeOn : Bool {
-        return iReadUserDefaults.defaults.boolForKey(ReadModeKey)
+        if iReadUserDefaults.isLogined {
+            iReadUserDefaults.defaults.setBool(currentUser!.readMode, forKey: ReadModeKey)
+            return currentUser!.readMode
+        } else {
+            return iReadUserDefaults.defaults.boolForKey(ReadModeKey)
+        }
     }
+    
     static func updateReadMode() {
         updateModeWithKey(ReadModeKey)
     }
     
     static var isThemeModeOn : Bool {
-        return iReadUserDefaults.defaults.boolForKey(ThemeModeKey)
+       
+        if iReadUserDefaults.isLogined {
+
+            iReadUserDefaults.defaults.setBool(currentUser!.themeMode, forKey: ThemeModeKey)
+            return currentUser!.themeMode
+        } else {
+            return iReadUserDefaults.defaults.boolForKey(ThemeModeKey)
+        }
+        
     }
+    
     static func updateThemeMode() {
         updateModeWithKey(ThemeModeKey)
     }
     
     private static func updateModeWithKey(key: String) {
+        
         let oldMode = iReadUserDefaults.defaults.boolForKey(key)
         let newMode = !oldMode
         iReadUserDefaults.defaults.setBool(newMode, forKey: key)
-        saveUserDataEventuallyWithObject(newMode, key: key)
+        saveUserDataEventuallyWithObjectWhileUserOn(newMode, key: key)
+        
     }
     
-    static func saveUserDataEventuallyWithObject(object: AnyObject!, key: String) {
-        currentUser.setObject(object, forKey: key)
-        currentUser.saveEventually()
+    static func saveUserDataEventuallyWithObjectWhileUserOn(object: AnyObject!, key: String) {
+        
+        if iReadUserDefaults.isLogined {
+            currentUser?.setObject(object, forKey: key)
+            currentUser?.saveInBackgroundWithBlock{
+                result,error in
+                if error != nil {
+                    assertionFailure(error.localizedDescription)
+                } else {
+                    print("save done")
+                }
+            }
+        }
+
     }
 }

@@ -11,6 +11,8 @@ import UIKit
 class ProfileViewController: BaseTopViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    private var infoButton: UIButton!
+    
     private var profileView: ProfileView = {
         let view = UINib(nibName: "ProfileView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! ProfileView
         return view
@@ -28,6 +30,42 @@ class ProfileViewController: BaseTopViewController {
         
     }
     
+    override func prepareNavigationBar() {
+        super.prepareNavigationBar()
+        
+        let button = UIButton(frame: CGRectMake(0,0,40,40))
+        button.setTitle("注销", forState: .Normal)
+        button.titleLabel?.font = iReadFont.lightWithSize(14)
+        infoButton = button
+        button.addTarget(self, action: "userSettingHandle:", forControlEvents: .TouchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        
+    }
+    
+    func userSettingHandle(sender: UIButton) {
+        Reader.logOut()
+        
+        iReadUserDefaults.resetUserDefaults()
+        FeedResource.sharedResource.loadFeedItem({
+            items, error in
+
+            FeedResource.sharedResource.items = items
+            FeedResource.sharedResource.feeds.forEach{
+                feed in
+                feed.isFollowed = false
+            }
+        })
+        
+        configureDataSource()
+        tableView.reloadData()
+        
+        presentLoginViewControllerWhenNoUser{
+            NSNotificationCenter.defaultCenter().postNotificationName(iReadNotification.FeedItemsRemoteFetchDidFinishedNotification, object: nil)
+        }
+    }
+    
+    
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -44,6 +82,8 @@ class ProfileViewController: BaseTopViewController {
     
     func configureDataSource() {
         
+        groups.removeAll()
+        
         let historyItem = ProfileItem(title: "历史浏览", icon: "icon_profile_history") {
             [unowned self] in
             // presentHistoryViewController
@@ -55,27 +95,28 @@ class ProfileViewController: BaseTopViewController {
         let preferenceGroup = ProfileGroup(headerTitle: "", footerTitle: "", items: [historyItem])
         groups.append(preferenceGroup)
         
-        var readModeItem = ProfileItem(title: "无图阅读", icon: "icon_profile_pic", showSwitch: true, switchAction: {
+        let readModeItem = ProfileItem(title: "无图阅读", icon: "icon_profile_pic", showSwitch: true, switchAction: {
             isOn in
             print(isOn)
             
             iReadUserDefaults.updateReadMode()
-            self.noticeTop("无图阅读模式已\(isOn ? "打开" : "关闭")", autoClear: true, autoClearTime: 1)
+            self.showupTopInfoMessage("无图阅读模式已\(isOn ? "打开" : "关闭")")
             
         })
         
         readModeItem.isOn = iReadUserDefaults.isReadModeOn
         
-        var themeModeItem = ProfileItem(title: "自动夜间模式", icon: "icon_profile_autonight", showSwitch: true, switchAction: {
+        let themeModeItem = ProfileItem(title: "自动夜间模式", icon: "icon_profile_autonight", showSwitch: true, switchAction: {
              [unowned self] isOn in
             
             print(isOn)
             iReadUserDefaults.updateThemeMode()
-            self.noticeTop("自动夜间模式已\(isOn ? "打开" : "关闭")", autoClear: true, autoClearTime: 1)
+            self.showupTopInfoMessage("自动夜间模式已\(isOn ? "打开" : "关闭")")
             // while false : close mode
             // while true : open mode
             
         })
+        
         themeModeItem.isOn = iReadUserDefaults.isThemeModeOn        
         
         let switchGroup = ProfileGroup(headerTitle: "无图阅读更省流量", footerTitle: "打开后根据当地时间自动切换主题模式", items: [readModeItem, themeModeItem])
@@ -87,7 +128,8 @@ class ProfileViewController: BaseTopViewController {
             self.performSegueWithIdentifier("AboutViewController", sender: nil)
         })
         
-        let OtherGroup = ProfileGroup(headerTitle: "", footerTitle: "", items: [aboutItem, ])
+        let OtherGroup = ProfileGroup(headerTitle: "", footerTitle: "", items: [aboutItem])
+       
         groups.append(OtherGroup)
         
     }
@@ -119,6 +161,16 @@ class ProfileViewController: BaseTopViewController {
             readTimes: iReadUserDefaults.totalReadTimesString(),
             imageURLString: iReadUserDefaults.avatarIconURLString()
         )
+        
+        if iReadUserDefaults.isLogined {
+            configureDataSource()
+            tableView.reloadData()
+            infoButton.hidden = false
+            titleLabel.text = iReadUserDefaults.currentUser?.username
+        } else {
+            infoButton.hidden = true
+            titleLabel.text = "个人"
+        }
     }
     
 }
@@ -144,8 +196,6 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
         
         let profileItem = groups[indexPath.section].items[indexPath.row]
         
-//        let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(ProfileSettingCell.self)) as! ProfileSettingCell
-//        cell.configureCellContent(profileItem: profileItem)
         let cell = ProfileSettingCell(profileItem: profileItem)
         
         return cell

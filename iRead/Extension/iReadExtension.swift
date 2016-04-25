@@ -81,3 +81,22 @@ extension UIImage {
         return newImage
     }
 }
+
+extension UIViewController {
+    func presentLoginViewControllerWhenNoUser(completion:(()->Void)? = nil) {
+        
+        if iReadUserDefaults.isLogined {
+            print("当前用户已存在")
+        } else {
+            let userViewController  = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()
+            self.presentViewController(userViewController!, animated: true, completion: {
+                delayTaskExectuing(0.5, block: {
+                    self.showupInfoMessage("请先登录")
+                })
+                
+                completion?()
+            })
+        }
+    }
+}
+

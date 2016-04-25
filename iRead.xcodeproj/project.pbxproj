@@ -27,6 +27,8 @@
 		F423DA961CC6616500C1D95E /* Activities.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F423DA951CC6616500C1D95E /* Activities.xcassets */; };
 		F423DA981CC6706500C1D95E /* Activities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F423DA971CC6706500C1D95E /* Activities.swift */; };
 		F42A63651C9A8E0C0099CB7A /* BaseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A63641C9A8E0C0099CB7A /* BaseCardView.swift */; };
+		F42BBB9F1CCCFDB700870228 /* LifeHealthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42BBB9E1CCCFDB700870228 /* LifeHealthController.swift */; };
+		F42BBBA11CCCFE1200870228 /* BlogArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42BBBA01CCCFE1200870228 /* BlogArticleController.swift */; };
 		F42C03361C9A4B9000B27F45 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42C03351C9A4B9000B27F45 /* BaseCollectionView.swift */; };
 		F42C03381C9A4E6900B27F45 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42C03371C9A4E6900B27F45 /* BaseCollectionViewCell.swift */; };
 		F42E98501C925DED00A1E602 /* ConcurrentOpeartion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E984F1C925DED00A1E602 /* ConcurrentOpeartion.swift */; };
@@ -170,6 +172,8 @@
 		F423DA951CC6616500C1D95E /* Activities.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Activities.xcassets; sourceTree = "<group>"; };
 		F423DA971CC6706500C1D95E /* Activities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activities.swift; sourceTree = "<group>"; };
 		F42A63641C9A8E0C0099CB7A /* BaseCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCardView.swift; sourceTree = "<group>"; };
+		F42BBB9E1CCCFDB700870228 /* LifeHealthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeHealthController.swift; sourceTree = "<group>"; };
+		F42BBBA01CCCFE1200870228 /* BlogArticleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogArticleController.swift; sourceTree = "<group>"; };
 		F42C03351C9A4B9000B27F45 /* BaseCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
 		F42C03371C9A4E6900B27F45 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		F42E984F1C925DED00A1E602 /* ConcurrentOpeartion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOpeartion.swift; sourceTree = "<group>"; };
@@ -634,6 +638,8 @@
 			children = (
 				F40C02181C8FE11C00CB3646 /* Recommend.storyboard */,
 				F4914D4F1C8EA41300C32743 /* RecommendController.swift */,
+				F42BBB9E1CCCFDB700870228 /* LifeHealthController.swift */,
+				F42BBBA01CCCFE1200870228 /* BlogArticleController.swift */,
 				F40C02381C90054D00CB3646 /* ViewControllerA.swift */,
 				F4A331281C96589100AFFC6F /* ITNewsViewController.swift */,
 				F431A5801CA62FB9007589E9 /* RecommendBaseController.swift */,
@@ -1008,6 +1014,7 @@
 				F45344291C982647008378DC /* FeedListController.swift in Sources */,
 				F47085CC1CACAE10000F119B /* iReadExtension.swift in Sources */,
 				F45353B41CBF505C00AF5D04 /* ProfileItem.swift in Sources */,
+				F42BBBA11CCCFE1200870228 /* BlogArticleController.swift in Sources */,
 				F49208341CA2C3B200F889FA /* ImageModel.swift in Sources */,
 				F4520AE61CC7CC9100A865FF /* RegisterViewController.swift in Sources */,
 				F48594851CC8BEB6004108C1 /* AFImageVIewExtension.swift in Sources */,
@@ -1058,6 +1065,7 @@
 				F4181E071C86C3C600E41FBA /* AppDelegate.swift in Sources */,
 				F423DA8F1CC5CE3500C1D95E /* HistoryViewController.swift in Sources */,
 				F40C02281C90028B00CB3646 /* YZDisplayTitleLabel.m in Sources */,
+				F42BBB9F1CCCFDB700870228 /* LifeHealthController.swift in Sources */,
 				F42E98591C9276AF00A1E602 /* FeedParseOperation.swift in Sources */,
 				F485946F1CC88243004108C1 /* UserViewController.swift in Sources */,
 				F4121EAC1CC08C0100877B6D /* ProfileView.swift in Sources */,
@@ -1133,7 +1141,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1178,7 +1186,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1225,7 +1233,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ShenZhihao Shen (D6EPVHU6RS)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iRead/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

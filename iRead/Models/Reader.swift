@@ -9,20 +9,18 @@
 import Foundation
 import AVOSCloud
 
+let kReaderSubscribeItems = "subscribeItems"
+
 class Reader: AVUser {
-    @NSManaged var avater: AVFile?
     @NSManaged var readMode: Bool
     @NSManaged var themeMode: Bool
     @NSManaged var readTime: Int
     @NSManaged var readCounts: Int
-    @NSManaged var avater_url: String?
+    @NSManaged var avater_url: String
+    @NSManaged var subscribeItems: [AnyObject]?
     
     override static func parseClassName() -> String! {
         return "_User"
-    }
-    
-    func configureWhenFirstRegister() {
-        
     }
     
 }

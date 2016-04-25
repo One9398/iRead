@@ -34,8 +34,6 @@ class FavArticlesTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         tableView.reloadData()
         
-        print(tableView.contentOffset)
-        print(tableView.contentInset)
         if favArticles.count > 0 {
             tableView.contentOffset = CGPointMake(0, -84)
             tableView.contentInset = UIEdgeInsetsMake(84, 0, 44, 0)

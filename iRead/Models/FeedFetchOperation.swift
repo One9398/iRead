@@ -49,7 +49,7 @@ class FeedFetchOperation: ConcurrentOperation {
     }
     
     deinit {
-        print("\(URLString) 网络获取数据结束, deinit")
+//        print("\(URLString) 网络获取数据结束, deinit")
     }
 }
 

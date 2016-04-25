@@ -20,7 +20,6 @@ class ArticleViewController: UIViewController {
     private var fileResource = FileResource.sharedResource
     
     private lazy var articleStyle : ArticleStyle =  {
-//        return ArticleStyle.Darkness
         let style: ArticleStyle = iReadTheme.isDayMode ? .Normal : .Darkness
         return style
     }()
@@ -395,7 +394,13 @@ extension ArticleViewController: ActionViewDelegate {
             performShareAction()
         case .StoreContentAction:
             print("go to StoreContentAction")
-            updateArticleFavoriteState(addOrDelet: actionBtn.selected)
+            if iReadUserDefaults.isLogined {
+                let isSeleted = actionBtn.selected
+                updateArticleFavoriteState(addOrDelet: isSeleted)
+                self.showupSuccessMessage(isSeleted ? "收藏成功" : "取消收藏")
+            } else {
+                presentLoginViewControllerWhenNoUser()
+            }
 
         case .ModeChangeAction:
             print("go to ModeChangeAction")
@@ -404,8 +409,14 @@ extension ArticleViewController: ActionViewDelegate {
 
         case .NoteContentAction:
             print("go to NoteContentAction")
-            self.noticeTop("标记为待读资讯,待细读", autoClear: true, autoClearTime: 1)
-            updateArticleToreadState(addOrDelete: actionBtn.selected)
+            if iReadUserDefaults.isLogined {
+                updateArticleToreadState(addOrDelete: actionBtn.selected)
+                let isSeleted = actionBtn.selected
+                self.showupTopInfoMessage(isSeleted ? "标记为待读资讯" : "撤销待读标记")
+            } else {
+                presentLoginViewControllerWhenNoUser()
+            }
+
         }
     }
     
@@ -488,24 +499,3 @@ extension ArticleViewController {
 }
 
 extension ArticleViewController : SharableViewController { }
-
-
-/*
-
-- (void)screenshot:(UIBarButtonItem *)sender
-{
-UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-
-CGRect rect = [keyWindow bounds];
-UIGraphicsBeginImageContextWithOptions(rect.size, YES, 0);
-
-CGContextRef context = UIGraphicsGetCurrentContext();
-[keyWindow.layer renderInContext:context];
-
-UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-UIGraphicsEndImageContext();
-
-[[UIPasteboard generalPasteboard] setImage:image];
-}
-
-*/

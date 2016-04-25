@@ -23,7 +23,7 @@ PODS:
   - Alamofire (3.2.1)
   - AVOSCloudDynamic (3.2.8)
   - DGRunkeeperSwitch (1.1.1)
-  - DZNEmptyDataSet (1.7.3)
+  - DZNEmptyDataSet (1.8)
   - Kingfisher (2.1.0)
   - LeanCloudFeedbackDynamic (0.1.1):
     - AVOSCloudDynamic
@@ -56,7 +56,7 @@ SPEC CHECKSUMS:
   Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
   AVOSCloudDynamic: 440bbf71ffe533a5090a4329fe80e1027e3b0654
   DGRunkeeperSwitch: da12f199532a99958a1e87ec0a5af61efdba11ec
-  DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
+  DZNEmptyDataSet: d2351b2e8daefa40433ef292e246e21f6be31a7b
   Kingfisher: 3ac09acad75a25ab22f6d7cef3de10d61dd4792d
   LeanCloudFeedbackDynamic: e839bb9238cafd6a6efc4448b526ca90f2e4175b
   LeanCloudSocialDynamic: 6ae0b537e676475b7b083735989cfeef95edbebf
@@ -67,6 +67,6 @@ SPEC CHECKSUMS:
   SnapKit: eff58d6e3451bf2f482db2eccf86aecf371dc62d
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 
-PODFILE CHECKSUM: 11d46fa85fd10a1ffe7468a5a8756b7cf0aff186
+PODFILE CHECKSUM: 34aabdec8d38a9f5bcd074bbd9e50132c0cbc515
 
 COCOAPODS: 1.0.0.beta.4

@@ -20,10 +20,17 @@ class FeedsViewController: UIViewController {
         let feeds = feedResource.fetchCurrentSubscribedFeeds()
         return feeds
     }
-    private var subscribeItems: [FeedItem] {
+    private var subscribeItems: [FeedItem2] {
         let items = feedResource.fetchCurrentSubscribedItems()
         return items
     }
+    
+    lazy var loadAcitivity: iReadLoadView = {
+        var  loadActivity = iReadLoadView(activityIndicatorStyle: .Default)
+        self.view.addSubview(loadActivity)
+        
+        return loadActivity
+    }()
     
     private var feedProviders = Set<FeedModelsProvider>()
     private var errorFeedProviders = Set<FeedModelsProvider>()
@@ -40,8 +47,19 @@ class FeedsViewController: UIViewController {
         prepareForEmptyView()
         prepareForTableView()
         prepareForRefreshView()
-//        prepareForTabBar()
-        loadData()
+        
+        loadAcitivity.startAnimating()
+        feedResource.loadFeedItem{
+            (feedItems:[FeedItem2], error: NSError?) in
+            if let error = error {
+                self.showupTopInfoMessage(error.localizedDescription)
+            } else {
+                self.feedResource.items = feedItems
+                self.loadData()
+            }
+            print(self.loadAcitivity)
+            self.loadAcitivity.stopAnimating()
+        }
     }
     
    
@@ -55,10 +73,12 @@ class FeedsViewController: UIViewController {
         } else {
             toreadButton?.selected = false
         }
+        
     }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -109,7 +129,6 @@ class FeedsViewController: UIViewController {
     }
     
     private func prepareForRefreshView() {
-        print(tableView.contentOffset)
 
         MaterialLoader.addRefreshHeader(tableView,
             loaderColor:iReadColor.themeModelTinColor(
@@ -139,7 +158,7 @@ class FeedsViewController: UIViewController {
         // show HUD
         errorFeedProviders.removeAll()
         feedProviders.removeAll()
-        
+
         for i in 0..<subscribeItems .count {
             let feedItem = subscribeItems[i]
             
@@ -200,10 +219,12 @@ class FeedsViewController: UIViewController {
         
     }
     
-    
     func showToreadArticlesTable() {
+        
         if feedResource.toreadArticles.count <= 0 {
             self.noticeTop("没有待读的资讯", autoClear: true, autoClearTime: 1)
+
+            loadData()
             return
         }
         
@@ -286,6 +307,13 @@ extension FeedsViewController : BaseTableViewCellDelegate {
                 // 切换成非订阅,删除该Cell
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
                 
+
+            }
+            
+            if subscribeItems.count == 0 {
+                tableView.reloadData()
+            } else {
+                self.noticeTop("\(feed.title) 订阅取消", autoClear: true, autoClearTime: 1)
             }
            
             // 更新其他界面数据
@@ -294,7 +322,7 @@ extension FeedsViewController : BaseTableViewCellDelegate {
             // 更新本地远程数据
             
             //HUD显示
-            self.noticeTop("\(feed.title) 订阅取消", autoClear: true, autoClearTime: 1)
+
             
         }
         

@@ -16,6 +16,7 @@ class BaseViewController: SegueViewController {
         titleLabel.text = "标题"
         titleLabel.sizeToFit()
         titleLabel.textColor = iReadColor.themeWhiteColor
+        titleLabel.textAlignment = .Center
         return titleLabel
     }()
     

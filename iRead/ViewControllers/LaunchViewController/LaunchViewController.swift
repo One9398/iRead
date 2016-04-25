@@ -69,7 +69,6 @@ class LaunchViewController: UIViewController {
         return circle
     }()
     
-    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +78,35 @@ class LaunchViewController: UIViewController {
         configureLayoutForUIComponent(logoImageView, offSetYValue: logo_offsetYValue)
         configureLayoutForUIComponent(labelImageView, offSetYValue: label_offsetYValue)
         
+        FeedResource.sharedResource.loadFeedItem{
+            items, error in
+            
+            if let error = error {
+                self.showupTopInfoMessage(error.localizedDescription)
+            } else {
+                FeedResource.sharedResource.items = items
+            }
+        }
+        
+    }
+    
+    func callbackWithResult(result: [FeedItem2], error: NSError?) {
+        print(result)
+        
+        if error != nil {
+            assertionFailure(error!.localizedDescription)
+        } else {
+            
+            for item in result {
+                for localItem in FeedResource.sharedResource.items {
+                    if item.feedURL == localItem.feedURL {
+                        localItem.isSub = item.isSub
+                        localItem.feedType = item.feedType
+                        localItem.owner = item.owner
+                    }
+                }
+            }
+        }
         
     }
     

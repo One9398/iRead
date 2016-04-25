@@ -14,6 +14,8 @@ struct iReadNotification {
     
     static let FeedParseOperationDidSinglyFailureNotification = "FeedParseOperationDidSinglyFinishedNotification"
     static let FeedFetchOperationDidSinglyFailureNotification = "FeedFetchOperationDidSinglyFailureNotification"
+
+    static let FeedItemsRemoteFetchDidFinishedNotification = "FeedItemsRemoteFetchDidFinishedNotification"
 }
 
 struct iReadConfigure {

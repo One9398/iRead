@@ -57,7 +57,6 @@ class FeedBaseTableViewCell: MaterialTableViewCell {
             imageView?.image = UIImage(named: "icon_placehold_logo2")?.resize(toWidth: 32)
         }
         
-        
         if switchControl == nil {
             // 若果 当前时间为晚上则开启夜间模式
             let switchControl = BaseSwitch.createSwitch(iReadTheme.isNightMode() ? .NightMode : .DayMode, isOn: feedModel.isFollowed)
@@ -72,7 +71,6 @@ class FeedBaseTableViewCell: MaterialTableViewCell {
                 self.autoSwitch = true
             })
         }
-
         
     }
     

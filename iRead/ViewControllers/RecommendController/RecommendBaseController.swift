@@ -18,7 +18,8 @@ class RecommendBaseController: UIViewController {
     
     lazy var loadAcitivity: iReadLoadView = {
         var  loadActivity = iReadLoadView(activityIndicatorStyle: .Default)
-        self.tableView.addSubview(loadActivity)
+        self.recommendView.addSubview(loadActivity)
+        
         return loadActivity
     }()
     
@@ -34,7 +35,7 @@ class RecommendBaseController: UIViewController {
     }
     
     // 指定类型的item
-    var items: [FeedItem] {
+    var items: [FeedItem2] {
         let tems = feedResource.fetchCurrentTypeFeedItems(self.feedType)
         return tems
     }
@@ -49,25 +50,26 @@ class RecommendBaseController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         prepareRecommendView()
         prepareTableView()
         prepareEmptyView()
         
         loadData()
-        
+        configureNotification()
+    }
+    
+    deinit {
+        removeNotification()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         tableView.reloadData()
-        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -77,28 +79,24 @@ class RecommendBaseController: UIViewController {
         
     }
     
-    deinit {
+    // MARK: - Configure Data
+    func configureNotification() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: iReadNotification.FeedItemsRemoteFetchDidFinishedNotification, object: nil)
     }
     
-    
-    // MARK: - Configure Data
-    
-    func configureNotification() {
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: YZDisplayViewClickOrScrollDidFinshNote, object: self)
+    func removeNotification() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: iReadNotification.FeedItemsRemoteFetchDidFinishedNotification, object: nil)
     }
     
     // MARK: - Event Handle
-    
     func loadData() {
-        print("loadData")
-        
         self.tableView.editing = false
         errorFeedProviders.removeAll()
         feedProviders.removeAll()
         
         // show HUD
         if items.count == 0 {
-            self.noticeTop("当前分类没有资讯源~")
+            showupTopInfoMessage("当前分类没有资讯源~")
         } else {
             loadAcitivity.startAnimating()            
         }
@@ -110,8 +108,8 @@ class RecommendBaseController: UIViewController {
                 [unowned self] error, message in
                 
                 if let error = error {
-                    
                     print("️️️♻️♻️♻️ \(error.localizedDescription)")
+                    
                     let feedProvider = FeedModelsProvider(feedItem: feedItem, failure: nil, completion: nil)
                     self.errorFeedProviders.insert(feedProvider)
                     self.feedProviders.remove(feedProvider)
@@ -125,7 +123,7 @@ class RecommendBaseController: UIViewController {
                         if feedCount <= 0 {
                             iReadAlert.showErrorMessage(title: "网络异常", message: "Oops~网络不给力", dismissTitle: "好吧", inViewController: self)
                         } else {
-                            self.noticeTop( "获取到\(feedCount)条资讯源", autoClear: true, autoClearTime: 1)
+                            self.showupTopInfoMessage("获取到\(feedCount)条资讯源")
                         }
                     }
                     
@@ -144,25 +142,20 @@ class RecommendBaseController: UIViewController {
                     }
                     
                     self.feedResource.appendFeed(feedModel)
-                   
                     self.feedProviders.remove(FeedModelsProvider(feedItem: feedItem, failure: nil, completion: nil))
                     
-                    print(feedModel)
-                   
+//                    print(feedModel)
                     self.tableView.reloadData()
                    
                     if  self.feedProviders.isEmpty {
-                            // hide HUD
                         print("\(self.items.count) items all fetch done   !!!!!x")
-                        
-                        self.noticeTop( "获取到\(self.items.count - self.errorFeedProviders.count)条资讯源", autoClear: true, autoClearTime: 1)
+                        self.showupTopInfoMessage( "获取到\(self.items.count - self.errorFeedProviders.count)条资讯源")
                     }
                     
             })
             
             feedProviders.insert(provider)
             provider.handlProvider()
-
             
         }
         
@@ -237,14 +230,7 @@ extension RecommendBaseController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! FeedBaseTableViewCell
-        print(cell.textLabel?.text)
-        
-        if cell.textLabel?.text == nil {
-            return
-        }
         let feedListVC = FeedListController()
-        print(feeds[indexPath.row])
         feedListVC.configureContent(feeds[indexPath.row])
         
         self.navigationController?.pushViewController(feedListVC, animated: true)
@@ -252,12 +238,6 @@ extension RecommendBaseController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        
-        let cell  = tableView.cellForRowAtIndexPath(indexPath)
-        
-        if cell?.textLabel?.text == "" {
-            return false
-        }
         
         return true
     }
@@ -267,63 +247,58 @@ extension RecommendBaseController: UITableViewDelegate, UITableViewDataSource {
 extension RecommendBaseController : BaseTableViewCellDelegate {
     func baseTableViewCell(cell: FeedBaseTableViewCell, didChangedSwitchState state: Bool, feed: FeedModel) {
         
-        let infoMsg: String = state ? "\(feed.title) 订阅成功" : "\(feed.title) 订阅取消"
-        
-        self.noticeTop( infoMsg, autoClear: true, autoClearTime: 1)
-        
-        feed.isFollowed = !feed.isFollowed
-        feedResource.updateFeedState(feed)
-//        tableView.reloadData()
-        
+        if iReadUserDefaults.isLogined {
+            let infoMsg: String = state ? "\(feed.title) 订阅成功" : "\(feed.title) 订阅取消"
+            self.noticeTop( infoMsg, autoClear: true, autoClearTime: 1)
+            feed.isFollowed = !feed.isFollowed
+            feedResource.updateFeedState(feed)
+            
+        } else {
+            presentLoginViewControllerWhenNoUser()
+        }
     }
 }
 
 // MARK: - RecommandCardViewDelegate
 extension RecommendBaseController : RecommandCardViewDelegate {
     func recommandCardViewPlusButtonClicked(button: BaseButton) {
-        print(__FUNCTION__)
-        
         self.tableView.editing = false
         
         iReadAlert.showFeedInput(title: "RSS源添加", placeholder: "输入源地址", confirmTitle: "确认", dismissTitle: "返回", inViewController: self, withFinishedAction: { (text: String) -> Void in
             
             if text.hasPrefix("http://") || text.hasPrefix("https://") {
                
-                var isNew = true
-                
                 for i in 0..<self.feeds.count {
                     
-                    if text.isEqualIgnoreCaseStirng(self.items[i].feedURL) {
-                        iReadAlert.showErrorMessage(title: "提示", message: "该RSS源已存在App中", dismissTitle: "明白", inViewController: self)
-                        isNew = false
+                    if text.isEqualIgnoreCaseStirng(FeedResource.sharedResource.items[i].feedURL) {
+                        iReadAlert.showErrorMessage(title: "提示", message: "该RSS源已存在App中", dismissTitle: "好吧", inViewController: self)
+                        return
                     }
                 }
+            
+                let feedItem2 = FeedItem2.configureItemWithType(self.feedType
+                    , feedURL: text, isSub: true)
                 
-                if isNew {
+                let feedProvider = FeedModelsProvider(feedItem: feedItem2, failure: {
+                    [unowned self] error, message in
                     
-                    let feedItem = FeedItem(feedURL: text, feedType: self.feedType, isSub: false)
+                    iReadAlert.showErrorMessage(title: "获取出错", message: message!, dismissTitle: "好吧", inViewController: self)
                     
-                    _ = FeedModelsProvider(feedItem: feedItem, failure: {
-                        [unowned self] error, message in
+                    }, completion: {
+                        [unowned self] feedModel in
                         
-                        iReadAlert.showErrorMessage(title: "获取出错", message: message!, dismissTitle: "好吧", inViewController: self)
+                        guard let feedModel = feedModel else { assertionFailure("feed unavibale") ; return }
                         
-                        }, completion: {
-                            [unowned self] feedModel in
-                            
-                            guard let feedModel = feedModel else { assertionFailure("feed unavibale") ; return }
-                            
-                            self.feedResource.appendFeed(feedModel)
-                            self.feedResource.appendFeedItem(feedItem)
-                            
-                            print(feedModel)
-                            
-                            self.tableView.reloadData()
-                            self.noticeTop("添加成功", autoClear: true, autoClearTime: 1)
-                    })
-                    
-                }
+                        self.feedResource.appendFeed(feedModel)
+                        self.feedResource.appendFeedItem(feedItem2)
+                        feedItem2.saveBackgroundWhenLogin()
+                        
+                        self.tableView.reloadData()
+                        self.showupTopInfoMessage("添加成功")
+                })
                 
+                feedProvider.handlProvider()
+            
             } else {
                 iReadAlert.showErrorMessage(title: "出错了~", message: "所输入源地址格式错误", dismissTitle: "确定", inViewController: self)
             }
@@ -338,7 +313,6 @@ extension RecommendBaseController : RecommandCardViewDelegate {
             return
         }
         
-        print("need delete")
         tableView.editing = !tableView.editing
     }
     

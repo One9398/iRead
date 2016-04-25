@@ -1,17 +1,18 @@
 //
-//  TechStudyController.swift
+//  BlogArticleController.swift
 //  iRead
 //
-//  Created by Simon on 16/3/26.
+//  Created by Simon on 16/4/24.
 //  Copyright © 2016年 Simon. All rights reserved.
 //
 
 import UIKit
 
-class TechStudyController: RecommendBaseController {
+class BlogArticleController: RecommendBaseController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 

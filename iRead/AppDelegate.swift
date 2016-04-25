@@ -16,13 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let queue = NSOperationQueue()
-    var dataSource = [FeedModelsProvider]()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
         NSUserDefaults.standardUserDefaults().setBool(false, forKey: "hasStyle")
-       
+        
         setupLeanCloudSetting()
         setupOtherLoginPlatformsSetting()
         
@@ -39,6 +37,7 @@ extension AppDelegate {
          AVOSCloud.setApplicationId(iReadConfigure.leancloudAppID, clientKey: iReadConfigure.leancloudAppKey)
         
         Reader.registerSubclass()
+        FeedItem2.registerSubclass()
     }
     
     private func setupOtherLoginPlatformsSetting() {

@@ -30,17 +30,19 @@ class ProfileView: UIView {
         readtimesLabel.textColor = iReadColor.themeDarkGrayColor
         countsLabel.textColor = iReadColor.themeDarkGrayColor
         backgroundColor = iReadColor.defaultBackgroundColor
+        nickImageView.clipsToBounds = true
+        nickImageView.layer.cornerRadius = 50
         
     }
     
     func updateProfile(totalReadCounts readCounts: String, readTimes: String, imageURLString: String) {
         countsDataLabel.text = readCounts
         timesDataLabel.text = readTimes
-       
-        nickImageView.kf_setImageWithURL(NSURL(string: imageURLString)!, placeholderImage: UIImage(named: "launch_logo"), optionsInfo: [.Transition(ImageTransition.Fade(0.5))], completionHandler: { (image: Image?, error: NSError?, cacheType: CacheType, imageURL: NSURL?) -> () in
-            print("get nickImage \(error?.localizedDescription)")
+        print(imageURLString)
+        nickImageView.kf_setImageWithURL(NSURL(string: imageURLString)!, placeholderImage: UIImage(named: "launch_logo"), optionsInfo: [.Transition(ImageTransition.Fade(0.3))], completionHandler: { (image: Image?, error: NSError?, cacheType: CacheType, imageURL: NSURL?) -> () in
+            print("error: \(error?.localizedDescription)")
         })
-        
+
     }
     
     override func layoutSubviews() {

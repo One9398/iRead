@@ -10,12 +10,16 @@ import UIKit
 class RootTabbarController: UITabBarController {
     
     // MARK: - View Life Cycle ♻️
-    
+    let RecommandVCType = 0
+    let PersonalVCType = 1
     override func viewDidLoad() {
 
         delegate = self
         prepareForTabbar()
-        selectedIndex = 2
+        selectedIndex = iReadUserDefaults.isLogined ? PersonalVCType : RecommandVCType
+        print(iReadUserDefaults.isLogined)
+        print(selectedIndex)
+        
     }
     
     // MARK: - UI Preparation 📱

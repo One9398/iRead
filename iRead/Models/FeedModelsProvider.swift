@@ -13,9 +13,9 @@ class FeedModelsProvider {
     private let fetchOperation: FeedFetchOperation
     private let parseOpreation: FeedParseOperation
     
-    let feedItem: FeedItem
+    let feedItem: FeedItem2
     // 主线程进行completion回调
-    init(feedItem: FeedItem, failure:FailureHandler?, completion: ((FeedModel?) -> ())?) {
+    init(feedItem: FeedItem2, failure:FailureHandler?, completion: ((FeedModel?) -> ())?) {
         
         self.feedItem = feedItem
         
@@ -28,7 +28,6 @@ class FeedModelsProvider {
     }
 
     func handlProvider() {
-        
         parseOpreation.addDependency(fetchOperation)
         queue.addOperations([fetchOperation, parseOpreation], waitUntilFinished: false)
     }
