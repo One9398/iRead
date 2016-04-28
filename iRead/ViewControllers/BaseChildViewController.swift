@@ -13,9 +13,20 @@ class BaseChildViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(assetsIdentifier: .icon_baritem_back), style: .Plain, target: self, action: "popCurrentViewController")
+        // Do any additional setup after loading the view. icon_close
+        prepareNavigationItem(nil)
     }
+    
+    func prepareNavigationItem(image: UIImage?) {
+    
+        if let image = image {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .Plain, target: self, action: "popCurrentViewController")
+        } else {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(assetsIdentifier: .icon_baritem_back), style: .Plain, target: self, action: "popCurrentViewController")
+        }
+
+    }
+    
     func popCurrentViewController() {
         self.navigationController?.popViewControllerAnimated(true)
     }

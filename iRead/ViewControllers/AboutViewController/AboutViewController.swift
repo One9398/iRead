@@ -20,6 +20,9 @@ class AboutViewController: BaseChildViewController {
         configureDataSource()
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: NSStringFromClass(UITableViewCell.self))
         tableView.tableFooterView = UIView()
+        view.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlackColor)
+        tableView.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlackColor)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,6 +78,7 @@ extension AboutViewController : UITableViewDataSource, UITableViewDelegate {
         cell?.textLabel?.text = group?.items[indexPath.row].title
         cell?.textLabel?.font = iReadFont.regualWithSize(14)
         cell?.textLabel?.textColor = iReadColor.themeDarkGrayColor
+        cell?.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlackColor)
         
         return cell!
     }

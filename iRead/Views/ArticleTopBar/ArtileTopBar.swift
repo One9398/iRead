@@ -39,8 +39,8 @@ class ArtileTopBar: UIView {
     }
     
     private func updateSubButtons() {
-        surfButton.tintColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlueColor, nightColor: iReadColor.themeLightWhiteColor)
-        backButton.tintColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlueColor, nightColor: iReadColor.themeLightWhiteColor)
+        surfButton.tintColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlueColor, nightColor: iReadColor.themeGrayColor)
+        backButton.tintColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlueColor, nightColor: iReadColor.themeGrayColor)
         
         surfButton.backgroundColor = iReadColor.themeClearColor
         backButton.backgroundColor = iReadColor.themeClearColor

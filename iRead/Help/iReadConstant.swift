@@ -45,6 +45,7 @@ enum iReadConstant {
     struct EmptyView {
         static let verticalOffset: CGFloat = -10
         static let spaceHeight: CGFloat = 20
+        static let verticalOffsetForFeedsViewController: CGFloat = -74
         
     }
     
@@ -83,6 +84,14 @@ enum iReadConstant {
     struct RegisterButton {
         static let frame = CGRectMake(iReadConstant.ScreenSize.width/2 - 140, iReadConstant.ScreenSize.height - 100, 280, 40)
         static let cornerRadius: CGFloat = 20
+    }
+    
+    struct SubtitleLabel {
+        static let frame = CGRectMake(0, 0, 60, 15)
+    }
+    
+    struct LogoutButton {
+        static let frame = CGRectMake(0,0,40,40)
     }
 
 }

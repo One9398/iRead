@@ -31,9 +31,8 @@ class ProfileViewController: BaseTopViewController {
     }
     
     override func prepareNavigationBar() {
-        super.prepareNavigationBar()
-        
-        let button = UIButton(frame: CGRectMake(0,0,40,40))
+        super.prepareNavigationBar()         
+        let button = UIButton(frame: iReadConstant.LogoutButton.frame)
         button.setTitle("注销", forState: .Normal)
         button.titleLabel?.font = iReadFont.lightWithSize(14)
         infoButton = button
@@ -48,23 +47,25 @@ class ProfileViewController: BaseTopViewController {
         iReadUserDefaults.resetUserDefaults()
         FeedResource.sharedResource.loadFeedItem({
             items, error in
-
-            FeedResource.sharedResource.items = items
-            FeedResource.sharedResource.feeds.forEach{
-                feed in
-                feed.isFollowed = false
+            if self.filterShowUpError(error) {
+                FeedResource.sharedResource.items = items
+                FeedResource.sharedResource.feeds.forEach{
+                    feed in
+                    feed.isFollowed = false
+                }
             }
         })
+        
+        FeedResource.sharedResource.articles.removeAll()
         
         configureDataSource()
         tableView.reloadData()
         
         presentLoginViewControllerWhenNoUser{
             NSNotificationCenter.defaultCenter().postNotificationName(iReadNotification.FeedItemsRemoteFetchDidFinishedNotification, object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(iReadNotification.iReadserDidLogoutNotification, object: nil)
         }
     }
-    
-    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -100,6 +101,9 @@ class ProfileViewController: BaseTopViewController {
             print(isOn)
             
             iReadUserDefaults.updateReadMode()
+            
+            iReadUserDefaults.setNeedReadModeFlag()
+            
             self.showupTopInfoMessage("无图阅读模式已\(isOn ? "打开" : "关闭")")
             
         })
@@ -111,7 +115,8 @@ class ProfileViewController: BaseTopViewController {
             
             print(isOn)
             iReadUserDefaults.updateThemeMode()
-            self.showupTopInfoMessage("自动夜间模式已\(isOn ? "打开" : "关闭")")
+            let info = iReadDateFormatter.isDuringNight() ? "重启我阅启动" : ""
+            self.showupTopInfoMessage("自动夜间模式已\(isOn ? "打开" : "关闭")  \(info)")
             // while false : close mode
             // while true : open mode
             
@@ -119,7 +124,7 @@ class ProfileViewController: BaseTopViewController {
         
         themeModeItem.isOn = iReadUserDefaults.isThemeModeOn        
         
-        let switchGroup = ProfileGroup(headerTitle: "无图阅读更省流量", footerTitle: "打开后根据当地时间自动切换主题模式", items: [readModeItem, themeModeItem])
+        let switchGroup = ProfileGroup(headerTitle: "无图阅读更省流量", footerTitle: "19:00-6:00期间我阅使用夜间模式", items: [readModeItem, themeModeItem])
         groups.append(switchGroup)
        
         let aboutItem = ProfileItem(title: "关于", icon: "icon_profile_about", selectedAction: {

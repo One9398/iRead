@@ -14,7 +14,8 @@ import Material
 
 class ArticleViewController: UIViewController {
 
-    var feedItem: FeedItemModel!
+//    var feedItem: FeedItemModel!
+    var article: Article!
     var feed: FeedModel?
     var feedResource = FeedResource.sharedResource
     private var fileResource = FileResource.sharedResource
@@ -24,8 +25,6 @@ class ArticleViewController: UIViewController {
         return style
     }()
     
-    private var isScrolled = false
-    private var isDecelerated = false
     private var imageModels = [ImageModel]()
     private var topBar : ArtileTopBar?
     private var actionView : ActionView?
@@ -44,7 +43,6 @@ class ArticleViewController: UIViewController {
         return view
         
     }()
-    
 
    
     private var beginUpdate = false
@@ -65,14 +63,14 @@ class ArticleViewController: UIViewController {
         // Do any additional setup after loading the view.
         prepareForNavigationBar()
         prepareForMenuView()
-
+        
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.hidden = true
         iReadTimer.startRecordingTime()
-        
+
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -81,7 +79,6 @@ class ArticleViewController: UIViewController {
         
         let timeinterval = iReadTimer.endRecodingTime()
         iReadUserDefaults.updateReadTime(timeinterval)
-        print(timeinterval)
         
     }
     
@@ -99,10 +96,10 @@ class ArticleViewController: UIViewController {
     // MARK: - UI Preparation 📱
     private func prepareForMenuView() {
         
-        print(feedItem.isFavorite)
+        print(article.isFavorited)
         let actionView = ActionView()
-        if feedResource.favoriteArticles.contains({$0.title == feedItem.title}) {
-            feedItem.isFavorite = true            
+        if feedResource.favoriteArticles.contains({$0.title == article.title}) {
+            article.isFavorited = true
             actionView.updateFavoriteBtnState()
         }
         
@@ -171,22 +168,22 @@ class ArticleViewController: UIViewController {
     }
 
     // MARK: - Congfigure Data
-    convenience init(feedItem: FeedItemModel) {
+    convenience init(feedItem: Article) {
         self.init()
         configureContent("文章", feedItem: feedItem, feedModel: nil)
     }
     
-    convenience init(title: String?, feedItem model: FeedItemModel, feedModel: FeedModel) {
+    convenience init(title: String?, feedItem model: Article, feedModel: FeedModel) {
 
         self.init()
         configureContent(title, feedItem: model, feedModel: feedModel)
     }
-
-    func configureContent(title: String?, feedItem model: FeedItemModel, feedModel: FeedModel?) {
+    
+    func configureContent(title: String?, feedItem model: Article, feedModel: FeedModel?) {
         self.title = title
-        feedItem = model
+        article = model
 
-        let feedContent = model.description.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
+        let feedContent = model.content.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
         let feedTitle = model.title
         let feedDate = iReadDateFormatter.sharedDateFormatter.getCustomDateStringFromDateString(model.pubDate, styleString: "MM月dd日,HH点mm分")
         
@@ -243,10 +240,14 @@ class ArticleViewController: UIViewController {
             fatalError("no link load page")
         }
         
-        let safariVC = SFSafariViewController(URL: NSURL(string: urlStirng)!)
-        safariVC.delegate = self
-        
-        presentViewController(safariVC, animated: true, completion: nil)
+        if urlStirng.hasPrefix("http") {
+            let safariVC = SFSafariViewController(URL: NSURL(string: urlStirng)!)
+            safariVC.delegate = self
+            presentViewController(safariVC, animated: true, completion: nil)
+        } else {
+            self.showupTopInfoMessage("无效的链接访问")
+        }
+
     }
 }
 
@@ -320,13 +321,30 @@ extension ArticleViewController : WKNavigationDelegate, WKUIDelegate, WKScriptMe
         let dayScript = WKUserScript(source: fileResource.dayJSFile, injectionTime: .AtDocumentStart, forMainFrameOnly: true)
         let nightScript = WKUserScript(source: fileResource.nightJSFile, injectionTime: .AtDocumentStart, forMainFrameOnly: true)
         let imgFetchScript = WKUserScript(source: fileResource.imgFetchJSFile, injectionTime: .AtDocumentEnd, forMainFrameOnly: true)
-        
+
+        let imgHandleScript = WKUserScript(source: fileResource.imgHandleJSFile, injectionTime: .AtDocumentEnd, forMainFrameOnly: true)
         // 防止脚本重复加载
+        
+        if iReadUserDefaults.changeReadMode {
+            if iReadUserDefaults.isReadModeOn {
+                controller.addUserScript(imgHandleScript)
+            } else {
+                controller.addUserScript(imgAdjustScript)
+            }
+            
+            iReadUserDefaults.setNeedReadModeFlag()
+        }
+        
         if !NSUserDefaults.standardUserDefaults().boolForKey("hasStyle") {
 
             controller.addUserScript(styleScript)
             controller.addUserScript(imgFetchScript)
-            controller.addUserScript(imgAdjustScript)
+//            controller.addUserScript(imgAdjustScript)
+            if iReadUserDefaults.isReadModeOn {
+                controller.addUserScript(imgHandleScript)
+            } else {
+                controller.addUserScript(imgAdjustScript)
+            }
             
             if articleStyle == .Normal {
                 controller.addUserScript(dayScript)
@@ -356,9 +374,8 @@ extension ArticleViewController : WKNavigationDelegate, WKUIDelegate, WKScriptMe
                 imageModels.append(image)
             }
         }
-        
     }
-
+    
 }
 
 extension ArticleViewController: SFSafariViewControllerDelegate {
@@ -380,9 +397,8 @@ extension ArticleViewController: ActionViewDelegate {
 
     private func performShareAction() {
         
-        let text = "\(feedItem.title)  作者:\(feedItem.author.usePlaceholdStringWhileIsEmpty("未知"))\n 来自我阅的资讯分享链接\(feedItem.link)\n"
-        showupShareText(text, sharedLink: feedItem.link)
-        showupShareText(text, sharedLink: feedItem.link)
+        let text = "\(article.title)  作者:\(article.author)\n 来自我阅的资讯分享链接\(article.link)\n"
+        showupShareText(text, sharedLink: article.link)
         
     }
     
@@ -410,9 +426,9 @@ extension ArticleViewController: ActionViewDelegate {
         case .NoteContentAction:
             print("go to NoteContentAction")
             if iReadUserDefaults.isLogined {
-                updateArticleToreadState(addOrDelete: actionBtn.selected)
-                let isSeleted = actionBtn.selected
-                self.showupTopInfoMessage(isSeleted ? "标记为待读资讯" : "撤销待读标记")
+                let isSelected = actionBtn.selected
+                updateArticleToreadStateNeedAdd(isSelected)
+                self.showupTopInfoMessage(isSelected ? "标记为待读资讯" : "撤销待读标记")
             } else {
                 presentLoginViewControllerWhenNoUser()
             }
@@ -430,24 +446,23 @@ extension ArticleViewController: ActionViewDelegate {
    
     private func updateArticleFavoriteState(addOrDelet isNew: Bool) {
         if isNew {
-            self.feedItem.isFavorite = true
-            feedResource.appendFavoriteArticle(self.feedItem)
-            self.feedItem.addDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
+            article.addDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
         } else {
-            self.feedItem.isFavorite = false
-            feedResource.removeFavoriteArticle(self.feedItem, index: nil)
+            article.addDate = ""
         }
+        
+        feedResource.updateFavoriteStateArticle(article)
     }
     
-    private func updateArticleToreadState(addOrDelete isNew: Bool) {
-        if isNew {
-            self.feedItem.isToread = true
-            feedResource.appendToreadArticle(self.feedItem)
-            self.feedItem.addDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
+    private func updateArticleToreadStateNeedAdd(addOrDelete: Bool) {
+        
+        if addOrDelete {
+            self.article.addDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
         } else {
-            self.feedItem.isToread = false
-            feedResource.removeToreadArticle(self.feedItem, index: 0)
+            self.article.addDate = ""
         }
+        
+        feedResource.updateToreadStateArticle(self.article)
     }
    
     // maybe not work
@@ -463,14 +478,11 @@ extension ArticleViewController: ActionViewDelegate {
 extension ArticleViewController: ArtileTopBarDelegate {
     
     func artileTopBarClickedBackButton(aritleTopBar: ArtileTopBar, backButton: BaseButton) {
-
         self.navigationController?.popViewControllerAnimated(true)
-        
     }
     
     func artileTopBarClickedSurfButton(arlitleTopBar: ArtileTopBar, surfButton: BaseButton) {
-        loadLinkPageURLString(feedItem?.link)
-        
+        loadLinkPageURLString(article?.link)
     }
 }
 

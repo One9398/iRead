@@ -10,13 +10,13 @@ import UIKit
 import Material
 
 class HistoryArticleCell: MaterialTableViewCell {
-    private var articleModel = FeedItemModel()
+    private var articleModel = Article()
     
-    func updateCellContent(articleModel: FeedItemModel) {
+    func updateCellContent(articleModel: Article) {
         self.textLabel?.text = articleModel.title
         self.detailTextLabel?.text = articleModel.readDate.usePlaceholdStringWhileIsEmpty("未知时间")
             + "      来源于 "
-            + articleModel.author.usePlaceholdStringWhileIsEmpty("未知作者")
+            + articleModel.source
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String!) {
@@ -38,7 +38,8 @@ class HistoryArticleCell: MaterialTableViewCell {
     
     private func prepareForBottomLine() {
         let line = UIView()
-        line.backgroundColor = iReadColor.themeGrayColor
+        line.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeGrayColor, nightColor: iReadColor.themeDarkGrayColor)
+        
         self.addSubview(line)
         line.translatesAutoresizingMaskIntoConstraints = false
         line.snp_makeConstraints(closure: {
@@ -52,7 +53,7 @@ class HistoryArticleCell: MaterialTableViewCell {
     private func prepareForTitleTabel() {
         self.textLabel?.font = iReadFont.regualWithSize(16)
         self.textLabel?.numberOfLines = 0
-        self.textLabel?.textColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlackColor, nightColor: iReadColor.themeLightWhiteColor)
+        self.textLabel?.textColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlackColor, nightColor: iReadColor.themeGrayColor)
     }
     
     private func prepareForTimeLabel() {

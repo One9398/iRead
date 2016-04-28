@@ -10,8 +10,6 @@
 import Foundation
 import Ono
 
-
-
 protocol FeedParseOperationDataPorvider {
     var parseData: NSData? { get }
 }
@@ -38,7 +36,7 @@ class FeedParseOperation: ConcurrentOperation {
     private var feedType: FeedType = .Other
     
     private var feedData: NSData?
-    private var feedItemModels:[FeedItemModel]
+    private var feedItemModels:[Article]
     private var feedModel: FeedModel
     private let feedItem: FeedItem2
     private var document: ONOXMLDocument?
@@ -50,7 +48,7 @@ class FeedParseOperation: ConcurrentOperation {
        
         self.feedItem = feedItem
         self.feedData = feedData
-        feedItemModels = [FeedItemModel]()
+        feedItemModels = [Article]()
         
         feedModel = FeedModel()
         
@@ -107,7 +105,6 @@ class FeedParseOperation: ConcurrentOperation {
     private func parseXMLData(data: NSData) throws  {
         
         do {
-            
             self.document = try ONOXMLDocument(data: data)
             
         } catch{
@@ -125,10 +122,9 @@ class FeedParseOperation: ConcurrentOperation {
         
         if xmlType == "rss" {
             parseRSSByXPath(data, document: doc)
-//            parseRSSBySearch(data, document: document)
         } else if xmlType == "feed" {
             parseAtomByXPath(data, document: doc)
-    
+            
         } else {
             throw iReadParseError.XMLTypeError(feedItem)
 //            fatalError("other xml type :" + xmlType)
@@ -153,14 +149,27 @@ extension FeedParseOperation {
         let link = linkEle["href"] as! String
         
         let imageURL = fetchStringWithElement(feedElement, XPath: "//url[1]")
-        let authorEle = feedElement.childrenWithTag("author").last as! ONOXMLElement
-        let author = fetchStringWithElement(authorEle, tagName: "name")
-
+        let authorEle = feedElement.childrenWithTag("author").first as? ONOXMLElement
         
+        var author = ""
+        if let ele = authorEle {
+            author = fetchStringWithElement(ele, tagName: "name")
+        } else {
+            author = title
+        }
+
+
         feedModel.title = title
         feedModel.description = description
         feedModel.link = link
-        feedModel.imagURL = imageURL
+        
+        if imageURL.isEmpty {
+            feedModel.imagURL = feedItem.icon.usePlaceholdStringWhileIsEmpty("")
+        } else {
+            feedModel.imagURL = imageURL
+            feedItem.icon = imageURL
+        }
+        
         feedModel.lastDate = lastDate
         
         let entries = feedElement.childrenWithTag("entry") as! [ONOXMLElement]
@@ -186,7 +195,15 @@ extension FeedParseOperation {
             itemModel.title = title
             itemModel.author = author
             
-            feedItemModels.append(itemModel)
+            let article = Article.configureArticleWithLink(link,
+                title: title,
+                content: (content.isEmpty) ? summary : content,
+                pubDate: published,
+                author: author,
+                category: category,
+                source: feedModel.title)
+            
+            feedItemModels.append(article)
             
         }
         
@@ -243,7 +260,14 @@ extension FeedParseOperation {
         feedModel.lastDate = lastDate
         feedModel.description = description
         feedModel.link = link
-        feedModel.imagURL = imageURL
+        
+        if imageURL.isEmpty {
+            feedModel.imagURL = feedItem.icon.usePlaceholdStringWhileIsEmpty("")
+        } else {
+            feedModel.imagURL = imageURL
+            feedItem.icon = imageURL
+        }
+
         
         channelElement.enumerateElementsWithXPath("item") { (element, index, finished) -> Void in
             
@@ -272,100 +296,23 @@ extension FeedParseOperation {
             itemModel.author = (author.isEmpty) ? creator : author
             itemModel.category = category
             itemModel.source = source
-            self.feedItemModels.append(itemModel)
+            
+            let article = Article.configureArticleWithLink(link,
+                title: title,
+                content: content.isEmpty ? description : content,
+                pubDate: pubDate,
+                author: (author.isEmpty) ? creator : author,
+                category: category,
+                source: source.usePlaceholdStringWhileIsEmpty(self.feedModel.title)
+            )
+            
+            self.feedItemModels.append(article)
             
         }
         
         feedModel.items = feedItemModels
         
-        
         executeCompletionOnMainThread()
         
     }
-    
-    //: MARK: - 未使用
-    
-    private func parseRSSBySearch(data: NSData, document: ONOXMLDocument) {
-
-        for element in document.rootElement.children {
-            
-            let element = element as! ONOXMLElement
-            
-            if element.tag == "channel" {
-                
-                for channelChild in element.children {
-                    let channelChild = channelChild as! ONOXMLElement
-                    let childContent = channelChild.stringValue()
-                    let childTag = channelChild.tag
-                    
-                    if childTag.isEqualIgnoreCaseStirng("title") {
-                        self.feedModel.title = childContent
-                    }
-                    
-                    if childTag.isEqualIgnoreCaseStirng("link") {
-                        feedModel.link = childContent
-                    }
-                    
-                    if childTag.isEqualIgnoreCaseStirng("description") {
-                        feedModel.description = childContent
-                    }
-                    
-                    if childTag.isEqualIgnoreCaseStirng("image") {
-                        for secondChild in channelChild.childrenWithTag("url") {
-                            if let secondChildElement = secondChild as? ONOXMLElement {
-                                feedModel.imagURL = secondChildElement.stringValue()
-                            }
-                        }
-                    }
-                    
-                    // 解析Item
-                    if childTag.isEqualIgnoreCaseStirng("item") {
-                        let itemModel = FeedItemModel()
-                        
-                        for channelItem in channelChild.children {
-                            
-                            let channelItem = channelItem as! ONOXMLElement
-                            let childContent = channelItem.stringValue()
-                            let childTag = channelItem.tag
-                            
-                            if childTag.isEqualIgnoreCaseStirng("link") {
-                                itemModel.link = childContent
-                            }
-                            
-                            if childTag.isEqualIgnoreCaseStirng("title") {
-                                itemModel.title = childContent
-                            }
-                            
-                            if childTag.isEqualIgnoreCaseStirng("author") {
-                                itemModel.author = childContent
-                            }
-                            
-                            if childTag.isEqualIgnoreCaseStirng("pubDate") {
-                                itemModel.pubDate = childContent
-                            }
-                            
-                            if childTag.isEqualIgnoreCaseStirng("description") {
-                                itemModel.description = childContent
-                            }
-                            
-                            if childTag.isEqualIgnoreCaseStirng("category") {
-                                itemModel.category = childContent
-                            }
-                            
-                            feedItemModels.append(itemModel)
-                            
-                        }
-                    }
-                    
-                }
-                
-            }
-        }
-        
-        feedModel.items = feedItemModels
-        feedModel.feedType = feedType
-        
-        executeCompletionOnMainThread()
-    }
-    
 }

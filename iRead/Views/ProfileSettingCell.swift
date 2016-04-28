@@ -56,17 +56,18 @@ class ProfileSettingCell: MaterialTableViewCell {
         self.selectionStyle = .None
         self.textLabel?.font = iReadFont.regualWithSize(16)
         self.detailTextLabel?.font = iReadFont.regualWithSize(14)
-        self.textLabel?.textColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlackColor, nightColor: iReadColor.themeLightWhiteColor)
-        self.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
+        self.textLabel?.textColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlackColor, nightColor: iReadColor.themeGrayColor)
+        self.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlackColor)
         
         let switchControl = BaseSwitch.createSwitch(iReadTheme.isNightMode() ? .NightMode : .DayMode, isOn: item.isOn)
         switchControl.delegate = self
         self.switchControl = switchControl
         self.contentView.addSubview(switchControl)
         
-        cellLine.backgroundColor = iReadColor.themeGrayColor
+        cellLine.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeGrayColor, nightColor: iReadColor.themeDarkGrayColor)
+        
+        
         self.addSubview(cellLine)
-
         
     }
     

@@ -24,6 +24,7 @@ class FeedsViewController: UIViewController {
         let items = feedResource.fetchCurrentSubscribedItems()
         return items
     }
+
     
     lazy var loadAcitivity: iReadLoadView = {
         var  loadActivity = iReadLoadView(activityIndicatorStyle: .Default)
@@ -36,20 +37,39 @@ class FeedsViewController: UIViewController {
     private var errorFeedProviders = Set<FeedModelsProvider>()
     
     private var childVC: FavArticlesTableViewController?
+    private var shouldAjustOffset = false
     
     // MARK: - View Life Cycle ♻️
-
+    deinit {
+        destoryNotification()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        configureNotification()
         prepareForNavigationBar()
         prepareForEmptyView()
         prepareForTableView()
         prepareForRefreshView()
         
+        loadUserSubscribedItems()
+    }
+    
+    private func loadUserSubscribedItems() {
+        print("xxxxxxxx")
+        print(feedResource.items.count)
+        guard feedResource.items.count > 0 else {
+            tabBarController?.selectedIndex = 0
+            return
+        }
+        
+        guard iReadUserDefaults.isLogined else { return }
+        guard feedResource.subscribeItems.count > 0 else { return }
+        
         loadAcitivity.startAnimating()
-        feedResource.loadFeedItem{
+        feedResource.loadFeedItem(){
             (feedItems:[FeedItem2], error: NSError?) in
             if let error = error {
                 self.showupTopInfoMessage(error.localizedDescription)
@@ -61,24 +81,19 @@ class FeedsViewController: UIViewController {
             self.loadAcitivity.stopAnimating()
         }
     }
-    
    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.reloadData()
+        
         self.tabBarController?.tabBar.hidden = false
-        
-        if feedResource.toreadArticles.count > 0 {
-            toreadButton?.selected = true
-        } else {
-            toreadButton?.selected = false
-        }
-        
+        updateUIWhenArticlesChange()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        print(tableView.contentOffset)
+        print(tableView.contentInset)
     }
     
     override func didReceiveMemoryWarning() {
@@ -116,7 +131,7 @@ class FeedsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerClass(SubFeedCell.self, forCellReuseIdentifier: NSStringFromClass(SubFeedCell.self))
-        tableView.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
+        tableView.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlackColor)
         
         tableView.tableFooterView = UIView()
         tableView.showsVerticalScrollIndicator = false
@@ -154,8 +169,7 @@ class FeedsViewController: UIViewController {
     
     func loadData() {
         print("loadData")
-//        subscribeFeeds.removeAll()
-        // show HUD
+        
         errorFeedProviders.removeAll()
         feedProviders.removeAll()
 
@@ -167,7 +181,6 @@ class FeedsViewController: UIViewController {
                 
                 print(" ♻️♻️♻️♻️♻️♻️ error happen \(message)")
                 
-//                self.noticeError("加载错误...")
                 if let error = error {
                     
                     print("️️️♻️♻️♻️ \(error.localizedDescription)")
@@ -178,13 +191,14 @@ class FeedsViewController: UIViewController {
                     if  self.feedProviders.isEmpty {
                         // hide HUD
                         print("\(self.subscribeItems.count) items all fetch done   !!!!!x")
+                        self.tableView.reloadData()
                         
                         let feedCount = self.subscribeItems.count - self.errorFeedProviders.count
                         
                         if feedCount <= 0 {
                             iReadAlert.showErrorMessage(title: "网络异常", message: "Oops~网络不给力", dismissTitle: "好吧", inViewController: self)
                         } else {
-                            self.noticeTop( "获取到\(feedCount)条资讯源", autoClear: true, autoClearTime: 1)
+                            self.showupTopInfoMessage( "订阅了\(feedCount)条资讯源")
                         }
                     }
                 }
@@ -206,8 +220,8 @@ class FeedsViewController: UIViewController {
                     if  self.feedProviders.isEmpty {
                         // hide HUD
                         print("\(self.subscribeItems.count) items all fetch done   !!!!!x")
-                        
-                        self.noticeTop( "获取到\(self.subscribeItems.count - self.errorFeedProviders.count)条资讯源", autoClear: true, autoClearTime: 1)
+                        self.tableView.reloadData()
+                        self.showupTopInfoMessage("订阅了\(self.subscribeItems.count - self.errorFeedProviders.count)条资讯源")
                     }
                     
             })
@@ -221,10 +235,8 @@ class FeedsViewController: UIViewController {
     
     func showToreadArticlesTable() {
         
-        if feedResource.toreadArticles.count <= 0 {
-            self.noticeTop("没有待读的资讯", autoClear: true, autoClearTime: 1)
-
-            loadData()
+        if feedResource.toreadArticles.isEmpty {
+            self.showupTopInfoMessage("没有待读的资讯")
             return
         }
         
@@ -232,9 +244,25 @@ class FeedsViewController: UIViewController {
         print("show toreadview")
         let toreadArticleController = ToreadViewController(articleType: .ToreadType)
         self.navigationController?.pushViewController(toreadArticleController, animated: true)
-        
     }
     
+    func updateUIWhenArticlesChange() {
+        tableView.reloadData()
+        if feedResource.toreadArticles.count > 0 {
+            toreadButton?.selected = true
+        } else {
+            toreadButton?.selected = false
+        }
+    }
+    
+    func configureNotification() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUIWhenArticlesChange", name: iReadNotification.FeedArticlesRemoteFetchDidFinishedNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUIWhenArticlesChange", name: iReadNotification.FeedArticlesToreadStateDidChangedNotification, object: nil)
+    }
+    func destoryNotification() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: iReadNotification.FeedArticlesRemoteFetchDidFinishedNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: iReadNotification.FeedArticlesToreadStateDidChangedNotification, object: nil)
+    }
 }
 
 extension FeedsViewController : UITableViewDataSource, UITableViewDelegate {
@@ -306,14 +334,13 @@ extension FeedsViewController : BaseTableViewCellDelegate {
                 
                 // 切换成非订阅,删除该Cell
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
-                
-
             }
             
             if subscribeItems.count == 0 {
+                shouldAjustOffset = true
                 tableView.reloadData()
             } else {
-                self.noticeTop("\(feed.title) 订阅取消", autoClear: true, autoClearTime: 1)
+                self.showupTopInfoMessage("\(feed.title) 订阅取消")
             }
            
             // 更新其他界面数据
@@ -322,7 +349,6 @@ extension FeedsViewController : BaseTableViewCellDelegate {
             // 更新本地远程数据
             
             //HUD显示
-
             
         }
         
@@ -334,7 +360,6 @@ extension FeedsViewController : FeedsTitleViewDelegate {
         if isLeft {
             childVC?.view.alpha = 0
         } else {
-            print("go to favicateor")
             // 呈现喜爱收藏文章列表控制器
             
             if childVC == nil {
@@ -379,7 +404,13 @@ extension FeedsViewController : DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
     }
     
     func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
-        return iReadConstant.EmptyView.verticalOffset
+        
+        if shouldAjustOffset {
+            return iReadConstant.EmptyView.verticalOffset
+        } else {
+            return iReadConstant.EmptyView.verticalOffsetForFeedsViewController
+        }
+
     }
     
     func spaceHeightForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
@@ -400,11 +431,10 @@ extension FeedsViewController : DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
     
     
     func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
-        return iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
+        return iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlackColor)
     }
     
     func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
         return false
-        
     }
 }

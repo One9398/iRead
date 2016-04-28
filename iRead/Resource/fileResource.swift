@@ -38,6 +38,12 @@ struct FileResource {
         return file as String
     }()
     
+    lazy var imgHandleJSFile : String = {
+        let file = try! NSString(contentsOfURL: (NSBundle.mainBundle().URLForResource("imgHandle", withExtension: "js"))!, encoding: NSUTF8StringEncoding)
+        return file as String
+    }()
+    
+    
     lazy var styleJSFile : String = {
         let file = try! NSString(contentsOfURL: (NSBundle.mainBundle().URLForResource("style", withExtension: "js"))!, encoding: NSUTF8StringEncoding)
         return file as String

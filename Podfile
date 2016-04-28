@@ -13,6 +13,7 @@ def pods
 #    pod "MWPhotoBrowser"
 
 
+pod 'TransitionTreasury'
    pod 'Ono'
     pod 'SnapKit', ' ~> 0.19.1'
    pod 'Alamofire', '~> 3.2.1'

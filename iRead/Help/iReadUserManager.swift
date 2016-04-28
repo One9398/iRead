@@ -15,6 +15,7 @@ let ReadTimeIntervalKey = "readTime"
 let ReadCountsKey = "readCounts"
 let ArticlesCountsKey = "ArticleCounts"
 let ReadModeKey = "readMode"
+let NeedReadModeKey = "NeedReadModeKey"
 let ThemeModeKey = "themeMode"
 let UserDictionaryKey = "UserDictionary"
 let UsernameKey = "username"
@@ -107,7 +108,7 @@ class iReadUserDefaults {
         return "\(hour)时\(min)分"
     }
     
-    static func updateReadCounts(counts:Int) {
+    static func updateReadCounts(counts:Int = 1) {
        
         let oldCounts = iReadUserDefaults.defaults.integerForKey(ReadCountsKey)
         let newCounts = oldCounts + counts
@@ -118,8 +119,8 @@ class iReadUserDefaults {
     
     static func totalReadCountsString() -> String {
         if iReadUserDefaults.isLogined {
-           
             iReadUserDefaults.defaults.setInteger(currentUser!.readCounts, forKey: ReadCountsKey)
+            print(currentUser?.readCounts)
             return "\(currentUser!.readCounts)篇"
         } else {
             let counts =  iReadUserDefaults.defaults.integerForKey(ReadCountsKey)
@@ -134,6 +135,15 @@ class iReadUserDefaults {
         } else {
             return iReadUserDefaults.defaults.boolForKey(ReadModeKey)
         }
+    }
+    
+    static var changeReadMode: Bool {
+        return iReadUserDefaults.defaults.boolForKey(NeedReadModeKey)
+    }
+    
+    static func setNeedReadModeFlag () {
+        let need = iReadUserDefaults.defaults.boolForKey(NeedReadModeKey)
+        iReadUserDefaults.defaults.setBool(!need, forKey: NeedReadModeKey)
     }
     
     static func updateReadMode() {

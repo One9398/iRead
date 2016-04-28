@@ -47,14 +47,19 @@ class FeedBaseTableViewCell: MaterialTableViewCell {
         self.hidden = false
         
         if feedModel.imagURL != "" {
-            imageView?.kf_setImageWithURL(NSURL(string: feedModel.imagURL)!, placeholderImage: UIImage(named: "icon_placehold_logo2"), optionsInfo: [.Transition(ImageTransition.Fade(0.5))], completionHandler: { (image: Image?, error: NSError?, cacheType: CacheType, imageURL: NSURL?) -> () in
+            let url = NSURL(string: feedModel.imagURL)
+            if let url = url {
+                imageView?.kf_setImageWithURL(url, placeholderImage: UIImage(assetsIdentifier: .icon_placehold_logo2), optionsInfo: [.Transition(ImageTransition.Fade(0.3))], completionHandler: { (image: Image?, error: NSError?, cacheType: CacheType, imageURL: NSURL?) -> () in
+                    self.imageView?.image = image?.resize(toWidth: 32)
+                })
                 
-                self.imageView?.image = image?.resize(toWidth: 32)
+            } else {
                 
-            })
+                imageView?.image = UIImage(assetsIdentifier: .icon_placehold_logo2).resize(toWidth: 32)
+            }
             
         } else {
-            imageView?.image = UIImage(named: "icon_placehold_logo2")?.resize(toWidth: 32)
+            imageView?.image = UIImage(assetsIdentifier: .icon_placehold_logo2).resize(toWidth: 32)
         }
         
         if switchControl == nil {
@@ -79,7 +84,7 @@ class FeedBaseTableViewCell: MaterialTableViewCell {
     private func prepareForCell() {
         self.selectionStyle = .None
         self.textLabel?.font = iReadFont.regual
-        self.textLabel?.textColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlackColor, nightColor: iReadColor.themeLightWhiteColor)
+        self.textLabel?.textColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlackColor, nightColor: iReadColor.themeGrayColor)
         self.detailTextLabel?.font = iReadFont.lightWithSize(14)
         self.detailTextLabel?.textColor = iReadColor.themeDarkGrayColor
         

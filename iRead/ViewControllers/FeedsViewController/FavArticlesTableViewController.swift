@@ -12,7 +12,7 @@ import DZNEmptyDataSet
 class FavArticlesTableViewController: UITableViewController {
     
     private let feedResource = FeedResource.sharedResource
-    private var favArticles: [FeedItemModel] {
+    private var favArticles: [Article] {
         return FeedResource.sharedResource.favoriteArticles
     }
 
@@ -32,11 +32,10 @@ class FavArticlesTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(animated: Bool) {
-        tableView.reloadData()
+
         
         if favArticles.count > 0 {
-            tableView.contentOffset = CGPointMake(0, -84)
-            tableView.contentInset = UIEdgeInsetsMake(84, 0, 44, 0)
+            tableView.contentInset = UIEdgeInsetsMake(64, 0, 44, 0)
         } else {
             tableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0)
         }
@@ -44,6 +43,8 @@ class FavArticlesTableViewController: UITableViewController {
         if self.navigationController!.navigationBarHidden {
             self.navigationController?.setNavigationBarHidden(false, animated: true)
         }
+        
+        tableView.reloadData()
         
     }
     
@@ -117,7 +118,10 @@ extension FavArticlesTableViewController {
         
         let removeAction = UITableViewRowAction(style: .Normal, title: "取消收藏", handler: {
             [unowned self] action, indexpath in
-            self.feedResource.removeFavoriteArticle(self.favArticles[indexpath.row], index: indexPath.row)
+            
+            let article = self.favArticles[indexpath.row]
+            self.feedResource.updateFavoriteStateArticle(article)
+            
             tableView.reloadData()
         })
         removeAction.backgroundColor = iReadColor.themeRedColor
@@ -137,7 +141,6 @@ extension FavArticlesTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let item = self.favArticles[indexPath.row]
-        feedResource.appendReadArticle(item)
         let articleVC = ArticleViewController(feedItem: item)
         
         self.navigationController?.pushViewController(articleVC, animated: true)
@@ -189,7 +192,7 @@ extension FavArticlesTableViewController : DZNEmptyDataSetDelegate, DZNEmptyData
     
     
     func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
-        return iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
+        return iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlackColor)
     }
     
     func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {

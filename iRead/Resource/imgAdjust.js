@@ -1,16 +1,10 @@
 
-
-
-
-
-
-
-
 var imgs = document.getElementsByTagName('img');
 for (var i = 0; i < imgs.length; i++) {
     
     var img = imgs[i];
-    
+    img.style.display = 'inherit';
+
     if( img.width < 20 ){
         img.style.display='none';
     }

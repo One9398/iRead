@@ -31,7 +31,8 @@ class BaseViewController: SegueViewController {
     func prepareNavigationBar() {
         navigationItem.titleView = titleLabel
         navigationController?.navigationBar.setBackgroundImage(UIImage(named: iReadTheme.isNightMode() ? "navigationbar_nightbg_recommand" : "navigationbar_bg_recommand"), forBarMetrics: .Default)
-        navigationController!.navigationBar.shadowImage = UIImage()                
+        navigationController!.navigationBar.shadowImage = UIImage()
+        
 
     }
 

@@ -77,7 +77,19 @@ class LaunchViewController: UIViewController {
         configureLayoutForUIComponent(circleView, offSetYValue: logo_offsetYValue)
         configureLayoutForUIComponent(logoImageView, offSetYValue: logo_offsetYValue)
         configureLayoutForUIComponent(labelImageView, offSetYValue: label_offsetYValue)
-        
+        configureAutoThemeMode()
+        loadUserDataFromServer()
+    }
+    
+    private func configureAutoThemeMode() {
+        if iReadUserDefaults.isThemeModeOn && iReadDateFormatter.isDuringNight() {
+            iReadTheme.setThemeMode(.NightMode)
+        } else {
+            iReadTheme.setThemeMode(.DayMode)
+        }
+    }
+    
+    private func loadUserDataFromServer() {
         FeedResource.sharedResource.loadFeedItem{
             items, error in
             
@@ -85,29 +97,27 @@ class LaunchViewController: UIViewController {
                 self.showupTopInfoMessage(error.localizedDescription)
             } else {
                 FeedResource.sharedResource.items = items
+                print("😎download items done")
             }
         }
         
-    }
-    
-    func callbackWithResult(result: [FeedItem2], error: NSError?) {
-        print(result)
-        
-        if error != nil {
-            assertionFailure(error!.localizedDescription)
-        } else {
+        if let user = iReadUserDefaults.currentUser {
             
-            for item in result {
-                for localItem in FeedResource.sharedResource.items {
-                    if item.feedURL == localItem.feedURL {
-                        localItem.isSub = item.isSub
-                        localItem.feedType = item.feedType
-                        localItem.owner = item.owner
-                    }
+            FeedResource.sharedResource.loadUserArticlesFromServer(user.objectId) {
+                articles, error in
+                if self.filterShowUpError(error) {
+                    FeedResource.sharedResource.articles = articles
+                    print("😎download article done \(user.objectId)")
+                }
+            }
+            
+            Reader.currentUser().fetchInBackgroundWithBlock{
+                result, error in
+                if self.filterShowUpError(error) {
+                    print("😎download  Reader done \(user.objectId)")
                 }
             }
         }
-        
     }
     
     override func viewDidAppear(animated: Bool) {

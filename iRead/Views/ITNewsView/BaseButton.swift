@@ -28,7 +28,7 @@ class BaseButton: FlatButton {
         button.setImage(UIImage(named: highlightImg), forState: .Highlighted)
         button.pulseScale = false
         
-        button.pulseColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlueColor, nightColor: iReadColor.themeLightWhiteColor)
+        button.pulseColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlueColor, nightColor: iReadColor.themeGrayColor)
         
         button.addTarget(target, action: action, forControlEvents: .TouchDown)
         

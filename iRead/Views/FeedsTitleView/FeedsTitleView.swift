@@ -18,12 +18,11 @@ class FeedsTitleView: DGRunkeeperSwitch {
     weak var delegate : FeedsTitleViewDelegate?
     override init(leftTitle: String!, rightTitle: String!) {
         super.init(leftTitle: leftTitle, rightTitle: rightTitle)
-        
 
         self.selectedBackgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeBlueColor, nightColor: iReadColor.themeBlackColor)
-        self.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlueColor)
-        self.titleColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlueColor, nightColor: iReadColor.themeLightWhiteColor)
-        self.selectedTitleColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlueColor)
+        self.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlackColor)
+        self.titleColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlueColor, nightColor: iReadColor.themeBlackColor)
+        self.selectedTitleColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeGrayColor)
         
         self.titleFont = iReadFont.medium
         
@@ -37,7 +36,6 @@ class FeedsTitleView: DGRunkeeperSwitch {
     }
     
     func switchValueDidChange(sender: FeedsTitleView) {
-        print("valueChanged: \(sender.selectedIndex)")
         delegate?.titleViewDidChangeSelected(sender, isLeft: sender.selectedIndex == 0 ? true : false)
     }
 

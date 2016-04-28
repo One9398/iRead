@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupLeanCloudSetting()
         setupOtherLoginPlatformsSetting()
-        
         return true
     }
 
@@ -38,6 +37,8 @@ extension AppDelegate {
         
         Reader.registerSubclass()
         FeedItem2.registerSubclass()
+        Article.registerSubclass()
+        
     }
     
     private func setupOtherLoginPlatformsSetting() {

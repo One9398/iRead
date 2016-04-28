@@ -11,13 +11,13 @@ import Material
 
 class FavoriteArticleCell: MaterialTableViewCell {
 
-    var articleModel: FeedItemModel = FeedItemModel()
+    var articleModel: Article = Article()
     var cardView: CardView!
     var titleLab: UILabel!
     var detailLab: UILabel!
     var dateString: String = "古老的过去..."
     
-    convenience init(articleModel: FeedItemModel) {
+    convenience init(articleModel: Article) {
         self.init(style: .Default, reuseIdentifier: NSStringFromClass(FavoriteArticleCell.self))
         self.articleModel = articleModel
         self.backgroundColor = nil
@@ -50,7 +50,7 @@ class FavoriteArticleCell: MaterialTableViewCell {
         let titleLabel: UILabel = UILabel()
         titleLab = titleLabel
         titleLabel.text = "我喜爱的文章"
-        titleLabel.textColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlackColor, nightColor: iReadColor.themeWhiteColor)
+        titleLabel.textColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlackColor, nightColor: iReadColor.themeGrayColor)
         titleLabel.font = iReadFont.regualWithSize(18)
         titleLabel.numberOfLines = 2
         cardView.titleLabel = titleLabel
@@ -64,7 +64,7 @@ class FavoriteArticleCell: MaterialTableViewCell {
         
     }
     
-    func configureCellContent(articleItem: FeedItemModel) {
+    func configureCellContent(articleItem: Article) {
         titleLab.text = articleItem.title
         detailLab.text = "收录于 " + articleItem.addDate.usePlaceholdStringWhileIsEmpty(dateString)
     }

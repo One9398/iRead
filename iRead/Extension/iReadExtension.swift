@@ -26,6 +26,10 @@ extension UIImage {
         case icon_toread_info_selected = "icon_toread_info_selected"
         case icon_toread_info_normal = "icon_toread_info_normal"
         case icon_sharedLogo = "icon_sharedLogo"
+        case icon_cleanup2 = "icon_cleanup2"
+        case icon_close = "icon_close"
+        case icon_placehold_logo2 = "icon_placehold_logo2"
+        case launch_logo = "launch_logo"
     }
     
     convenience init!(assetsIdentifier: AssetsIdentifier) {
@@ -71,7 +75,6 @@ extension UIImage {
         
         let rect = CGRectMake(0, 0, floor(newSize.width), floor(newSize.height))
         
-        //println("size: \(size), newSize: \(newSize), rect: \(rect)")
         
         UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
         self.drawInRect(rect)
@@ -83,14 +86,26 @@ extension UIImage {
 }
 
 extension UIViewController {
+    
+    func filterShowUpError(error: NSError?) -> Bool{
+        if error != nil {
+            print("save errror\(error)")
+            self.showupTopInfoMessage(error!.localizedDescription)
+            return false
+        } else {
+            return true
+        }
+    }
+    
     func presentLoginViewControllerWhenNoUser(completion:(()->Void)? = nil) {
         
         if iReadUserDefaults.isLogined {
             print("当前用户已存在")
         } else {
             let userViewController  = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()
+            
             self.presentViewController(userViewController!, animated: true, completion: {
-                delayTaskExectuing(0.5, block: {
+                delayTaskExectuing(0.3, block: {
                     self.showupInfoMessage("请先登录")
                 })
                 

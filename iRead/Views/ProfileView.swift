@@ -26,9 +26,12 @@ class ProfileView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    
+   
         readtimesLabel.textColor = iReadColor.themeDarkGrayColor
         countsLabel.textColor = iReadColor.themeDarkGrayColor
+        countsDataLabel.textColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlackColor, nightColor: iReadColor.themeGrayColor)
+        timesDataLabel.textColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlackColor, nightColor: iReadColor.themeGrayColor)
+        
         backgroundColor = iReadColor.defaultBackgroundColor
         nickImageView.clipsToBounds = true
         nickImageView.layer.cornerRadius = 50
@@ -39,7 +42,7 @@ class ProfileView: UIView {
         countsDataLabel.text = readCounts
         timesDataLabel.text = readTimes
         print(imageURLString)
-        nickImageView.kf_setImageWithURL(NSURL(string: imageURLString)!, placeholderImage: UIImage(named: "launch_logo"), optionsInfo: [.Transition(ImageTransition.Fade(0.3))], completionHandler: { (image: Image?, error: NSError?, cacheType: CacheType, imageURL: NSURL?) -> () in
+        nickImageView.kf_setImageWithURL(NSURL(string: imageURLString)!, placeholderImage: UIImage(assetsIdentifier: .launch_logo), optionsInfo: [.Transition(ImageTransition.Fade(0.3))], completionHandler: { (image: Image?, error: NSError?, cacheType: CacheType, imageURL: NSURL?) -> () in
             print("error: \(error?.localizedDescription)")
         })
 
@@ -47,9 +50,6 @@ class ProfileView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
-
-
     }
 
 }

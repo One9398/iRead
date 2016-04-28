@@ -13,8 +13,8 @@ class HistoryViewController: BaseChildViewController {
     
     private var tableView = UITableView()
     private var feedResource = FeedResource.sharedResource
-    private var readArticles : [FeedItemModel] {
-        return feedResource.fetchArticlesMarkedRead()
+    private var readArticles : [Article] {
+        return feedResource.fetchArticles(.ReadType)
     }
     
     override func viewDidLoad() {
@@ -59,7 +59,7 @@ class HistoryViewController: BaseChildViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerClass(HistoryArticleCell.self, forCellReuseIdentifier: NSStringFromClass(HistoryArticleCell.self))
-        tableView.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
+        tableView.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlackColor)
         
         tableView.tableFooterView = UIView()
         tableView.showsVerticalScrollIndicator = false
@@ -143,7 +143,7 @@ extension HistoryViewController : DZNEmptyDataSetDelegate, DZNEmptyDataSetSource
     
     
     func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
-        return iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
+        return iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlackColor)
     }
     
     func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {

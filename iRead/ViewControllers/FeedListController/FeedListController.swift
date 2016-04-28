@@ -15,10 +15,10 @@ class FeedListController: UIViewController {
 
     var feedModel: FeedModel!
     var readCount: Int {
-        return feedItems.filter({$0.isRead == false}).count
+        return articles.filter({$0.isRead == false}).count
     }
 
-    var feedItems: [FeedItemModel]!
+    lazy var articles = [Article]()
     private var subTitleLab : UILabel!
     private var collectionView = BaseCollectionView()
     private var feedResource = FeedResource.sharedResource
@@ -74,7 +74,8 @@ class FeedListController: UIViewController {
         subTitleLab = subTitleLabel
         subTitleLabel.font = iReadFont.lightWithSize(12)
         subTitleLabel.textColor = iReadColor.themeLightWhiteColor
-        subTitleLabel.sizeToFit()
+        subTitleLabel.textAlignment = .Right
+        subTitleLabel.frame = iReadConstant.SubtitleLabel.frame
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: subTitleLabel)
     }
     
@@ -97,8 +98,7 @@ class FeedListController: UIViewController {
     // MARK: - Configure Date 
     func configureContent(model: FeedModel) {
         feedModel = model
-        feedItems = model.items
-
+        articles = model.items
     }
     
 }
@@ -109,11 +109,8 @@ extension FeedListController: MaterialCollectionViewDataSource, MaterialCollecti
     
     func items() -> Array<MaterialDataSourceItem> {
         var items = [MaterialDataSourceItem]()
-        guard let feedItems = feedItems else {
-            fatalError("Data source wrong")
-        }
-        for i in 0..<feedItems.count {
-            let item = MaterialDataSourceItem(data: feedItems[i], width: 150, height: 120)
+        for i in 0..<articles.count {
+            let item = MaterialDataSourceItem(data: articles[i], width: 150, height: 120)
             items.append(item)
         }
         
@@ -127,11 +124,7 @@ extension FeedListController: MaterialCollectionViewDataSource, MaterialCollecti
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        guard let count = feedItems?.count else {
-            return 0
-        }
-        
-        return count
+        return articles.count
         
     }
     
@@ -139,23 +132,24 @@ extension FeedListController: MaterialCollectionViewDataSource, MaterialCollecti
       
         let cell: BaseCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(NSStringFromClass(BaseCollectionViewCell.self), forIndexPath: indexPath) as! BaseCollectionViewCell
         cell.actionDelegate = self
-        cell.updateContent(feedItems?[indexPath.item])
+        cell.updateContent(articles[indexPath.item])
         
         return cell
     }
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
-        let item = feedItems![indexPath.row]
+        let item = articles[indexPath.row]
         let cell =  collectionView.cellForItemAtIndexPath(indexPath) as! BaseCollectionViewCell
+        
         if !item.isRead {
-            
+            iReadUserDefaults.updateReadCounts()
+            item.readDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
+            feedResource.updateReadStateArticle(item)
             delayTaskExectuing(0.5, block: {
                 cell.updateArticleReadState(item)
             })
         }
-       
-        feedResource.appendReadArticle(item)
         
         let articleVC = ArticleViewController(title: title, feedItem: item, feedModel: feedModel)
         
@@ -228,39 +222,32 @@ extension SharableViewController where Self:UIViewController {
     }
     
 }
-extension FeedListController: SharableViewController {
-}
+
+extension FeedListController: SharableViewController {}
 
 extension FeedListController: BaseCollectionViewCellProtocol {
     
-    func baseCollectionViewCellSharedActionDidHandle(cell: BaseCollectionViewCell, item: FeedItemModel?) {
+    func baseCollectionViewCellSharedActionDidHandle(cell: BaseCollectionViewCell, item: Article) {
         
-        guard let article = item else { assert(false, "there is no item exist") ; return}
-        
-        let text = "\(article.title)  作者:\(article.author.usePlaceholdStringWhileIsEmpty("未知"))\n 来自我阅的资讯分享链接\(article.link)\n"
-        showupShareText(text, sharedLink: article.link)
+        let text = "\(item.title)  作者:\(item.author)\n 来自我阅的资讯分享链接\(item.link)\n"
+        showupShareText(text, sharedLink: item.link)
         
     }
     
-    func baseCollectionViewCellReadActionDidHandle(cell: BaseCollectionViewCell, item: FeedItemModel?) {
+    func baseCollectionViewCellReadActionDidHandle(cell: BaseCollectionViewCell, item: Article) {
         if !iReadUserDefaults.isLogined {
             presentLoginViewControllerWhenNoUser()
         } else {
             
-            guard let item = item else { fatalError("no item Model") }
-            
-            item.isToread = !item.isToread
-            if item.isToread {
+            if !item.isToread {
                 self.noticeTop("该内容已标记为待读", autoClear: true, autoClearTime: 1)
                 item.addDate = iReadDateFormatter.sharedDateFormatter.getCurrentDateString("MM月dd日,HH点mm分")
-                
-                feedResource.appendToreadArticle(item)
-                
             } else {
-                
-                feedResource.removeToreadArticle(item, index: nil)
+                item.addDate = ""
             }
-            //        print(feedResource.toreadArticels.count)
+            
+            feedResource.updateToreadStateArticle(item)
+            
         }
         
     }

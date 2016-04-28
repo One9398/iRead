@@ -51,7 +51,7 @@ class ActionView: MenuView {
         menuBtn.depth = .Depth3
         menuBtn.borderColor = iReadColor.themeBlackColor
         menuBtn.pulseColor = nil
-        menuBtn.tintColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlueColor, nightColor: iReadColor.themeLightWhiteColor)
+        menuBtn.tintColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeLightBlueColor, nightColor: iReadColor.themeGrayColor)
         menuBtn.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
         
         menuBtn.setImage(image, forState: .Normal)

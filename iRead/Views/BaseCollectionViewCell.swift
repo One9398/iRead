@@ -10,9 +10,9 @@ import UIKit
 import Material
 
 protocol BaseCollectionViewCellProtocol: NSObjectProtocol {
-    func baseCollectionViewCellSharedActionDidHandle(cell: BaseCollectionViewCell, item: FeedItemModel?)
+    func baseCollectionViewCellSharedActionDidHandle(cell: BaseCollectionViewCell, item: Article)
 
-    func baseCollectionViewCellReadActionDidHandle(cell: BaseCollectionViewCell, item: FeedItemModel?)
+    func baseCollectionViewCellReadActionDidHandle(cell: BaseCollectionViewCell, item: Article)
     
 }
 
@@ -27,8 +27,7 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
     var readButton : FlatButton?
     
     weak var actionDelegate: BaseCollectionViewCellProtocol?
-    var item: FeedItemModel?
-    
+    var article: Article!
     
     var titleLab: UILabel?
     var detail : UILabel?
@@ -88,7 +87,7 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
     
     private func prepareForTitleView() {
         let titleLabel: UILabel = UILabel()
-        titleLabel.textColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlackColor, nightColor: iReadColor.themeWhiteColor)
+        titleLabel.textColor = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlackColor, nightColor: iReadColor.themeGrayColor)
         titleLabel.font = iReadFont.regualWithSize(18)
         titleLabel.numberOfLines = 2
         titleLab = titleLabel
@@ -103,9 +102,9 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
     private func prepareForBottomView() {
         let timeBtn = configureFlatButton("未知时间", iconName: "icon_time")
         timeButton = timeBtn
-        let authorBtn = configureFlatButton("未知作者", iconName: "icon_author")
+        let authorBtn = configureFlatButton("匿名投稿", iconName: "icon_author")
         authorButton = authorBtn
-        let categoryBtn = configureFlatButton("未知分类", iconName: "icon_category")
+        let categoryBtn = configureFlatButton("未分类", iconName: "icon_category")
         categoryButton = categoryBtn
         
         card!.leftButtons = [timeBtn, authorBtn, categoryBtn]
@@ -173,13 +172,17 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
         
     }
     
-    func updateContent(model: FeedItemModel?) {
+    func updateContent(model: Article?) {
         if let cardView = card, let feedItem = model {
   
-            self.item = feedItem
+            self.article = feedItem
             titleLab?.text = feedItem.title
             cardView.titleLabel?.sizeToFit()
             cardView.titleLabelInset.top = 10
+            
+            if FeedResource.sharedResource.readArticles.contains({$0.title == feedItem.title}) {
+                feedItem.isRead = true
+            }
             
             if feedItem.isRead {
                 self.card?.depth = .None
@@ -200,7 +203,7 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
             var author: String = feedItem.author.isEmpty ? feedItem.source : feedItem.author
             author = author.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
             
-            authorButton?.setTitle((author.isEmpty ? "未知作者" : author.shortString()), forState: .Normal)
+            authorButton?.setTitle((author.isEmpty ? "匿名" : author.shortString()), forState: .Normal)
             
             let pubDate = iReadDateFormatter.sharedDateFormatter.getCustomDateStringFromDateString(feedItem.pubDate, styleString: "MM-dd / HH:mm")
             timeButton?.setTitle(pubDate, forState: .Normal)
@@ -212,16 +215,15 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
         }
     }
 
-    func updateArticleReadState(item: FeedItemModel) {
-        item.isRead = true
+    func updateArticleReadState(item: Article) {
+
         card?.depth = .None
         card?.drawRect(self.bounds)
-        
     }
     
     // MARK: - Handle Event
     func sharedActionHandle(btn: FlatButton) {
-        self.actionDelegate?.baseCollectionViewCellSharedActionDidHandle(self, item: item)
+        self.actionDelegate?.baseCollectionViewCellSharedActionDidHandle(self, item: article)
     }
     
     func readActionHandle(btn: FlatButton) {
@@ -229,7 +231,7 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
             btn.selected = !btn.selected
         }
         
-        self.actionDelegate?.baseCollectionViewCellReadActionDidHandle(self, item: item)
+        self.actionDelegate?.baseCollectionViewCellReadActionDidHandle(self, item: article)
     }
 }
 

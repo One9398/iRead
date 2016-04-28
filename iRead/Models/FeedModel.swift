@@ -13,7 +13,7 @@ class FeedModel: CustomDebugStringConvertible {
     var link = ""
     var description = ""
     var imagURL = ""
-    var items = [FeedItemModel]()
+    var items = [Article]()
     var lastDate = ""    
     var index = 0
     var readItems = [FeedItemModel]()
@@ -47,7 +47,6 @@ class FeedItemModel: CustomDebugStringConvertible {
     var description = ""
 
     var source = ""
-    var dc = ""
     var author = ""
     
     var image = ""

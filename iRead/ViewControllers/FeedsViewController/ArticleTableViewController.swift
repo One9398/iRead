@@ -11,9 +11,8 @@ import DZNEmptyDataSet
 
 class ArticleTableViewController: UITableViewController {
 
-    
     let feedResource = FeedResource.sharedResource
-    private var articles: [FeedItemModel] {
+    private var articles: [Article] {
         guard let type = articleType else { return [] }
         
         return feedResource.fetchArticles(type)
@@ -127,7 +126,11 @@ extension ArticleTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let item = self.articles[indexPath.row]
-        feedResource.appendReadArticle(item)
+        
+        if !item.isRead {
+            iReadUserDefaults.updateReadCounts()
+            feedResource.updateReadStateArticle(item)
+        }
         
         let articleVC = ArticleViewController(feedItem: item)
         self.navigationController?.pushViewController(articleVC, animated: true)
@@ -179,7 +182,7 @@ extension ArticleTableViewController : DZNEmptyDataSetDelegate, DZNEmptyDataSetS
     
     
     func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
-        return iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
+        return iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeLightBlackColor)
     }
     
     func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {

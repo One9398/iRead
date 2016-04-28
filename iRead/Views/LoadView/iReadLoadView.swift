@@ -14,7 +14,7 @@ class iReadLoadView: PCAngularActivityIndicatorView {
         
         super.init(activityIndicatorStyle: iReadHelp.currentDeviceIsPhone() ? .Default : .Large)
         
-        self.color = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlueColor, nightColor: iReadColor.themeLightBlueColor)
+        self.color = iReadColor.themeModelTinColor(dayColor: iReadColor.themeBlueColor, nightColor: iReadColor.themeGrayColor)
     }
 
     required init?(coder aDecoder: NSCoder) {

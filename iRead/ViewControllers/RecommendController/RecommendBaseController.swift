@@ -95,10 +95,12 @@ class RecommendBaseController: UIViewController {
         feedProviders.removeAll()
         
         // show HUD
-        if items.count == 0 {
-            showupTopInfoMessage("当前分类没有资讯源~")
-        } else {
-            loadAcitivity.startAnimating()            
+        loadAcitivity.startAnimating()
+        
+        if items.isEmpty {
+            self.showupTopInfoMessage("当前分类没有资讯源")
+            loadAcitivity.stopAnimating()
+            return
         }
         
         for i in 0..<items.count {
@@ -117,7 +119,8 @@ class RecommendBaseController: UIViewController {
                     if  self.feedProviders.isEmpty {
                         // hide HUD
                         print("\(self.feeds.count) items all fetch done   !!!!!x")
-                       
+                        self.tableView.reloadData()
+                        
                         let feedCount = self.items.count - self.errorFeedProviders.count
                         
                         if feedCount <= 0 {
@@ -125,6 +128,7 @@ class RecommendBaseController: UIViewController {
                         } else {
                             self.showupTopInfoMessage("获取到\(feedCount)条资讯源")
                         }
+                        
                     }
                     
                 }
@@ -149,11 +153,12 @@ class RecommendBaseController: UIViewController {
                    
                     if  self.feedProviders.isEmpty {
                         print("\(self.items.count) items all fetch done   !!!!!x")
+                        self.tableView.reloadData()
                         self.showupTopInfoMessage( "获取到\(self.items.count - self.errorFeedProviders.count)条资讯源")
                     }
                     
             })
-            
+
             feedProviders.insert(provider)
             provider.handlProvider()
             
@@ -263,13 +268,12 @@ extension RecommendBaseController : BaseTableViewCellDelegate {
 extension RecommendBaseController : RecommandCardViewDelegate {
     func recommandCardViewPlusButtonClicked(button: BaseButton) {
         self.tableView.editing = false
-        
         iReadAlert.showFeedInput(title: "RSS源添加", placeholder: "输入源地址", confirmTitle: "确认", dismissTitle: "返回", inViewController: self, withFinishedAction: { (text: String) -> Void in
             
             if text.hasPrefix("http://") || text.hasPrefix("https://") {
-               
-                for i in 0..<self.feeds.count {
-                    
+              
+                for i in 0..<FeedResource.sharedResource.items.count {
+                   
                     if text.isEqualIgnoreCaseStirng(FeedResource.sharedResource.items[i].feedURL) {
                         iReadAlert.showErrorMessage(title: "提示", message: "该RSS源已存在App中", dismissTitle: "好吧", inViewController: self)
                         return
@@ -277,11 +281,13 @@ extension RecommendBaseController : RecommandCardViewDelegate {
                 }
             
                 let feedItem2 = FeedItem2.configureItemWithType(self.feedType
-                    , feedURL: text, isSub: true)
+                    , feedURL: text, isSub: iReadUserDefaults.isLogined)
+                self.loadAcitivity.startAnimating()
                 
                 let feedProvider = FeedModelsProvider(feedItem: feedItem2, failure: {
                     [unowned self] error, message in
                     
+                    self.loadAcitivity.stopAnimating()
                     iReadAlert.showErrorMessage(title: "获取出错", message: message!, dismissTitle: "好吧", inViewController: self)
                     
                     }, completion: {
@@ -293,6 +299,7 @@ extension RecommendBaseController : RecommandCardViewDelegate {
                         self.feedResource.appendFeedItem(feedItem2)
                         feedItem2.saveBackgroundWhenLogin()
                         
+                        self.loadAcitivity.stopAnimating()
                         self.tableView.reloadData()
                         self.showupTopInfoMessage("添加成功")
                 })

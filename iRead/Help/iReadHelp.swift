@@ -100,6 +100,11 @@ struct iReadTheme {
         NSUserDefaults.standardUserDefaults().setBool(!mode, forKey: "NightMode")
         NSUserDefaults.standardUserDefaults().synchronize()
     }
+    
+    static func setThemeMode(mode: iReadThemeMode) {
+        NSUserDefaults.standardUserDefaults().setBool(mode == .NightMode, forKey: "NightMode")
+    }
+    
 }
 
 struct iReadHelp {

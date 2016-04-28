@@ -37,6 +37,15 @@ class iReadDateFormatter: NSDateFormatter {
         return dateString
     }
     
+    static func isDuringNight() -> Bool {
+        guard let hour = Int(iReadDateFormatter.sharedDateFormatter.getCurrentDateString("HH")) else { return false }
+        if hour >= 19 || hour <= 6 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func getCustomDateStringFromDateString(string: String, styleString: String) -> String {
         let date: NSDate?
         var dateString: String = string

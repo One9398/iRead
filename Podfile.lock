@@ -36,6 +36,7 @@ PODS:
   - Reveal-iOS-SDK (1.6.2)
   - SnapKit (0.19.1)
   - SVProgressHUD (2.0.3)
+  - TransitionTreasury (3.0.4)
 
 DEPENDENCIES:
   - Alamofire (~> 3.2.1)
@@ -50,6 +51,7 @@ DEPENDENCIES:
   - Reveal-iOS-SDK
   - SnapKit (~> 0.19.1)
   - SVProgressHUD
+  - TransitionTreasury
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -66,7 +68,8 @@ SPEC CHECKSUMS:
   Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
   SnapKit: eff58d6e3451bf2f482db2eccf86aecf371dc62d
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  TransitionTreasury: 7228b7758ba4b742e152a198dbe6ca1e46b43949
 
-PODFILE CHECKSUM: 34aabdec8d38a9f5bcd074bbd9e50132c0cbc515
+PODFILE CHECKSUM: 1e8d6fb122148d2b539a71f7c0164e78557f591e
 
 COCOAPODS: 1.0.0.beta.4

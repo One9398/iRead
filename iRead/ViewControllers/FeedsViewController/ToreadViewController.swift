@@ -10,7 +10,7 @@ import UIKit
 
 class ToreadViewController: ArticleTableViewController {
     
-    private var toreadArticles: [FeedItemModel] {
+    private var toreadArticles: [Article] {
         return feedResource.toreadArticles
     }
     
@@ -19,17 +19,22 @@ class ToreadViewController: ArticleTableViewController {
         
         prepareForNavigationBar()
         title = "待读资讯集"
-        self.automaticallyAdjustsScrollViewInsets = false
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName: iReadColor.themeLightWhiteColor
+        ]
+        
+        self.automaticallyAdjustsScrollViewInsets = true
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+         super.viewDidAppear(animated)
+        
         self.tabBarController?.tabBar.hidden = false
-        if toreadArticles.count > 0 {
-            tableView.contentInset = UIEdgeInsetsMake(88, 0, 44, 0)
-        } else {
-            tableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0)
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +44,20 @@ class ToreadViewController: ArticleTableViewController {
     
     private func prepareForNavigationBar() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(assetsIdentifier: .icon_baritem_back), style: .Plain, target: self, action: "popCurrentViewController")
-
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(assetsIdentifier: .icon_cleanup2), style: .Plain, target: self, action: "cleanupCurrentToreadArticles")
+    }
+    
+    func cleanupCurrentToreadArticles() {
+        if toreadArticles.isEmpty {
+            self.showupTopInfoMessage("没有待读的文章啦")
+        } else {
+            for article in toreadArticles {
+                FeedResource.sharedResource.updateToreadStateArticle(article)
+            }
+        }
+        
+        tableView.reloadData()
+        
     }
     
     func popCurrentViewController() {
@@ -53,14 +71,13 @@ extension ToreadViewController {
     
             let removeAction = UITableViewRowAction(style: .Normal, title: "标记已读", handler: {
                 [unowned self] action, indexpath in
-               
-                let articles = self.feedResource.toreadArticles[indexPath.row]
-                articles.isRead = true
-                articles.isToread = false
-                self.feedResource.removeToreadArticle(self.toreadArticles[indexpath.row], index: indexPath.row)
-                tableView.reloadData()                
+                
+                let article = self.toreadArticles[indexPath.row]
+                self.feedResource.updateToreadStateArticle(article)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+                tableView.reloadData()
             })
-            
+           
             removeAction.backgroundColor = iReadColor.themeLightGrayColor
             
             return [removeAction];
