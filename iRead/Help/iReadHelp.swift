@@ -167,5 +167,14 @@ func cancleTaskExecuting(cancelableBlock: CancelableBlock?) {
     cancelableBlock?(cancel: true)
 }
 
+func filterError(error: NSError?) -> Bool{
+    if error != nil {
+        print(error!.localizedDescription)
+        return false
+    } else {
+        return true
+    }
+}
+
 
 

@@ -14,18 +14,18 @@ def pods
 
 
 pod 'TransitionTreasury'
-  pod 'Ono'
-  pod 'SnapKit'
-  pod 'Alamofire'
-  pod 'Reveal-iOS-SDK', :configurations => ['Debug']
-  pod 'Material'
-  pod 'LeanCloudSocialDynamic'
-  pod 'SVProgressHUD'
-  pod 'LeanCloudFeedbackDynamic'
-  pod 'DGRunkeeperSwitch'
-  pod 'DZNEmptyDataSet'
-  pod 'MonkeyKing'
-  pod 'Kingfisher'
+   pod 'Ono'
+    pod 'SnapKit'
+   pod 'Alamofire'
+   pod 'Reveal-iOS-SDK', :configurations => ['Debug']
+    pod 'Material'
+     pod 'LeanCloudSocialDynamic'
+pod 'SVProgressHUD'
+ pod 'LeanCloudFeedbackDynamic'
+    pod 'DGRunkeeperSwitch'
+    pod 'DZNEmptyDataSet'
+       pod 'MonkeyKing'
+   pod 'Kingfisher'
 end
 
 target 'iRead' do

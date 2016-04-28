@@ -92,6 +92,10 @@
 		F4AB17001C882BDD006438D2 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB16FB1C882BDD006438D2 /* FeedsViewController.swift */; };
 		F4AB17011C882BDD006438D2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4AB16FD1C882BDD006438D2 /* Launch.storyboard */; };
 		F4AB17021C882BDD006438D2 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB16FE1C882BDD006438D2 /* LaunchViewController.swift */; };
+		F4B918291CD1E008005494AD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B918251CD1E008005494AD /* LoginController.swift */; };
+		F4B9182A1CD1E008005494AD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B918261CD1E008005494AD /* RegisterViewController.swift */; };
+		F4B9182B1CD1E008005494AD /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4B918271CD1E008005494AD /* User.storyboard */; };
+		F4B9182C1CD1E008005494AD /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B918281CD1E008005494AD /* UserViewController.swift */; };
 		F4C09FF11C8EDD09005ED771 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C09FF01C8EDD09005ED771 /* RootNavigationController.swift */; };
 		F4C09FF31C8EDD2C005ED771 /* RootTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C09FF21C8EDD2C005ED771 /* RootTabbarController.swift */; };
 		F4C09FF61C8EDFB4005ED771 /* iReadHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C09FF51C8EDFB4005ED771 /* iReadHelp.swift */; };
@@ -236,6 +240,10 @@
 		F4AB16FB1C882BDD006438D2 /* FeedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
 		F4AB16FD1C882BDD006438D2 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		F4AB16FE1C882BDD006438D2 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		F4B918251CD1E008005494AD /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		F4B918261CD1E008005494AD /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		F4B918271CD1E008005494AD /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		F4B918281CD1E008005494AD /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		F4C09FF01C8EDD09005ED771 /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		F4C09FF21C8EDD2C005ED771 /* RootTabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabbarController.swift; sourceTree = "<group>"; };
 		F4C09FF51C8EDFB4005ED771 /* iReadHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadHelp.swift; sourceTree = "<group>"; };
@@ -651,7 +659,7 @@
 		F4AB16F81C882BDD006438D2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F4CF43331CD1BD2900953AD5 /* User */,
+				F4B918241CD1DFDD005494AD /* User */,
 				F423DA8D1CC5CDCF00C1D95E /* HistoryViewController */,
 				F4FA7A661CC0A4B6006C65D4 /* AboutViewController */,
 				F445DD881C9BA64E00B4DA71 /* ArticleViewController */,
@@ -701,6 +709,17 @@
 			path = ProfileViewController;
 			sourceTree = "<group>";
 		};
+		F4B918241CD1DFDD005494AD /* User */ = {
+			isa = PBXGroup;
+			children = (
+				F4B918251CD1E008005494AD /* LoginController.swift */,
+				F4B918261CD1E008005494AD /* RegisterViewController.swift */,
+				F4B918271CD1E008005494AD /* User.storyboard */,
+				F4B918281CD1E008005494AD /* UserViewController.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		F4C09FEE1C8EDCC7005ED771 /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -730,13 +749,6 @@
 				F48594971CC8CAB5004108C1 /* iReadHUDManager.swift */,
 			);
 			path = Help;
-			sourceTree = "<group>";
-		};
-		F4CF43331CD1BD2900953AD5 /* User */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = User;
 			sourceTree = "<group>";
 		};
 		F4D1F1641CA3C81800AC056E /* ArticleTopBar */ = {
@@ -885,6 +897,7 @@
 				F4FA7A6C1CC0A773006C65D4 /* About.storyboard in Resources */,
 				F40C02341C9003F600CB3646 /* Main.storyboard in Resources */,
 				F4914D5D1C8EA7B100C32743 /* Notes.storyboard in Resources */,
+				F4B9182B1CD1E008005494AD /* User.storyboard in Resources */,
 				F4AB17011C882BDD006438D2 /* Launch.storyboard in Resources */,
 				F44693631CB7BCB400BEB406 /* day.js in Resources */,
 				F4AB16FF1C882BDD006438D2 /* Feeds.storyboard in Resources */,
@@ -993,6 +1006,7 @@
 				F42C03381C9A4E6900B27F45 /* BaseCollectionViewCell.swift in Sources */,
 				F45344291C982647008378DC /* FeedListController.swift in Sources */,
 				F47085CC1CACAE10000F119B /* iReadExtension.swift in Sources */,
+				F4B9182A1CD1E008005494AD /* RegisterViewController.swift in Sources */,
 				F45353B41CBF505C00AF5D04 /* ProfileItem.swift in Sources */,
 				F42BBBA11CCCFE1200870228 /* BlogArticleController.swift in Sources */,
 				F49208341CA2C3B200F889FA /* ImageModel.swift in Sources */,
@@ -1020,6 +1034,7 @@
 				F4FA7A6A1CC0A5DD006C65D4 /* AboutViewController.swift in Sources */,
 				F4773D5B1CB64B4400F3B94C /* FavArticlesTableViewController.swift in Sources */,
 				F4AB17021C882BDD006438D2 /* LaunchViewController.swift in Sources */,
+				F4B9182C1CD1E008005494AD /* UserViewController.swift in Sources */,
 				F4C09FF31C8EDD2C005ED771 /* RootTabbarController.swift in Sources */,
 				F4607D471CC918650069803D /* MMMaterialDesignSpinner.m in Sources */,
 				F44B0B6F1CA54AE500DDE1E9 /* PCAngularActivityIndicatorView.m in Sources */,
@@ -1047,6 +1062,7 @@
 				F4121EAC1CC08C0100877B6D /* ProfileView.swift in Sources */,
 				F42E98611C927F2100A1E602 /* iReadString.swift in Sources */,
 				F415918D1C9BD3A00034D3C2 /* PageViewController.swift in Sources */,
+				F4B918291CD1E008005494AD /* LoginController.swift in Sources */,
 				F4FA7A681CC0A525006C65D4 /* SegueViewController.swift in Sources */,
 				F48FE2EE1CA2198500A190AD /* BaseSwitch.swift in Sources */,
 				F40C02291C90028B00CB3646 /* YZDisplayViewController.m in Sources */,
@@ -1116,7 +1132,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ShenZhihao Shen (3AY9U3BLF9)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1138,6 +1154,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "482f5d46-27af-451b-a977-59dad5ec6218";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1161,7 +1178,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ShenZhihao Shen (D6EPVHU6RS)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1176,6 +1193,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "338b30e4-0ded-4015-9f8f-bee98fe9dd3e";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1188,7 +1206,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ShenZhihao Shen (3AY9U3BLF9)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iRead/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1196,7 +1214,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iRead;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "482f5d46-27af-451b-a977-59dad5ec6218";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/iRead/iRead-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1216,7 +1234,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iRead;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "338b30e4-0ded-4015-9f8f-bee98fe9dd3e";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/iRead/iRead-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -31,7 +31,7 @@ class FeedFetchOperation: ConcurrentOperation {
         
         fetchXMLDataFromURLString(URLString, failureHandle: { (error, message) -> Void in
             
-            print("Error Message \(message)")
+            print("Error\(self.URLString):\(message)")
             self.state = .Finished
             self.failure!(error: error, message: message)
             

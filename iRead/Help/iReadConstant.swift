@@ -77,12 +77,29 @@ enum iReadConstant {
     }
     
     struct LoginButton {
-        static let frame = CGRectMake(iReadConstant.ScreenSize.width/2 - 140, iReadConstant.ScreenSize.height - 150, 280, 40)
+        static var bottomOffset: CGFloat {
+            
+            if iReadHelp.currentDeviceIsPhone() {
+                return 150
+            } else {
+                return 350
+            }
+        }
+        static let frame = CGRectMake(iReadConstant.ScreenSize.width/2 - 140, iReadConstant.ScreenSize.height - LoginButton.bottomOffset, 280, 40)
         static let cornerRadius: CGFloat = 20
     }
     
     struct RegisterButton {
-        static let frame = CGRectMake(iReadConstant.ScreenSize.width/2 - 140, iReadConstant.ScreenSize.height - 100, 280, 40)
+        
+        static var bottomOffset: CGFloat {
+            if iReadHelp.currentDeviceIsPhone() {
+                return 100
+            } else {
+                return 300
+            }
+        }
+        
+        static let frame = CGRectMake(iReadConstant.ScreenSize.width/2 - 140, iReadConstant.ScreenSize.height - RegisterButton.bottomOffset, 280, 40)
         static let cornerRadius: CGFloat = 20
     }
     
