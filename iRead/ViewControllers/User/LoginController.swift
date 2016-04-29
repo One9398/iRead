@@ -8,7 +8,7 @@
 
 import UIKit
 import Material
-import LeanCloudSocialDynamic
+//import LeanCloudSocialDynamic
 
 class LoginController: UserViewController {
     
@@ -65,15 +65,12 @@ class LoginController: UserViewController {
         prepareForTextField(usernameField, placehold: "用户名/邮箱", detialInfo: "用户名/邮箱不能为空")
         prepareForTextField(passwordField, placehold: "密码", detialInfo: "密码至少六位数")
         prepareForLoginButton()
-        
         print(iReadUserDefaults.isLogined)
         
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        usernameField.becomeFirstResponder()
         
     }
     
@@ -93,7 +90,7 @@ class LoginController: UserViewController {
     
     func prepareForLoginButton() {
         view.addSubview(loginButton)
-        loginButton.addTarget(self, action: "handleLoginEvent", forControlEvents: .TouchUpInside)
+        loginButton.addTarget(self, action: #selector(LoginController.handleLoginEvent), forControlEvents: .TouchUpInside)
     }
     
     func startRegisterAnimation() {
@@ -129,7 +126,6 @@ class LoginController: UserViewController {
         
         let image = UIImage(named: clearIcon)?.imageWithRenderingMode(.AlwaysTemplate)
         
-        let clearButton: FlatButton = FlatButton()
         field.clearButton.pulseColor = MaterialColor.grey.base
         field.clearButton.pulseScale = false
         field.clearButton.tintColor = MaterialColor.grey.base
@@ -153,6 +149,7 @@ class LoginController: UserViewController {
         }
         
     }
+    
     func handleLoginSuccessUser(user: Reader) {
         
         self.showupSuccessMessage("登录成功")
@@ -222,10 +219,8 @@ class LoginController: UserViewController {
                 // 邮箱不正确
                 self.showupTopInfoMessage("邮箱格式错误")
             }
-        })
-        
+        })        
     }
-
 }
 
 // MARK: - OAuth Handle
@@ -244,7 +239,13 @@ extension LoginController {
         if currentSNSType == .SNSWeiXin {
             self.showupTopInfoMessage("微信登录即将开放")
             return
+        } else if currentSNSType == .SNSQQ && !AVOSCloudSNS.isAppInstalledForType(.SNSQQ) {
+            self.showupTopInfoMessage("需要QQ客户端才可登录")
+            return
+        } else {
+            print("进入授权")
         }
+        
         
         AVOSCloudSNS.loginWithCallback({
             object, error in
@@ -327,6 +328,8 @@ extension LoginController {
         user.readCounts = iReadUserDefaults.defaults.integerForKey(ReadCountsKey)
         user.readMode = iReadUserDefaults.defaults.boolForKey(ReadModeKey)
         user.themeMode = iReadUserDefaults.defaults.boolForKey(ThemeModeKey)
+        print(user)
+        user.fetchWhenSave = true
         user.saveInBackgroundWithBlock{
             result, error in
             

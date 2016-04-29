@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X0R-8v-Cbm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X0R-8v-Cbm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Profile View Controller-->
@@ -100,76 +100,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n1I-l2-hqV" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1133" y="-260"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="PJh-g3-4aT">
-            <objects>
-                <tableViewController id="zNx-BD-CWs" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="GbG-aP-AzG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="XUA-QM-PzP">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="140"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="资讯阅读时长" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Neq-9e-cyC">
-                                    <rect key="frame" x="164" y="120" width="72" height="14.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="资讯阅读数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pv-Xu-0ph">
-                                    <rect key="frame" x="370" y="120" width="60" height="14.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30时20分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2u-ao-WAo">
-                                    <rect key="frame" x="162" y="94" width="75" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22篇" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CpN-ZQ-QFo">
-                                    <rect key="frame" x="381.5" y="94.5" width="37" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="rHa-Xi-00d">
-                                    <rect key="frame" x="250" y="20" width="100" height="100"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="100" id="mQa-g0-CqN"/>
-                                        <constraint firstAttribute="width" constant="100" id="w3Z-32-S3O"/>
-                                    </constraints>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstItem="CpN-ZQ-QFo" firstAttribute="centerX" secondItem="4pv-Xu-0ph" secondAttribute="centerX" id="IAn-17-URC"/>
-                                <constraint firstItem="D2u-ao-WAo" firstAttribute="centerX" secondItem="Neq-9e-cyC" secondAttribute="centerX" id="QK1-36-HvA"/>
-                                <constraint firstItem="4pv-Xu-0ph" firstAttribute="centerX" secondItem="XUA-QM-PzP" secondAttribute="centerX" constant="100" id="S3l-tb-wiO"/>
-                                <constraint firstAttribute="bottom" secondItem="rHa-Xi-00d" secondAttribute="bottom" constant="20" id="TuQ-5W-LRR"/>
-                                <constraint firstItem="rHa-Xi-00d" firstAttribute="centerX" secondItem="XUA-QM-PzP" secondAttribute="centerX" id="aKw-Rf-UFt"/>
-                                <constraint firstItem="Neq-9e-cyC" firstAttribute="centerX" secondItem="XUA-QM-PzP" secondAttribute="centerX" constant="-100" id="abP-fP-b49"/>
-                                <constraint firstAttribute="bottom" secondItem="4pv-Xu-0ph" secondAttribute="bottom" constant="5" id="oWS-35-9AN"/>
-                                <constraint firstItem="4pv-Xu-0ph" firstAttribute="top" secondItem="CpN-ZQ-QFo" secondAttribute="bottom" constant="5" id="uju-FV-CAO"/>
-                                <constraint firstItem="Neq-9e-cyC" firstAttribute="top" secondItem="D2u-ao-WAo" secondAttribute="bottom" constant="5" id="vjX-Ya-ca4"/>
-                                <constraint firstAttribute="bottom" secondItem="Neq-9e-cyC" secondAttribute="bottom" constant="5" id="z0b-dD-Q49"/>
-                            </constraints>
-                        </view>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="zNx-BD-CWs" id="X7d-oA-jk9"/>
-                            <outlet property="delegate" destination="zNx-BD-CWs" id="OYV-aD-30X"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="053-qI-vzg"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S1i-5N-3bM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1541" y="705"/>
         </scene>
         <!--个人-->
         <scene sceneID="bM0-bE-MwC">

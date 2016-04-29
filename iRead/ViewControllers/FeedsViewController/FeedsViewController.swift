@@ -123,7 +123,7 @@ class FeedsViewController: UIViewController {
         button.titleLabel?.font = iReadFont.lightWithSize(16)
         button.contentEdgeInsets.right = -20
         toreadButton = button
-        button.addTarget(self, action: "showToreadArticlesTable", forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(FeedsViewController.showToreadArticlesTable), forControlEvents: .TouchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
     
@@ -256,8 +256,8 @@ class FeedsViewController: UIViewController {
     }
     
     func configureNotification() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUIWhenArticlesChange", name: iReadNotification.FeedArticlesRemoteFetchDidFinishedNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUIWhenArticlesChange", name: iReadNotification.FeedArticlesToreadStateDidChangedNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FeedsViewController.updateUIWhenArticlesChange), name: iReadNotification.FeedArticlesRemoteFetchDidFinishedNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FeedsViewController.updateUIWhenArticlesChange), name: iReadNotification.FeedArticlesToreadStateDidChangedNotification, object: nil)
     }
     func destoryNotification() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: iReadNotification.FeedArticlesRemoteFetchDidFinishedNotification, object: nil)

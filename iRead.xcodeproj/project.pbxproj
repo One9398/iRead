@@ -92,10 +92,10 @@
 		F4AB17001C882BDD006438D2 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB16FB1C882BDD006438D2 /* FeedsViewController.swift */; };
 		F4AB17011C882BDD006438D2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4AB16FD1C882BDD006438D2 /* Launch.storyboard */; };
 		F4AB17021C882BDD006438D2 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB16FE1C882BDD006438D2 /* LaunchViewController.swift */; };
-		F4B918291CD1E008005494AD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B918251CD1E008005494AD /* LoginController.swift */; };
-		F4B9182A1CD1E008005494AD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B918261CD1E008005494AD /* RegisterViewController.swift */; };
-		F4B9182B1CD1E008005494AD /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4B918271CD1E008005494AD /* User.storyboard */; };
-		F4B9182C1CD1E008005494AD /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B918281CD1E008005494AD /* UserViewController.swift */; };
+		F4B9183B1CD21172005494AD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B918371CD21172005494AD /* LoginController.swift */; };
+		F4B9183C1CD21172005494AD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B918381CD21172005494AD /* RegisterViewController.swift */; };
+		F4B9183D1CD21172005494AD /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4B918391CD21172005494AD /* User.storyboard */; };
+		F4B9183E1CD21172005494AD /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9183A1CD21172005494AD /* UserViewController.swift */; };
 		F4C09FF11C8EDD09005ED771 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C09FF01C8EDD09005ED771 /* RootNavigationController.swift */; };
 		F4C09FF31C8EDD2C005ED771 /* RootTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C09FF21C8EDD2C005ED771 /* RootTabbarController.swift */; };
 		F4C09FF61C8EDFB4005ED771 /* iReadHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C09FF51C8EDFB4005ED771 /* iReadHelp.swift */; };
@@ -109,6 +109,31 @@
 		F4E8B6C51CAACC230008C6B4 /* BaseRefreshLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8B6C41CAACC230008C6B4 /* BaseRefreshLoader.swift */; };
 		F4E95E7A1CBE2CC500514813 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E95E791CBE2CC500514813 /* ProfileViewController.swift */; };
 		F4E95E7C1CBE2CD900514813 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E95E7B1CBE2CD900514813 /* BaseViewController.swift */; };
+		F4ED00DB1CD3B0C800EF2B67 /* AVOSCloudSNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED00CB1CD3B0C800EF2B67 /* AVOSCloudSNS.m */; };
+		F4ED00DC1CD3B0C800EF2B67 /* AVOSCloudSNSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED00CE1CD3B0C800EF2B67 /* AVOSCloudSNSUtils.m */; };
+		F4ED00DD1CD3B0C800EF2B67 /* AVSNSHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED00D01CD3B0C800EF2B67 /* AVSNSHttpClient.m */; };
+		F4ED00DE1CD3B0C800EF2B67 /* AVSNSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED00D21CD3B0C800EF2B67 /* AVSNSLoginViewController.m */; };
+		F4ED00DF1CD3B0C800EF2B67 /* AVSNSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED00D41CD3B0C800EF2B67 /* AVSNSWebViewController.m */; };
+		F4ED00E01CD3B0C800EF2B67 /* AVUser+SNS.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED00D61CD3B0C800EF2B67 /* AVUser+SNS.m */; };
+		F4ED00E11CD3B0C800EF2B67 /* AVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED00D81CD3B0C800EF2B67 /* AVWebViewController.m */; };
+		F4ED00E21CD3B0C800EF2B67 /* NSURL+AVAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED00DA1CD3B0C800EF2B67 /* NSURL+AVAdditions.m */; };
+		F4ED01011CD3B1F400EF2B67 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4ED00E41CD3B1F400EF2B67 /* Info.plist */; };
+		F4ED01021CD3B1F400EF2B67 /* LCHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED00E61CD3B1F400EF2B67 /* LCHttpClient.m */; };
+		F4ED01031CD3B1F400EF2B67 /* LCUserFeedbackAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED00E81CD3B1F400EF2B67 /* LCUserFeedbackAgent.m */; };
+		F4ED01041CD3B1F400EF2B67 /* LCUserFeedbackImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED00EA1CD3B1F400EF2B67 /* LCUserFeedbackImageViewController.m */; };
+		F4ED01051CD3B1F400EF2B67 /* LCUserFeedbackReply.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED00EC1CD3B1F400EF2B67 /* LCUserFeedbackReply.m */; };
+		F4ED01061CD3B1F400EF2B67 /* LCUserFeedbackReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED00EF1CD3B1F400EF2B67 /* LCUserFeedbackReplyCell.m */; };
+		F4ED01071CD3B1F400EF2B67 /* LCUserFeedbackThread.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED00F11CD3B1F400EF2B67 /* LCUserFeedbackThread.m */; };
+		F4ED01081CD3B1F400EF2B67 /* LCUserFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED00F41CD3B1F400EF2B67 /* LCUserFeedbackViewController.m */; };
+		F4ED01091CD3B1F400EF2B67 /* LCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED00F61CD3B1F400EF2B67 /* LCUtils.m */; };
+		F4ED010A1CD3B1F400EF2B67 /* feedback_add_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4ED00F91CD3B1F400EF2B67 /* feedback_add_image@2x.png */; };
+		F4ED010B1CD3B1F400EF2B67 /* feedback_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4ED00FA1CD3B1F400EF2B67 /* feedback_back@2x.png */; };
+		F4ED010C1CD3B1F400EF2B67 /* feedback_bg_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4ED00FB1CD3B1F400EF2B67 /* feedback_bg_1@2x.png */; };
+		F4ED010D1CD3B1F400EF2B67 /* feedback_bg_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4ED00FC1CD3B1F400EF2B67 /* feedback_bg_2@2x.png */; };
+		F4ED010E1CD3B1F400EF2B67 /* feedback_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4ED00FD1CD3B1F400EF2B67 /* feedback_btn@2x.png */; };
+		F4ED010F1CD3B1F400EF2B67 /* feedback_btn_new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4ED00FE1CD3B1F400EF2B67 /* feedback_btn_new@2x.png */; };
+		F4ED01101CD3B1F400EF2B67 /* feedback_warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4ED00FF1CD3B1F400EF2B67 /* feedback_warning@2x.png */; };
+		F4ED01111CD3B1F400EF2B67 /* LeanCloudFeedback.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4ED01001CD3B1F400EF2B67 /* LeanCloudFeedback.strings */; };
 		F4FA7A681CC0A525006C65D4 /* SegueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA7A671CC0A525006C65D4 /* SegueViewController.swift */; };
 		F4FA7A6A1CC0A5DD006C65D4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA7A691CC0A5DD006C65D4 /* AboutViewController.swift */; };
 		F4FA7A6C1CC0A773006C65D4 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FA7A6B1CC0A773006C65D4 /* About.storyboard */; };
@@ -240,10 +265,10 @@
 		F4AB16FB1C882BDD006438D2 /* FeedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
 		F4AB16FD1C882BDD006438D2 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		F4AB16FE1C882BDD006438D2 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
-		F4B918251CD1E008005494AD /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		F4B918261CD1E008005494AD /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		F4B918271CD1E008005494AD /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
-		F4B918281CD1E008005494AD /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		F4B918371CD21172005494AD /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		F4B918381CD21172005494AD /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		F4B918391CD21172005494AD /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		F4B9183A1CD21172005494AD /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		F4C09FF01C8EDD09005ED771 /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		F4C09FF21C8EDD2C005ED771 /* RootTabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabbarController.swift; sourceTree = "<group>"; };
 		F4C09FF51C8EDFB4005ED771 /* iReadHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadHelp.swift; sourceTree = "<group>"; };
@@ -257,6 +282,51 @@
 		F4E8B6C41CAACC230008C6B4 /* BaseRefreshLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRefreshLoader.swift; sourceTree = "<group>"; };
 		F4E95E791CBE2CC500514813 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F4E95E7B1CBE2CD900514813 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		F4ED00CA1CD3B0C800EF2B67 /* AVOSCloudSNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVOSCloudSNS.h; sourceTree = "<group>"; };
+		F4ED00CB1CD3B0C800EF2B67 /* AVOSCloudSNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVOSCloudSNS.m; sourceTree = "<group>"; };
+		F4ED00CC1CD3B0C800EF2B67 /* AVOSCloudSNS_.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVOSCloudSNS_.h; sourceTree = "<group>"; };
+		F4ED00CD1CD3B0C800EF2B67 /* AVOSCloudSNSUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVOSCloudSNSUtils.h; sourceTree = "<group>"; };
+		F4ED00CE1CD3B0C800EF2B67 /* AVOSCloudSNSUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVOSCloudSNSUtils.m; sourceTree = "<group>"; };
+		F4ED00CF1CD3B0C800EF2B67 /* AVSNSHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVSNSHttpClient.h; sourceTree = "<group>"; };
+		F4ED00D01CD3B0C800EF2B67 /* AVSNSHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVSNSHttpClient.m; sourceTree = "<group>"; };
+		F4ED00D11CD3B0C800EF2B67 /* AVSNSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVSNSLoginViewController.h; sourceTree = "<group>"; };
+		F4ED00D21CD3B0C800EF2B67 /* AVSNSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVSNSLoginViewController.m; sourceTree = "<group>"; };
+		F4ED00D31CD3B0C800EF2B67 /* AVSNSWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVSNSWebViewController.h; sourceTree = "<group>"; };
+		F4ED00D41CD3B0C800EF2B67 /* AVSNSWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVSNSWebViewController.m; sourceTree = "<group>"; };
+		F4ED00D51CD3B0C800EF2B67 /* AVUser+SNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVUser+SNS.h"; sourceTree = "<group>"; };
+		F4ED00D61CD3B0C800EF2B67 /* AVUser+SNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVUser+SNS.m"; sourceTree = "<group>"; };
+		F4ED00D71CD3B0C800EF2B67 /* AVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVWebViewController.h; sourceTree = "<group>"; };
+		F4ED00D81CD3B0C800EF2B67 /* AVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVWebViewController.m; sourceTree = "<group>"; };
+		F4ED00D91CD3B0C800EF2B67 /* NSURL+AVAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+AVAdditions.h"; sourceTree = "<group>"; };
+		F4ED00DA1CD3B0C800EF2B67 /* NSURL+AVAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+AVAdditions.m"; sourceTree = "<group>"; };
+		F4ED00E41CD3B1F400EF2B67 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4ED00E51CD3B1F400EF2B67 /* LCHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCHttpClient.h; sourceTree = "<group>"; };
+		F4ED00E61CD3B1F400EF2B67 /* LCHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCHttpClient.m; sourceTree = "<group>"; };
+		F4ED00E71CD3B1F400EF2B67 /* LCUserFeedbackAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCUserFeedbackAgent.h; sourceTree = "<group>"; };
+		F4ED00E81CD3B1F400EF2B67 /* LCUserFeedbackAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCUserFeedbackAgent.m; sourceTree = "<group>"; };
+		F4ED00E91CD3B1F400EF2B67 /* LCUserFeedbackImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCUserFeedbackImageViewController.h; sourceTree = "<group>"; };
+		F4ED00EA1CD3B1F400EF2B67 /* LCUserFeedbackImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCUserFeedbackImageViewController.m; sourceTree = "<group>"; };
+		F4ED00EB1CD3B1F400EF2B67 /* LCUserFeedbackReply.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCUserFeedbackReply.h; sourceTree = "<group>"; };
+		F4ED00EC1CD3B1F400EF2B67 /* LCUserFeedbackReply.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCUserFeedbackReply.m; sourceTree = "<group>"; };
+		F4ED00ED1CD3B1F400EF2B67 /* LCUserFeedbackReply_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCUserFeedbackReply_Internal.h; sourceTree = "<group>"; };
+		F4ED00EE1CD3B1F400EF2B67 /* LCUserFeedbackReplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCUserFeedbackReplyCell.h; sourceTree = "<group>"; };
+		F4ED00EF1CD3B1F400EF2B67 /* LCUserFeedbackReplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCUserFeedbackReplyCell.m; sourceTree = "<group>"; };
+		F4ED00F01CD3B1F400EF2B67 /* LCUserFeedbackThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCUserFeedbackThread.h; sourceTree = "<group>"; };
+		F4ED00F11CD3B1F400EF2B67 /* LCUserFeedbackThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCUserFeedbackThread.m; sourceTree = "<group>"; };
+		F4ED00F21CD3B1F400EF2B67 /* LCUserFeedbackThread_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCUserFeedbackThread_Internal.h; sourceTree = "<group>"; };
+		F4ED00F31CD3B1F400EF2B67 /* LCUserFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCUserFeedbackViewController.h; sourceTree = "<group>"; };
+		F4ED00F41CD3B1F400EF2B67 /* LCUserFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCUserFeedbackViewController.m; sourceTree = "<group>"; };
+		F4ED00F51CD3B1F400EF2B67 /* LCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCUtils.h; sourceTree = "<group>"; };
+		F4ED00F61CD3B1F400EF2B67 /* LCUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCUtils.m; sourceTree = "<group>"; };
+		F4ED00F71CD3B1F400EF2B67 /* LeanCloudFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeanCloudFeedback.h; sourceTree = "<group>"; };
+		F4ED00F91CD3B1F400EF2B67 /* feedback_add_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback_add_image@2x.png"; sourceTree = "<group>"; };
+		F4ED00FA1CD3B1F400EF2B67 /* feedback_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback_back@2x.png"; sourceTree = "<group>"; };
+		F4ED00FB1CD3B1F400EF2B67 /* feedback_bg_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback_bg_1@2x.png"; sourceTree = "<group>"; };
+		F4ED00FC1CD3B1F400EF2B67 /* feedback_bg_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback_bg_2@2x.png"; sourceTree = "<group>"; };
+		F4ED00FD1CD3B1F400EF2B67 /* feedback_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback_btn@2x.png"; sourceTree = "<group>"; };
+		F4ED00FE1CD3B1F400EF2B67 /* feedback_btn_new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback_btn_new@2x.png"; sourceTree = "<group>"; };
+		F4ED00FF1CD3B1F400EF2B67 /* feedback_warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback_warning@2x.png"; sourceTree = "<group>"; };
+		F4ED01001CD3B1F400EF2B67 /* LeanCloudFeedback.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = LeanCloudFeedback.strings; sourceTree = "<group>"; };
 		F4FA7A671CC0A525006C65D4 /* SegueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueViewController.swift; sourceTree = "<group>"; };
 		F4FA7A691CC0A5DD006C65D4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		F4FA7A6B1CC0A773006C65D4 /* About.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = About.storyboard; path = iRead/ViewControllers/AboutViewController/About.storyboard; sourceTree = SOURCE_ROOT; };
@@ -310,6 +380,8 @@
 		F40C021C1C90025800CB3646 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				F4ED00E31CD3B1F400EF2B67 /* LeanCloudFeedback */,
+				F4ED00C91CD3B0C800EF2B67 /* social */,
 				F4607D421CC918650069803D /* DeformationButton.h */,
 				F4607D431CC918650069803D /* DeformationButton.m */,
 				F4607D441CC918650069803D /* MMMaterialDesignSpinner.h */,
@@ -659,7 +731,7 @@
 		F4AB16F81C882BDD006438D2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F4B918241CD1DFDD005494AD /* User */,
+				F4B918361CD21172005494AD /* User */,
 				F423DA8D1CC5CDCF00C1D95E /* HistoryViewController */,
 				F4FA7A661CC0A4B6006C65D4 /* AboutViewController */,
 				F445DD881C9BA64E00B4DA71 /* ArticleViewController */,
@@ -709,13 +781,13 @@
 			path = ProfileViewController;
 			sourceTree = "<group>";
 		};
-		F4B918241CD1DFDD005494AD /* User */ = {
+		F4B918361CD21172005494AD /* User */ = {
 			isa = PBXGroup;
 			children = (
-				F4B918251CD1E008005494AD /* LoginController.swift */,
-				F4B918261CD1E008005494AD /* RegisterViewController.swift */,
-				F4B918271CD1E008005494AD /* User.storyboard */,
-				F4B918281CD1E008005494AD /* UserViewController.swift */,
+				F4B918371CD21172005494AD /* LoginController.swift */,
+				F4B918381CD21172005494AD /* RegisterViewController.swift */,
+				F4B918391CD21172005494AD /* User.storyboard */,
+				F4B9183A1CD21172005494AD /* UserViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -766,6 +838,73 @@
 				F4AA739F1CB3D04D0027F2BC /* MaterialLoader.swift */,
 			);
 			name = RefreshLoad;
+			sourceTree = "<group>";
+		};
+		F4ED00C91CD3B0C800EF2B67 /* social */ = {
+			isa = PBXGroup;
+			children = (
+				F4ED00CA1CD3B0C800EF2B67 /* AVOSCloudSNS.h */,
+				F4ED00CB1CD3B0C800EF2B67 /* AVOSCloudSNS.m */,
+				F4ED00CC1CD3B0C800EF2B67 /* AVOSCloudSNS_.h */,
+				F4ED00CD1CD3B0C800EF2B67 /* AVOSCloudSNSUtils.h */,
+				F4ED00CE1CD3B0C800EF2B67 /* AVOSCloudSNSUtils.m */,
+				F4ED00CF1CD3B0C800EF2B67 /* AVSNSHttpClient.h */,
+				F4ED00D01CD3B0C800EF2B67 /* AVSNSHttpClient.m */,
+				F4ED00D11CD3B0C800EF2B67 /* AVSNSLoginViewController.h */,
+				F4ED00D21CD3B0C800EF2B67 /* AVSNSLoginViewController.m */,
+				F4ED00D31CD3B0C800EF2B67 /* AVSNSWebViewController.h */,
+				F4ED00D41CD3B0C800EF2B67 /* AVSNSWebViewController.m */,
+				F4ED00D51CD3B0C800EF2B67 /* AVUser+SNS.h */,
+				F4ED00D61CD3B0C800EF2B67 /* AVUser+SNS.m */,
+				F4ED00D71CD3B0C800EF2B67 /* AVWebViewController.h */,
+				F4ED00D81CD3B0C800EF2B67 /* AVWebViewController.m */,
+				F4ED00D91CD3B0C800EF2B67 /* NSURL+AVAdditions.h */,
+				F4ED00DA1CD3B0C800EF2B67 /* NSURL+AVAdditions.m */,
+			);
+			path = social;
+			sourceTree = "<group>";
+		};
+		F4ED00E31CD3B1F400EF2B67 /* LeanCloudFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				F4ED00E41CD3B1F400EF2B67 /* Info.plist */,
+				F4ED00E51CD3B1F400EF2B67 /* LCHttpClient.h */,
+				F4ED00E61CD3B1F400EF2B67 /* LCHttpClient.m */,
+				F4ED00E71CD3B1F400EF2B67 /* LCUserFeedbackAgent.h */,
+				F4ED00E81CD3B1F400EF2B67 /* LCUserFeedbackAgent.m */,
+				F4ED00E91CD3B1F400EF2B67 /* LCUserFeedbackImageViewController.h */,
+				F4ED00EA1CD3B1F400EF2B67 /* LCUserFeedbackImageViewController.m */,
+				F4ED00EB1CD3B1F400EF2B67 /* LCUserFeedbackReply.h */,
+				F4ED00EC1CD3B1F400EF2B67 /* LCUserFeedbackReply.m */,
+				F4ED00ED1CD3B1F400EF2B67 /* LCUserFeedbackReply_Internal.h */,
+				F4ED00EE1CD3B1F400EF2B67 /* LCUserFeedbackReplyCell.h */,
+				F4ED00EF1CD3B1F400EF2B67 /* LCUserFeedbackReplyCell.m */,
+				F4ED00F01CD3B1F400EF2B67 /* LCUserFeedbackThread.h */,
+				F4ED00F11CD3B1F400EF2B67 /* LCUserFeedbackThread.m */,
+				F4ED00F21CD3B1F400EF2B67 /* LCUserFeedbackThread_Internal.h */,
+				F4ED00F31CD3B1F400EF2B67 /* LCUserFeedbackViewController.h */,
+				F4ED00F41CD3B1F400EF2B67 /* LCUserFeedbackViewController.m */,
+				F4ED00F51CD3B1F400EF2B67 /* LCUtils.h */,
+				F4ED00F61CD3B1F400EF2B67 /* LCUtils.m */,
+				F4ED00F71CD3B1F400EF2B67 /* LeanCloudFeedback.h */,
+				F4ED00F81CD3B1F400EF2B67 /* resources */,
+			);
+			path = LeanCloudFeedback;
+			sourceTree = "<group>";
+		};
+		F4ED00F81CD3B1F400EF2B67 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				F4ED00F91CD3B1F400EF2B67 /* feedback_add_image@2x.png */,
+				F4ED00FA1CD3B1F400EF2B67 /* feedback_back@2x.png */,
+				F4ED00FB1CD3B1F400EF2B67 /* feedback_bg_1@2x.png */,
+				F4ED00FC1CD3B1F400EF2B67 /* feedback_bg_2@2x.png */,
+				F4ED00FD1CD3B1F400EF2B67 /* feedback_btn@2x.png */,
+				F4ED00FE1CD3B1F400EF2B67 /* feedback_btn_new@2x.png */,
+				F4ED00FF1CD3B1F400EF2B67 /* feedback_warning@2x.png */,
+				F4ED01001CD3B1F400EF2B67 /* LeanCloudFeedback.strings */,
+			);
+			path = resources;
 			sourceTree = "<group>";
 		};
 		F4FA7A661CC0A4B6006C65D4 /* AboutViewController */ = {
@@ -895,22 +1034,31 @@
 				F423DA961CC6616500C1D95E /* Activities.xcassets in Resources */,
 				F44DE8F21C92BEEE008617E6 /* feeds.plist in Resources */,
 				F4FA7A6C1CC0A773006C65D4 /* About.storyboard in Resources */,
+				F4ED010E1CD3B1F400EF2B67 /* feedback_btn@2x.png in Resources */,
 				F40C02341C9003F600CB3646 /* Main.storyboard in Resources */,
+				F4ED01101CD3B1F400EF2B67 /* feedback_warning@2x.png in Resources */,
 				F4914D5D1C8EA7B100C32743 /* Notes.storyboard in Resources */,
-				F4B9182B1CD1E008005494AD /* User.storyboard in Resources */,
 				F4AB17011C882BDD006438D2 /* Launch.storyboard in Resources */,
 				F44693631CB7BCB400BEB406 /* day.js in Resources */,
+				F4ED01111CD3B1F400EF2B67 /* LeanCloudFeedback.strings in Resources */,
 				F4AB16FF1C882BDD006438D2 /* Feeds.storyboard in Resources */,
+				F4B9183D1CD21172005494AD /* User.storyboard in Resources */,
+				F4ED010D1CD3B1F400EF2B67 /* feedback_bg_2@2x.png in Resources */,
+				F4ED01011CD3B1F400EF2B67 /* Info.plist in Resources */,
 				F415918F1C9BDA330034D3C2 /* Page.storyboard in Resources */,
 				F40C02191C8FE11C00CB3646 /* Recommend.storyboard in Resources */,
+				F4ED010B1CD3B1F400EF2B67 /* feedback_back@2x.png in Resources */,
 				F48048781C9817A800392827 /* Assets.xcassets in Resources */,
 				F49208321CA2B61C00F889FA /* fetchImages.js in Resources */,
+				F4ED010C1CD3B1F400EF2B67 /* feedback_bg_1@2x.png in Resources */,
 				F44693651CB7BCC200BEB406 /* night.js in Resources */,
 				F4AB16F01C882ADF006438D2 /* Profile.storyboard in Resources */,
 				F4D1F1661CA3C81800AC056E /* ArticleTopBar.xib in Resources */,
 				F45BD7DD1CBF77A400747F1F /* ProfileView.xib in Resources */,
 				F4584B521CD08930008E1B81 /* imgHandle.js in Resources */,
+				F4ED010F1CD3B1F400EF2B67 /* feedback_btn_new@2x.png in Resources */,
 				F45306CC1CBE7278003C5D4E /* Roboto-Regular.ttf in Resources */,
+				F4ED010A1CD3B1F400EF2B67 /* feedback_add_image@2x.png in Resources */,
 				F4495E691CA02AC200E75463 /* style.js in Resources */,
 				F44693691CB7BE3E00BEB406 /* imgAdjust.js in Resources */,
 			);
@@ -986,43 +1134,54 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4FA7A6F1CC0AC4C006C65D4 /* BaseTopViewController.swift in Sources */,
+				F4B9183C1CD21172005494AD /* RegisterViewController.swift in Sources */,
 				F4E95E7C1CBE2CD900514813 /* BaseViewController.swift in Sources */,
 				F4495E641C9FABDE00E75463 /* iReadWebConfiguration.swift in Sources */,
 				F40C021B1C8FFAEB00CB3646 /* CustomNavigationController.swift in Sources */,
 				F4AB17001C882BDD006438D2 /* FeedsViewController.swift in Sources */,
 				F4A331341C96860100AFFC6F /* BaseButton.swift in Sources */,
 				F4C3A9501C919F6B001A0D22 /* iReadConfigure.swift in Sources */,
+				F4ED01091CD3B1F400EF2B67 /* LCUtils.m in Sources */,
+				F4ED01061CD3B1F400EF2B67 /* LCUserFeedbackReplyCell.m in Sources */,
 				F40C022A1C90028B00CB3646 /* YZFlowLayout.m in Sources */,
 				F4E95E7A1CBE2CC500514813 /* ProfileViewController.swift in Sources */,
 				F423DA921CC5D25C00C1D95E /* HistoryArticleCell.swift in Sources */,
 				F4607D461CC918650069803D /* DeformationButton.m in Sources */,
 				F44B0B741CA54B7A00DDE1E9 /* iReadLoadView.swift in Sources */,
+				F4ED00DC1CD3B0C800EF2B67 /* AVOSCloudSNSUtils.m in Sources */,
 				F44B0B6B1CA537CC00DDE1E9 /* FeedsTitleView.swift in Sources */,
 				F480C3C71CA1900C00D11BD3 /* ActionView.swift in Sources */,
 				F42E98551C92689100A1E602 /* iReadNetwork.swift in Sources */,
 				F4C574831CB6555E002530B3 /* FavArticleCard.swift in Sources */,
 				F42E98521C92601400A1E602 /* FeedModel.swift in Sources */,
+				F4ED00DD1CD3B0C800EF2B67 /* AVSNSHttpClient.m in Sources */,
 				F435544E1CB74CDE004F9CB2 /* ArticleTableViewController.swift in Sources */,
+				F4B9183E1CD21172005494AD /* UserViewController.swift in Sources */,
 				F42C03381C9A4E6900B27F45 /* BaseCollectionViewCell.swift in Sources */,
 				F45344291C982647008378DC /* FeedListController.swift in Sources */,
+				F4ED00DE1CD3B0C800EF2B67 /* AVSNSLoginViewController.m in Sources */,
 				F47085CC1CACAE10000F119B /* iReadExtension.swift in Sources */,
-				F4B9182A1CD1E008005494AD /* RegisterViewController.swift in Sources */,
 				F45353B41CBF505C00AF5D04 /* ProfileItem.swift in Sources */,
 				F42BBBA11CCCFE1200870228 /* BlogArticleController.swift in Sources */,
 				F49208341CA2C3B200F889FA /* ImageModel.swift in Sources */,
 				F48594851CC8BEB6004108C1 /* AFImageVIewExtension.swift in Sources */,
 				F4914D501C8EA41300C32743 /* RecommendController.swift in Sources */,
 				F4C09FF11C8EDD09005ED771 /* RootNavigationController.swift in Sources */,
+				F4ED01031CD3B1F400EF2B67 /* LCUserFeedbackAgent.m in Sources */,
 				F44DE8F61C92C21F008617E6 /* feedResource.swift in Sources */,
 				F4D1F15E1CA3A11200AC056E /* iReadUserManager.swift in Sources */,
 				F446936B1CB7BFA600BEB406 /* fileResource.swift in Sources */,
 				F4E8B6C51CAACC230008C6B4 /* BaseRefreshLoader.swift in Sources */,
 				F49A8D3C1C9C392C004553DD /* iReadConstant.swift in Sources */,
 				F48693F41CA924CD00FE900B /* SwiftNotice.swift in Sources */,
+				F4ED01071CD3B1F400EF2B67 /* LCUserFeedbackThread.m in Sources */,
 				F42E985B1C9276D100A1E602 /* FeedFetchOperation.swift in Sources */,
 				F48594841CC8BEB6004108C1 /* AFImageExtension.swift in Sources */,
+				F4ED00E01CD3B0C800EF2B67 /* AVUser+SNS.m in Sources */,
 				F431A5811CA62FB9007589E9 /* RecommendBaseController.swift in Sources */,
+				F4ED01021CD3B1F400EF2B67 /* LCHttpClient.m in Sources */,
 				F435544C1CB74C97004F9CB2 /* ToreadViewController.swift in Sources */,
+				F4ED00DF1CD3B0C800EF2B67 /* AVSNSWebViewController.m in Sources */,
 				F431A57F1CA62F85007589E9 /* TechStudyController.swift in Sources */,
 				F40C02271C90028B00CB3646 /* UIView+Frame.m in Sources */,
 				F4120ABB1C9AAABC00B86DE3 /* NSDate+InternetDateTime.m in Sources */,
@@ -1034,12 +1193,13 @@
 				F4FA7A6A1CC0A5DD006C65D4 /* AboutViewController.swift in Sources */,
 				F4773D5B1CB64B4400F3B94C /* FavArticlesTableViewController.swift in Sources */,
 				F4AB17021C882BDD006438D2 /* LaunchViewController.swift in Sources */,
-				F4B9182C1CD1E008005494AD /* UserViewController.swift in Sources */,
 				F4C09FF31C8EDD2C005ED771 /* RootTabbarController.swift in Sources */,
+				F4ED00DB1CD3B0C800EF2B67 /* AVOSCloudSNS.m in Sources */,
 				F4607D471CC918650069803D /* MMMaterialDesignSpinner.m in Sources */,
 				F44B0B6F1CA54AE500DDE1E9 /* PCAngularActivityIndicatorView.m in Sources */,
 				F4A331321C965B5500AFFC6F /* ITNewsTableViewCell.swift in Sources */,
 				F42C03361C9A4B9000B27F45 /* BaseCollectionView.swift in Sources */,
+				F4ED00E11CD3B0C800EF2B67 /* AVWebViewController.m in Sources */,
 				F48594981CC8CAB5004108C1 /* iReadHUDManager.swift in Sources */,
 				F4C09FF61C8EDFB4005ED771 /* iReadHelp.swift in Sources */,
 				F4A3918E1C97CEE8006DE0A8 /* iReadAlert.swift in Sources */,
@@ -1055,16 +1215,20 @@
 				F4773D591CB643E600F3B94C /* FavoriteArticleCell.swift in Sources */,
 				F4A331291C96589100AFFC6F /* ITNewsViewController.swift in Sources */,
 				F4181E071C86C3C600E41FBA /* AppDelegate.swift in Sources */,
+				F4ED01051CD3B1F400EF2B67 /* LCUserFeedbackReply.m in Sources */,
+				F4ED01041CD3B1F400EF2B67 /* LCUserFeedbackImageViewController.m in Sources */,
 				F423DA8F1CC5CE3500C1D95E /* HistoryViewController.swift in Sources */,
 				F40C02281C90028B00CB3646 /* YZDisplayTitleLabel.m in Sources */,
 				F42BBB9F1CCCFDB700870228 /* LifeHealthController.swift in Sources */,
 				F42E98591C9276AF00A1E602 /* FeedParseOperation.swift in Sources */,
+				F4ED01081CD3B1F400EF2B67 /* LCUserFeedbackViewController.m in Sources */,
 				F4121EAC1CC08C0100877B6D /* ProfileView.swift in Sources */,
 				F42E98611C927F2100A1E602 /* iReadString.swift in Sources */,
 				F415918D1C9BD3A00034D3C2 /* PageViewController.swift in Sources */,
-				F4B918291CD1E008005494AD /* LoginController.swift in Sources */,
 				F4FA7A681CC0A525006C65D4 /* SegueViewController.swift in Sources */,
+				F4B9183B1CD21172005494AD /* LoginController.swift in Sources */,
 				F48FE2EE1CA2198500A190AD /* BaseSwitch.swift in Sources */,
+				F4ED00E21CD3B0C800EF2B67 /* NSURL+AVAdditions.m in Sources */,
 				F40C02291C90028B00CB3646 /* YZDisplayViewController.m in Sources */,
 				F42E985D1C92770600A1E602 /* FeedModelsProvider.swift in Sources */,
 				F4FA7A711CC0AC95006C65D4 /* BaseChildViewController.swift in Sources */,
@@ -1154,7 +1318,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "482f5d46-27af-451b-a977-59dad5ec6218";
+				PROVISIONING_PROFILE = "56abbb64-a17f-4036-89fb-88a8f4d91f50";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1193,7 +1357,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "338b30e4-0ded-4015-9f8f-bee98fe9dd3e";
+				PROVISIONING_PROFILE = "56abbb64-a17f-4036-89fb-88a8f4d91f50";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1207,6 +1371,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer: ShenZhihao Shen (3AY9U3BLF9)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iRead/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1214,7 +1379,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iRead;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "482f5d46-27af-451b-a977-59dad5ec6218";
+				PROVISIONING_PROFILE = "56abbb64-a17f-4036-89fb-88a8f4d91f50";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/iRead/iRead-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1227,14 +1392,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: ShenZhihao Shen (D6EPVHU6RS)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iRead/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iRead;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "338b30e4-0ded-4015-9f8f-bee98fe9dd3e";
+				PROVISIONING_PROFILE = "56abbb64-a17f-4036-89fb-88a8f4d91f50";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/iRead/iRead-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

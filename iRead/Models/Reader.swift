@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AVOSCloud
+//import AVOSCloud
 
 let kReaderSubscribeItems = "subscribeItems"
 

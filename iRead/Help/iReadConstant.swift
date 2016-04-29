@@ -9,7 +9,6 @@
 import UIKit
 
 enum iReadConstant {
-    static let appidgroup = "group.simon.iread"
     struct ArticleView {
         static let contentMargin: CGFloat = 15.0
     }
@@ -85,7 +84,20 @@ enum iReadConstant {
                 return 350
             }
         }
-        static let frame = CGRectMake(iReadConstant.ScreenSize.width/2 - 140, iReadConstant.ScreenSize.height - LoginButton.bottomOffset, 280, 40)
+        
+        static var leftOffset: CGFloat {
+            
+            if iReadHelp.currentDirectionIsPortrait() {
+                return width / 2
+            } else {
+                return width / 2 + 128
+            }
+        }
+        
+        static let frame = CGRectMake(iReadConstant.ScreenSize.width/2 - leftOffset, iReadConstant.ScreenSize.height - LoginButton.bottomOffset, LoginButton.width, LoginButton.height)
+        
+        static let width: CGFloat = 280
+        static let height: CGFloat = 40
         static let cornerRadius: CGFloat = 20
     }
     
@@ -97,9 +109,21 @@ enum iReadConstant {
             } else {
                 return 300
             }
+            
         }
         
-        static let frame = CGRectMake(iReadConstant.ScreenSize.width/2 - 140, iReadConstant.ScreenSize.height - RegisterButton.bottomOffset, 280, 40)
+        static var leftOffset: CGFloat {
+            if iReadHelp.currentDirectionIsPortrait() {
+                return width / 2
+            } else {
+                return width / 2 + 128
+            }
+        }
+        
+        static let frame = CGRectMake(iReadConstant.ScreenSize.width/2 - leftOffset, iReadConstant.ScreenSize.height - RegisterButton.bottomOffset, RegisterButton.width, RegisterButton.height)
+        
+        static let width: CGFloat = 280
+        static let height: CGFloat = 40
         static let cornerRadius: CGFloat = 20
     }
     

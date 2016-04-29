@@ -7,27 +7,33 @@ def pods
 #    pod 'RealmSwift'
 #   pod 'Alamofire'
 #    pod 'LeanCloudSocial'
-#pod 'AVOSCloud'               # 数据存储、短信、云引擎调用等基础服务模块
 #pod 'LeanCloudFeedback'
 #	pod 'DTCoreText'
 #    pod "MWPhotoBrowser"
 
+pod 'AVOSCloud'
+#pod 'TransitionAnimation'
+#pod 'TransitionTreasury'
 
-pod 'TransitionTreasury'
-  pod 'Ono'
-  pod 'SnapKit'
-  pod 'Alamofire'
-  pod 'Reveal-iOS-SDK', :configurations => ['Debug']
-  pod 'Material'
-  pod 'LeanCloudSocialDynamic'
-  pod 'SVProgressHUD'
-  pod 'LeanCloudFeedbackDynamic'
-  pod 'DGRunkeeperSwitch'
-  pod 'DZNEmptyDataSet'
-  pod 'MonkeyKing'
-  pod 'Kingfisher'
+    
 end
 
 target 'iRead' do
-    pods
+    pod 'Ono'
+    pod 'SnapKit'
+    pod 'Alamofire'
+    pod 'AFNetworking', '~> 2.6.3'
+    #pod 'Reveal-iOS-SDK', :configurations => ['Debug']
+    pod 'Material'
+    pod 'SVProgressHUD'
+    pod 'DGRunkeeperSwitch'
+    pod 'DZNEmptyDataSet'
+    pod 'MonkeyKing'
+    pod 'Kingfisher'
+
+# pod 'LeanCloudSocial'
+pod 'AVOSCloud'               # 数据存储、短信、云引擎调用等基础服务模块
+    #pod 'AVOSCloudDynamic'
+    #pod 'LeanCloudFeedbackDynamic'
+    #pod 'LeanCloudSocialDynamic'
 end

@@ -56,7 +56,7 @@ class ActionView: MenuView {
         
         menuBtn.setImage(image, forState: .Normal)
         menuBtn.setImage(image, forState: .Highlighted)
-        menuBtn.addTarget(self, action: "handleMenu", forControlEvents: .TouchUpInside)
+        menuBtn.addTarget(self, action: #selector(ActionView.handleMenu), forControlEvents: .TouchUpInside)
         self.menuButton = menuBtn
         self.addSubview(menuBtn)
 
@@ -90,7 +90,7 @@ class ActionView: MenuView {
         
         btn2.setImage(image, forState: .Normal)
         btn2.setImage(image, forState: .Highlighted)
-        btn2.addTarget(self, action: "handleEventButton:", forControlEvents: .TouchUpInside)
+        btn2.addTarget(self, action: #selector(ActionView.handleEventButton(_:)), forControlEvents: .TouchUpInside)
         self.addSubview(btn2)
         
         return btn2

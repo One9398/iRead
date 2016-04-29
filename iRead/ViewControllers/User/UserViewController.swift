@@ -28,4 +28,15 @@ class UserViewController: BaseChildViewController {
         view.endEditing(true)
     }
     
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
+    
+    override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
+        return .Portrait
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return .Portrait
+    }
 }

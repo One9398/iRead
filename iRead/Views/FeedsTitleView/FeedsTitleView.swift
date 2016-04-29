@@ -27,7 +27,7 @@ class FeedsTitleView: DGRunkeeperSwitch {
         self.titleFont = iReadFont.medium
         
         self.frame = CGRect(x: 30.0, y: 40.0, width: 200.0, height: 30.0)
-        self.addTarget(self, action: Selector("switchValueDidChange:"), forControlEvents: .ValueChanged)
+        self.addTarget(self, action: #selector(FeedsTitleView.switchValueDidChange(_:)), forControlEvents: .ValueChanged)
     }
 
     required init?(coder aDecoder: NSCoder) {

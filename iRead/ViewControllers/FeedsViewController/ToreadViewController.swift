@@ -43,8 +43,8 @@ class ToreadViewController: ArticleTableViewController {
     }
     
     private func prepareForNavigationBar() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(assetsIdentifier: .icon_baritem_back), style: .Plain, target: self, action: "popCurrentViewController")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(assetsIdentifier: .icon_cleanup2), style: .Plain, target: self, action: "cleanupCurrentToreadArticles")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(assetsIdentifier: .icon_baritem_back), style: .Plain, target: self, action: #selector(ToreadViewController.popCurrentViewController))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(assetsIdentifier: .icon_cleanup2), style: .Plain, target: self, action: #selector(ToreadViewController.cleanupCurrentToreadArticles))
     }
     
     func cleanupCurrentToreadArticles() {

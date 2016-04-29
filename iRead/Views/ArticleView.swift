@@ -23,7 +23,7 @@ public class ArticleView: WKWebView {
     override init(frame: CGRect, configuration: WKWebViewConfiguration) {
         super.init(frame: frame, configuration: configuration)
         
-        let tap = UITapGestureRecognizer(target: self, action: "tapTest:")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ArticleView.tapTest(_:)))
         tap.delegate = self
         self.scrollView.addGestureRecognizer(tap)
     }

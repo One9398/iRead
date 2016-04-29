@@ -66,7 +66,7 @@ class FeedListController: UIViewController {
         print(self.navigationItem.titleView)
         self.navigationController?.navigationBar.tintColor = iReadColor.themeLightWhiteColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : iReadColor.themeLightWhiteColor]
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(assetsIdentifier: .icon_baritem_back), style: .Plain, target: self, action: "popCurrentViewController")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(assetsIdentifier: .icon_baritem_back), style: .Plain, target: self, action: #selector(FeedListController.popCurrentViewController))
         title = feedModel.title
 
         let subTitleLabel = UILabel()

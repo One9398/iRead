@@ -36,9 +36,14 @@ class RecommendController: YZDisplayViewController {
         
     }
     
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        
+        view.layoutIfNeeded()
+        print("rotation bug need to fix")
+        
+    }
 
     // 可以加个版本视图提供当数据加载
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

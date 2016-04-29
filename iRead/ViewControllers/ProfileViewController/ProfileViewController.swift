@@ -36,7 +36,7 @@ class ProfileViewController: BaseTopViewController {
         button.setTitle("注销", forState: .Normal)
         button.titleLabel?.font = iReadFont.lightWithSize(14)
         infoButton = button
-        button.addTarget(self, action: "userSettingHandle:", forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(ProfileViewController.userSettingHandle(_:)), forControlEvents: .TouchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         
     }

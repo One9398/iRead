@@ -7,20 +7,19 @@
 //
 
 import UIKit
-import AVOSCloud
-import LeanCloudSocialDynamic
+//import AVOSCloud
+//import LeanCloudSocialDynamic
+// https://forum.leancloud.cn/t/pod/3255/8 解决使用AVOSCLoud动态库导致签名丢失的问题
 
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let queue = NSOperationQueue()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "hasStyle")
-        
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "hasStyle")        
         setupLeanCloudSetting()
         setupOtherLoginPlatformsSetting()
         return true

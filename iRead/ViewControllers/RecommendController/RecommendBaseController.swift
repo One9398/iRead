@@ -81,7 +81,7 @@ class RecommendBaseController: UIViewController {
     
     // MARK: - Configure Data
     func configureNotification() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: iReadNotification.FeedItemsRemoteFetchDidFinishedNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RecommendBaseController.loadData), name: iReadNotification.FeedItemsRemoteFetchDidFinishedNotification, object: nil)
     }
     
     func removeNotification() {

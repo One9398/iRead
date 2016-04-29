@@ -112,11 +112,11 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
         timeButton?.imageEdgeInsets = UIEdgeInsetsMake(0, -8, 0, 8)
         timeButton?.titleEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0)
         
-        let shareBtn = configureActionButton("icon_share_normal".afterModeAjust(), highlightImage: "icon_share_highlight", target: self, action: "sharedActionHandle:")
+        let shareBtn = configureActionButton("icon_share_normal".afterModeAjust(), highlightImage: "icon_share_highlight", target: self, action: #selector(BaseCollectionViewCell.sharedActionHandle(_:)))
         shareBtn.translatesAutoresizingMaskIntoConstraints = false
         self.shareButton = shareBtn
         
-        let readBtn = configureActionButton("icon_addList_normal".afterModeAjust(), highlightImage: "icon_addList_selected".afterModeAjust(), target: self, action: "readActionHandle:")
+        let readBtn = configureActionButton("icon_addList_normal".afterModeAjust(), highlightImage: "icon_addList_selected".afterModeAjust(), target: self, action: #selector(BaseCollectionViewCell.readActionHandle(_:)))
         readBtn.translatesAutoresizingMaskIntoConstraints = false
         self.readButton = readBtn
         

@@ -42,17 +42,19 @@ struct iReadConfigure {
         static let timelineImage = UIImage(named: "wechat_timeline")!
     }
     
-    
     struct QQAccount {
         static let appID = "1105271809"
         static let appKey = "G0NIdWovgaHf7UDc"
         static let redirectURL = ""
+        static let schemeKey = "1105271809"
+
     }
     
     struct WeiboAccount {
         static let appID = "207765974"
         static let appKey = "b37ef41a3fa884023339519a809e5c94"
         static let redirectURL = "http://www.baidu.com"
+        static let schemeKey = "sinaweibosso.207765974"
     }
 
     

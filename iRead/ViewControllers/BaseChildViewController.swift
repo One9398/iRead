@@ -20,9 +20,9 @@ class BaseChildViewController: BaseViewController {
     func prepareNavigationItem(image: UIImage?) {
     
         if let image = image {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .Plain, target: self, action: "popCurrentViewController")
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .Plain, target: self, action: #selector(BaseChildViewController.popCurrentViewController))
         } else {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(assetsIdentifier: .icon_baritem_back), style: .Plain, target: self, action: "popCurrentViewController")
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(assetsIdentifier: .icon_baritem_back), style: .Plain, target: self, action: #selector(BaseChildViewController.popCurrentViewController))
         }
 
     }

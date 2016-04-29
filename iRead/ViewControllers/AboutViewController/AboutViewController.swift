@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import LeanCloudFeedbackDynamic
+//import LeanCloudFeedbackDynamic
 
 class AboutViewController: BaseChildViewController {
 

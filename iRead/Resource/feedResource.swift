@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AVOSCloud
+//import AVOSCloud
 
 enum FeedType: String {
     case News, Tech, Life, Other,Blog

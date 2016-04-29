@@ -39,11 +39,11 @@ class RecommandCardView: BaseCardView {
         self.detailView = detailView
         self.detailView?.backgroundColor = iReadColor.themeModelBackgroundColor(dayColor: iReadColor.themeLightWhiteColor, nightColor: iReadColor.themeBlackColor)
         
-        let refreshButton = BaseButton.createButton("icon_refresh_highlight", highlightImg: "icon_refresh_normal", target: self, action: "refreshButtonClicked:")
+        let refreshButton = BaseButton.createButton("icon_refresh_highlight", highlightImg: "icon_refresh_normal", target: self, action: #selector(RecommandCardView.refreshButtonClicked(_:)))
         self.leftButtons = [refreshButton]
         
-        let plusButton = BaseButton.createButton("icon_add_highlight", highlightImg: "icon_add_normal", target: self, action: "plusButtonClicked:")
-        let reduceButton = BaseButton.createButton("reduce_icon_highlight", highlightImg: "reduce_icon_noralma", target: self, action: "reduceButtonClicked:")
+        let plusButton = BaseButton.createButton("icon_add_highlight", highlightImg: "icon_add_normal", target: self, action: #selector(RecommandCardView.plusButtonClicked(_:)))
+        let reduceButton = BaseButton.createButton("reduce_icon_highlight", highlightImg: "reduce_icon_noralma", target: self, action: #selector(RecommandCardView.reduceButtonClicked(_:)))
         
         self.rightButtons = [plusButton, reduceButton]
     }

@@ -109,12 +109,11 @@ struct iReadTheme {
 
 struct iReadHelp {
     static func currentDeviceIsPhone() -> Bool {
-        
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return true
-        }
-        
-        return false
+        return UIDevice.currentDevice().userInterfaceIdiom == .Phone
+    }
+    
+    static func currentDirectionIsPortrait() -> Bool {
+        return UIDevice.currentDevice().orientation == .Portrait
     }
     
 }

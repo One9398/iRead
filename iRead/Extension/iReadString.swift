@@ -24,6 +24,7 @@ extension String {
         } else {
             
             let range = Range(start: startIndex.advancedBy(maxCount/2),end: self.endIndex)
+            
             self.replaceRange(range, with: "...")
             
             return self

@@ -8,7 +8,7 @@
 
 import UIKit
 import Material
-import AVOSCloud
+//import AVOSCloud
 //import AVOSCloudDynamic
 
 class RegisterViewController: UserViewController {
@@ -51,12 +51,11 @@ class RegisterViewController: UserViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        usernameField.becomeFirstResponder()
     }
     
     func prepareForRegisterButton() {
         view.addSubview(registerButton)
-        registerButton.addTarget(self, action: "handleRegisterEvent", forControlEvents: .TouchUpInside)
+        registerButton.addTarget(self, action: #selector(RegisterViewController.handleRegisterEvent), forControlEvents: .TouchUpInside)
     }
     
     func startRegisterAnimation() {
@@ -90,7 +89,6 @@ class RegisterViewController: UserViewController {
         field.detailLabelAnimationDistance = 4
         
         let image = UIImage(named: "ic_close_white")?.imageWithRenderingMode(.AlwaysTemplate)
-        let clearButton: FlatButton = FlatButton()
         field.clearButton.pulseColor = MaterialColor.grey.base
         field.clearButton.pulseScale = false
         field.clearButton.tintColor = MaterialColor.grey.base

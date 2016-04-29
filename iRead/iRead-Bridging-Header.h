@@ -13,6 +13,8 @@
 #import "YZDisplayViewHeader.h"
 #import "NSDate+InternetDateTime.h"
 #import "PCAngularActivityIndicatorView.h"
-#import "AVOSCloud/AVOSCloud.h"
 #import "DeformationButton.h"
+#import <AVOSCloud/AVOSCloud.h>
+#import "AVOSCloudSNS.h"
+#import "LeanCloudFeedback.h"
 #endif /* iRead_Bridging_Header_h */
