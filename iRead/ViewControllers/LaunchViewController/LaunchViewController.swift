@@ -39,7 +39,6 @@ class LaunchViewController: UIViewController {
         return CGFloat(value)
     }
     
-    
     lazy var logoImageView:UIImageView = {
         let logo = UIImageView(image: UIImage(named: "launch_logo"))
         logo.sizeToFit()

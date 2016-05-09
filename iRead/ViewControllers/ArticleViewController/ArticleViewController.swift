@@ -335,7 +335,7 @@ extension ArticleViewController : WKNavigationDelegate, WKUIDelegate, WKScriptMe
             iReadUserDefaults.setNeedReadModeFlag()
         }
         
-        if !NSUserDefaults.standardUserDefaults().boolForKey("hasStyle") {
+        if iReadUserDefaults.isNeedLoadReadArticleJSScript {
 
             controller.addUserScript(styleScript)
             controller.addUserScript(imgFetchScript)
@@ -353,7 +353,7 @@ extension ArticleViewController : WKNavigationDelegate, WKUIDelegate, WKScriptMe
             }
 
             controller.addScriptMessageHandler(self, name: "didFetchImagesOfContents")
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasStyle")
+            iReadUserDefaults.updateReadArticleJSScript()
         }
 
         print(controller.userScripts)

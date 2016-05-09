@@ -205,7 +205,7 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
             
             authorButton?.setTitle((author.isEmpty ? "匿名" : author.shortString()), forState: .Normal)
             
-            let pubDate = iReadDateFormatter.sharedDateFormatter.getCustomDateStringFromDateString(feedItem.pubDate, styleString: "MM-dd / HH:mm")
+            let pubDate = iReadDateFormatter.sharedDateFormatter.getCustomDateStringFromDateString(feedItem.pubDate, styleString: "MM-dd / HH:mm").usePlaceholdStringWhileIsEmpty("未知时间")
             timeButton?.setTitle(pubDate, forState: .Normal)
             
             if !feedItem.category.isEmpty {

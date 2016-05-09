@@ -19,20 +19,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "hasStyle")        
+        setupBugtagsSetting()
         setupLeanCloudSetting()
         setupOtherLoginPlatformsSetting()
+        iReadUserDefaults.resetReadArticleJSScript()
+        
         return true
     }
 
     func applicationWillTerminate(application: UIApplication) {
-
+        
     }
 }
 
 extension AppDelegate {
+    private func setupBugtagsSetting() {
+        let options = BugtagsOptions()
+        options.trackingCrashes = true
+        options.trackingUserSteps = true
+        options.trackingConsoleLog = true
+        options.crashWithScreenshot = true
+        Bugtags.startWithAppKey(iReadConfigure.BugtagsService.appKeyForLive, invocationEvent: BTGInvocationEventNone, options: options)
+        
+    }
+    
     private func setupLeanCloudSetting() {
-         AVOSCloud.setApplicationId(iReadConfigure.leancloudAppID, clientKey: iReadConfigure.leancloudAppKey)
+        AVOSCloud.setApplicationId(iReadConfigure.LeanCloudService.appID, clientKey: iReadConfigure.LeanCloudService.appKey)
         
         Reader.registerSubclass()
         FeedItem2.registerSubclass()

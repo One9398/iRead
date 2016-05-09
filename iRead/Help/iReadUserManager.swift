@@ -128,6 +128,18 @@ class iReadUserDefaults {
         }
     }
     
+    static func resetReadArticleJSScript() {
+        iReadUserDefaults.defaults.setBool(false, forKey: "hasStyle")
+    }
+    
+    static func updateReadArticleJSScript() {
+        iReadUserDefaults.defaults.setBool(true, forKey: "hasStyle")
+    }
+    
+    static var isNeedLoadReadArticleJSScript: Bool {
+        return !iReadUserDefaults.defaults.boolForKey("hasStyle")
+    }
+    
     static var isReadModeOn : Bool {
         if iReadUserDefaults.isLogined {
             iReadUserDefaults.defaults.setBool(currentUser!.readMode, forKey: ReadModeKey)

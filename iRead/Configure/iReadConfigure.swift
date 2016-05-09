@@ -61,7 +61,13 @@ struct iReadConfigure {
     static let appstoreLink = "https://itunes.apple.com/us/app/wo-yue-ge-xing-zi-xun-yue-du-qi/id1105457596?l=zh&ls=1&mt=8"
     static let rateAppLink = "itms-apps://itunes.apple.com/app/id" + "1105457596"
     
-    static let leancloudAppKey = "e57Cpmb6xF353w5gyM1LTmxK"
-    static let leancloudAppID = "79MfJxOL7Dou5UJ8rp8POYeN-gzGzoHsz"
+    struct LeanCloudService {
+        static let appKey = "e57Cpmb6xF353w5gyM1LTmxK"
+        static let appID = "79MfJxOL7Dou5UJ8rp8POYeN-gzGzoHsz"
+    }
     
+    struct BugtagsService {
+        static let appKeyForBeta = "649ab2482f1c5cb1b75c8833e875dd14"
+        static let appKeyForLive = "434e0f0040730ec2504084f1eb57af01"
+    }
 }

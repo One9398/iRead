@@ -17,4 +17,5 @@
 #import <AVOSCloud/AVOSCloud.h>
 #import "AVOSCloudSNS.h"
 #import "LeanCloudFeedback.h"
+#import "Bugtags/Bugtags.h"
 #endif /* iRead_Bridging_Header_h */
