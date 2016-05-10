@@ -315,7 +315,7 @@ class Article: AVObject, AVSubclassing {
         article.link = link.usePlaceholdStringWhileIsEmpty("未知链接")
         article.title = title.usePlaceholdStringWhileIsEmpty("未知标题")
         article.pubDate = pubDate.usePlaceholdStringWhileIsEmpty("不久前")
-        article.author = author.usePlaceholdStringWhileIsEmpty("匿名")
+        article.author = author.usePlaceholdStringWhileIsEmpty("匿名作者")
         article.category = category.usePlaceholdStringWhileIsEmpty("未知分类")
         article.source = source.usePlaceholdStringWhileIsEmpty("未知来源")
         article.content = content

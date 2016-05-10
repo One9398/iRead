@@ -86,8 +86,9 @@ enum iReadConstant {
         }
         
         static var leftOffset: CGFloat {
-            
-            if iReadHelp.currentDirectionIsPortrait() {
+            if iReadHelp.currentDeviceIsPhone() {
+                return LoginButton.width / 2
+             } else if iReadHelp.currentDirectionIsPortrait() {
                 return width / 2
             } else {
                 return width / 2 + 128
@@ -113,7 +114,9 @@ enum iReadConstant {
         }
         
         static var leftOffset: CGFloat {
-            if iReadHelp.currentDirectionIsPortrait() {
+            if iReadHelp.currentDeviceIsPhone() {
+                return RegisterButton.width / 2
+            } else if iReadHelp.currentDirectionIsPortrait() {
                 return width / 2
             } else {
                 return width / 2 + 128

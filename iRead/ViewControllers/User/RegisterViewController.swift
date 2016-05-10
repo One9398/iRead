@@ -75,14 +75,14 @@ class RegisterViewController: UserViewController {
         field.placeholderTextColor = MaterialColor.grey.base
         field.font = RobotoFont.regularWithSize(16)
         field.textColor = MaterialColor.black
+        field.lineLayerActiveColor = iReadColor.themeBlueColor
+        
         field.borderStyle = .None
         
-//        field.titleLabel = UILabel()
         field.titleLabel!.font = RobotoFont.mediumWithSize(11)
         field.titleLabelColor = MaterialColor.grey.base
         field.titleLabelActiveColor = iReadColor.themeBlueColor
         
-//        field.detailLabel = UILabel()
         field.detailLabel!.text = detialInfo
         field.detailLabel!.font = RobotoFont.mediumWithSize(11)
         field.detailLabelActiveColor = iReadColor.themeRedColor
@@ -94,8 +94,6 @@ class RegisterViewController: UserViewController {
         field.clearButton.tintColor = MaterialColor.grey.base
         field.clearButton.setImage(image, forState: .Normal)
         field.clearButton.setImage(image, forState: .Highlighted)
-        
-//        field.clearButton = clearButton
         
     }
 

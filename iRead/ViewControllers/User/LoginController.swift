@@ -111,8 +111,9 @@ class LoginController: UserViewController {
         field.font = RobotoFont.regularWithSize(16)
         field.textColor = MaterialColor.black
         field.borderStyle = .None
-//        field.titleLabel = UILabel()
-//        field.titleLabel = UILabel()
+        
+        field.lineLayerActiveColor = iReadColor.themeBlueColor
+        
         field.titleLabel!.font = RobotoFont.mediumWithSize(11)
         field.titleLabelColor = MaterialColor.grey.base
         field.titleLabelActiveColor = iReadColor.themeBlueColor
