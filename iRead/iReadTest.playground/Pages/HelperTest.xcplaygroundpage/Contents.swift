@@ -26,7 +26,7 @@ func delayTaskExectuing(intervalTime: NSTimeInterval, block: dispatch_block_t) -
         }
     }
     
-    return resultBlock?
+    return resultBlock!
     
 }
 

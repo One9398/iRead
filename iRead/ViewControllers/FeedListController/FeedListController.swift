@@ -99,6 +99,17 @@ class FeedListController: UIViewController {
     func configureContent(model: FeedModel) {
         feedModel = model
         articles = model.items
+        
+        for feedItem in articles {
+            if FeedResource.sharedResource.readArticles.contains({$0.title == feedItem.title}) {
+                feedItem.isRead = true
+            }
+            
+            if FeedResource.sharedResource.toreadArticles.contains({$0.title == feedItem.title}) {
+                feedItem.isToread = true
+            }
+        }
+
     }
     
 }

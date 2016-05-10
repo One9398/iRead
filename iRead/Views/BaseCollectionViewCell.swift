@@ -180,9 +180,8 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
             cardView.titleLabel?.sizeToFit()
             cardView.titleLabelInset.top = 10
             
-            if FeedResource.sharedResource.readArticles.contains({$0.title == feedItem.title}) {
-                feedItem.isRead = true
-            }
+
+            
             
             if feedItem.isRead {
                 self.card?.depth = .None
@@ -190,9 +189,7 @@ class BaseCollectionViewCell: MaterialCollectionViewCell {
                 self.card?.depth = .Depth3
             }
             
-            if FeedResource.sharedResource.toreadArticles.contains({$0.title == feedItem.title}) {
-                feedItem.isToread = true
-            }
+
             
             if feedItem.isToread {
                 readButton?.selected = true

@@ -23,8 +23,7 @@ extension String {
             return self
         } else {
             
-            let range = Range(start: startIndex.advancedBy(maxCount/2),end: self.endIndex)
-            
+            let range = startIndex.advancedBy(maxCount/2)..<endIndex
             self.replaceRange(range, with: "...")
             
             return self
