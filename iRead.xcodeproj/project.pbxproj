@@ -21,7 +21,6 @@
 		F4181E271C86C3C700E41FBA /* iReadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4181E261C86C3C700E41FBA /* iReadUITests.swift */; };
 		F423DA8F1CC5CE3500C1D95E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F423DA8E1CC5CE3500C1D95E /* HistoryViewController.swift */; };
 		F423DA921CC5D25C00C1D95E /* HistoryArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F423DA911CC5D25C00C1D95E /* HistoryArticleCell.swift */; };
-		F423DA961CC6616500C1D95E /* Activities.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F423DA951CC6616500C1D95E /* Activities.xcassets */; };
 		F423DA981CC6706500C1D95E /* Activities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F423DA971CC6706500C1D95E /* Activities.swift */; };
 		F42A63651C9A8E0C0099CB7A /* BaseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A63641C9A8E0C0099CB7A /* BaseCardView.swift */; };
 		F42BBB9F1CCCFDB700870228 /* LifeHealthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42BBB9E1CCCFDB700870228 /* LifeHealthController.swift */; };
@@ -187,7 +186,6 @@
 		F4181E281C86C3C700E41FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F423DA8E1CC5CE3500C1D95E /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryViewController.swift; path = HistoryViewController/HistoryViewController.swift; sourceTree = "<group>"; };
 		F423DA911CC5D25C00C1D95E /* HistoryArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryArticleCell.swift; path = HistroyArticleCell/HistoryArticleCell.swift; sourceTree = "<group>"; };
-		F423DA951CC6616500C1D95E /* Activities.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Activities.xcassets; sourceTree = "<group>"; };
 		F423DA971CC6706500C1D95E /* Activities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activities.swift; sourceTree = "<group>"; };
 		F42A63641C9A8E0C0099CB7A /* BaseCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCardView.swift; sourceTree = "<group>"; };
 		F42BBB9E1CCCFDB700870228 /* LifeHealthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeHealthController.swift; sourceTree = "<group>"; };
@@ -271,6 +269,7 @@
 		F4C3A94F1C919F6B001A0D22 /* iReadConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadConfigure.swift; sourceTree = "<group>"; };
 		F4C5076A1C919E66003D0AB1 /* FeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		F4C574821CB6555E002530B3 /* FavArticleCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavArticleCard.swift; path = FavoriteArticleCell/FavArticleCard.swift; sourceTree = "<group>"; };
+		F4C6D0781CE36911006C2159 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		F4D1F15D1CA3A11200AC056E /* iReadUserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iReadUserManager.swift; sourceTree = "<group>"; };
 		F4D1F1651CA3C81800AC056E /* ArticleTopBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleTopBar.xib; sourceTree = "<group>"; };
 		F4D1F1671CA3CDDF00AC056E /* ArtileTopBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtileTopBar.swift; sourceTree = "<group>"; };
@@ -459,7 +458,6 @@
 				F4181E061C86C3C600E41FBA /* AppDelegate.swift */,
 				F48594961CC8C783004108C1 /* iRead-Bridging-Header.h */,
 				F48048771C9817A800392827 /* Assets.xcassets */,
-				F423DA951CC6616500C1D95E /* Activities.xcassets */,
 				F45306CB1CBE7278003C5D4E /* Roboto-Regular.ttf */,
 				F43AD7141C90F8FE001ED543 /* iReadTest.playground */,
 				F40C02321C9003F600CB3646 /* Main.storyboard */,
@@ -1129,7 +1127,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F423DA961CC6616500C1D95E /* Activities.xcassets in Resources */,
 				F44DE8F21C92BEEE008617E6 /* feeds.plist in Resources */,
 				F4FA7A6C1CC0A773006C65D4 /* About.storyboard in Resources */,
 				F4ED010E1CD3B1F400EF2B67 /* feedback_btn@2x.png in Resources */,
@@ -1368,6 +1365,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F40C02331C9003F600CB3646 /* Base */,
+				F4C6D0781CE36911006C2159 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1474,7 +1472,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer: ShenZhihao Shen (3AY9U3BLF9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iRead/Info.plist;
@@ -1483,7 +1482,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iRead;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "56abbb64-a17f-4036-89fb-88a8f4d91f50";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/iRead/iRead-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1495,7 +1494,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ShenZhihao Shen (D6EPVHU6RS)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iRead/Info.plist;
@@ -1505,7 +1505,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Simon.iRead;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "56abbb64-a17f-4036-89fb-88a8f4d91f50";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/iRead/iRead-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

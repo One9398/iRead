@@ -267,6 +267,11 @@ extension RecommendBaseController : BaseTableViewCellDelegate {
 // MARK: - RecommandCardViewDelegate
 extension RecommendBaseController : RecommandCardViewDelegate {
     func recommandCardViewPlusButtonClicked(button: BaseButton) {
+        guard iReadUserDefaults.isLogined else {
+            presentLoginViewControllerWhenNoUser()
+            return
+        }
+        
         self.tableView.editing = false
         iReadAlert.showFeedInput(title: "RSS源添加", placeholder: "输入源地址", confirmTitle: "确认", dismissTitle: "返回", inViewController: self, withFinishedAction: { (text: String) -> Void in
             
@@ -314,8 +319,12 @@ extension RecommendBaseController : RecommandCardViewDelegate {
     }
     
     func recommandCardViewReducettonClicked(button: BaseButton) {
+        guard iReadUserDefaults.isLogined else {
+            presentLoginViewControllerWhenNoUser()
+            return
+        }
         
-        if feeds.count <= 0 {
+        guard feeds.count > 0 else {
             print("no feed delete")
             return
         }

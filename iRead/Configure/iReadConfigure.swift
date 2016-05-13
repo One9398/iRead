@@ -35,11 +35,11 @@ struct iReadConfigure {
         
         static let sessionType = "com.Simon.WeChat.Session"
         static let sessionTitle = "WeChat Session"
-        static let sessionImage = UIImage(named: "wechat_session")!
+        static let sessionImage = UIImage(assetsIdentifier: .wechat_icon)
         
         static let timelineType = "com.Simon.WeChat.Timeline"
         static let timelineTitle = "WeChat Timeline"
-        static let timelineImage = UIImage(named: "wechat_timeline")!
+        static let timelineImage = UIImage(assetsIdentifier: .wechat_timeline_icon)
     }
     
     struct QQAccount {

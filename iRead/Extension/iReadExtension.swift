@@ -30,6 +30,8 @@ extension UIImage {
         case icon_close = "icon_close"
         case icon_placehold_logo2 = "icon_placehold_logo2"
         case launch_logo = "launch_logo"
+        case wechat_icon = "wechat_icon"
+        case wechat_timeline_icon = "wechat_timeline_icon"
     }
     
     convenience init!(assetsIdentifier: AssetsIdentifier) {
