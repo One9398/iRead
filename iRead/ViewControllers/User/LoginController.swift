@@ -66,8 +66,16 @@ class LoginController: UserViewController {
         prepareForTextField(passwordField, placehold: "密码", detialInfo: "密码至少六位数")
         prepareForLoginButton()
         print(iReadUserDefaults.isLogined)
-        
+		if !AVOSCloudSNS.isAppInstalledForType(.SNSQQ) {
+			qqLoginButton.hidden = true;
+		}
+		
+		if !AVOSCloudSNS.isAppInstalledForType(.SNSWeiXin) {
+			wxLoginButton.hidden = true;
+		}
     }
+	@IBOutlet weak var wxLoginButton: UIButton!
+	@IBOutlet weak var qqLoginButton: UIButton!
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -182,14 +190,6 @@ class LoginController: UserViewController {
             
             if shouldLoginAccount(username, password: password) {
                 print("请求登录")
-                
-                /*
-                1展示请求动画
-                2注册请求
-                3请求反馈
-                4取消动画
-                5根据请求反馈提示HUD
-                */
                 
                 startRegisterAnimation()
                 sendLoginRequest(username, password: password){
