@@ -184,14 +184,17 @@ extension FeedParseOperation {
             let content = self.fetchStringWithElement(entry, tagName: "content")
             let summary = self.fetchStringWithElement(entry, tagName: "summary")
             
-            let category = entry.firstChildWithTag("category").attributes ["term"] as! String
-            
+            var category = entry.firstChildWithTag("category").attributes ["term"] as? String
+			if category == nil {
+				category = "未知分类"
+			}
+
             let itemModel = FeedItemModel()
             
             itemModel.link = link
             itemModel.pubDate = published
             itemModel.description = (content.isEmpty) ? summary : content
-            itemModel.category = category
+            itemModel.category = category!
             itemModel.title = title
             itemModel.author = author
             
@@ -200,7 +203,7 @@ extension FeedParseOperation {
                 content: (content.isEmpty) ? summary : content,
                 pubDate: published,
                 author: author,
-                category: category,
+                category: category!,
                 source: feedModel.title)
             
             feedItemModels.append(article)

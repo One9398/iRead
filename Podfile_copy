@@ -17,7 +17,8 @@ def pods
  #  pod 'Ono'
  #   pod 'SnapKit'
  #  pod 'Alamofire'
-  # pod 'Reveal-iOS-SDK', :configurations => ['Debug']
+
+pod 'Reveal-iOS-SDK', :configurations => ['Debug']
   #  pod 'Material'
    #  pod 'LeanCloudSocialDynamic'
 #pod 'SVProgressHUD'
